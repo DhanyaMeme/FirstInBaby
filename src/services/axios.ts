@@ -11,7 +11,7 @@ export function fetchData(params: AxiosRequestConfig) {
   return new Promise((resolve, reject) => {
     axios
       .request(params)
-      .then((response: AxiosResponse) => resolve(response))
+      .then((response: AxiosResponse) => resolve(response.data))
       .catch((error: AxiosError) => reject(error));
   });
 }

@@ -13,7 +13,6 @@ import {
   isSearchDrawHidden,
 } from "../../redux/slices/nav/nav.selector";
 import IconsWrapper from "./wrappers/IconsWrapper";
-import { MenuDrawer } from "./MenuDrawer/MenuDrawer";
 import { useSetting } from "../../contexts/SettingContext";
 import useScrollPosition from "../../hooks/useScrollPosition";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
@@ -49,14 +48,6 @@ export const NavBar = forwardRef<HTMLDivElement>((_, ref) => {
       })}
       ref={ref}
     >
-      {/* <SearchDrawer
-        visibleSearch={isSearchHidden}
-        handleClick={handleSearchIconClick}
-      /> */}
-      <MenuDrawer
-        visibleMenu={isMenuHidden}
-        handleClick={handleMenuIconClick}
-      />
       <header
         className={classNames("Header", {
           "Header--transparent": !scrollPosition,

@@ -26,7 +26,7 @@ export const safeSetInterval = <F extends (...args: any[]) => any>(
 
 export type Pick<T, U extends keyof T> = { [K in U]: T[K] };
 
-export function pick<T, U extends keyof T>(obj: T, keys: U[]): Pick<T, U> {
+export function pick<T extends object, U extends keyof T>(obj: T, keys: U[]): Pick<T, U> {
   return keys.reduce((acc, key) => {
     if (key in obj) {
       acc[key] = obj[key];
