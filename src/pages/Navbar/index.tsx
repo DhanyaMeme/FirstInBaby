@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import { forwardRef } from "react";
 import { useLocation } from "react-router-dom";
+import { MenuDrawer } from "../../components/Drawer/MenuDrawer/MenuDrawer";
 import IconsWrapper from "../../components/NavBar/IconsWrapper";
 import LogoWrapper from "../../components/NavBar/LogoWrapper";
 import NavWrapper from "../../components/NavBar/NavWrapper";
@@ -19,22 +20,20 @@ import { useAppDispatch, useAppSelector } from "../../redux/store";
 import "./Style.scss";
 
 export const NavBar = forwardRef<HTMLDivElement>((_, ref) => {
+  
   const dispatch = useAppDispatch();
   const { pathname } = useLocation();
   const path = pathname.split("/").filter(Boolean)[0];
-  const { toggleOverlay } = useSetting();
   const { scrollPosition } = useScrollPosition();
 
   const isSearchHidden = useAppSelector(isSearchDrawHidden);
   const isMenuHidden = useAppSelector(isMenuDrawHidden);
 
   const handleMenuIconClick = () => {
-    toggleOverlay();
     dispatch(setMenuDrawHidden(!isMenuHidden));
   };
 
   const handleSearchIconClick = () => {
-    toggleOverlay();
     dispatch(setSearchText(undefined));
     dispatch(setSearchDrawHidden(!isSearchHidden));
   };
@@ -48,6 +47,10 @@ export const NavBar = forwardRef<HTMLDivElement>((_, ref) => {
       })}
       ref={ref}
     >
+      <MenuDrawer
+        visibleMenu={isMenuHidden}
+        handleClick={handleMenuIconClick}
+      />
       <header
         className={classNames("Header", {
           "Header--transparent": !scrollPosition,

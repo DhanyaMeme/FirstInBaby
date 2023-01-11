@@ -71,11 +71,11 @@
     position: relative;
     height: 50px;
     max-height: 60px;
-    background: inherit;
     text-align: center;
     z-index: 1;
     height: 74px;
     box-shadow: 0 -1px #e7e7e7 inset;
+    background: #f2efea;
 
     &--center {
       justify-content: center;

@@ -22,7 +22,7 @@ const NavItem: FC<IProps> = (props: IProps): ReactElement => {
       ref={hoverRef}
     >
       <NavLink to={`/collections/${item.name}`} className="Heading">
-        {item.name}
+        {item.name.toUpperCase()}
         <span className="Header__LinkSpacer"> {item.name}</span>
       </NavLink>
     </li>

@@ -1,7 +1,6 @@
 import classNames from "classnames";
 import { FC, ReactNode, useState } from "react";
 import useElementSize from "../../hooks/useElementSize";
-import "./Accordian.scss";
 
 interface IProps {
   title: string;
