@@ -2,10 +2,10 @@ import classNames from "classnames";
 import { forwardRef } from "react";
 import { useLocation } from "react-router-dom";
 import { MenuDrawer } from "../../components/Drawer/MenuDrawer/MenuDrawer";
+import { SearchDrawer } from "../../components/Drawer/SearchDrawer";
 import IconsWrapper from "../../components/NavBar/IconsWrapper";
 import LogoWrapper from "../../components/NavBar/LogoWrapper";
 import NavWrapper from "../../components/NavBar/NavWrapper";
-import { useSetting } from "../../contexts/SettingContext";
 import useScrollPosition from "../../hooks/useScrollPosition";
 import {
   isMenuDrawHidden,
@@ -20,7 +20,6 @@ import { useAppDispatch, useAppSelector } from "../../redux/store";
 import "./Style.scss";
 
 export const NavBar = forwardRef<HTMLDivElement>((_, ref) => {
-  
   const dispatch = useAppDispatch();
   const { pathname } = useLocation();
   const path = pathname.split("/").filter(Boolean)[0];
@@ -50,6 +49,10 @@ export const NavBar = forwardRef<HTMLDivElement>((_, ref) => {
       <MenuDrawer
         visibleMenu={isMenuHidden}
         handleClick={handleMenuIconClick}
+      />
+      <SearchDrawer
+        visibleSearch={isSearchHidden}
+        handleClick={handleSearchIconClick}
       />
       <header
         className={classNames("Header", {
