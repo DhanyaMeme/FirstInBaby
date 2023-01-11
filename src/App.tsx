@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.scss";
-import {  } from "./StateAndRouterProvider";
+import {} from "./StateAndRouterProvider";
 import { ScrollTop } from "./ui_kits/ScrollTop/ScrollTop";
 import { ToastContainer } from "react-toastify";
 import LayoutWrapper from "./layout/LayoutWrapper";
@@ -26,7 +26,7 @@ function App() {
       <ToastContainer />
       <LayoutWrapper>
         <NavigationScroll>
-          
+          <div></div>
         </NavigationScroll>
       </LayoutWrapper>
     </Fragment>
