@@ -7,7 +7,7 @@
   position: sticky;
 
   .Header {
-    background: #000000;
+    background: var(--main-color-bg3);
     color: #ffffff;
     box-shadow: 0 -1px #262626 inset;
     transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;

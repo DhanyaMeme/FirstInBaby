@@ -1,4 +1,5 @@
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { navData } from "../../../mockData/categoriesData";
 import { fetchData } from "../../../services/axios";
 import { navService } from "../../../services/axiosServices";
 import { IMainCategory, INavState } from "./nav.type";
@@ -7,8 +8,9 @@ export const fetchCategoriesAsync = createAsyncThunk(
   "nav/getMaincategory",
   async (_arg, { rejectWithValue }) => {
     try {
-      const response = (await fetchData(navService.Maincategory)) as any;
-      return response.data;
+      //  const response = await fetchData(navService.Maincategory);
+      const response = navData;
+      return response;
     } catch (err) {
       return rejectWithValue(err);
     }
