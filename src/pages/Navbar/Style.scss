@@ -8,7 +8,7 @@
 
   .Header {
     background: #f2efea;
-    color: var(--main-text-grey1);
+    color: var(--main-color-pink);
     box-shadow: 0 -1px #0000001a inset;
     transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   }
@@ -162,6 +162,7 @@
       .Header--transparent {
         box-shadow: none;
         // background: rgba(0, 0, 0, 0.4);
+        color: var(--main-text-grey1);
         background: transparent;
       }
     }

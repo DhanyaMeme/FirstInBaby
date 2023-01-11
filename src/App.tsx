@@ -12,6 +12,7 @@ import NavigationScroll from "./ui_kits/NavigationScroll";
 import { useAppDispatch } from "./redux/store";
 import { fetchCategoriesAsync } from "./redux/slices/nav/nav.reducer";
 import { Fragment, useEffect } from "react";
+import Routes from "./routes";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -26,7 +27,7 @@ function App() {
       <ToastContainer />
       <LayoutWrapper>
         <NavigationScroll>
-          <div></div>
+          <Routes />
         </NavigationScroll>
       </LayoutWrapper>
     </Fragment>
