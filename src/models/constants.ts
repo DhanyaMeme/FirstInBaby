@@ -51,12 +51,12 @@ export const SortList: ISortData<IProduct>[] = [
   },
   {
     key: "Alphabetically, A-Z",
-    field: "name",
+    field: "productname",
     isDescending: false,
   },
   {
     key: "Alphabetically, Z-A",
-    field: "name",
+    field: "productname",
     isDescending: true,
   },
 ];

@@ -16,7 +16,7 @@ export const ProductItem = (props: IProps) => {
   // const { addToFav } = useWishlistHook();
 
   return (
-    <div className="ProductItem" id={product.name}>
+    <div className="ProductItem" id={product.productname}>
       <div className="ProductItem__Wrapper">
         <ProductImage product={product} />
         <IF condition={label !== undefined}>

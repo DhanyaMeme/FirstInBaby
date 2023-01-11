@@ -12,13 +12,13 @@ interface IProps {
 
 export const ProductInfo = (props: IProps) => {
   const { product } = props;
-  const { name, price, productid, offer } = product;
+  const { productname, price, mcId, offer } = product;
 
   return (
     <div className="ProductItem__Info">
       <h6 className="ProductItem__Title Heading">
-        <NavLink to={`/product/${encodeUrl(name)}/${productid}`}>
-          {name}
+        <NavLink to={`/product/${encodeUrl(productname)}/${mcId}`}>
+          {productname}
         </NavLink>
       </h6>
       <div className="ProductItem__PriceList Heading u-h6">

@@ -5,15 +5,15 @@ import { useAppDispatch, useAppSelector } from "../../../redux/store";
 import { searchText } from "../../../redux/slices/nav/nav.selector";
 import { InputChangeEvent } from "../../../models/types";
 import { setSearchText } from "../../../redux/slices/nav/nav.slice";
-import { allProducts } from "../../../redux/slices/collection/collection.selector";
 import { IF } from "../../../ui_kits/IF";
 import { isEmpty } from "../../../utils/script";
 import { IProduct } from "../../../redux/slices/collection/collection.type";
+import { products } from "../../../mockData/productData";
 
 export const SearchForm = () => {
   const dispatch = useAppDispatch();
   const searchValue = useAppSelector(searchText);
-  const { data } = useAppSelector(allProducts);
+  //const { data } = useAppSelector(allProducts);
 
   return (
     <PageContent spacingTight>
@@ -32,7 +32,7 @@ export const SearchForm = () => {
       <IF condition={!isEmpty(searchValue)}>
         <SearchResults
           searchValue={searchValue as string}
-          productsData={data as IProduct[]}
+          productsData={products as IProduct[]}
         />
       </IF>
     </PageContent>

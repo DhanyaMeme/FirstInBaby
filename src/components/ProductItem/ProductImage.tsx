@@ -15,17 +15,11 @@ export const ProductImage = (props: IProps) => {
   };
 
   return (
-    <div className="ProductItem__ImageWrapper ProductItem__ImageWrapper--withAlternateImage">
+    <div className="ProductItem__ImageWrapper">
       <div className="AspectRatio AspectRatio--tall">
         <img
-          src={product.image}
-          alt={product.name}
-          className={`ProductItem__Image ProductItem__Image--alternate Image--fadeIn  ${loader}`}
-          onLoad={onImageLoaded}
-        />
-        <img
-          src={product.image}
-          alt={product.name}
+          src={product.imageurl}
+          alt={product.productname}
           onLoad={onImageLoaded}
           className={`ProductItem__Image Image--fadeIn ${loader}`}
         />

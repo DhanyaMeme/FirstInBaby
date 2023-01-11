@@ -20,9 +20,9 @@ export const SearchResults: FC<IProps> = (props: IProps) => {
 
     if (debouncedSearchTerm) {
       const searchKeys: Array<keyof IProduct> = [
-        "name",
-        "collection",
-        "productid",
+        "productname",
+        "maincategory",
+        "mcId",
       ];
 
       computedData = computedData?.filter((pdt: IProduct) =>
@@ -54,7 +54,7 @@ export const SearchResults: FC<IProps> = (props: IProps) => {
       <div className="Search__Results--Content">
         {filteredData &&
           filteredData.map((product: IProduct) => (
-            <ProductItem key={product.productid} product={product} />
+            <ProductItem key={product.mcId} product={product} />
           ))}
       </div>
     </div>
