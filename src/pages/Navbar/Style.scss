@@ -7,9 +7,9 @@
   position: sticky;
 
   .Header {
-    background: var(--main-color-bg3);
-    color: #ffffff;
-    box-shadow: 0 -1px #262626 inset;
+    background: #f2efea;
+    color: var(--main-text-grey1);
+    box-shadow: 0 -1px #0000001a inset;
     transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   }
 
@@ -91,8 +91,8 @@
     width: 8px;
     height: 8px;
     border-radius: 100%;
-    background-color: #191919;
-    box-shadow: 0 0 0 2px white;
+    background-color: var(--main-color-pink);
+    box-shadow: 0 0 0 2px var(--main-color-bg1);
     transform: scale(0);
     transition: all 0.3s ease-in-out;
 
@@ -118,7 +118,7 @@
       opacity: 0;
       transform: scale(0, 1);
       transform-origin: left center;
-      border-bottom: 2px solid white;
+      border-bottom: 3px solid var(--main-color-pink);
       transition: transform 0.3s, opacity 0.3s;
     }
   }
@@ -136,28 +136,6 @@
     .HorizontalList {
       margin-left: 0;
       margin-right: 0;
-
-      .Heading {
-        color: white;
-      }
-    }
-
-    .DropdownMenu {
-      color: var(--main-color);
-      padding: 20px;
-
-      .Linklist > .Linklist__Item {
-        margin-bottom: 0;
-
-        &:not(:last-child) > a {
-          border-bottom: 1px dashed #ddd;
-        }
-
-        a {
-          padding: 8px 0;
-          transition: all 0.3s ease;
-        }
-      }
     }
   }
 

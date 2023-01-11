@@ -1,8 +1,8 @@
 import { FC, ReactNode, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { NavBar } from "../components/NavBar/NavBar";
 import useElementSize from "../hooks/useElementSize";
 import useWindowSize from "../hooks/useWindowSize";
+import { NavBar } from "../pages/Navbar";
 
 interface LayoutProps {
   children: ReactNode;
@@ -33,7 +33,7 @@ const BaseLayout: FC<LayoutProps> = ({ children }) => {
 
   return (
     <>
-       <NavBar ref={headerRef} /> 
+      <NavBar ref={headerRef} />
       {children}
       {/* <Newsletter />
       <Footer /> */}

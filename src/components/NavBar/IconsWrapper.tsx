@@ -1,19 +1,16 @@
 import React, { FC } from "react";
 import { NavLink } from "react-router-dom";
-import AccountIcon from "../../../assets/icons/Account.icon";
-import {
-  CartDesktopIcon,
-  CartMobileIcon,
-} from "../../../assets/icons/Cart.icon";
-import FavouriteIcon from "../../../assets/icons/Fav.icon";
+import AccountIcon from "../../assets/icons/Account.icon";
+import { CartDesktopIcon, CartMobileIcon } from "../../assets/icons/Cart.icon";
+import FavouriteIcon from "../../assets/icons/Fav.icon";
 import {
   SearchDesktopIcon,
   SearchMobileIcon,
-} from "../../../assets/icons/Search.icon";
-import { selectCartCount } from "../../../redux/slices/cart/cart.selector";
-import { useAppSelector } from "../../../redux/store";
-import { IF } from "../../../ui_kits/IF";
-import { isEmpty } from "../../../utils/script";
+} from "../../assets/icons/Search.icon";
+import { selectCartCount } from "../../redux/slices/cart/cart.selector";
+import { useAppSelector } from "../../redux/store";
+import { IF } from "../../ui_kits/IF";
+import { isEmpty } from "../../utils/script";
 
 interface IProps {
   handleClick: () => void;

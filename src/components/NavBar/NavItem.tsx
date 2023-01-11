@@ -1,8 +1,8 @@
 import { FC, ReactElement, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import classnames from "classnames";
-import { IMainCategory } from "../../../redux/slices/nav/nav.type";
-import useHover from "../../../hooks/useHover";
+import { IMainCategory } from "../../redux/slices/nav/nav.type";
+import useHover from "../../hooks/useHover";
 
 interface IProps {
   item: IMainCategory;

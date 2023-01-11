@@ -1,22 +1,22 @@
-import { forwardRef } from "react";
 import classNames from "classnames";
+import { forwardRef } from "react";
 import { useLocation } from "react-router-dom";
-import NavWrapper from "./wrappers/NavWrapper";
-import LogoWrapper from "./wrappers/LogoWrapper";
+import IconsWrapper from "../../components/NavBar/IconsWrapper";
+import LogoWrapper from "../../components/NavBar/LogoWrapper";
+import NavWrapper from "../../components/NavBar/NavWrapper";
+import { useSetting } from "../../contexts/SettingContext";
+import useScrollPosition from "../../hooks/useScrollPosition";
+import {
+  isMenuDrawHidden,
+  isSearchDrawHidden,
+} from "../../redux/slices/nav/nav.selector";
 import {
   setMenuDrawHidden,
   setSearchDrawHidden,
   setSearchText,
 } from "../../redux/slices/nav/nav.slice";
-import {
-  isMenuDrawHidden,
-  isSearchDrawHidden,
-} from "../../redux/slices/nav/nav.selector";
-import IconsWrapper from "./wrappers/IconsWrapper";
-import { useSetting } from "../../contexts/SettingContext";
-import useScrollPosition from "../../hooks/useScrollPosition";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
-import "./NavBar.scss";
+import "./Style.scss";
 
 export const NavBar = forwardRef<HTMLDivElement>((_, ref) => {
   const dispatch = useAppDispatch();

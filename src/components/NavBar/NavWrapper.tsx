@@ -1,8 +1,8 @@
 import { FC } from "react";
-import { MenuDesktopIcon, MenuMobileIcon } from "../../../assets/icons/Menu";
-import { categories } from "../../../redux/slices/nav/nav.selector";
-import { IMainCategory } from "../../../redux/slices/nav/nav.type";
-import { useAppSelector } from "../../../redux/store";
+import { MenuDesktopIcon, MenuMobileIcon } from "../../assets/icons/Menu";
+import { categories } from "../../redux/slices/nav/nav.selector";
+import { IMainCategory } from "../../redux/slices/nav/nav.type";
+import { useAppSelector } from "../../redux/store";
 import NavItem from "./NavItem";
 
 interface IProps {
