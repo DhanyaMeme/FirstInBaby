@@ -1,8 +1,8 @@
 import { ProductInfo } from "./ProductInfo";
-import { ProductImage } from "./ProductImage";
 import { IProduct } from "../../redux/slices/collection/collection.type";
 import { AddFavIcon } from "../../assets/icons/AddFav.icon";
 import { IF } from "../../ui_kits/IF";
+import { ImageWrapper } from "../../ui_kits/ImageWrapper/ImageWrapper";
 
 interface IProps {
   product: IProduct;
@@ -18,7 +18,15 @@ export const ProductItem = (props: IProps) => {
   return (
     <div className="ProductItem" id={product.productname}>
       <div className="ProductItem__Wrapper">
-        <ProductImage product={product} />
+        <div className="ProductItem__ImageWrapper">
+          <div className="AspectRatio AspectRatio--tall">
+            <ImageWrapper
+              src={product.imageurl}
+              alt={product.productname}
+              classes="ProductItem__Image Image--fadeIn"
+            />
+          </div>
+        </div>
         <IF condition={label !== undefined}>
           <div className="ProductItem__LabelList">
             <span className="ProductItem__Label Heading Text--subdued u-h7">

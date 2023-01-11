@@ -1,5 +1,3 @@
-import { NavLink } from "react-router-dom";
-import { encodeUrl } from "../../utils/textHandler";
 import { IProduct } from "../../redux/slices/collection/collection.type";
 import { Price } from "../../ui_kits/global/Price.styles";
 import { isEmpty } from "../../utils/script";
@@ -12,16 +10,12 @@ interface IProps {
 
 export const ProductInfo = (props: IProps) => {
   const { product } = props;
-  const { productname, price, mcId, offer } = product;
+  const { productname, price, offer } = product;
 
   return (
     <div className="ProductItem__Info">
-      <h6 className="ProductItem__Title Heading">
-        <NavLink to={`/product/${encodeUrl(productname)}/${mcId}`}>
-          {productname}
-        </NavLink>
-      </h6>
-      <div className="ProductItem__PriceList Heading u-h6">
+      <h5 className="ProductItem__Title Heading">{productname}</h5>
+      <div className="ProductItem__PriceList Heading u-h5">
         <Price highlight>Rs.{price}</Price>
         <IF condition={!isEmpty(offer)}>
           <Price compareAt>Rs.{getOfferPrice(price, offer)}</Price>

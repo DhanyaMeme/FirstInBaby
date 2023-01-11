@@ -15,7 +15,7 @@ interface IProps {
 const CompareAtStyles = css`
   position: relative;
   margin-left: ${(props: IProps) => (props.isLarge ? "30px" : "15px")};
-  color: #d3b289;
+  color: var(--main-color-pink);
 
   &::before {
     position: absolute;
