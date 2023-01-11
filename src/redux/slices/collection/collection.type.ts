@@ -2,24 +2,29 @@ import { AsyncData } from "../../../models/types";
 
 export interface IProductImage {
   id: number;
-  productimageid: number;
-  image: string;
-  productid: number;
+  imId: number;
+  imageUrl: string;
+  mcId: number;
 }
 
 export interface IProductSize {
   id: number;
-  productsizeid: number;
-  size: string;
-  stock: number;
-  productid: number;
+  sid: number;
+  psize: string;
+  price: number;
+  sku: string;
+  qty: number;
+  length: number;
+  width: number;
+  height: number;
+  mcId: number;
 }
 
 export interface IProductSpecification {
   id: number;
-  productspecid: number;
-  productspecification: string;
-  productid: number;
+  spid: number;
+  specification: string;
+  mcId: number;
 }
 
 export interface IProductReview {
@@ -34,29 +39,57 @@ export interface IProductReview {
 
 export interface IProduct {
   id: number;
-  collection: string;
-  color: string;
-  description: string;
-  gender: string;
-  group: string;
+  brand: string;
+  childcategory: string;
   date: string;
-  image: string;
+  deliveryTime: string;
+  descpription: string;
+  descpription1: string;
+  fabric: string;
+  group: string;
+  gsthsn: string;
+  imageurl: string;
   maincategory: string;
-  metatags: string | null;
-  occation: string | null;
-  name: string;
+  mcId: number;
+  metatags: any[];
+  minqty: number;
   offer: number;
-  points: number;
+  phone: string;
+  pntw: string;
   price: number;
-  productImages: IProductImage[] | null;
-  productSize: IProductSize[] | null;
-  productSpecification: IProductSpecification[] | null;
-  productid: number;
-  reviews: IProductReview[];
-  sizechart: string | null;
-  sku: string;
+  productImages: IProductImage[];
+  productSize: IProductSize[];
+  productSpecs: IProductSpecification[];
+  productcode: string;
+  productcolor: string;
+  productname: string;
+  quantity: string;
+  // ratings: [
+  //   {
+  //     numbers: number;
+  //     rating: number;
+  //     ratingid: number;
+  //   }
+  // ];
+  // reviews: [
+  //   {
+  //     dislike: number;
+  //     like: number;
+  //     name: string;
+  //     rating: number;
+  //     reviews: string;
+  //     rid: number;
+  //     start: number;
+  //     url: string;
+  //   }
+  // ];
+  ratings: any[];
+  reviews: any[];
+  shopbyproducts: string;
+  sizechart: string;
   subcategory: string;
-  type: string;
+  subcategory1: string;
+  tax: number;
 }
 
 export enum LayoutType {
