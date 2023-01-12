@@ -11,9 +11,9 @@
 .RadioSwatch__Input {
   display: none;
   &:checked + .RadioSwatch__Label {
-    border-color: #5c5c5c;
+    border-color: var(--main-color-bg4);
     color: #5c5c5c;
-    background: var(--main-color);
+    background: var(--main-color-pink);
     color: #fff;
   }
 }

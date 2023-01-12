@@ -29,12 +29,11 @@ export default function ModalWrapper(props: IProps) {
   };
 
   return (
-    <Modal open={true} onClose={handleOnclose} size={size}>
+    <Modal closeIcon open={true} onClose={handleOnclose} size={size}>
       {header && <Modal.Header>{header}</Modal.Header>}
       <Modal.Content scrolling>{children}</Modal.Content>
       <Modal.Actions>
-        <Button onClick={handleOnclose}>Cancel</Button>
-        <Button onClick={handleActionClick} positive>
+        <Button onClick={handleActionClick} color="pink">
           {actionName}
         </Button>
       </Modal.Actions>

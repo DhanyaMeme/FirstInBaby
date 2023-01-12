@@ -1,14 +1,32 @@
-import { Form } from "react-router-dom";
+import {
+  IProduct,
+  IProductSize,
+} from "../../redux/slices/collection/collection.type";
 import ModalWrapper from "../../ui_kits/modal/modal-wrapper.component";
+import { RadioSwatch } from "../../ui_kits/RadioSwatch/RadioSwatch";
 
-export const AddFavToCartModal = () => {
+interface IProps {
+  id: IProduct;
+}
+
+export const AddFavToCartModal = (props: IProps) => {
+  const {
+    id: { productSize },
+  } = props;
+
   return (
     <ModalWrapper
-      actionName="Add To Cart"
-      size="large"
+      header="Add To Cart"
+      actionName="Add"
       handleActionClick={() => {}}
     >
-      <div>Abv</div>
+      <RadioSwatch
+        name="productSize"
+        productSizeArray={(productSize as IProductSize[]) || []}
+        onChange={() => {}}
+        valueKey="psize"
+        initialSelectedItem={(productSize?.[0] || []) as IProductSize}
+      />
     </ModalWrapper>
   );
 };
