@@ -9,6 +9,7 @@ import { wishlistSlice } from "./slices/wishlist/wishlist.slice";
 import { homeSlice } from "./slices/home/home.slice";
 import { productSlice } from "./slices/product/product.slice";
 import { profileSlice } from "./slices/profile/profile.slice";
+import { modalSlice } from "./slices/modal/modal.slice";
 
 const persistConfig = {
   key: "root",
@@ -26,6 +27,7 @@ const rootReducer = combineReducers({
   [homeSlice.name]: homeSlice.reducer,
   [productSlice.name]: productSlice.reducer,
   [profileSlice.name]: profileSlice.reducer,
+  [modalSlice.name]: modalSlice.reducer,
 });
 
 export const persistedReducer = persistReducer(persistConfig, rootReducer);

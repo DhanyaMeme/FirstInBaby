@@ -3,8 +3,8 @@ import BannerDesk from "../../../assets/images/banner/banner_desk.png";
 
 export const Banner = () => {
   return (
-    <figure>
-      <div className="Slideshow Slideshow--fullscreen">
+    <figure className="Slideshow">
+      <div>
         <img
           className="Image--contrast hidden-phone"
           src={BannerDesk}

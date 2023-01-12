@@ -5,6 +5,8 @@ import { IF } from "../../ui_kits/IF";
 import { ImageWrapper } from "../../ui_kits/ImageWrapper/ImageWrapper";
 import { AddToCartIcon } from "../../assets/icons/AddToCart.icon";
 import RemoveIcon from "../../assets/icons/Remove.icon";
+import { useAppDispatch } from "../../redux/store";
+import { openModal } from "../../redux/slices/modal/modal.slice";
 
 interface IProps {
   product: IProduct;
@@ -25,6 +27,19 @@ export const ProductItem = (props: IProps) => {
 
   // const { addToFav } = useWishlistHook();
 
+  const dispatch = useAppDispatch();
+
+  const handleProductAddToCart = () => {
+    dispatch(
+      openModal({
+        modalType: "AddFavToCartModal",
+        modalProps: {
+          id: product,
+        },
+      })
+    );
+  };
+
   return (
     <div className="ProductItem" id={product.productname}>
       <div className="ProductItem__Wrapper">
@@ -36,7 +51,10 @@ export const ProductItem = (props: IProps) => {
               classes="ProductItem__Image Image--fadeIn"
             />
             <IF condition={isVisibleAddCart}>
-              <button className="ProductItem__Icon ProductItem__CartIcon">
+              <button
+                className="ProductItem__Icon ProductItem__CartIcon"
+                onClick={handleProductAddToCart}
+              >
                 <AddToCartIcon />
               </button>
             </IF>

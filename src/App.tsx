@@ -1,18 +1,20 @@
+import { Fragment, useEffect } from "react";
+import { ToastContainer } from "react-toastify";
+import Routes from "./routes";
+import { useAppDispatch } from "./redux/store";
+import LayoutWrapper from "./layout/LayoutWrapper";
+import NavigationScroll from "./ui_kits/NavigationScroll";
+import { ScrollTop } from "./ui_kits/ScrollTop/ScrollTop";
+import ModalManager from "./ui_kits/modal/modal-manager.component";
+import { fetchCategoriesAsync } from "./redux/slices/nav/nav.reducer";
+
 // style + assets
 import "./assets/scss/style.scss";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "react-toastify/dist/ReactToastify.css";
+import "semantic-ui-css/semantic.min.css";
 import "./App.scss";
-import {} from "./StateAndRouterProvider";
-import { ScrollTop } from "./ui_kits/ScrollTop/ScrollTop";
-import { ToastContainer } from "react-toastify";
-import LayoutWrapper from "./layout/LayoutWrapper";
-import NavigationScroll from "./ui_kits/NavigationScroll";
-import { useAppDispatch } from "./redux/store";
-import { fetchCategoriesAsync } from "./redux/slices/nav/nav.reducer";
-import { Fragment, useEffect } from "react";
-import Routes from "./routes";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -25,6 +27,7 @@ function App() {
     <Fragment>
       <ScrollTop />
       <ToastContainer />
+      <ModalManager />
       <LayoutWrapper>
         <NavigationScroll>
           <Routes />
