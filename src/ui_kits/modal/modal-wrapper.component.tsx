@@ -2,15 +2,19 @@ import { ReactNode } from "react";
 import { Button, Modal } from "semantic-ui-react";
 import { closeModal } from "../../redux/slices/modal/modal.slice";
 import { useAppDispatch } from "../../redux/store";
+import { isEmpty } from "../../utils/script";
+import { IF } from "../IF";
 
 type sizeType = "mini" | "tiny" | "small" | "large" | "fullscreen";
 
 interface IProps {
   children: ReactNode;
-  handleActionClick: () => void;
+  handleActionClick?: () => void;
   size?: sizeType;
   header?: string;
   actionName?: string;
+  basic?: boolean;
+  image?: boolean;
 }
 
 export default function ModalWrapper(props: IProps) {
@@ -19,7 +23,9 @@ export default function ModalWrapper(props: IProps) {
     handleActionClick,
     size = "mini",
     header,
-    actionName = "Submit",
+    actionName,
+    basic = false,
+    image = false,
   } = props;
 
   const dispatch = useAppDispatch();
@@ -29,14 +35,22 @@ export default function ModalWrapper(props: IProps) {
   };
 
   return (
-    <Modal closeIcon open={true} onClose={handleOnclose} size={size}>
+    <Modal
+      closeIcon
+      open={true}
+      onClose={handleOnclose}
+      size={size}
+      basic={basic}
+    >
       {header && <Modal.Header>{header}</Modal.Header>}
-      <Modal.Content scrolling>{children}</Modal.Content>
-      <Modal.Actions>
-        <Button onClick={handleActionClick} color="pink">
-          {actionName}
-        </Button>
-      </Modal.Actions>
+      <Modal.Content image={image}>{children}</Modal.Content>
+      <IF condition={isEmpty(!actionName)}>
+        <Modal.Actions>
+          <Button onClick={handleActionClick} color="pink">
+            {actionName}
+          </Button>
+        </Modal.Actions>
+      </IF>
     </Modal>
   );
 }
