@@ -10,7 +10,7 @@ export const AnnouncementBar: FC<IProps> = (props: IProps) => {
   const { position = "left" } = props;
 
   return (
-    <section className="AnnouncementBar Heading u-h6">
+    <section className="AnnouncementBar Heading u-h5">
       <div
         className={classNames("AnnouncementBar__Wrapper", {
           "AnnouncementBar__Wrapper--right": position === "right",

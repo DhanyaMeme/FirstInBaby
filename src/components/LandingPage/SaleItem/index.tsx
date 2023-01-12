@@ -12,7 +12,7 @@ export const SaleItem = (props: IProps) => {
   const { saleData = [] } = props;
 
   return (
-    <Collections heading="Sale item of the Week!!" isNarrow>
+    <Collections heading="Sale item of the Week!!">
       <IF condition={!isEmpty(saleData)}>
         {saleData.map((pdt: IProduct) => (
           <div className="Grid__Cell  1/3--tablet-and-up" key={pdt.id}>
