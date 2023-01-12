@@ -1,13 +1,22 @@
 import "./Review.scss";
 import { StarRating } from "./StarRating";
 import { ReviewItem } from "./ReviewItem";
-import {
-  BUTTON_TYPE_CLASSES,
-  TextButton,
-} from "../../ui_kits/Buttons/TextButton/TextButton.component";
+import { TextButton } from "../../ui_kits/Buttons/TextButton/TextButton.component";
 import { ReviewsOverview } from "./ReviewsOverview/ReviewsOverview";
+import { useAppDispatch } from "../../redux/store";
+import { openModal } from "../../redux/slices/modal/modal.slice";
 
 function Reviews() {
+  const dispatch = useAppDispatch();
+
+  const handleWriteReview = () => {
+    dispatch(
+      openModal({
+        modalType: "ReviewModal",
+      })
+    );
+  };
+
   return (
     <div className="RatingSummary">
       <div className="RatingWdgt__Header">
@@ -23,7 +32,7 @@ function Reviews() {
           <ReviewsOverview rating={1} count={0} percentage="0%" />
         </div>
         <div className="RatingWdgt__Action">
-          <TextButton isSmall >
+          <TextButton isSmall onClick={handleWriteReview}>
             WRITE REVIEW
           </TextButton>
         </div>
