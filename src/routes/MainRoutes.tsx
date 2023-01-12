@@ -2,6 +2,7 @@ import BaseLayout from "../layout/BaseLayout";
 import { Navigate } from "react-router-dom";
 import { LandingPage } from "../pages/LandingPage";
 import { ProductCollection } from "../pages/ProductCollection";
+import { ProductView } from "../pages/ProductView";
 
 // ==============================|| MAIN ROUTING ||============================== //
 
@@ -25,6 +26,10 @@ const MainRoutes = {
           path: ":id",
         },
       ],
+    },
+    {
+      path: "product/:name/:id",
+      element: <ProductView />,
     },
   ],
 };

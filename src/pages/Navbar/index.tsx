@@ -37,7 +37,7 @@ export const NavBar = forwardRef<HTMLDivElement>((_, ref) => {
     dispatch(setSearchDrawHidden(!isSearchHidden));
   };
 
-  const stickyPath = ["home", "product"];
+  const stickyPath = ["home"];
 
   return (
     <div
