@@ -49,7 +49,7 @@ export const ImageViewer = (props: IProps) => {
     centerPadding: "100px",
     responsive: [
       {
-        breakpoint: 767,
+        breakpoint: 1023,
         dots: true,
         settings: {
           // slidesToShow: 6,
