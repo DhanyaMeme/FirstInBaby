@@ -9,7 +9,9 @@ export interface IProps {
 
 export const ImageWrapper: FC<IProps> = (props: IProps) => {
   const { src, alt, classes, showLoader = true } = props;
+
   const [loader, setLoader] = useState("Image--lazyLoading");
+
   const onImageLoaded = () => {
     setLoader("Image--lazyLoaded");
   };

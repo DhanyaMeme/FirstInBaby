@@ -1291,6 +1291,7 @@ h6 {
 
 .ProductItem__ImageWrapper {
   display: block;
+  background: var(--main-color-bg4);
 }
 
 .ProductItem__Image--alternate {
@@ -1316,7 +1317,8 @@ h6 {
   font-size: 11px;
   margin: 4px 0;
   padding: 2px 6px;
-  background: white;
+  background: var(--main-color-pink);
+  color: var(--main-color-white);
   max-width: max-content;
 }
 
@@ -1348,7 +1350,7 @@ h6 {
 
 .ProductItem__FavIcon {
   &:hover svg {
-    fill: #e50010;
+    fill: var(--main-color-pink);
   }
 }
 
@@ -1625,7 +1627,7 @@ h6 {
  * ----------------------------------------------------------------------------
  */
 
- .Collapsible {
+.Collapsible {
   border-top: 1px solid #e7e7e7;
   border-bottom: 1px solid #e7e7e7;
   overflow: hidden;
@@ -1839,7 +1841,7 @@ h6 {
 }
 
 .AspectRatio--tall::before {
-  padding-bottom: 150%;
+  padding-bottom: 120%;
 }
 
 .AspectRatio--square > img,
@@ -1925,7 +1927,7 @@ h6 {
   top: 0;
   height: 100%;
   width: 200%;
-  background-color: #5c5c5c;
+  background-color: var(--main-color-pink);
 }
 
 .Image--fadeIn {

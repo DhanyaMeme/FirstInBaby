@@ -1,6 +1,7 @@
 import BaseLayout from "../layout/BaseLayout";
 import { Navigate } from "react-router-dom";
 import { LandingPage } from "../pages/LandingPage";
+import { ProductCollection } from "../pages/ProductCollection";
 
 // ==============================|| MAIN ROUTING ||============================== //
 
@@ -15,6 +16,15 @@ const MainRoutes = {
     {
       path: "home",
       element: <LandingPage />,
+    },
+    {
+      path: "collections",
+      element: <ProductCollection />,
+      children: [
+        {
+          path: ":id",
+        },
+      ],
     },
   ],
 };

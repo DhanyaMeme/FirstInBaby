@@ -4,16 +4,11 @@ import {
   collectionReducer,
   extracollectionReducer,
 } from "./collection.reducer";
-import { ICollectionState, LayoutType } from "./collection.type";
+import { ICollectionState } from "./collection.type";
 
 export const initialState: ICollectionState = {
-  layoutType: LayoutType.Multi,
-  isSortEnabled: false,
-  isFilterEnabled: false,
-  selectedSorter: undefined,
-  selectedFilters: undefined,
   allProducts: initialAsyncData,
-  groupedProducts: undefined,
+
 };
 
 export const collectionSlice = createSlice({
@@ -23,11 +18,3 @@ export const collectionSlice = createSlice({
   extraReducers: extracollectionReducer,
 });
 
-export const {
-  setLayoutType,
-  setSelectedSorter,
-  setSelectedFilters,
-  setSorterVisibility,
-  setFilterVisibility,
-  setGroupedProducts,
-} = collectionSlice.actions;

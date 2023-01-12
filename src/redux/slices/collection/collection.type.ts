@@ -92,44 +92,6 @@ export interface IProduct {
   tax: number;
 }
 
-export enum LayoutType {
-  Single = "1:1",
-  Dual = "2:2",
-  Multi = "4:4",
-}
-
-export default interface ISortData<T> {
-  key: string;
-  field: keyof T;
-  isDescending: boolean;
-}
-
-export type ISortCollection = ISortData<IProduct>;
-
-export type FilterData = {
-  id: string;
-  title: string;
-  url?: string;
-};
-
-export type FilterKeys = "color" | "price" | "size" | "occasion";
-
-export type FilterDataType = Record<FilterKeys, Array<FilterData>>;
-
-export interface ISelectedFilters {
-  color: string[];
-  price: string;
-  size: string[];
-  // discount: string;
-  occasion: string[];
-}
-
 export interface ICollectionState {
-  layoutType: LayoutType;
-  isSortEnabled: boolean;
-  isFilterEnabled: boolean;
-  selectedSorter: ISortCollection | undefined;
-  selectedFilters: ISelectedFilters | undefined;
   allProducts: AsyncData<IProduct[]>;
-  groupedProducts: IProduct[] | undefined;
 }
