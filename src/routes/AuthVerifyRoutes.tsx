@@ -1,9 +1,15 @@
 import AuthGuard from "../layout/AuthGuard";
+import { Wishlist } from "../pages/Wishlist";
 
 const AuthVerifyRoutes = {
   path: "/",
   element: <AuthGuard />,
-  children: [],
+  children: [
+    {
+      path: "wishlist",
+      element: <Wishlist />,
+    },
+  ],
 };
 
 export default AuthVerifyRoutes;
