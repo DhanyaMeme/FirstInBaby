@@ -1291,4 +1291,203 @@ export const collectionsData: IProduct[] = [
     pntw: "",
     brand: "",
   },
+  {
+    id: 826,
+    mcId: 9032,
+    productname: "Men's Tie&Dye T-shirt",
+    productcode: "NSSM22C-CNT003",
+    offer: 50,
+    imageurl:
+      "https://nazca-images.s3.ap-south-1.amazonaws.com/products/NSSM22C-CNT003-X.jpg",
+    price: 0,
+    phone: "admin@nazca.in",
+    date: "2022/07/31",
+    quantity: "0",
+    descpription: "Dark Teal Special Tie Dyed half sleeve Graphic T-Shirt",
+    descpription1: "T-SHIRTS COLLECTION",
+    maincategory: "MEN",
+    subcategory: "T-SHIRTS",
+    productcolor: "Dark Teal",
+    fabric: "HOT",
+    minqty: 300,
+    deliveryTime: "60",
+    sizechart:
+      "https://nazca-images.s3.ap-south-1.amazonaws.com/products/MENS-Crewneck.jpg",
+    tax: 5,
+    group: "MT",
+    productSize: [
+      {
+        id: 826,
+        sid: 12087,
+        psize: "S",
+        price: 1149,
+        sku: "NSSM22C-CNT003-S",
+        qty: 0,
+        length: 0,
+        width: 0,
+        height: 0,
+        mcId: 825,
+      },
+      {
+        id: 827,
+        sid: 12088,
+        psize: "M",
+        price: 1149,
+        sku: "NSSM22C-CNT003-M",
+        qty: 0,
+        length: 0,
+        width: 0,
+        height: 0,
+        mcId: 825,
+      },
+      {
+        id: 828,
+        sid: 12089,
+        psize: "L",
+        price: 1149,
+        sku: "NSSM22C-CNT003-L",
+        qty: 0,
+        length: 0,
+        width: 0,
+        height: 0,
+        mcId: 825,
+      },
+      {
+        id: 829,
+        sid: 12090,
+        psize: "XL",
+        price: 1149,
+        sku: "NSSM22C-CNT003-XL",
+        qty: 0,
+        length: 0,
+        width: 0,
+        height: 0,
+        mcId: 825,
+      },
+      {
+        id: 830,
+        sid: 12091,
+        psize: "2XL",
+        price: 1149,
+        sku: "NSSM22C-CNT003-2XL",
+        qty: 0,
+        length: 0,
+        width: 0,
+        height: 0,
+        mcId: 825,
+      },
+    ],
+    productImages: [
+      {
+        id: 831,
+        imId: 36716,
+        imageUrl:
+          "https://nazca-images.s3.ap-south-1.amazonaws.com/products/NSSM22C-CNT003-1.jpg",
+        mcId: 825,
+      },
+      {
+        id: 832,
+        imId: 36717,
+        imageUrl:
+          "https://nazca-images.s3.ap-south-1.amazonaws.com/products/NSSM22C-CNT003-2.jpg",
+        mcId: 825,
+      },
+      {
+        id: 833,
+        imId: 36718,
+        imageUrl:
+          "https://nazca-images.s3.ap-south-1.amazonaws.com/products/NSSM22C-CNT003-3.jpg",
+        mcId: 825,
+      },
+      {
+        id: 834,
+        imId: 36719,
+        imageUrl:
+          "https://nazca-images.s3.ap-south-1.amazonaws.com/products/NSSM22C-CNT003-4.jpg",
+        mcId: 825,
+      },
+      {
+        id: 835,
+        imId: 36720,
+        imageUrl:
+          "https://nazca-images.s3.ap-south-1.amazonaws.com/products/NSSM22C-CNT003-5.jpg",
+        mcId: 825,
+      },
+      {
+        id: 836,
+        imId: 36721,
+        imageUrl:
+          "https://nazca-images.s3.ap-south-1.amazonaws.com/products/NSSM22C-CNT003-6.jpg",
+        mcId: 825,
+      },
+      {
+        id: 837,
+        imId: 36722,
+        imageUrl:
+          "https://nazca-images.s3.ap-south-1.amazonaws.com/products/NSSM22C-CNT003-7.jpg",
+        mcId: 825,
+      },
+    ],
+    productSpecs: [
+      {
+        id: 838,
+        spid: 36723,
+        specification: "Pattern:Dyed+Print",
+        mcId: 825,
+      },
+      {
+        id: 839,
+        spid: 36724,
+        specification: "Dye:Tie & Dye",
+        mcId: 825,
+      },
+      {
+        id: 840,
+        spid: 36725,
+        specification: "Sleeve:Half Sleeve",
+        mcId: 825,
+      },
+      {
+        id: 841,
+        spid: 36726,
+        specification: "Occasion:Casual Summers",
+        mcId: 825,
+      },
+      {
+        id: 842,
+        spid: 36727,
+        specification: "Fit:Regular Fit",
+        mcId: 825,
+      },
+    ],
+    metatags: [
+      {
+        id: 843,
+        mid: 9647,
+        description:
+          "Nazca Men's Tie&Dye T-Shirt : Dark Teal Cotton T-shirt , Regular Fit Half Sleeve T-Shirt for Casual Summer wear . Quick Delivery",
+        keyword:
+          "Mens Tshirt, Mens Tie&Dye Tshirt, Cotton Tshirt, Dark Teal Tshirt,Mens Half Sleeve Tshirt , Half Sleeve Tshirt, Mens Cotton Tshirt, Tie & Dye Tshirt, Tshirt",
+        twitter:
+          "Mens Tshirt, Mens Tie&Dye Tshirt, Cotton Tshirt, Dark Teal Tshirt,Mens Half Sleeve Tshirt , Half Sleeve Tshirt, Mens Cotton Tshirt, Tie & Dye Tshirt, Tshirt",
+        facebook:
+          "Mens Tshirt, Mens Tie&Dye Tshirt, Cotton Tshirt, Dark Teal Tshirt,Mens Half Sleeve Tshirt , Half Sleeve Tshirt, Mens Cotton Tshirt, Tie & Dye Tshirt, Tshirt",
+        instagram:
+          "Mens Tshirt, Mens Tie&Dye Tshirt, Cotton Tshirt, Dark Teal Tshirt,Mens Half Sleeve Tshirt , Half Sleeve Tshirt, Mens Cotton Tshirt, Tie & Dye Tshirt, Tshirt",
+        linkedin:
+          "Mens Tshirt, Mens Tie&Dye Tshirt, Cotton Tshirt, Dark Teal Tshirt,Mens Half Sleeve Tshirt , Half Sleeve Tshirt, Mens Cotton Tshirt, Tie & Dye Tshirt, Tshirt",
+        pintrest:
+          "Mens Tshirt, Mens Tie&Dye Tshirt, Cotton Tshirt, Dark Teal Tshirt,Mens Half Sleeve Tshirt , Half Sleeve Tshirt, Mens Cotton Tshirt, Tie & Dye Tshirt, Tshirt",
+        mcId: 825,
+      },
+    ],
+    reviews: [],
+    ratings: [],
+    gsthsn: "",
+    subcategory1: "",
+    childcategory: "",
+    shopbyproducts: "T-SHIRTS",
+    pntw: "",
+    brand: "",
+  },
 ];
