@@ -105,26 +105,26 @@ const OverlayButton = styled(Button)`
 
 const PrimaryButton = styled(Button)`
   color: white;
-  border-color: #000000;
+  border-color: var(--main-color-pink);
 
   &::before {
-    background-color: #000000;
+    background-color: var(--main-color-pink);
   }
 
   @media (-moz-touch-enabled: 0), (hover: hover) {
     &:not([disabled]):hover {
-      color: #000000;
+      color: var(--main-color-pink);
       background-color: transparent;
     }
   }
 `;
 
 const SecondaryButton = styled(Button)`
-  color: #939393;
-  border: 1px solid rgba(147, 147, 147, 0.2);
+  color: var(--main-color-pink);
+  border: 1px solid var(--main-color-pink);
 
   &::before {
-    background-color: #000000;
+    background-color: var(--main-color-pink);
     transform-origin: right center;
     transform: scale(0, 1);
   }
@@ -132,7 +132,7 @@ const SecondaryButton = styled(Button)`
   @media (-moz-touch-enabled: 0), (hover: hover) {
     &:not([disabled]):hover {
       color: white;
-      border-color: #000000;
+      border-color: var(--main-color-pink);
     }
     &:not([disabled]):hover::before {
       transform-origin: left center;

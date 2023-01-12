@@ -1,6 +1,7 @@
 import { FC } from "react";
-import { TextButton } from "../../../ui_kits/Buttons/TextButton/TextButton.component";
+import { NavLink } from "react-router-dom";
 import { ImageWrapper } from "../../../ui_kits/ImageWrapper/ImageWrapper";
+import { encodeUrl } from "../../../utils/textHandler";
 import { ICollectionData } from "./mockdata";
 
 interface IProps {
@@ -16,14 +17,15 @@ export const ImageView: FC<IProps> = (props: IProps) => {
         <ImageWrapper
           src={collectionItem.imageUrl}
           alt={collectionItem.subHead}
-          classes="CollectionItem__Image  Image--contrast Image--zoomOut "
+          classes="CollectionItem__Image  Image--contrast Image--zoomOut"
         />
       </div>
-      <div className="CollectionItem__Content ">
-        <h2 className="Heading">{collectionItem.title}</h2>
-        <div className="Heading u-h4">{collectionItem.subHead}</div>
-        <TextButton isSmall>View Products</TextButton>
-      </div>
+      <NavLink
+        to={`/collections/collection=${encodeUrl(collectionItem.title)}`}
+        className="CollectionItem__Content Heading"
+      >
+        <h3>{collectionItem.title}</h3>
+      </NavLink>
     </div>
   );
 };
