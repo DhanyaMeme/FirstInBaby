@@ -1,11 +1,12 @@
 import { FC } from "react";
 import Slider from "react-slick";
-import { ArrowNextIcon, ArrowPrevIcon } from "../../../assets/icons/Arrow.icon";
-import { IProduct } from "../../../redux/slices/collection/collection.type";
-import { IconButton } from "../../../ui_kits/Buttons/IconButton/IconButton.component";
 import { IF } from "../../../ui_kits/IF";
 import { ProductItem } from "../../ProductItem/ProductItem";
 import { Collections } from "../__common__/Collections/Collections";
+import { IProduct } from "../../../redux/slices/collection/collection.type";
+import { ArrowNextIcon, ArrowPrevIcon } from "../../../assets/icons/Arrow.icon";
+import { IconButton } from "../../../ui_kits/Buttons/IconButton/IconButton.component";
+import "./Style.scss";
 
 interface IProps {
   sliderData: IProduct[];
@@ -61,13 +62,15 @@ export const RecentlyViewed: FC<IProps> = (props: IProps) => {
   return (
     <Collections heading="Recently Viewed">
       <IF condition={sliderData.length > 0}>
-        <Slider {...settings}>
-          {sliderData.map((pdt: IProduct) => (
-            <div className="Grid__Cell" key={pdt.id}>
-              <ProductItem product={pdt} isVisibleFav={false} />
-            </div>
-          ))}
-        </Slider>
+        <div className="ProductList__Slider">
+          <Slider {...settings}>
+            {sliderData.map((pdt: IProduct) => (
+              <div className="Grid__Cell" key={pdt.id}>
+                <ProductItem product={pdt} isVisibleFav={false} />
+              </div>
+            ))}
+          </Slider>
+        </div>
       </IF>
     </Collections>
   );
