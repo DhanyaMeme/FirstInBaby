@@ -3,6 +3,8 @@ import { RootState } from "./../../store";
 
 const selectCartReducer = (state: RootState) => state.cart;
 
+console.log("state", selectCartReducer);
+
 export const selectIsCartOpen = createSelector(
   [selectCartReducer],
   (cart) => cart.isCartOpen

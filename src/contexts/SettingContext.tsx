@@ -32,6 +32,7 @@ export const SettingProvider: FC<ChildrenType> = ({
       {children}
     </SettingContext.Provider>
   );
+
 };
 
 export const useSetting = () => useContext(SettingContext);
