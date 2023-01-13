@@ -24,7 +24,7 @@ export default function CartFooter() {
           Shipping &amp; taxes calculated at checkout
         </p>
         <TextButton className="Cart__Checkout" onClick={handleCheckout}>
-          Checkout
+          CHECHOUT
         </TextButton>
       </div>
     </footer>
