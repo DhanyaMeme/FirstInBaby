@@ -1,5 +1,6 @@
 import AuthGuard from "../layout/AuthGuard";
 import Address from "../pages/Address";
+import Profile from "../pages/Profile";
 import { Wishlist } from "../pages/Wishlist";
 
 const AuthVerifyRoutes = {
@@ -13,6 +14,10 @@ const AuthVerifyRoutes = {
     {
       path: "address",
       element: <Address />,
+    },
+    {
+      path: "account",
+      element: <Profile />,
     },
   ],
 };

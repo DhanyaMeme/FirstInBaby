@@ -1,4 +1,5 @@
-import { IFAQItem } from "../components/FooterPages/FAQ/FAQData";
+import { IFAQItem } from "./faqData";
+
 
 export const refundData: IFAQItem[] = [
   {

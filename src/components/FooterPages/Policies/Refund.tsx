@@ -1,4 +1,3 @@
-import { IFAQItem } from "../FAQ/FAQData"
 import {
   PageContent,
   PageHeader,
@@ -6,6 +5,7 @@ import {
 import { Container } from "../../../ui_kits/global/Container.styles";
 import { SectionHeader } from "../../../ui_kits/Sections/SectionHeader/SectionHeader";
 import { refundData } from "../../../mockData/refundData";
+import { IFAQItem } from "../../../mockData/faqData";
 
 
 export const Refund = () => {
