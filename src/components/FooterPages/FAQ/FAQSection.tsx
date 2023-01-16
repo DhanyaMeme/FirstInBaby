@@ -1,5 +1,5 @@
 import { FC, Fragment } from "react";
-import { IFAQItem } from "./FAQData";
+import { IFAQItem } from "../../../mockData/faqData";
 import { Accordian } from "../../../ui_kits/Accordian/Accordian";
 import "./FAQSection.scss";
 
