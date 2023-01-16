@@ -1,5 +1,6 @@
 import AuthGuard from "../layout/AuthGuard";
 import Address from "../pages/Address";
+import { Payment } from "../pages/Payment";
 import Profile from "../pages/Profile";
 import { Wishlist } from "../pages/Wishlist";
 
@@ -18,6 +19,10 @@ const AuthVerifyRoutes = {
     {
       path: "account",
       element: <Profile />,
+    },
+    {
+      path: "payment",
+      element: <Payment />,
     },
   ],
 };
