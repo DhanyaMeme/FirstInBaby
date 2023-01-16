@@ -30,7 +30,7 @@ export const Accordian: FC<IProps> = (props: IProps) => {
     >
       <button
         type="button"
-        className="Collapsible__Button u-h6 Heading"
+        className="Collapsible__Button u-h5 Heading"
         aria-expanded={isExpand}
         onClick={handleClick}
       >
