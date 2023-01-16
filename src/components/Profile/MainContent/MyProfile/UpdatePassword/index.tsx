@@ -23,7 +23,6 @@ import {
   UpdatePasswordInput,
   UpdatePasswordInputs,
 } from "./inputs";
-import { PageHeader } from "../../../../../ui_kits/global/PageContent.styles";
 
 export const UpdatePassword = () => {
   const { user } = useAuth();

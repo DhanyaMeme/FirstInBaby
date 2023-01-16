@@ -1,7 +1,3 @@
-import {
-  BUTTON_TYPE_CLASSES,
-  TextButton,
-} from "../../../../../ui_kits/Buttons/TextButton/TextButton.component";
 import { Table, TableWrapper } from "../../../../../ui_kits/Table/Table.styles";
 
 export const OrdersTable = () => {

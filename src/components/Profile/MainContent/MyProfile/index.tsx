@@ -1,4 +1,3 @@
-import { Container } from "../../../../ui_kits/global/Container.styles";
 import { PageContent } from "../../../../ui_kits/global/PageContent.styles";
 import { Panel } from "../../../../ui_kits/Panel/Panel";
 import { ProfileInformation } from "./ProfileInformation";
