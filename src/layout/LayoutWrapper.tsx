@@ -2,6 +2,7 @@ import { FC, ReactNode, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import useElementSize from "../hooks/useElementSize";
 import useWindowSize from "../hooks/useWindowSize";
+import { Footer } from "../pages/Footer";
 import { NavBar } from "../pages/Navbar";
 
 interface LayoutProps {
@@ -35,8 +36,9 @@ const BaseLayout: FC<LayoutProps> = ({ children }) => {
     <>
       <NavBar ref={headerRef} />
       {children}
+      <Footer />
       {/* <Newsletter />
-      <Footer /> */}
+       */}
     </>
   );
 };
