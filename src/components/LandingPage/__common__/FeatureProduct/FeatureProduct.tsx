@@ -24,12 +24,12 @@ export const FeatureProduct: FC<IProps> = (props: IProps) => {
       <div className="FeatureProduct_Overlay">
         <div className="FeatureProduct_Info">
           <div className="FeatureProduct_Details Heading">
-            <h4>{title}</h4>
+            <h4>{title}</h4> 1
             <span>Rs. {price}</span>
           </div>
           <div className="FeatureProduct_Quickshop">
             <TextButton buttonType={BUTTON_TYPE_CLASSES.transparent}>
-              Quick View
+              QUICK VIEW
             </TextButton>
           </div>
         </div>

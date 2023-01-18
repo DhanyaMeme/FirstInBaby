@@ -24,7 +24,7 @@ export const ImageView: FC<IProps> = (props: IProps) => {
         to={`/collections/WOMEN?collection=${encodeUrl(collectionItem.title)}`}
         className="CollectionItem__Content Heading"
       >
-        <h4 className="UnderLined__Text">{collectionItem.title}</h4>
+        <h3 className="UnderLined__Text">{collectionItem.title}</h3>
       </NavLink>
     </div>
   );

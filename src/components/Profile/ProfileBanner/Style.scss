@@ -12,13 +12,13 @@
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #fff;
+    color: var(--main-color-bg4);
     text-transform: uppercase;
   }
 
   &--letters {
-    background-color: #fff;
-    border: 1px solid #eae8e4;
+    background-color: var(--main-color-pink);
+    border: 1px solid var(--main-color-bg4);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -26,9 +26,12 @@
     margin: 0 auto -1.875rem;
     text-align: center;
     transform: translateY(-50%);
-
     font-style: normal;
     width: 3.75rem;
     height: 3.75rem;
+
+    .Heading {
+      color: var(--main-color-bg4);
+    }
   }
 }

@@ -1,6 +1,6 @@
-import "./Style.scss";
 import ProfileBannerImage from "../../../assets/images/profile/ProfileBanner.png";
 import ProfileBannerMobImage from "../../../assets/images/profile/ProfileBannerMob.png";
+import "./Style.scss";
 
 export const ProfileBanner = () => {
   return (
