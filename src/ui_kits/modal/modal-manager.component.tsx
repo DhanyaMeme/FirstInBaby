@@ -1,5 +1,6 @@
 import React from "react";
 import { AddFavToCartModal } from "../../components/Modal/AddFavToCart.modal";
+import { AddressModal } from "../../components/Modal/AddressModal/Address.modal";
 import { ReviewModal } from "../../components/Modal/ReviewModal";
 import { SizeChartModal } from "../../components/Modal/SizeChart.modal";
 import { modalData } from "../../redux/slices/modal/modal.selector";
@@ -10,6 +11,7 @@ export default function ModalManager() {
     AddFavToCartModal,
     SizeChartModal,
     ReviewModal,
+    AddressModal,
   };
   const currentModal = useAppSelector(modalData);
   let renderedModal;

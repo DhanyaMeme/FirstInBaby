@@ -1,8 +1,10 @@
+import classnames from "classnames";
 import { FC } from "react";
 import { MenuDesktopIcon, MenuMobileIcon } from "../../assets/icons/Menu";
 import { categories } from "../../redux/slices/nav/nav.selector";
 import { IMainCategory } from "../../redux/slices/nav/nav.type";
 import { useAppSelector } from "../../redux/store";
+import { PreOrder } from "../PreOrder";
 import NavItem from "./NavItem";
 
 interface IProps {
@@ -31,6 +33,10 @@ const NavWrapper: FC<IProps> = (props: IProps) => {
           {categoriesData.data?.map((item: IMainCategory) => {
             return <NavItem item={item} key={item.name} />;
           })}
+
+          <li className={classnames("HorizontalList__Item u-h7")}>
+            <PreOrder />
+          </li>
         </ul>
       </nav>
     </div>

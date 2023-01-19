@@ -44,7 +44,7 @@ export default function ModalWrapper(props: IProps) {
     >
       {header && <Modal.Header>{header}</Modal.Header>}
       <Modal.Content image={image}>{children}</Modal.Content>
-      <IF condition={isEmpty(!actionName)}>
+      <IF condition={!isEmpty(actionName)}>
         <Modal.Actions>
           <Button onClick={handleActionClick} color="pink">
             {actionName}

@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Provider } from "react-redux";
 import { ReactNode, ReactPortal } from "react";
-import { Store } from "@reduxjs/toolkit";
 import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext";
 import { SettingProvider } from "./contexts/SettingContext";

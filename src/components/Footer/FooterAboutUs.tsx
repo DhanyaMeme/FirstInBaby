@@ -1,3 +1,5 @@
+import { PreOrder } from "../PreOrder";
+
 export const FooterAboutUs = () => {
   return (
     <div className="Footer__Block Footer__Block--text u-h7">
@@ -9,6 +11,8 @@ export const FooterAboutUs = () => {
           their style the classical way :)
         </p>
       </div>
+      <br />
+      <PreOrder />
     </div>
   );
 };

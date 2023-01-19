@@ -1,34 +1,31 @@
 import { Fragment, useCallback } from "react";
 import { AddressBlock } from "./AddressBlock";
-import { useSetting } from "../../contexts/SettingContext";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import {
   removeAddress,
   setDefaultAddress,
-  setOpenAddAddress,
   setSelectedAddressId,
 } from "../../redux/slices/address/address.slice";
 import {
   selectAddresses,
-  selectedAddressId,
-  selectOpenAddAddress,
 } from "../../redux/slices/address/address.selector";
 import { AddressIcon } from "../../assets/icons/Address.icon";
 import { IAddress } from "../../redux/slices/address/address.type";
 import { TextButton } from "../../ui_kits/Buttons/TextButton/TextButton.component";
+import { openModal } from "../../redux/slices/modal/modal.slice";
 
 export const AddressContainer = () => {
   const dispatch = useAppDispatch();
-  const { toggleOverlay } = useSetting();
 
   const addresses = useAppSelector(selectAddresses);
-  const addressId = useAppSelector(selectedAddressId);
-  const isAddressFormOpened = useAppSelector(selectOpenAddAddress);
 
-  const toggleAddressForm = useCallback(() => {
-    toggleOverlay();
-    dispatch(setOpenAddAddress(!isAddressFormOpened));
-  }, [dispatch, isAddressFormOpened, toggleOverlay]);
+  const toggleAddressForm = () => {
+    dispatch(
+      openModal({
+        modalType: "AddressModal",
+      })
+    );
+  };
 
   const handleAddNewAddress = () => {
     dispatch(setSelectedAddressId(undefined));
