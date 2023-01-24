@@ -11,15 +11,12 @@ import {
 import { authService } from "../../../../services/axiosServices";
 import {
   Form,
-  FormAlert,
   FormElement,
   FormSubmit,
   FormTextInput,
 } from "../../../../ui_kits/Form";
 import { Form__Elemen__Types } from "../../../../ui_kits/Form/FormElements/FormElement";
-import { IF } from "../../../../ui_kits/IF";
 import { safeSetTimeout } from "../../../../utils/generics";
-import { isEmpty } from "../../../../utils/script";
 import { FormError } from "../../FormError";
 import {
   ForgotPasswordInput,

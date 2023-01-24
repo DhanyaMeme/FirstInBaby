@@ -7,7 +7,7 @@ export const MyRewards = () => {
   return (
     <div className="Reward_Container">
       <div className="reward-points u-h6">
-        <h4 className="Text--highlight"> Total RendererCash </h4>
+        <h3 className="Text--highlight"> Total FirstInCry Cash </h3>
         <h3 className="Heading">200</h3>
         <p className="points-info Text--subdued">
           You can pay upto 10% (may vary during the sale & promotion events) of

@@ -13,7 +13,6 @@ import {
 } from "../../../../models/types";
 import {
   Form,
-  FormAlert,
   FormElement,
   FormSubmit,
   FormTextInput,
@@ -23,8 +22,6 @@ import useObjectState from "../../../../hooks/useObjectState";
 import { initialFormState } from "../../../../models/constants";
 import { authService } from "../../../../services/axiosServices";
 import { Form__Elemen__Types } from "../../../../ui_kits/Form/FormElements/FormElement";
-import { IF } from "../../../../ui_kits/IF";
-import { isEmpty } from "../../../../utils/script";
 import { safeSetTimeout } from "../../../../utils/generics";
 import { ResendOTP } from "../../ResendOTP";
 import { FormError } from "../../FormError";
