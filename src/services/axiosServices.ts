@@ -3,6 +3,7 @@ import {
   FavEndpoints,
   homeEndpoints,
   navEndpoints,
+  paymentEndpoints,
   productsEndpoints,
   profileEndpoints,
 } from "./axiosEndpoints";
@@ -65,7 +66,6 @@ export const productService = {
     method: "POST",
     url: productsEndpoints.ADD_REVIEWS,
   },
-  
 };
 
 export const favService = {
@@ -87,5 +87,20 @@ export const profileService = {
   updateCustomer: {
     method: "PUT",
     url: profileEndpoints.UPDATE_PROFILE,
+  },
+};
+
+export const paymentService = {
+  getAllSubcription: {
+    method: "GET",
+    url: paymentEndpoints.SUBSCRIPTION_PLANS,
+  },
+  stripePay: {
+    method: "POST",
+    url: paymentEndpoints.STRIPE,
+  },
+  updateTransaction: {
+    method: "POST",
+    url: paymentEndpoints.TRANSACTION,
   },
 };

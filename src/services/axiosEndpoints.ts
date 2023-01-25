@@ -31,3 +31,9 @@ export const FavEndpoints = Object.freeze({
   ADD_FAV: "/render/add/favourites",
   GET_FAV: "/render/get/favorites",
 });
+
+export const paymentEndpoints = Object.freeze({
+  STRIPE: "/stripe/pay",
+  TRANSACTION: "/add/transaction",
+  SUBSCRIPTION_PLANS: "/get/all/subcription",
+});
