@@ -1,7 +1,5 @@
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { navData } from "../../../mockData/categoriesData";
-import { fetchData } from "../../../services/axios";
-import { navService } from "../../../services/axiosServices";
 import { IMainCategory, INavState } from "./nav.type";
 
 export const fetchCategoriesAsync = createAsyncThunk(

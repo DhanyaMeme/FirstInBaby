@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import { FC } from "react";
 import { NavLink } from "react-router-dom";
 import { ImageWrapper } from "../../../ui_kits/ImageWrapper/ImageWrapper";
 import { encodeUrl } from "../../../utils/textHandler";

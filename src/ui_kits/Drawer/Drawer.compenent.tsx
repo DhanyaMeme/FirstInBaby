@@ -3,7 +3,6 @@ import { FC, ReactElement, ReactNode } from "react";
 import { CloseIcon } from "../../assets/icons/Close.icon";
 import useWindowSize from "../../hooks/useWindowSize";
 import { IF } from "../IF";
-import { PageOverlay } from "../PageOverlay/PageOverlay";
 import "./Drawer.styles.scss";
 
 interface IProps {
