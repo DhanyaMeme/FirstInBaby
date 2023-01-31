@@ -31,7 +31,7 @@ const NavWrapper: FC<IProps> = (props: IProps) => {
       <nav className="Header__MainNav hidden-pocket hidden-lap">
         <ul className="HorizontalList HorizontalList--spacingExtraLoose">
           {categoriesData.data?.map((item: IMainCategory) => {
-            return <NavItem item={item} key={item.name} />;
+            return <NavItem item={item} key={item.mainCatName} />;
           })}
 
           <li className={classnames("HorizontalList__Item u-h7")}>

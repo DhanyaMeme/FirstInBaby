@@ -2,10 +2,10 @@ import { AsyncData } from "../../../models/types";
 
 export interface ISubCategory {
   id: number;
-  maincategoryid: number;
+  maincatId: number;
   // subcategoryname: number;
-  name: string;
-  image: string;
+  mainCatName: string;
+  imageUrl: string;
   // image1: string;
   // image2: string;
   // image3: string;

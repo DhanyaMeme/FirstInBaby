@@ -1,9 +1,7 @@
 import { FC } from "react";
 import { NavLink } from "react-router-dom";
 import { categories } from "../../../redux/slices/nav/nav.selector";
-import {
-  IMainCategory,
-} from "../../../redux/slices/nav/nav.type";
+import { IMainCategory } from "../../../redux/slices/nav/nav.type";
 import { useAppSelector } from "../../../redux/store";
 import { encodeUrl } from "../../../utils/textHandler";
 
@@ -19,13 +17,15 @@ export const MenuBody: FC<IProps> = (props: IProps) => {
     <nav className="SidebarMenu__Nav SidebarMenu__Nav--primary">
       {categoriesData.data?.map((item: IMainCategory) => {
         return (
-          <div className="Collapsible" key={item.name}>
+          <div className="Collapsible" key={item.mainCatName}>
             <NavLink
               className="Collapsible__Button Heading Link Link--primary u-h6"
               onClick={handleClick}
-              to={`/collections/${item.name}?sc=${encodeUrl(item.name)}`}
+              to={`/collections/${item.mainCatName}?sc=${encodeUrl(
+                item.mainCatName
+              )}`}
             >
-              {item.name}
+              {item.mainCatName}
             </NavLink>
           </div>
         );

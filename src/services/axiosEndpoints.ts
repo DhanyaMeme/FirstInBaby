@@ -7,7 +7,7 @@ export const authEndpoints = Object.freeze({
 });
 
 export const navEndpoints = Object.freeze({
-  MAIN__CATEGORY: "/render/get/maincategory",
+  MAIN__CATEGORY: "/ophelia/mainproducts",
 });
 
 export const profileEndpoints = Object.freeze({
