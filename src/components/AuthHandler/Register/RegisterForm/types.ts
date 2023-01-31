@@ -2,25 +2,36 @@ import { validationRules } from "../../../../utils/Validation";
 import { InputBaseProps, InputType } from "../../../../models/types";
 
 export type IRegisterFormState = {
-  customername: string;
+  fname: string;
+  lname: string;
   email: string;
   password: string;
-  phone: string;
+  uPhone: string;
 };
 
 export type registerInputProps = InputBaseProps<IRegisterFormState>;
 
 export const initialRegisterState: IRegisterFormState = {
-  customername: "",
+  fname: "",
+  lname: "",
   email: "",
-  phone: "",
+  uPhone: "",
   password: "",
 };
 
 export const RegisterInputs: registerInputProps[] = [
   {
-    name: "customername",
-    label: "Name",
+    name: "fname",
+    label: "First Name",
+    type: InputType.text,
+    validation: [
+      { rule: validationRules.name },
+      { rule: validationRules.required },
+    ],
+  },
+  {
+    name: "lname",
+    label: "Last Name",
     type: InputType.text,
     validation: [
       { rule: validationRules.name },
@@ -37,7 +48,7 @@ export const RegisterInputs: registerInputProps[] = [
     ],
   },
   {
-    name: "phone",
+    name: "uPhone",
     label: "Phone Number",
     type: InputType.number,
     validation: [

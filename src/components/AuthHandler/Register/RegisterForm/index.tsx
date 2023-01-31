@@ -19,13 +19,13 @@ import {
   FormTextInput,
 } from "../../../../ui_kits/Form";
 import { useAuth } from "../../../../contexts/AuthContext";
-import { safeSetTimeout } from "../../../../utils/generics";
 import useObjectState from "../../../../hooks/useObjectState";
 import { initialFormState } from "../../../../models/constants";
 import { authService } from "../../../../services/axiosServices";
 import { Form__Elemen__Types } from "../../../../ui_kits/Form/FormElements/FormElement";
 import { FormPasswordInput } from "../../../../ui_kits/Form/FormInputs/FormPasswordInput";
 import { FormError } from "../../FormError";
+import { safeSetTimeout } from "../../../../utils/generics";
 
 const RegisterForm = () => {
   const {
@@ -71,6 +71,7 @@ const RegisterForm = () => {
         message,
         setFormState
       );
+
       if (data) {
         safeSetTimeout(handleRegisterPage, 1000, registerState.email);
       }
@@ -103,7 +104,7 @@ const RegisterForm = () => {
         );
       })}
       <FormSubmit isFull isLoading={formState.isButtonLoading}>
-        Register
+        SUBMIT
       </FormSubmit>
     </Form>
   );

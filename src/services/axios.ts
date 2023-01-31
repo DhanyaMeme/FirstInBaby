@@ -1,6 +1,6 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 
-axios.defaults.baseURL = "https://api.mememall.tv:8443/render";
+axios.defaults.baseURL = "https://api.homecraft.tv:8443/nazca";
 
 axios.defaults.headers.common = {
   "Content-Type": "application/json",

@@ -2,17 +2,17 @@ import { validationRules } from "../../../../utils/Validation";
 import { InputBaseProps, InputType } from "../../../../models/types";
 
 export type ILoginOTPState = {
-  otp: string;
+  token: string;
 };
 export type LoginOTPInput = InputBaseProps<ILoginOTPState>;
 
 export const initialLoginOTPState: ILoginOTPState = {
-  otp: "",
+  token: "",
 };
 
 export const LoginOTPInputs: LoginOTPInput[] = [
   {
-    name: "otp",
+    name: "token",
     label: "OTP",
     type: InputType.text,
     validation: [{ rule: validationRules.required }],

@@ -51,6 +51,7 @@ export const StripeCard: FC<IProps> = (props: IProps) => {
       tnxid: id,
     };
 
+
     try {
       await fetchData({
         ...paymentService.updateTransaction,

@@ -1,9 +1,9 @@
 export const authEndpoints = Object.freeze({
-  REGISTER: "/render/user/registration",
-  LOGIN: "/render/user/login",
-  FORGOT_PASSWORD: "/render/user/forgot/password",
-  CONFIRM__OTP: "/render/user/confirm/otp",
-  RESET_PASSWORD: "/render/user/update/password",
+  REGISTER: "/ophelia/registration",
+  LOGIN: "/ophelia/userlogin",
+  FORGOT_PASSWORD: "/ophelia/forgotpassword",
+  CONFIRM__OTP: "/ophelia/confirmation",
+  RESET_PASSWORD: "/ophelia/updatepassword",
 });
 
 export const navEndpoints = Object.freeze({
