@@ -8,12 +8,12 @@ import { setSearchText } from "../../../redux/slices/nav/nav.slice";
 import { IF } from "../../../ui_kits/IF";
 import { isEmpty } from "../../../utils/script";
 import { IProduct } from "../../../redux/slices/collection/collection.type";
-import { products } from "../../../mockData/productData";
+import { allProducts } from "../../../redux/slices/collection/collection.selector";
 
 export const SearchForm = () => {
   const dispatch = useAppDispatch();
   const searchValue = useAppSelector(searchText);
-  //const { data } = useAppSelector(allProducts);
+  const { data } = useAppSelector(allProducts);
 
   return (
     <PageContent spacingTight>
@@ -32,7 +32,7 @@ export const SearchForm = () => {
       <IF condition={!isEmpty(searchValue)}>
         <SearchResults
           searchValue={searchValue as string}
-          productsData={products as IProduct[]}
+          productsData={data as IProduct[]}
         />
       </IF>
     </PageContent>

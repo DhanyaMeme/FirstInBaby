@@ -12,7 +12,7 @@
   height: 100vh;
   width: calc(100vw - 65px);
   max-height: none;
-  z-index: 20;
+  z-index: 25;
   transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1),
     visibility 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
   background: white;
