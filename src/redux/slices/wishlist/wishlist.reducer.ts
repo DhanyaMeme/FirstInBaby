@@ -1,4 +1,3 @@
-import { AxiosResponse } from "axios";
 import { IWishlistState } from "./wishlist.type";
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { IProduct } from "../collection/collection.type";
@@ -6,33 +5,36 @@ import { fetchData } from "../../../services/axios";
 import { favService } from "../../../services/axiosServices";
 import toastMessage from "../../../utils/toastMessage";
 
-export const addFavAsync = createAsyncThunk<any, any>(
-  "fav/addToFav",
-  async (data, { rejectWithValue }) => {
-    try {
-      const response = (await fetchData({
-        ...favService.addFavourites,
-        params: { ...data },
-      })) as AxiosResponse;
-      toastMessage("Updated Wishlist", "success");
-      return response.data;
-    } catch (err) {
-      toastMessage("Something went wrong, Try again", "error");
-      return rejectWithValue(err);
-    }
+export const addFavAsync = createAsyncThunk<
+  IProduct[],
+  {
+    phone: string;
+    pId: number;
   }
-);
+>("fav/addToFav", async (data, { rejectWithValue, dispatch }) => {
+  try {
+    const response = (await fetchData({
+      ...favService.addFavourites,
+      params: data,
+    })) as IProduct[];
+    toastMessage("Updated Wishlist", "success");
+    dispatch(getFavAsync({ phone: data.phone }));
+    return response;
+  } catch (err) {
+    toastMessage("Something went wrong, Try again", "error");
+    return rejectWithValue(err);
+  }
+});
 
 export const getFavAsync = createAsyncThunk<any, any>(
   "fav/getFav",
   async (data, { rejectWithValue }) => {
     try {
-      const response = (await fetchData({
+      const response = await fetchData({
         ...favService.getFavourites,
         params: { ...data },
-      })) as AxiosResponse;
-      console.log(data);
-      return response.data;
+      });
+      return response;
     } catch (err) {
       return rejectWithValue(err);
     }

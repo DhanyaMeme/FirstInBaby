@@ -28,8 +28,9 @@ export const productsEndpoints = Object.freeze({
 });
 
 export const FavEndpoints = Object.freeze({
-  ADD_FAV: "/render/add/favourites",
-  GET_FAV: "/render/get/favorites",
+  ADD_FAV: "/ophelia/favorites",
+  GET_FAV: "/ophelia/favorites",
+  DELETE_FAV: "/ophelia/delete/favorite",
 });
 
 export const paymentEndpoints = Object.freeze({

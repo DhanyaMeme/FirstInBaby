@@ -7,6 +7,8 @@ import { AddToCartIcon } from "../../assets/icons/AddToCart.icon";
 import RemoveIcon from "../../assets/icons/Remove.icon";
 import { useAppDispatch } from "../../redux/store";
 import { openModal } from "../../redux/slices/modal/modal.slice";
+import { useProductCRUD } from "../../hooks/useProductCRUD";
+import { OnclickEvent } from "../../models/types";
 
 interface IProps {
   product: IProduct;
@@ -25,9 +27,15 @@ export const ProductItem = (props: IProps) => {
     isVisibleRemoveFav = false,
   } = props;
 
-  // const { addToFav } = useWishlistHook();
+
+  const { handleToggleToFav } = useProductCRUD();
 
   const dispatch = useAppDispatch();
+
+  const favToggle = (e: OnclickEvent) => {
+    e.preventDefault();
+    handleToggleToFav(product.mcId);
+  };
 
   const handleProductAddToCart = () => {
     dispatch(
@@ -59,7 +67,10 @@ export const ProductItem = (props: IProps) => {
               </button>
             </IF>
             <IF condition={isVisibleRemoveFav}>
-              <button className="ProductItem__Icon ProductItem__RemoveIcon">
+              <button
+                className="ProductItem__Icon ProductItem__RemoveIcon"
+                onClick={favToggle}
+              >
                 <RemoveIcon />
               </button>
             </IF>
@@ -75,7 +86,10 @@ export const ProductItem = (props: IProps) => {
         </IF>
 
         <IF condition={isVisibleFav}>
-          <button className="ProductItem__Icon ProductItem__FavIcon Text--subdued">
+          <button
+            className="ProductItem__Icon ProductItem__FavIcon Text--subdued"
+            onClick={favToggle}
+          >
             <AddFavIcon />
           </button>
         </IF>

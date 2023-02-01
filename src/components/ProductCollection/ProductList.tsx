@@ -41,7 +41,11 @@ export const ProductsList: FC<IProps> = (props: IProps) => {
         {filteredData &&
           filteredData.map((product: IProduct) => (
             <LazyLoad tag="div" key={product.id} className={selectedView.class}>
-              <ProductItem product={product} label={`${product.offer}% OFF`} />
+              <ProductItem
+                product={product}
+                label={`${product.offer}% OFF`}
+                isVisibleFav
+              />
             </LazyLoad>
           ))}
       </div>

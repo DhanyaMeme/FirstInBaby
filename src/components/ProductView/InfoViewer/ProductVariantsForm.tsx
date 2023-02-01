@@ -20,6 +20,9 @@ import { addItemToCart } from "../../../redux/slices/cart/cart.slice";
 import { OnclickEvent } from "../../../models/types";
 import { isEmpty } from "../../../utils/script";
 import toastMessage from "../../../utils/toastMessage";
+import { useAuth } from "../../../contexts/AuthContext";
+import { addFavAsync } from "../../../redux/slices/wishlist/wishlist.reducer";
+import { useProductCRUD } from "../../../hooks/useProductCRUD";
 
 interface IProps {
   product: IProduct;
@@ -28,9 +31,13 @@ interface IProps {
 
 export const ProductVariantsForm: React.FC<IProps> = (props: IProps) => {
   const { product, children } = props;
-  const { productSize } = product;
-  const dispatch = useDispatch();
 
+  const { user } = useAuth();
+  const { productSize } = product;
+
+  const { handleToggleToFav } = useProductCRUD();
+
+  const dispatch = useDispatch();
   const selectedProductVariants =
     useAppSelector(productVariants) || ({} as IProductVariants);
 
@@ -61,6 +68,11 @@ export const ProductVariantsForm: React.FC<IProps> = (props: IProps) => {
     );
   };
 
+  const FavIconOnclick = (e: OnclickEvent) => {
+    e.preventDefault();
+    handleToggleToFav(product.mcId);
+  };
+
   return (
     <Form classname="ProductForm">
       <div className="ProductForm__Variants">
@@ -86,7 +98,7 @@ export const ProductVariantsForm: React.FC<IProps> = (props: IProps) => {
         </OptionsWrapper>
       </div>
       <div className="ProductForm__AddFav isActive">
-        <IconButton isSmall>
+        <IconButton isSmall onClick={FavIconOnclick}>
           <FavouriteIcon />
         </IconButton>
         <span> Add to Favorite / Favourited</span>

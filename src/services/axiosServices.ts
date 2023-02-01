@@ -69,13 +69,17 @@ export const productService = {
 };
 
 export const favService = {
+  getFavourites: {
+    method: "GET",
+    url: FavEndpoints.GET_FAV,
+  },
   addFavourites: {
     method: "POST",
     url: FavEndpoints.ADD_FAV,
   },
-  getFavourites: {
+  deleteFavourites: {
     method: "POST",
-    url: FavEndpoints.GET_FAV,
+    url: FavEndpoints.DELETE_FAV,
   },
 };
 
