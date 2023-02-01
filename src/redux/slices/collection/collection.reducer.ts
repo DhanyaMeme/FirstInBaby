@@ -1,14 +1,15 @@
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { fetchData } from "../../../services/axios";
 import { productService } from "../../../services/axiosServices";
-import { ICollectionState, IProduct} from "./collection.type";
+import { ICollectionState, IProduct } from "./collection.type";
 
 export const fetchAllProductsAsync = createAsyncThunk(
   "collection/getAllProducts",
   async (_arg, { rejectWithValue }) => {
     try {
-      const response = (await fetchData(productService.Products)) as any;
-      return response.data;
+      const response = await fetchData(productService.Products);
+      console.log(response);
+      return response;
     } catch (err) {
       return rejectWithValue(err);
     }

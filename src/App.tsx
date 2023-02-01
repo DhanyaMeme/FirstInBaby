@@ -7,6 +7,7 @@ import NavigationScroll from "./ui_kits/NavigationScroll";
 import { ScrollTop } from "./ui_kits/ScrollTop/ScrollTop";
 import ModalManager from "./ui_kits/modal/modal-manager.component";
 import { fetchCategoriesAsync } from "./redux/slices/nav/nav.reducer";
+import { fetchAllProductsAsync } from "./redux/slices/collection/collection.reducer";
 
 // style + assets
 import "./assets/scss/style.scss";
@@ -16,11 +17,16 @@ import "react-toastify/dist/ReactToastify.css";
 import "semantic-ui-css/semantic.min.css";
 import "./App.scss";
 
+
 function App() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(fetchCategoriesAsync());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchAllProductsAsync());
   }, [dispatch]);
 
   return (

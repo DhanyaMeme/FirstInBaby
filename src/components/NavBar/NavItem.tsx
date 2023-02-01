@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import classnames from "classnames";
 import { IMainCategory } from "../../redux/slices/nav/nav.type";
 import useHover from "../../hooks/useHover";
+import { encodeUrl } from "../../utils/textHandler";
 
 interface IProps {
   item: IMainCategory;
@@ -21,7 +22,10 @@ const NavItem: FC<IProps> = (props: IProps): ReactElement => {
       })}
       ref={hoverRef}
     >
-      <NavLink to={`/collections/${item.mainCatName}`} className="Heading">
+      <NavLink
+        to={`/collections/${encodeUrl(item.mainCatName)}`}
+        className="Heading"
+      >
         {item.mainCatName.toUpperCase()}
         <span className="Header__LinkSpacer"> {item.mainCatName}</span>
       </NavLink>

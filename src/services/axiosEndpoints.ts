@@ -22,8 +22,8 @@ export const homeEndpoints = Object.freeze({
 });
 
 export const productsEndpoints = Object.freeze({
-  PRODUCTS: "/render/get/products",
-  PROUCTS_By_CATEGORY: "/render/get/products/category",
+  PRODUCTS: "/ophelia/products/home",
+  PROUCTS_By_CATEGORY: "/ophelia/products/allproducts",
   ADD_REVIEWS: "/render/add/reviews",
 });
 
