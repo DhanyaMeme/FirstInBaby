@@ -3,10 +3,11 @@ import { IProduct } from "../collection/collection.type";
 
 export interface IProductVariants {
   id: number;
-  name: string;
+  mcId: number;
+  productname: string;
   price: number;
-  image: string;
-  color: string;
+  imageurl: string;
+  productcolor: string;
   size: string;
   quantity: number;
 }

@@ -1,10 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { cartData } from "../../../mockData/cartData";
 import { cartReducer } from "./cart.reducer";
 import { ICartState } from "./cart.type";
 
 export const initialState: ICartState = {
-  cartItems: cartData,
+  cartItems: [],
   isCartOpen: false,
 };
 

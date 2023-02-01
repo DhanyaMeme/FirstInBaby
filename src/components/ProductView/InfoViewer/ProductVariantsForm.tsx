@@ -19,6 +19,7 @@ import { IProductVariants } from "../../../redux/slices/product/product.type";
 import { addItemToCart } from "../../../redux/slices/cart/cart.slice";
 import { OnclickEvent } from "../../../models/types";
 import { isEmpty } from "../../../utils/script";
+import toastMessage from "../../../utils/toastMessage";
 
 interface IProps {
   product: IProduct;
@@ -54,6 +55,10 @@ export const ProductVariantsForm: React.FC<IProps> = (props: IProps) => {
   const handleAddTocart = (e: OnclickEvent) => {
     e.preventDefault();
     dispatch(addItemToCart(selectedProductVariants));
+    toastMessage(
+      `${selectedProductVariants.productcolor} added to cart`,
+      "success"
+    );
   };
 
   return (

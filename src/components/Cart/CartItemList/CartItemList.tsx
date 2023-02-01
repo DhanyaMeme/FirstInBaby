@@ -29,7 +29,7 @@ export default function CartItemList() {
       </div>
       {cartList &&
         cartList.map((item: ICartItem) => (
-          <CartItem key={`${item.name}-${item.size}`} cartItem={item} />
+          <CartItem key={`${item.productname}-${item.size}`} cartItem={item} />
         ))}
     </div>
   );

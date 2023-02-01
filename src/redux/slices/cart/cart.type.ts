@@ -1,11 +1,12 @@
 export interface ICartItem {
   id: number;
-  name: string;
-  quantity: number;
+  mcId: number;
+  productname: string;
   price: number;
-  image: string;
-  color: string;
+  imageurl: string;
+  productcolor: string;
   size: string;
+  quantity: number;
 }
 
 export interface ICartState {

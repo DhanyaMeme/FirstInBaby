@@ -16,15 +16,15 @@ export const CartItem = (props: IProps) => {
         <div className="AspectRatio" style={{ aspectRatio: "0.75" }}>
           <img
             className="CartItem__Image"
-            src={cartItem.image}
-            alt={cartItem.name}
+            src={cartItem.imageurl}
+            alt={cartItem.productname}
           />
         </div>
       </div>
       <div className="CartItem__Info">
         <h2 className="CartItem__Title Heading">
-          <a href={`/product/${cartItem.name}/${cartItem.id}`}>
-            {cartItem.name}
+          <a href={`/product/${cartItem.productname}/${cartItem.id}`}>
+            {cartItem.productname}
           </a>
         </h2>
         <div className="CartItem__Meta Heading Text--subdued">

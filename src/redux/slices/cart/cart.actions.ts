@@ -2,7 +2,7 @@ import { ICartItem } from "./cart.type";
 
 const getItemIndex = (state: ICartItem[], idToFind: ICartItem): number => {
   const ids = state.findIndex(
-    (item) => item.id === idToFind.id && item.size === idToFind.size
+    (item) => item.mcId === idToFind.mcId && item.size === idToFind.size
   );
   return ids;
 };
