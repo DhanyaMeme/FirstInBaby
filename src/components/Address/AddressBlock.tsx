@@ -24,9 +24,9 @@ export const AddressBlock = (props: IProps) => {
     phone,
     state,
     city,
-    locality,
-    address,
-    pincode,
+    street,
+    flatNo,
+    pin,
     landmark,
     isDefault,
   } = addressData;
@@ -51,10 +51,9 @@ export const AddressBlock = (props: IProps) => {
         <h5 className="name">
           {name} &nbsp; {isDefault && <span>( Default )</span>}
         </h5>
-        <p>{address}</p>
-        <p>{locality}</p>
+        <p>{`${flatNo} - ${street}`}</p>
         <p>Landmark : {landmark}</p>
-        <p>{`${state}, ${city}, ${pincode}`}</p>
+        <p>{`${state}, ${city}, ${pin}`}</p>
         <p>India</p>
         <p className="mobile">T : {phone}</p>
       </div>

@@ -1,4 +1,3 @@
-
 import { InputBaseProps, InputType } from "../../../models/types";
 import { IAddress } from "../../../redux/slices/address/address.type";
 import { validationRules } from "../../../utils/Validation";
@@ -7,13 +6,13 @@ export type IAddressFormState = Omit<IAddress, "id" | "isDefault">;
 
 export const initialIAddressValues: IAddressFormState = {
   name: "",
-  email: "",
   phone: "",
-  state: "",
+  email: "",
+  flatNo: "",
+  street: "",
   city: "",
-  locality: "",
-  address: "",
-  pincode: "",
+  state: "",
+  pin: "",
   landmark: "",
 };
 
@@ -47,28 +46,27 @@ export const AddressFormInputs: AddressFormInput[] = [
       { rule: validationRules.required },
     ],
   },
-
+  {
+    name: "flatNo",
+    label: "FlatNo",
+    type: InputType.text,
+    validation: [{ rule: validationRules.required }],
+  },
+  {
+    name: "street",
+    label: "Street",
+    type: InputType.text,
+    validation: [{ rule: validationRules.required }],
+  },
   {
     name: "state",
     label: "State",
-    type: InputType.select,
+    type: InputType.text,
     validation: [{ rule: validationRules.required }],
   },
   {
     name: "city",
     label: "City",
-    type: InputType.select,
-    validation: [{ rule: validationRules.required }],
-  },
-  {
-    name: "locality",
-    label: "Locality/Town",
-    type: InputType.text,
-    validation: [{ rule: validationRules.required }],
-  },
-  {
-    name: "address",
-    label: "Address",
     type: InputType.text,
     validation: [{ rule: validationRules.required }],
   },
@@ -76,7 +74,7 @@ export const AddressFormInputs: AddressFormInput[] = [
 
 export const AddressFormGroupInputs: AddressFormInput[] = [
   {
-    name: "pincode",
+    name: "pin",
     label: "Zip Code",
     type: InputType.number,
     validation: [

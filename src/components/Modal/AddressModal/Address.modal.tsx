@@ -129,7 +129,7 @@ export const AddressModal = () => {
       handleActionClick={handleOnsubmit}
     >
       <Form spacingTight onSubmit={handleOnsubmit}>
-        <FormElement>
+        {/* <FormElement>
           <IF
             condition={
               !isEmpty(formState.helperText) || !isEmpty(formState.errors)
@@ -144,22 +144,10 @@ export const AddressModal = () => {
                 (formState.errors && Object.values(formState.errors)[0])}
             </FormAlert>
           </IF>
-        </FormElement>
+        </FormElement> */}
         {AddressFormInputs.map((addressInput: AddressFormInput) => (
           <FormElement key={addressInput.name}>
-            <IF condition={addressInput.type === InputType.select}>
-              <FormSelectInput
-                label={addressInput.label}
-                name={addressInput.name}
-                options={getOptions(addressInput.name)}
-                onSelect={handleSelectChange}
-                disabled={!getOptions(addressInput.name)?.length}
-                value={getAddressState(addressInput.name) as string}
-              />
-            </IF>
-            <IF condition={addressInput.type !== InputType.select}>
-              {getFormInput(addressInput)}
-            </IF>
+            {getFormInput(addressInput)}
           </FormElement>
         ))}
         <FormElement elementType={Form__Elemen__Types.FormGroup}>

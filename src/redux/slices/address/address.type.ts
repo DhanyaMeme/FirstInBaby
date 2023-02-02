@@ -3,13 +3,13 @@ export interface IAddress {
   name: string;
   phone: string;
   email: string;
-  locality: string;
-  pincode: string;
+  flatNo: string;
+  street: string;
   state: string;
   city: string;
-  isDefault: boolean;
-  address: string;
+  pin: string;
   landmark: string;
+  isDefault: boolean;
 }
 
 export interface IAddressState {

@@ -1,4 +1,5 @@
 import {
+  addressEndpoints,
   authEndpoints,
   FavEndpoints,
   homeEndpoints,
@@ -106,5 +107,24 @@ export const paymentService = {
   updateTransaction: {
     method: "POST",
     url: paymentEndpoints.TRANSACTION,
+  },
+};
+
+export const addressService = {
+  getAddress: {
+    method: "GET",
+    url: addressEndpoints.GET_ADDRESS,
+  },
+  addAddress: {
+    method: "POST",
+    url: addressEndpoints.ADD_ADDRESS,
+  },
+  deleteAddress: {
+    method: "POST",
+    url: addressEndpoints.DELETE_ADDRESS,
+  },
+  updateAddress: {
+    method: "POST",
+    url: addressEndpoints.UPDATE_ADDRESS,
   },
 };

@@ -6,6 +6,13 @@ export const authEndpoints = Object.freeze({
   RESET_PASSWORD: "/ophelia/updatepassword",
 });
 
+export const addressEndpoints = Object.freeze({
+  GET_ADDRESS: "/ophelia/address",
+  ADD_ADDRESS: "/ophelia/address",
+  DELETE_ADDRESS: "/ophelia/address/id",
+  UPDATE_ADDRESS: "/ophelia/user/address/update",
+});
+
 export const navEndpoints = Object.freeze({
   MAIN__CATEGORY: "/ophelia/mainproducts",
 });
