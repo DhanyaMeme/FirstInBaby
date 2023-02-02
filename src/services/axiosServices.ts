@@ -90,7 +90,7 @@ export const profileService = {
     url: profileEndpoints.PROFILE,
   },
   updateCustomer: {
-    method: "PUT",
+    method: "POST",
     url: profileEndpoints.UPDATE_PROFILE,
   },
 };

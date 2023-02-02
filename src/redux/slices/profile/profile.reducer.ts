@@ -1,4 +1,3 @@
-import { AxiosResponse } from "axios";
 import { fetchData } from "../../../services/axios";
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { profileService } from "../../../services/axiosServices";
@@ -10,9 +9,9 @@ export const fetchCustomerAsync = createAsyncThunk<ICustomer, string>(
     try {
       const response = (await fetchData({
         ...profileService.getCustomerbyIdEmail,
-        params: { email },
-      })) as AxiosResponse;
-      return response.data;
+        params: { phone: email },
+      })) as ICustomer;
+      return response;
     } catch (err) {
       return rejectWithValue(err);
     }

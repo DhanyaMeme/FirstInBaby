@@ -1,4 +1,4 @@
-import { Fragment, useCallback } from "react";
+import { Fragment, useCallback, useEffect } from "react";
 import { AddressBlock } from "./AddressBlock";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import {
@@ -6,18 +6,20 @@ import {
   setDefaultAddress,
   setSelectedAddressId,
 } from "../../redux/slices/address/address.slice";
-import {
-  selectAddresses,
-} from "../../redux/slices/address/address.selector";
+import { selectAddresses } from "../../redux/slices/address/address.selector";
 import { AddressIcon } from "../../assets/icons/Address.icon";
 import { IAddress } from "../../redux/slices/address/address.type";
 import { TextButton } from "../../ui_kits/Buttons/TextButton/TextButton.component";
 import { openModal } from "../../redux/slices/modal/modal.slice";
+import { useProductCRUD } from "../../hooks/useProductCRUD";
+import { fetchAddressAsync } from "../../redux/slices/address/address.action";
 
 export const AddressContainer = () => {
   const dispatch = useAppDispatch();
-
+  const { getAddressHandler, user } = useProductCRUD();
   const addresses = useAppSelector(selectAddresses);
+
+
 
   const toggleAddressForm = () => {
     dispatch(

@@ -8,6 +8,11 @@ export const selectAddresses = createSelector(
   (address) => address.addresses
 );
 
+export const addressList = createSelector(
+  [selectAddressReducer],
+  (address) => address.addressData
+);
+
 export const selectOpenAddAddress = createSelector(
   [selectAddressReducer],
   (address) => address.openAddAddress

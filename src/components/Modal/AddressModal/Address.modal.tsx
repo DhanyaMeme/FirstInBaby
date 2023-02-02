@@ -1,10 +1,4 @@
-import {
-  Form,
-  FormElement,
-  FormTextInput,
-  FormSelectInput,
-  FormAlert,
-} from "../../../ui_kits/Form";
+import { Form, FormElement, FormTextInput } from "../../../ui_kits/Form";
 import { Form__Elemen__Types } from "../../../ui_kits/Form/FormElements/FormElement";
 import {
   AddressFormGroupInputs,
@@ -17,30 +11,34 @@ import {
   IFormState,
   InputChangeEvent,
   InputFocusEvent,
-  InputType,
 } from "../../../models/types";
-import { IF } from "../../../ui_kits/IF";
-import { getAllDistricts, getAllStates } from "../../../mockData/States";
 import useObjectState from "../../../hooks/useObjectState";
 import { initialFormState } from "../../../models/constants";
 import { useAuth } from "../../../contexts/AuthContext";
-import { isEmpty, uid } from "../../../utils/script";
+import { uid } from "../../../utils/script";
 import { useAppDispatch, useAppSelector } from "../../../redux/store";
-import { addNewAddress } from "../../../redux/slices/address/address.slice";
 import { IAddress } from "../../../redux/slices/address/address.type";
 import { useEffect, useMemo } from "react";
 import ModalWrapper from "../../../ui_kits/modal/modal-wrapper.component";
 import {
-  selectAddresses,
+  addressList,
   selectedAddressId,
 } from "../../../redux/slices/address/address.selector";
+import { FormError } from "../../AuthHandler/FormError";
+import { useProductCRUD } from "../../../hooks/useProductCRUD";
+import { closeModal } from "../../../redux/slices/modal/modal.slice";
 
 export const AddressModal = () => {
-  const dispatch = useAppDispatch();
   const { handleOnFocusEvent, handleFormValidate } = useAuth();
+  const { addAddressHandler } = useProductCRUD();
+  const dispatch = useAppDispatch();
 
-  const addresses = useAppSelector(selectAddresses);
+  const addresses = [] as any[];
+
+  const data  = useAppSelector(addressList);
   const addressId = useAppSelector(selectedAddressId);
+
+  console.log("data", data);
 
   const initialValues = useMemo(() => {
     let computedData = initialIAddressValues;
@@ -68,24 +66,12 @@ export const AddressModal = () => {
     obj: formState,
     update: updateFormState,
     setObj: setFormState,
-  } = useObjectState(
-    initialFormState as Partial<IFormState<IAddressFormState>>
-  );
+  } = useObjectState(initialFormState as IFormState<IAddressFormState>);
 
   useEffect(() => {
     setAddressState(initialValues.computedData);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [addressId, addresses]);
-
-  const handleSelectChange = (name: string, option: string) => {
-    updateAddressState(name as any, option);
-  };
-
-  const getOptions = (name: string) => {
-    return name === "state"
-      ? getAllStates()
-      : getAllDistricts(addressState.state);
-  };
 
   const handleOnsubmit = async () => {
     const isValid = handleFormValidate(
@@ -93,14 +79,17 @@ export const AddressModal = () => {
       addressState,
       updateFormState
     );
+
     if (isValid) {
-      dispatch(
-        addNewAddress({
-          id: initialValues.computedId,
-          ...addressState,
-          isDefault: false,
-        })
-      );
+      addAddressHandler(addressState);
+      dispatch(closeModal());
+      // dispatch(
+      //   addNewAddress({
+      //     id: initialValues.computedId,
+      //     ...addressState,
+      //     isDefault: false,
+      //   })
+      // );
     }
   };
 
@@ -129,22 +118,7 @@ export const AddressModal = () => {
       handleActionClick={handleOnsubmit}
     >
       <Form spacingTight onSubmit={handleOnsubmit}>
-        {/* <FormElement>
-          <IF
-            condition={
-              !isEmpty(formState.helperText) || !isEmpty(formState.errors)
-            }
-          >
-            <FormAlert
-              isError={!formState.submitSuccess}
-              isSuccess={formState.submitSuccess}
-              classname="u-h6"
-            >
-              {formState.helperText ||
-                (formState.errors && Object.values(formState.errors)[0])}
-            </FormAlert>
-          </IF>
-        </FormElement> */}
+        <FormError formState={formState} />
         {AddressFormInputs.map((addressInput: AddressFormInput) => (
           <FormElement key={addressInput.name}>
             {getFormInput(addressInput)}

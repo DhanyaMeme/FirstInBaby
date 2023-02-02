@@ -5,10 +5,15 @@ import { addFavAsync } from "../redux/slices/wishlist/wishlist.reducer";
 import { pick } from "../utils/generics";
 import { IProduct } from "../redux/slices/collection/collection.type";
 import { setProductVariants } from "../redux/slices/product/product.slice";
-import { OnclickEvent } from "../models/types";
 import { addItemToCart } from "../redux/slices/cart/cart.slice";
 import { productVariants } from "../redux/slices/product/product.selector";
 import { IProductVariants } from "../redux/slices/product/product.type";
+import { customer } from "../redux/slices/profile/profile.selector";
+import {
+  addAddressAsync,
+  fetchAddressAsync,
+} from "../redux/slices/address/address.action";
+import { IAddressFormState } from "../components/Modal/AddressModal/inputs";
 
 export const useProductCRUD = () => {
   const { user } = useAuth();
@@ -16,6 +21,7 @@ export const useProductCRUD = () => {
 
   const selectedProductVariants =
     useAppSelector(productVariants) || ({} as IProductVariants);
+  const userData = useAppSelector(customer);
 
   const handleToggleToFav = (mcId: number) => {
     if (user) {
@@ -56,5 +62,27 @@ export const useProductCRUD = () => {
     );
   };
 
-  return { handleToggleToFav, updateProductVariants, handleAddTocart };
+  // Address
+
+  const getAddressHandler = () => {
+    dispatch(fetchAddressAsync({ phone: user }));
+  };
+
+  const addAddressHandler = (addressState: IAddressFormState) => {
+    dispatch(
+      addAddressAsync({
+        address: { ...addressState, userid: userData.data?.customerid },
+        user
+      })
+    );
+  };
+
+  return {
+    user,
+    handleToggleToFav,
+    updateProductVariants,
+    handleAddTocart,
+    addAddressHandler,
+    getAddressHandler,
+  };
 };

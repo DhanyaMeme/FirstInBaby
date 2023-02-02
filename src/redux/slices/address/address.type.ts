@@ -1,3 +1,5 @@
+import { AsyncData } from "../../../models/types";
+
 export interface IAddress {
   id: string;
   name: string;
@@ -14,6 +16,7 @@ export interface IAddress {
 
 export interface IAddressState {
   addresses: IAddress[];
+  addressData: AsyncData<IAddress[]>;
   openAddAddress: boolean;
   selectedAddressId: string | undefined;
 }

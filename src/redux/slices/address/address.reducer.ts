@@ -1,4 +1,5 @@
 import { PayloadAction } from "@reduxjs/toolkit";
+import { fetchAddressAsync } from "./address.action";
 import { IAddress, IAddressState } from "./address.type";
 
 export const addressReducer = {
@@ -55,5 +56,22 @@ export const addressReducer = {
     { payload }: PayloadAction<string | undefined>
   ) => {
     state.selectedAddressId = payload;
+  },
+};
+
+export const extraAddressReducer = {
+  [fetchAddressAsync.pending.type]: (state: IAddressState) => {
+    state.addressData.loading = true;
+  },
+  [fetchAddressAsync.fulfilled.type]: (
+    state: IAddressState,
+    { payload }: PayloadAction<IAddress[]>
+  ) => {
+    state.addressData.loading = false;
+    state.addressData.data = payload;
+  },
+  [fetchAddressAsync.rejected.type]: (state: IAddressState) => {
+    state.addressData.loading = false;
+    state.addressData.error = "Error while fetching customer data";
   },
 };

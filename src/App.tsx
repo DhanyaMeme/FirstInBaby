@@ -16,9 +16,12 @@ import "slick-carousel/slick/slick-theme.css";
 import "react-toastify/dist/ReactToastify.css";
 import "semantic-ui-css/semantic.min.css";
 import "./App.scss";
-
+import { useAuth } from "./contexts/AuthContext";
+import { fetchCustomerAsync } from "./redux/slices/profile/profile.reducer";
+import { fetchAddressAsync } from "./redux/slices/address/address.action";
 
 function App() {
+  const { user } = useAuth();
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -28,6 +31,18 @@ function App() {
   useEffect(() => {
     dispatch(fetchAllProductsAsync());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (user) {
+      dispatch(fetchCustomerAsync(user));
+    }
+  }, [dispatch, user]);
+
+  useEffect(() => {
+    // getAddressHandler();
+    dispatch(fetchAddressAsync({ phone: user }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
 
   return (
     <Fragment>

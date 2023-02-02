@@ -18,8 +18,8 @@ export const navEndpoints = Object.freeze({
 });
 
 export const profileEndpoints = Object.freeze({
-  PROFILE: "/render/user/email",
-  UPDATE_PROFILE: "/render/user/update",
+  PROFILE: "/ophelia/useraddress",
+  UPDATE_PROFILE: "/ophelia/updateuser",
 });
 
 export const homeEndpoints = Object.freeze({
