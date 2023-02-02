@@ -16,7 +16,7 @@ export interface IChildrenProp {
   children: Children;
 }
 
-const stripePromise = loadStripe(STRIPE_KEY);
+// const stripePromise = loadStripe(STRIPE_KEY);
 
 /**
  * Responsible for rendering the IntlProvider component
@@ -27,7 +27,7 @@ const StateAndRouterProvider: React.FC<IChildrenProp> = (
 ) => {
   return (
     <BrowserRouter>
-      <Elements stripe={stripePromise}>
+      {/* <Elements stripe={stripePromise}> */}
         <AuthProvider>
           <SettingProvider>
             <Provider store={store}>
@@ -35,7 +35,7 @@ const StateAndRouterProvider: React.FC<IChildrenProp> = (
             </Provider>
           </SettingProvider>
         </AuthProvider>
-      </Elements>
+      {/* </Elements> */}
     </BrowserRouter>
   );
 };

@@ -33,12 +33,9 @@ export const AddressModal = () => {
   const { addAddressHandler } = useProductCRUD();
   const dispatch = useAppDispatch();
 
-  const addresses = [] as any[];
-
-  const data  = useAppSelector(addressList);
+  const { data } = useAppSelector(addressList);
   const addressId = useAppSelector(selectedAddressId);
-
-  console.log("data", data);
+  const addresses = data?.address;
 
   const initialValues = useMemo(() => {
     let computedData = initialIAddressValues;

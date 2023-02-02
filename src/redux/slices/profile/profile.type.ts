@@ -1,4 +1,5 @@
 import { AsyncData } from "../../../models/types";
+import { IAddress } from "../address/address.type";
 
 export enum profileMenu {
   "home" = "Profile Home",
@@ -6,23 +7,21 @@ export enum profileMenu {
   "orders" = "My Orders",
   "address" = "My Address",
   "coupons" = "My Coupons",
-  "rewards" = "My Rewards"
+  "rewards" = "My Rewards",
 }
 
 export interface ICustomer {
-  customerid: number;
-  customername: string;
-  dob: string;
+  userid: number;
+  uPhone: string;
+  fname: string;
+  lname: string;
+  iUmg: string;
   email: string;
-  enable: boolean;
-  gender: string;
-  image: string;
-  otp: string;
+  userReferral: string;
+  affiliateCode: string;
   password: string;
-  phone: string;
-  points: number;
-  refferalcode: string;
-  refferedby: string;
+  address: IAddress[];
+  enabled: boolean;
 }
 
 export interface IProfileState {

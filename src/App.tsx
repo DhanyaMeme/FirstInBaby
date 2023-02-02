@@ -18,7 +18,7 @@ import "semantic-ui-css/semantic.min.css";
 import "./App.scss";
 import { useAuth } from "./contexts/AuthContext";
 import { fetchCustomerAsync } from "./redux/slices/profile/profile.reducer";
-import { fetchAddressAsync } from "./redux/slices/address/address.action";
+import { fetchAddressAsync } from "./redux/slices/address/address.reducer";
 
 function App() {
   const { user } = useAuth();
@@ -39,10 +39,10 @@ function App() {
   }, [dispatch, user]);
 
   useEffect(() => {
-    // getAddressHandler();
-    dispatch(fetchAddressAsync({ phone: user }));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user]);
+    if (user) {
+      dispatch(fetchAddressAsync(user));
+    }
+  }, [dispatch, user]);
 
   return (
     <Fragment>

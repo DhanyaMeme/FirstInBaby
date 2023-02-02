@@ -9,11 +9,12 @@ import { addItemToCart } from "../redux/slices/cart/cart.slice";
 import { productVariants } from "../redux/slices/product/product.selector";
 import { IProductVariants } from "../redux/slices/product/product.type";
 import { customer } from "../redux/slices/profile/profile.selector";
+
+import { IAddressFormState } from "../components/Modal/AddressModal/inputs";
 import {
   addAddressAsync,
   fetchAddressAsync,
-} from "../redux/slices/address/address.action";
-import { IAddressFormState } from "../components/Modal/AddressModal/inputs";
+} from "../redux/slices/address/address.reducer";
 
 export const useProductCRUD = () => {
   const { user } = useAuth();
@@ -64,15 +65,11 @@ export const useProductCRUD = () => {
 
   // Address
 
-  const getAddressHandler = () => {
-    dispatch(fetchAddressAsync({ phone: user }));
-  };
-
   const addAddressHandler = (addressState: IAddressFormState) => {
     dispatch(
       addAddressAsync({
-        address: { ...addressState, userid: userData.data?.customerid },
-        user
+        address: { ...addressState, userid: userData.data?.userid },
+        user,
       })
     );
   };
@@ -83,6 +80,5 @@ export const useProductCRUD = () => {
     updateProductVariants,
     handleAddTocart,
     addAddressHandler,
-    getAddressHandler,
   };
 };

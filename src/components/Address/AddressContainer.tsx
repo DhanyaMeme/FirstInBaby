@@ -1,4 +1,4 @@
-import { Fragment, useCallback, useEffect } from "react";
+import { Fragment, useCallback } from "react";
 import { AddressBlock } from "./AddressBlock";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import {
@@ -6,20 +6,16 @@ import {
   setDefaultAddress,
   setSelectedAddressId,
 } from "../../redux/slices/address/address.slice";
-import { selectAddresses } from "../../redux/slices/address/address.selector";
+import { addressList } from "../../redux/slices/address/address.selector";
 import { AddressIcon } from "../../assets/icons/Address.icon";
 import { IAddress } from "../../redux/slices/address/address.type";
 import { TextButton } from "../../ui_kits/Buttons/TextButton/TextButton.component";
 import { openModal } from "../../redux/slices/modal/modal.slice";
-import { useProductCRUD } from "../../hooks/useProductCRUD";
-import { fetchAddressAsync } from "../../redux/slices/address/address.action";
+import { Spinner } from "../../ui_kits/Spinner/Spinner.component";
 
 export const AddressContainer = () => {
   const dispatch = useAppDispatch();
-  const { getAddressHandler, user } = useProductCRUD();
-  const addresses = useAppSelector(selectAddresses);
-
-
+  const { data: addresses, loading } = useAppSelector(addressList);
 
   const toggleAddressForm = () => {
     dispatch(
@@ -53,6 +49,10 @@ export const AddressContainer = () => {
     [dispatch]
   );
 
+  if (loading) {
+    return <Spinner />;
+  }
+
   return (
     <Fragment>
       <div className="Address_Section">
@@ -65,7 +65,7 @@ export const AddressContainer = () => {
         </TextButton>
       </div>
       <div className="Grid">
-        {addresses.map((address: IAddress) => (
+        {addresses?.address.map((address: IAddress) => (
           <div
             className="Grid__Cell 1/1--phone 1/2--tablet-and-up 1/2--desk"
             key={address.id}

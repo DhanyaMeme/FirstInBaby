@@ -14,7 +14,7 @@ import { modalSlice } from "./slices/modal/modal.slice";
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: [cartSlice.name, addressSlice.name],
+  whitelist: [cartSlice.name],
   // blacklist: ["modal"],
 };
 

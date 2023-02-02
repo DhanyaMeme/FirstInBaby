@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { initialAsyncData } from "../../../models/constants";
-import { addressReducer, extraAddressReducer } from "./address.reducer";
+import { addressReducer, extraAddressDataReducer } from "./address.reducer";
 import { IAddressState } from "./address.type";
 
 export const initialState: IAddressState = {
   addresses: [],
-  addressData: initialAsyncData,
+  addressList: initialAsyncData,
   openAddAddress: false,
   selectedAddressId: undefined,
 };
@@ -14,7 +14,7 @@ export const addressSlice = createSlice({
   name: "address",
   initialState,
   reducers: addressReducer,
-  extraReducers: extraAddressReducer,
+  extraReducers: extraAddressDataReducer,
 });
 
 export const {

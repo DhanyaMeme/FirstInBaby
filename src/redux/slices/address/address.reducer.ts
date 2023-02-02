@@ -1,6 +1,58 @@
-import { PayloadAction } from "@reduxjs/toolkit";
-import { fetchAddressAsync } from "./address.action";
-import { IAddress, IAddressState } from "./address.type";
+import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { fetchData } from "../../../services/axios";
+import { addressService } from "../../../services/axiosServices";
+import toastMessage from "../../../utils/toastMessage";
+import { IAddress, IAddressData, IAddressState } from "./address.type";
+
+export const fetchAddressAsync = createAsyncThunk<IAddressData, string>(
+  "address/getAddress",
+  async (email, { rejectWithValue }) => {
+    try {
+      const response = (await fetchData({
+        ...addressService.getAddress,
+        params: { phone: email },
+      })) as IAddressData;
+      return response;
+    } catch (err) {
+      return rejectWithValue(err);
+    }
+  }
+);
+
+export const addAddressAsync = createAsyncThunk<any, any>(
+  "address/addAddress",
+  async (data, { rejectWithValue, dispatch }) => {
+    try {
+      const response = await fetchData({
+        ...addressService.addAddress,
+        params: data.address,
+      });
+      toastMessage("Added Address", "success");
+      dispatch(fetchAddressAsync(data.user));
+      return response;
+    } catch (err) {
+      toastMessage("Something went wrong, Try again", "error");
+      return rejectWithValue(err);
+    }
+  }
+);
+
+export const extraAddressDataReducer = {
+  [fetchAddressAsync.pending.type]: (state: IAddressState) => {
+    state.addressList.loading = true;
+  },
+  [fetchAddressAsync.fulfilled.type]: (
+    state: IAddressState,
+    { payload }: PayloadAction<IAddressData>
+  ) => {
+    state.addressList.loading = false;
+    state.addressList.data = payload;
+  },
+  [fetchAddressAsync.rejected.type]: (state: IAddressState) => {
+    state.addressList.loading = false;
+    state.addressList.error = "Error while fetching collections";
+  },
+};
 
 export const addressReducer = {
   addNewAddress: (
@@ -56,22 +108,5 @@ export const addressReducer = {
     { payload }: PayloadAction<string | undefined>
   ) => {
     state.selectedAddressId = payload;
-  },
-};
-
-export const extraAddressReducer = {
-  [fetchAddressAsync.pending.type]: (state: IAddressState) => {
-    state.addressData.loading = true;
-  },
-  [fetchAddressAsync.fulfilled.type]: (
-    state: IAddressState,
-    { payload }: PayloadAction<IAddress[]>
-  ) => {
-    state.addressData.loading = false;
-    state.addressData.data = payload;
-  },
-  [fetchAddressAsync.rejected.type]: (state: IAddressState) => {
-    state.addressData.loading = false;
-    state.addressData.error = "Error while fetching customer data";
   },
 };

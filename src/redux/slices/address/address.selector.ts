@@ -10,7 +10,7 @@ export const selectAddresses = createSelector(
 
 export const addressList = createSelector(
   [selectAddressReducer],
-  (address) => address.addressData
+  (address) => address.addressList
 );
 
 export const selectOpenAddAddress = createSelector(

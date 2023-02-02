@@ -14,9 +14,16 @@ export interface IAddress {
   isDefault: boolean;
 }
 
+export interface IAddressData {
+  address: IAddress[];
+  uName: string;
+  uPhone: string;
+  userid: number;
+}
+
 export interface IAddressState {
   addresses: IAddress[];
-  addressData: AsyncData<IAddress[]>;
+  addressList: AsyncData<IAddressData>;
   openAddAddress: boolean;
   selectedAddressId: string | undefined;
 }
