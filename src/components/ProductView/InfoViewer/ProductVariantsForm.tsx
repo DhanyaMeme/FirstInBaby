@@ -1,6 +1,10 @@
 import React, { ReactNode } from "react";
+import { useDispatch } from "react-redux";
 import { Form } from "../../../ui_kits/Form";
+import { isEmpty } from "../../../utils/script";
 import { OptionsWrapper } from "./OptionsWrapper";
+import { OnclickEvent } from "../../../models/types";
+import { useProductCRUD } from "../../../hooks/useProductCRUD";
 import FavouriteIcon from "../../../assets/icons/Fav.icon";
 import {
   IProduct,
@@ -13,16 +17,8 @@ import { TextButton } from "../../../ui_kits/Buttons/TextButton/TextButton.compo
 import { IF } from "../../../ui_kits/IF";
 import { useAppSelector } from "../../../redux/store";
 import { productVariants } from "../../../redux/slices/product/product.selector";
-import { useDispatch } from "react-redux";
 import { setProductVariants } from "../../../redux/slices/product/product.slice";
 import { IProductVariants } from "../../../redux/slices/product/product.type";
-import { addItemToCart } from "../../../redux/slices/cart/cart.slice";
-import { OnclickEvent } from "../../../models/types";
-import { isEmpty } from "../../../utils/script";
-import toastMessage from "../../../utils/toastMessage";
-import { useAuth } from "../../../contexts/AuthContext";
-import { addFavAsync } from "../../../redux/slices/wishlist/wishlist.reducer";
-import { useProductCRUD } from "../../../hooks/useProductCRUD";
 
 interface IProps {
   product: IProduct;
@@ -31,12 +27,8 @@ interface IProps {
 
 export const ProductVariantsForm: React.FC<IProps> = (props: IProps) => {
   const { product, children } = props;
-
-  const { user } = useAuth();
   const { productSize } = product;
-
-  const { handleToggleToFav } = useProductCRUD();
-
+  const { handleToggleToFav, handleAddTocart } = useProductCRUD();
   const dispatch = useDispatch();
   const selectedProductVariants =
     useAppSelector(productVariants) || ({} as IProductVariants);
@@ -59,13 +51,9 @@ export const ProductVariantsForm: React.FC<IProps> = (props: IProps) => {
     );
   };
 
-  const handleAddTocart = (e: OnclickEvent) => {
+  const addTocart = (e: OnclickEvent) => {
     e.preventDefault();
-    dispatch(addItemToCart(selectedProductVariants));
-    toastMessage(
-      `${selectedProductVariants.productcolor} added to cart`,
-      "success"
-    );
+    handleAddTocart();
   };
 
   const FavIconOnclick = (e: OnclickEvent) => {
@@ -88,7 +76,6 @@ export const ProductVariantsForm: React.FC<IProps> = (props: IProps) => {
             />
           </OptionsWrapper>
         </IF>
-
         <OptionsWrapper name="Quantity">
           <QuantitySelector
             isLarge
@@ -103,7 +90,7 @@ export const ProductVariantsForm: React.FC<IProps> = (props: IProps) => {
         </IconButton>
         <span> Add to Favorite / Favourited</span>
       </div>
-      <TextButton isFull onClick={handleAddTocart}>
+      <TextButton isFull onClick={addTocart}>
         ADD TO CART
       </TextButton>
     </Form>

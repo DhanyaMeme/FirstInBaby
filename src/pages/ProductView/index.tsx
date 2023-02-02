@@ -4,20 +4,22 @@ import { ImageViewer } from "../../components/ProductView/ImageViewer/ImageViewe
 import { InfoViewer } from "../../components/ProductView/InfoViewer/InfoViewer";
 import Reviews from "../../components/Reviews/Reviews";
 import usePath from "../../hooks/usePath";
+import { useProductCRUD } from "../../hooks/useProductCRUD";
 import { allProducts } from "../../redux/slices/collection/collection.selector";
 import { IProduct } from "../../redux/slices/collection/collection.type";
-import { setProductVariants } from "../../redux/slices/product/product.slice";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { Accordian } from "../../ui_kits/Accordian/Accordian";
 import { Container } from "../../ui_kits/global/Container.styles";
 import { SectionHeader } from "../../ui_kits/Sections/SectionHeader/SectionHeader";
 import { SectionWrapper } from "../../ui_kits/Sections/SectionWrapper/SectionWrapper";
-import { findArrayItems, pick } from "../../utils/generics";
+import { findArrayItems } from "../../utils/generics";
 import "./Style.scss";
 
 export const ProductView = () => {
   const productId = usePath();
   const dispatch = useAppDispatch();
+
+  const { updateProductVariants } = useProductCRUD();
 
   const { data: productList } = useAppSelector(allProducts);
 
@@ -35,25 +37,13 @@ export const ProductView = () => {
 
   useEffect(() => {
     if (filteredData) {
-      const variants = pick(filteredData, [
-        "id",
-        "mcId",
-        "productname",
-        "price",
-        "imageurl",
-        "productcolor",
-      ]);
-      dispatch(
-        setProductVariants({
-          ...variants,
-          quantity: 1,
-          size: filteredData.productSize?.[0]?.psize || "",
-        })
+      updateProductVariants(
+        filteredData,
+        filteredData.productSize?.[0]?.psize || ""
       );
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, filteredData]);
-
-  // const filteredData = products[0];
 
   return (
     <>
