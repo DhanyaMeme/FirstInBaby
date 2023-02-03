@@ -13,9 +13,10 @@ export enum ProductsEnum {
 }
 
 export interface ICollection {
-  collection: string;
+  name: string;
   id: number;
   url: string;
+  murl: string;
   type: CollectionEnum;
 }
 

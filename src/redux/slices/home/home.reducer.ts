@@ -1,5 +1,4 @@
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { AxiosResponse } from "axios";
 import { fetchData } from "../../../services/axios";
 import { homeService } from "../../../services/axiosServices";
 import { getUniqueBy } from "../../../utils/generics";
@@ -11,20 +10,20 @@ import {
   ProductsEnum,
 } from "./home.type";
 
-export const fetchCollectionAsync = createAsyncThunk<
-  Array<ICollection>,
-  CollectionEnum
->("home/getCollection", async (type, { rejectWithValue }) => {
-  try {
-    const response = (await fetchData({
-      ...homeService.Collection,
-      params: { type },
-    })) as AxiosResponse;
-    return response.data;
-  } catch (err) {
-    return rejectWithValue(err);
+export const fetchCollectionAsync = createAsyncThunk<Array<ICollection>>(
+  "home/getCollection",
+  async (type, { rejectWithValue }) => {
+    try {
+      const response = (await fetchData({
+        ...homeService.Collection,
+        // params: { type },
+      })) as ICollection[];
+      return response;
+    } catch (err) {
+      return rejectWithValue(err);
+    }
   }
-});
+);
 
 export const fetchProductCollection = createAsyncThunk<
   {
@@ -56,15 +55,12 @@ export const extraHomeReducer = {
     { payload }: PayloadAction<Array<ICollection>>
   ) => {
     state.collection.loading = false;
-    const data = state.collection.data || [];
-    const groupedValue = [...data, ...payload];
-    state.collection.data = getUniqueBy(groupedValue, "id");
+    state.collection.data = payload;
   },
   [fetchCollectionAsync.rejected.type]: (state: IHomeState) => {
     state.collection.loading = false;
     state.collection.error = "Error while fetching collection data";
   },
-
   [fetchProductCollection.pending.type]: (state: IHomeState) => {
     state.productCollection.loading = true;
   },

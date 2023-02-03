@@ -7,14 +7,17 @@ import { InstaFeed } from "../../components/LandingPage/InstaFeeds";
 import { RecentlyViewed } from "../../components/LandingPage/RecentlyViewed";
 import { SaleItem } from "../../components/LandingPage/SaleItem";
 import { collectionsData } from "../../mockData/collectionData";
+import { collection } from "../../redux/slices/home/home.selector";
+import { useAppSelector } from "../../redux/store";
 
 export const LandingPage = () => {
+  const collections = useAppSelector(collection);
   return (
     <main className="maincontent">
       <Banner />
       <AnnouncementBar />
       <HotDeals />
-      <CategoriesView />
+      <CategoriesView collectionsData={collections.data} />
       <ExploreView />
       <SaleItem saleData={collectionsData.slice(0, 6)} />
       <RecentlyViewed sliderData={collectionsData} />

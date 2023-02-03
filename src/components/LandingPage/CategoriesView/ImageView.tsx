@@ -1,11 +1,11 @@
 import { FC } from "react";
 import { NavLink } from "react-router-dom";
+import { ICollection } from "../../../redux/slices/home/home.type";
 import { ImageWrapper } from "../../../ui_kits/ImageWrapper/ImageWrapper";
 import { encodeUrl } from "../../../utils/textHandler";
-import { ICollectionData } from "./mockdata";
 
 interface IProps {
-  collectionItem: ICollectionData;
+  collectionItem: ICollection;
 }
 
 export const ImageView: FC<IProps> = (props: IProps) => {
@@ -15,16 +15,16 @@ export const ImageView: FC<IProps> = (props: IProps) => {
     <div className="CollectionItem__Wrapper">
       <div className="CollectionItem__ImageWrapper">
         <ImageWrapper
-          src={collectionItem.imageUrl}
-          alt={collectionItem.subHead}
+          src={collectionItem.murl}
+          alt={collectionItem.name}
           classes="CollectionItem__Image  Image--contrast Image--zoomOut"
         />
       </div>
       <NavLink
-        to={`/collections/collection=${encodeUrl(collectionItem.title)}`}
+        to={`/collections/collection=${encodeUrl(collectionItem.name)}`}
         className="CollectionItem__Content Heading"
       >
-        <h3>{collectionItem.title}</h3>
+        {/* <h3>{collectionItem.name}</h3> */}
       </NavLink>
     </div>
   );
