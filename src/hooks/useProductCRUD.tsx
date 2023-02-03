@@ -68,12 +68,12 @@ export const useProductCRUD = () => {
 
   const addAddressHandler = (
     addressState: IAddressFormState,
-    addressId?: number
+    selectedAddressId?: number
   ) => {
-    if (addressId) {
+    if (selectedAddressId) {
       dispatch(
         updateAddressAsync({
-          address: { ...addressState, addId: addressId },
+          address: { ...addressState, addId: selectedAddressId },
           user,
         })
       );
