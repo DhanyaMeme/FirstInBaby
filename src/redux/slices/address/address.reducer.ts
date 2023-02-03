@@ -123,7 +123,6 @@ export const addressReducer = {
   ) => {
     state.addresses = addresses;
   },
-
   setDefaultAddress: (
     state: IAddressState,
     { payload: addressId }: PayloadAction<number>
@@ -132,12 +131,17 @@ export const addressReducer = {
       return { ...item, isDefault: item.id === addressId ? true : false };
     });
   },
-
   setOpenAddAddress: (
     state: IAddressState,
     { payload }: PayloadAction<boolean>
   ) => {
     state.openAddAddress = payload;
+  },
+  setDefaultAddressId: (
+    state: IAddressState,
+    { payload }: PayloadAction<number | undefined>
+  ) => {
+    state.defaultAddressId = payload;
   },
   setSelectedAddressId: (
     state: IAddressState,

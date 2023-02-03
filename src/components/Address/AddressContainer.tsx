@@ -1,14 +1,16 @@
-import { Fragment } from "react";
+import { Fragment, useCallback } from "react";
 import { AddressBlock } from "./AddressBlock";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
-import { setSelectedAddressId } from "../../redux/slices/address/address.slice";
+import {
+  setDefaultAddressId,
+  setSelectedAddressId,
+} from "../../redux/slices/address/address.slice";
 import { addressList } from "../../redux/slices/address/address.selector";
 import { AddressIcon } from "../../assets/icons/Address.icon";
 import { IAddress } from "../../redux/slices/address/address.type";
 import { TextButton } from "../../ui_kits/Buttons/TextButton/TextButton.component";
 import { openModal } from "../../redux/slices/modal/modal.slice";
 import { Spinner } from "../../ui_kits/Spinner/Spinner.component";
-import CartFooter from "../Cart/CartFooter/CartFooter";
 
 export const AddressContainer = () => {
   const dispatch = useAppDispatch();
@@ -32,19 +34,12 @@ export const AddressContainer = () => {
     toggleAddressForm();
   };
 
-  // const handleRemoveAddress = useCallback(
-  //   (id: number) => {
-  //     dispatch(removeAddress(id));
-  //   },
-  //   [dispatch]
-  // );
-
-  // const toggleDefaultAddress = useCallback(
-  //   (id: string) => {
-  //     dispatch(setDefaultAddress(id));
-  //   },
-  //   [dispatch]
-  // );
+  const toggleDefaultAddress = useCallback(
+    (id: number) => {
+      dispatch(setDefaultAddressId(id));
+    },
+    [dispatch]
+  );
 
   if (loading) {
     return <Spinner />;
@@ -69,8 +64,7 @@ export const AddressContainer = () => {
           >
             <AddressBlock
               addressData={address}
-              // toggleDefaultAddress={toggleDefaultAddress}
-              // handleRemoveAddress={handleRemoveAddress}
+              toggleDefaultAddress={toggleDefaultAddress}
               handleUpdateNewAddress={handleUpdateNewAddress}
             />
           </div>

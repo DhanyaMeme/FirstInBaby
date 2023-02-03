@@ -26,4 +26,5 @@ export interface IAddressState {
   addressList: AsyncData<IAddressData>;
   openAddAddress: boolean;
   selectedAddressId: number | undefined;
+  defaultAddressId: number | undefined;
 }

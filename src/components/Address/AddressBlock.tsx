@@ -4,35 +4,31 @@ import { IAddress } from "../../redux/slices/address/address.type";
 import { ButtonGroup } from "../../ui_kits/Buttons/TextButton/TextButton.styles";
 import { TextButton } from "../../ui_kits/Buttons/TextButton/TextButton.component";
 import { useProductCRUD } from "../../hooks/useProductCRUD";
+import { useAppSelector } from "../../redux/store";
+import { defaultAddressId } from "../../redux/slices/address/address.selector";
 
 interface IProps {
   addressData: IAddress;
   // handleRemoveAddress: (id: string) => void;
-  // toggleDefaultAddress: (id: string) => void;
+  toggleDefaultAddress: (id: number) => void;
   handleUpdateNewAddress: (id: number) => void;
 }
 
 export const AddressBlock = (props: IProps) => {
   const {
     addressData,
-    // toggleDefaultAddress,
+    toggleDefaultAddress,
     // handleRemoveAddress,
     handleUpdateNewAddress,
   } = props;
-  const {
-    id,
-    name,
-    phone,
-    state,
-    city,
-    street,
-    flatNo,
-    pin,
-    landMark,
-    isDefault,
-  } = addressData;
+
+  const { id, name, phone, state, city, street, flatNo, pin, landMark } =
+    addressData;
 
   const { removeAddressHandler } = useProductCRUD();
+
+  const defaultId = useAppSelector(defaultAddressId);
+  const isDefault = id === defaultId; 
 
   const handleDeleteAddress = (e: OnclickEvent) => {
     e.preventDefault();
@@ -49,7 +45,7 @@ export const AddressBlock = (props: IProps) => {
     <div className="Address_Block u-h5">
       <div
         className="Address_Content Heading u-h7"
-        // onClick={() => toggleDefaultAddress(id)}
+        onClick={() => toggleDefaultAddress(id)}
       >
         <RadioIcon selected={isDefault} />
         <h5 className="name">

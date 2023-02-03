@@ -22,3 +22,8 @@ export const selectedAddressId = createSelector(
   [selectAddressReducer],
   (address) => address.selectedAddressId
 );
+
+export const defaultAddressId = createSelector(
+  [selectAddressReducer],
+  (address) => address.defaultAddressId
+);
