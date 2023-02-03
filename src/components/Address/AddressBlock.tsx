@@ -3,19 +3,20 @@ import { RadioIcon } from "../../assets/icons/Radio.icon";
 import { IAddress } from "../../redux/slices/address/address.type";
 import { ButtonGroup } from "../../ui_kits/Buttons/TextButton/TextButton.styles";
 import { TextButton } from "../../ui_kits/Buttons/TextButton/TextButton.component";
+import { useProductCRUD } from "../../hooks/useProductCRUD";
 
 interface IProps {
   addressData: IAddress;
-  handleRemoveAddress: (id: string) => void;
-  toggleDefaultAddress: (id: string) => void;
-  handleUpdateNewAddress: (id: string) => void;
+  // handleRemoveAddress: (id: string) => void;
+  // toggleDefaultAddress: (id: string) => void;
+  handleUpdateNewAddress: (id: number) => void;
 }
 
 export const AddressBlock = (props: IProps) => {
   const {
     addressData,
-    toggleDefaultAddress,
-    handleRemoveAddress,
+    // toggleDefaultAddress,
+    // handleRemoveAddress,
     handleUpdateNewAddress,
   } = props;
   const {
@@ -27,13 +28,16 @@ export const AddressBlock = (props: IProps) => {
     street,
     flatNo,
     pin,
-    landmark,
+    landMark,
     isDefault,
   } = addressData;
 
+  const { removeAddressHandler } = useProductCRUD();
+
   const handleDeleteAddress = (e: OnclickEvent) => {
     e.preventDefault();
-    handleRemoveAddress(id);
+    // handleRemoveAddress(id);
+    removeAddressHandler(id);
   };
 
   const handleEditAddress = (e: OnclickEvent) => {
@@ -45,14 +49,14 @@ export const AddressBlock = (props: IProps) => {
     <div className="Address_Block u-h5">
       <div
         className="Address_Content Heading u-h7"
-        onClick={() => toggleDefaultAddress(id)}
+        // onClick={() => toggleDefaultAddress(id)}
       >
         <RadioIcon selected={isDefault} />
         <h5 className="name">
           {name} &nbsp; {isDefault && <span>( Default )</span>}
         </h5>
         <p>{`${flatNo} - ${street}`}</p>
-        <p>Landmark : {landmark}</p>
+        <p>Landmark : {landMark}</p>
         <p>{`${state}, ${city}, ${pin}`}</p>
         <p>India</p>
         <p className="mobile">T : {phone}</p>

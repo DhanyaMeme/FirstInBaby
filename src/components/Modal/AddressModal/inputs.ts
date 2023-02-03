@@ -13,7 +13,7 @@ export const initialIAddressValues: IAddressFormState = {
   city: "",
   state: "",
   pin: "",
-  landmark: "",
+  landMark: "",
 };
 
 export type AddressFormInput = InputBaseProps<IAddressFormState>;
@@ -83,7 +83,7 @@ export const AddressFormGroupInputs: AddressFormInput[] = [
     ],
   },
   {
-    name: "landmark",
+    name: "landMark",
     label: "Landmark",
     type: InputType.text,
   },

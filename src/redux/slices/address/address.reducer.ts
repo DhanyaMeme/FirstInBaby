@@ -37,6 +37,42 @@ export const addAddressAsync = createAsyncThunk<any, any>(
   }
 );
 
+export const updateAddressAsync = createAsyncThunk<any, any>(
+  "address/updateAddress",
+  async (data, { rejectWithValue, dispatch }) => {
+    try {
+      const response = await fetchData({
+        ...addressService.updateAddress,
+        params: data.address,
+      });
+      toastMessage("Updated Address", "success");
+      dispatch(fetchAddressAsync(data.user));
+      return response;
+    } catch (err) {
+      toastMessage("Something went wrong, Try again", "error");
+      return rejectWithValue(err);
+    }
+  }
+);
+
+export const deleteAddressAsync = createAsyncThunk<any, any>(
+  "address/deleteAddress",
+  async (data, { rejectWithValue, dispatch }) => {
+    try {
+      const response = await fetchData({
+        ...addressService.deleteAddress,
+        params: data.id,
+      });
+      toastMessage("Deleted Address", "success");
+      dispatch(fetchAddressAsync(data.user));
+      return response;
+    } catch (err) {
+      toastMessage("Something went wrong, Try again", "error");
+      return rejectWithValue(err);
+    }
+  }
+);
+
 export const extraAddressDataReducer = {
   [fetchAddressAsync.pending.type]: (state: IAddressState) => {
     state.addressList.loading = true;
@@ -75,7 +111,7 @@ export const addressReducer = {
 
   removeAddress: (
     state: IAddressState,
-    { payload: addressId }: PayloadAction<string>
+    { payload: addressId }: PayloadAction<number>
   ) => {
     state.addresses = state.addresses.filter(
       (address) => address.id !== addressId
@@ -90,7 +126,7 @@ export const addressReducer = {
 
   setDefaultAddress: (
     state: IAddressState,
-    { payload: addressId }: PayloadAction<string>
+    { payload: addressId }: PayloadAction<number>
   ) => {
     state.addresses = state.addresses.map((item) => {
       return { ...item, isDefault: item.id === addressId ? true : false };
@@ -105,7 +141,7 @@ export const addressReducer = {
   },
   setSelectedAddressId: (
     state: IAddressState,
-    { payload }: PayloadAction<string | undefined>
+    { payload }: PayloadAction<number | undefined>
   ) => {
     state.selectedAddressId = payload;
   },

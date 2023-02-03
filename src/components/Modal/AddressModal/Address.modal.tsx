@@ -15,7 +15,6 @@ import {
 import useObjectState from "../../../hooks/useObjectState";
 import { initialFormState } from "../../../models/constants";
 import { useAuth } from "../../../contexts/AuthContext";
-import { uid } from "../../../utils/script";
 import { useAppDispatch, useAppSelector } from "../../../redux/store";
 import { IAddress } from "../../../redux/slices/address/address.type";
 import { useEffect, useMemo } from "react";
@@ -39,11 +38,12 @@ export const AddressModal = () => {
 
   const initialValues = useMemo(() => {
     let computedData = initialIAddressValues;
-    let computedId = uid();
+    let computedId = Date.now();
 
     const selectedAddress = addresses?.find(
       (add: IAddress) => add.id === addressId
     );
+
     if (selectedAddress) {
       let { id, isDefault, ...rest } = selectedAddress;
       computedData = rest;
@@ -78,15 +78,8 @@ export const AddressModal = () => {
     );
 
     if (isValid) {
-      addAddressHandler(addressState);
-      dispatch(closeModal());
-      // dispatch(
-      //   addNewAddress({
-      //     id: initialValues.computedId,
-      //     ...addressState,
-      //     isDefault: false,
-      //   })
-      // );
+      addAddressHandler(addressState, addressId);
+      // dispatch(closeModal());
     }
   };
 

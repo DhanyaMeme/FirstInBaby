@@ -1,7 +1,7 @@
 import { AsyncData } from "../../../models/types";
 
 export interface IAddress {
-  id: string;
+  id: number;
   name: string;
   phone: string;
   email: string;
@@ -10,7 +10,7 @@ export interface IAddress {
   state: string;
   city: string;
   pin: string;
-  landmark: string;
+  landMark: string;
   isDefault: boolean;
 }
 
@@ -25,5 +25,5 @@ export interface IAddressState {
   addresses: IAddress[];
   addressList: AsyncData<IAddressData>;
   openAddAddress: boolean;
-  selectedAddressId: string | undefined;
+  selectedAddressId: number | undefined;
 }

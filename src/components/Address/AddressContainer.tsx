@@ -30,24 +30,24 @@ export const AddressContainer = () => {
     toggleAddressForm();
   };
 
-  const handleUpdateNewAddress = (id: string) => {
+  const handleUpdateNewAddress = (id: number) => {
     dispatch(setSelectedAddressId(id));
     toggleAddressForm();
   };
 
-  const handleRemoveAddress = useCallback(
-    (id: string) => {
-      dispatch(removeAddress(id));
-    },
-    [dispatch]
-  );
+  // const handleRemoveAddress = useCallback(
+  //   (id: number) => {
+  //     dispatch(removeAddress(id));
+  //   },
+  //   [dispatch]
+  // );
 
-  const toggleDefaultAddress = useCallback(
-    (id: string) => {
-      dispatch(setDefaultAddress(id));
-    },
-    [dispatch]
-  );
+  // const toggleDefaultAddress = useCallback(
+  //   (id: string) => {
+  //     dispatch(setDefaultAddress(id));
+  //   },
+  //   [dispatch]
+  // );
 
   if (loading) {
     return <Spinner />;
@@ -72,8 +72,8 @@ export const AddressContainer = () => {
           >
             <AddressBlock
               addressData={address}
-              toggleDefaultAddress={toggleDefaultAddress}
-              handleRemoveAddress={handleRemoveAddress}
+              // toggleDefaultAddress={toggleDefaultAddress}
+              // handleRemoveAddress={handleRemoveAddress}
               handleUpdateNewAddress={handleUpdateNewAddress}
             />
           </div>

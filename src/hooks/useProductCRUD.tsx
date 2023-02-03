@@ -13,7 +13,8 @@ import { customer } from "../redux/slices/profile/profile.selector";
 import { IAddressFormState } from "../components/Modal/AddressModal/inputs";
 import {
   addAddressAsync,
-  fetchAddressAsync,
+  deleteAddressAsync,
+  updateAddressAsync,
 } from "../redux/slices/address/address.reducer";
 
 export const useProductCRUD = () => {
@@ -65,10 +66,31 @@ export const useProductCRUD = () => {
 
   // Address
 
-  const addAddressHandler = (addressState: IAddressFormState) => {
+  const addAddressHandler = (
+    addressState: IAddressFormState,
+    addressId?: number
+  ) => {
+    if (addressId) {
+      dispatch(
+        updateAddressAsync({
+          address: { ...addressState, addId: addressId },
+          user,
+        })
+      );
+    } else {
+      dispatch(
+        addAddressAsync({
+          address: { ...addressState, userid: userData.data?.userid },
+          user,
+        })
+      );
+    }
+  };
+
+  const removeAddressHandler = (addressId: number) => {
     dispatch(
-      addAddressAsync({
-        address: { ...addressState, userid: userData.data?.userid },
+      deleteAddressAsync({
+        id: { id: addressId },
         user,
       })
     );
@@ -80,5 +102,6 @@ export const useProductCRUD = () => {
     updateProductVariants,
     handleAddTocart,
     addAddressHandler,
+    removeAddressHandler,
   };
 };
