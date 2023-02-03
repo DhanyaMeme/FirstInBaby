@@ -1,9 +1,18 @@
 import CartFooter from "../../components/Cart/CartFooter/CartFooter";
 import CartItemList from "../../components/Cart/CartItemList/CartItemList";
+import EmptyCart from "../../components/EmptyCart/EmptyCart";
+import { selectCartItems } from "../../redux/slices/cart/cart.selector";
+import { useAppSelector } from "../../redux/store";
 import { Container } from "../../ui_kits/global/Container.styles";
 import { PageHeader } from "../../ui_kits/global/PageContent.styles";
 
 const Cart = () => {
+  const cartList = useAppSelector(selectCartItems);
+
+  if (!cartList.length) {
+    return <EmptyCart />;
+  }
+
   return (
     <Container isNarrow>
       <PageHeader>

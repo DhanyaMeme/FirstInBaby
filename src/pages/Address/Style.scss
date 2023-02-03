@@ -26,3 +26,15 @@
     }
   }
 }
+
+.Payment_Section {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 2px solid #eee;
+  padding-top: 30px;
+
+  @media screen and (max-width: 767px) {
+    flex-flow: column;
+    align-items: center;
+  }
+}

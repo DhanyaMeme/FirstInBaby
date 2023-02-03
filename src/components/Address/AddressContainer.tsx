@@ -1,17 +1,14 @@
-import { Fragment, useCallback } from "react";
+import { Fragment } from "react";
 import { AddressBlock } from "./AddressBlock";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
-import {
-  removeAddress,
-  setDefaultAddress,
-  setSelectedAddressId,
-} from "../../redux/slices/address/address.slice";
+import { setSelectedAddressId } from "../../redux/slices/address/address.slice";
 import { addressList } from "../../redux/slices/address/address.selector";
 import { AddressIcon } from "../../assets/icons/Address.icon";
 import { IAddress } from "../../redux/slices/address/address.type";
 import { TextButton } from "../../ui_kits/Buttons/TextButton/TextButton.component";
 import { openModal } from "../../redux/slices/modal/modal.slice";
 import { Spinner } from "../../ui_kits/Spinner/Spinner.component";
+import CartFooter from "../Cart/CartFooter/CartFooter";
 
 export const AddressContainer = () => {
   const dispatch = useAppDispatch();

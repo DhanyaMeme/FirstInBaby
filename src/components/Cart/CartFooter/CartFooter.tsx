@@ -7,6 +7,7 @@ import "./CartFooter.scss";
 
 export default function CartFooter() {
   const total = useAppSelector(selectCartTotal);
+
   const navigate = useNavigate();
 
   const handleCheckout = (e: OnclickEvent) => {

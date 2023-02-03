@@ -33,9 +33,10 @@ export const ProfileInformation = () => {
   const { data } = useAppSelector(customer);
 
   const initialProfileFormState: IProfileFormState = {
-    customername: data?.customername ?? "",
-    phone: data?.phone ?? "",
-    dob: data?.dob ?? "",
+    customername: data?.fname ?? "",
+    phone: data?.uPhone ?? "",
+    // dob: data?.dob ?? "",
+    dob: "",
   };
 
   const {
