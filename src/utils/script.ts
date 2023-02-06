@@ -14,6 +14,12 @@ export function uid() {
   ).replace(/\./g, "");
 }
 
+export function generateRandomId(length: number) {
+  let tempId = Math.random().toString();
+  let uid = tempId.substr(2, length);
+  return uid;
+}
+
 export function isMobile() {
   if (window) {
     return window.matchMedia(`(max-width: 767px)`).matches;

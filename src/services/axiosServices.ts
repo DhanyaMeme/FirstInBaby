@@ -98,6 +98,10 @@ export const profileService = {
     method: "POST",
     url: profileEndpoints.UPDATE_PROFILE,
   },
+  help: {
+    method: "POST",
+    url: profileEndpoints.HELP,
+  },
 };
 
 export const paymentService = {

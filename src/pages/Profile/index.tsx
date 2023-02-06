@@ -13,6 +13,7 @@ import "./Style.scss";
 import { MyCoupons } from "../../components/Profile/MainContent/MyCoupons";
 import { MyRewards } from "../../components/Profile/MainContent/MyRewards";
 import { AddressContainer } from "../../components/Address/AddressContainer";
+import { Help } from "../../components/Profile/MainContent/Help";
 
 const profileLookup: Record<profileMenu, any> = {
   "Profile Home": ProfileHome,
@@ -21,6 +22,7 @@ const profileLookup: Record<profileMenu, any> = {
   "My Address": AddressContainer,
   "My Coupons": MyCoupons,
   "My Rewards": MyRewards,
+  "Help" : Help
 };
 
 export const profileOptions = objectKeys(profileLookup);

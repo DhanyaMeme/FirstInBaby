@@ -8,6 +8,7 @@ export enum profileMenu {
   "address" = "My Address",
   "coupons" = "My Coupons",
   "rewards" = "My Rewards",
+  "help" = "Help",
 }
 
 export interface ICustomer {
