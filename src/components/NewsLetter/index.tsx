@@ -6,6 +6,7 @@ import {
   IFormState,
   InputChangeEvent,
   InputFocusEvent,
+  Messages,
 } from "../../models/types";
 import { IF } from "../../ui_kits/IF";
 import { isEmpty } from "../../utils/script";
@@ -22,6 +23,10 @@ import {
 import { IValidation, validationRules } from "../../utils/Validation";
 import "./Style.scss";
 import { Form__Elemen__Types } from "../../ui_kits/Form/FormElements/FormElement";
+import { subscriptionService } from "../../services/axiosServices";
+import { safeSetTimeout } from "../../utils/generics";
+import { isString } from "../../utils/textHandler";
+import { fetchData } from "../../services/axios";
 
 export const Newsletter = () => {
   const [email, setEmail] = useState<string | null>(null);
@@ -63,11 +68,47 @@ export const Newsletter = () => {
     return isValid;
   };
 
-  const handleSubmit = (event: FormSubmitEvent) => {
+  const newsletterParams = {
+    ...subscriptionService.newsLetter,
+    params: {
+      email: email,
+    },
+  };
+
+  const message: Messages = {
+    success: "Subscribed successfully!",
+    error: "Something went wrong, Try Again!",
+  };
+
+  const handleSubmit = async (event: FormSubmitEvent) => {
     event.preventDefault();
     const isValid = handleValidate();
     if (isValid) {
+      setFormState({ ...formState, isButtonLoading: true });
+      try {
+        const response = await fetchData(newsletterParams);
+        console.log("data", response);
+        setFormState({
+          ...formState,
+          helperText: message.success,
+          submitSuccess: true,
+          isButtonLoading: false,
+        });
+        return response;
+      } catch (error: any) {
+        console.log("error", error);
+        setFormState({
+          ...formState,
+          helperText: isString(error?.response?.data)
+            ? error?.response?.data
+            : message.error,
+          submitSuccess: false,
+          isButtonLoading: false,
+        });
+        return null;
+      }
     }
+    safeSetTimeout(setFormState, 1000, initialFormState as IFormState<string>);
   };
 
   return (
@@ -102,6 +143,7 @@ export const Newsletter = () => {
           className="Newsletter__Submit u-h5"
           buttonType={BUTTON_TYPE_CLASSES.base}
           isFull
+          isLoading={formState.isButtonLoading}
         >
           SUBSCRIBE
         </TextButton>

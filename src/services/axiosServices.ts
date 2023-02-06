@@ -7,6 +7,7 @@ import {
   paymentEndpoints,
   productsEndpoints,
   profileEndpoints,
+  subscripeEndpoints,
 } from "./axiosEndpoints";
 
 export const authService = {
@@ -130,5 +131,12 @@ export const addressService = {
   updateAddress: {
     method: "POST",
     url: addressEndpoints.UPDATE_ADDRESS,
+  },
+};
+
+export const subscriptionService = {
+  newsLetter: {
+    method: "POST",
+    url: subscripeEndpoints.NEWSLETTER,
   },
 };

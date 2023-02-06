@@ -32,7 +32,7 @@ export const productsEndpoints = Object.freeze({
   PRODUCTS: "/ophelia/products/home",
   PROUCTS_By_CATEGORY: "/ophelia/products/allproducts",
   ADD_REVIEWS: "/render/add/reviews",
-  DELIVERY_STATUS : "/ophelia/verify/delivery",
+  DELIVERY_STATUS: "/ophelia/verify/delivery",
 });
 
 export const FavEndpoints = Object.freeze({
@@ -45,4 +45,8 @@ export const paymentEndpoints = Object.freeze({
   STRIPE: "/stripe/pay",
   TRANSACTION: "/add/transaction",
   SUBSCRIPTION_PLANS: "/get/all/subcription",
+});
+
+export const subscripeEndpoints = Object.freeze({
+  NEWSLETTER: "/ophelia/newsletter",
 });
