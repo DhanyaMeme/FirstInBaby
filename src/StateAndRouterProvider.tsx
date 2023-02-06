@@ -6,9 +6,6 @@ import { AuthProvider } from "./contexts/AuthContext";
 import { SettingProvider } from "./contexts/SettingContext";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistor, store } from "./redux/store";
-import { STRIPE_KEY } from "./models/constants";
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js";
 
 type Children = ReactNode | Array<Children> | ReactPortal;
 

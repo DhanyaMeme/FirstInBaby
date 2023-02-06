@@ -1,10 +1,8 @@
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { fetchData } from "../../../services/axios";
 import { homeService } from "../../../services/axiosServices";
-import { getUniqueBy } from "../../../utils/generics";
 import { IProduct } from "../collection/collection.type";
 import {
-  CollectionEnum,
   ICollection,
   IHomeState,
   ProductsEnum,

@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import emptyCart from "../../assets/images/EmptyCart.png";
 import "./EmptyCart.scss";
 

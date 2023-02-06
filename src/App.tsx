@@ -20,7 +20,6 @@ import { useAuth } from "./contexts/AuthContext";
 import { fetchCustomerAsync } from "./redux/slices/profile/profile.reducer";
 import { fetchAddressAsync } from "./redux/slices/address/address.reducer";
 import { fetchCollectionAsync } from "./redux/slices/home/home.reducer";
-import { CollectionEnum } from "./redux/slices/home/home.type";
 
 function App() {
   const { user } = useAuth();

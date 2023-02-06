@@ -67,6 +67,10 @@ export const productService = {
     method: "POST",
     url: productsEndpoints.ADD_REVIEWS,
   },
+  verifyDelivery: {
+    method: "GET",
+    url: productsEndpoints.DELIVERY_STATUS,
+  },
 };
 
 export const favService = {
