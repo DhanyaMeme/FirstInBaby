@@ -70,7 +70,7 @@ export const UpdatePassword = () => {
 
     if (isValid) {
       await updateData(params, formState, message, setFormState);
-      await setregisterState(initialUpdatePasswordState);
+      setregisterState(initialUpdatePasswordState);
     }
 
     safeSetTimeout(setFormState, 3000, initialFormState);

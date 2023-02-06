@@ -2,17 +2,18 @@ import { InputBaseProps, InputType } from "../../../../../models/types";
 import { validationRules } from "../../../../../utils/Validation";
 
 export type IProfileFormState = {
-  customername: string;
-  phone: string;
-  dob: string;
+  fname: string;
+  lname: string;
+  uPhone: string;
+  email: string;
 };
 
 export type ProfileFormInput = InputBaseProps<IProfileFormState>;
 
 export const ProfileFormInputs: ProfileFormInput[] = [
   {
-    name: "customername",
-    label: "Customer Name",
+    name: "fname",
+    label: "First Name",
     type: InputType.text,
     validation: [
       { rule: validationRules.name },
@@ -20,7 +21,16 @@ export const ProfileFormInputs: ProfileFormInput[] = [
     ],
   },
   {
-    name: "phone",
+    name: "lname",
+    label: "Last Name",
+    type: InputType.text,
+    validation: [
+      { rule: validationRules.name },
+      { rule: validationRules.required },
+    ],
+  },
+  {
+    name: "uPhone",
     label: "Phone",
     type: InputType.number,
     validation: [
@@ -29,9 +39,12 @@ export const ProfileFormInputs: ProfileFormInput[] = [
     ],
   },
   {
-    name: "dob",
-    label: "Date of Birth",
-    type: InputType.date,
-    validation: [{ rule: validationRules.required }],
+    name: "email",
+    label: "Email",
+    type: InputType.email,
+    validation: [
+      { rule: validationRules.email },
+      { rule: validationRules.required },
+    ],
   },
 ];

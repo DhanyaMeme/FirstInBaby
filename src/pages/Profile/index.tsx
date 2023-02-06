@@ -38,7 +38,6 @@ const Profile = () => {
 
   return (
     <div className="Profile">
-      <ProfileBanner />
       <IF condition={currentModal === profileMenu.home}>
         {renderedProfilePage}
       </IF>

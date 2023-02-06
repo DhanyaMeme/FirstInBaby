@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { useAuth } from "../../../../../contexts/AuthContext";
 import useObjectState from "../../../../../hooks/useObjectState";
 import { initialFormState } from "../../../../../models/constants";
@@ -32,12 +33,14 @@ export const ProfileInformation = () => {
   const dispatch = useAppDispatch();
   const { data } = useAppSelector(customer);
 
-  const initialProfileFormState: IProfileFormState = {
-    customername: data?.fname ?? "",
-    phone: data?.uPhone ?? "",
-    // dob: data?.dob ?? "",
-    dob: "",
-  };
+  const initialProfileFormState: IProfileFormState = useMemo(() => {
+    return {
+      fname: data?.fname ?? "",
+      lname: data?.lname ?? "",
+      uPhone: data?.uPhone ?? "",
+      email: data?.email ?? "",
+    };
+  }, [data]);
 
   const {
     obj: profileState,
@@ -62,8 +65,8 @@ export const ProfileInformation = () => {
   const params = {
     ...profileService.updateCustomer,
     params: {
-      ...data,
       ...profileState,
+      userid: data?.userid,
     },
   };
 
@@ -81,12 +84,10 @@ export const ProfileInformation = () => {
         message,
         setFormState
       );
-
       if (response) {
         dispatch(fetchCustomerAsync(data?.email as string));
       }
     }
-
     safeSetTimeout(setFormState, 3000, initialFormState);
   };
 

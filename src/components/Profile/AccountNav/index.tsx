@@ -16,6 +16,7 @@ export const AccountNav: FC<IProps> = (props: IProps) => {
   const dispatch = useAppDispatch();
 
   const { logout } = useAuth();
+  
   const handleSelectChange = (name: string, option: string) => {
     dispatch(setProfilePage(option as profileMenu));
   };
