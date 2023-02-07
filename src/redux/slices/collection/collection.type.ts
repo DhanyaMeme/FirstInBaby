@@ -28,13 +28,14 @@ export interface IProductSpecification {
 }
 
 export interface IProductReview {
-  description: string;
-  imageUrl: string;
+  dislike: number;
+  like: number;
+  name: string;
   rating: number;
+  reviews: string;
   rid: number;
-  titile: string;
-  userid: number;
-  username: string;
+  start: number;
+  url: string;
 }
 
 export interface IProduct {
@@ -84,7 +85,7 @@ export interface IProduct {
   //   }
   // ];
   ratings: any[];
-  reviews: any[];
+  reviews: IProductReview[];
   shopbyproducts: string;
   sizechart: string;
   subcategory: string;

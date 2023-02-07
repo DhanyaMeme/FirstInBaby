@@ -1,34 +1,38 @@
 import React from "react";
+import { IProductReview } from "../../redux/slices/collection/collection.type";
+import { IF } from "../../ui_kits/IF";
+import { isEmpty } from "../../utils/script";
 import { StarRating } from "./StarRating";
 
-export const ReviewItem = () => {
+interface IProps {
+  review: IProductReview;
+}
+
+export const ReviewItem = (props: IProps) => {
+  const { review } = props;
+
+  const [name, date, year] = review.name?.split(",");
+  const [title, desc] = review.reviews?.split("desc:");
+
   return (
     <div className="Review">
       <div className="Review__Header">
-        <div className="Review__Icon">A</div>
-        <span className="Review__Author">Tanmayi shinde</span>
+        <div className="Review__Icon">{name.charAt(0).toUpperCase()}</div>
+        <span className="Review__Author">{name}</span>
         <div className="Review__br"></div>
-        <StarRating rating={2.403} />
-        <span className="Review__Timestamp">25/07/2022</span>
+        <StarRating rating={review.rating} />
+        <span className="Review__Timestamp">{`${date} ${year}`}</span>
       </div>
       <div className="Review__Content">
-        <div className="Review__Title">
-          Re live sneakers that save the planet !!!
-        </div>
+        <div className="Review__Title">{title}</div>
         <div className="Review__Body">
-          <p>
-            Good job Snuglz's .... Impressed with my first pair of eco friendly
-            shoes made from 8 recycled plastic bottles ...& it's made in India
-            ... Proud to wear this comfortable stylish product ...look forward
-            to more .
-          </p>
+          <p>{desc}</p>
         </div>
-        <div className="Review__Pics">
-          <img
-            alt="User review pic"
-            src="https://judgeme.imgix.net/neeman-s/1655118235__whatsappimage2022-06-13at43339pm__original.jpeg?auto=format&amp;w=160"
-          />
-        </div>
+        <IF condition={!isEmpty(review.url)}>
+          <div className="Review__Pics">
+            <img alt="User review pic" src={review.url} />
+          </div>
+        </IF>
       </div>
     </div>
   );

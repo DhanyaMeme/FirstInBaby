@@ -2,7 +2,7 @@ import { useEffect, useMemo } from "react";
 import { Description } from "../../components/ProductView/Description/Description";
 import { ImageViewer } from "../../components/ProductView/ImageViewer/ImageViewer";
 import { InfoViewer } from "../../components/ProductView/InfoViewer/InfoViewer";
-import Reviews from "../../components/Reviews/Reviews";
+import { Reviews } from "../../components/Reviews/Reviews";
 import usePath from "../../hooks/usePath";
 import { useProductCRUD } from "../../hooks/useProductCRUD";
 import { allProducts } from "../../redux/slices/collection/collection.selector";
@@ -45,6 +45,8 @@ export const ProductView = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, filteredData]);
 
+  // console.log("filteredData", filteredData);
+
   return (
     <>
       <main className="SelectedProduct">
@@ -64,7 +66,7 @@ export const ProductView = () => {
         <SectionWrapper isbordered>
           <Container>
             <SectionHeader heading="Customer Reviews" />
-            <Reviews />
+            <Reviews product={filteredData as IProduct} />
           </Container>
         </SectionWrapper>
       </main>

@@ -7,10 +7,28 @@ import { useAppDispatch } from "../../redux/store";
 import { openModal } from "../../redux/slices/modal/modal.slice";
 import { useAuth } from "../../contexts/AuthContext";
 import toastMessage from "../../utils/toastMessage";
+import {
+  IProduct,
+  IProductReview,
+} from "../../redux/slices/collection/collection.type";
+import { FC } from "react";
+import { caluclatePercentage, groupByValueLength } from "../../utils/generics";
 
-function Reviews() {
-  const dispatch = useAppDispatch();
+interface IProps {
+  product: IProduct;
+}
+
+export const Reviews: FC<IProps> = (props: IProps) => {
+  const { reviews } = props.product;
+
   const { user } = useAuth();
+  const dispatch = useAppDispatch();
+
+  const reviewsLength = reviews?.length || 0;
+  const averagRating =
+    reviews?.reduce((acc, review: IProductReview) => acc + review.rating, 0) /
+    reviewsLength;
+  const groupedList = groupByValueLength(reviews || [], "rating");
 
   const handleWriteReview = () => {
     if (user) {
@@ -28,15 +46,25 @@ function Reviews() {
     <div className="RatingSummary">
       <div className="RatingWdgt__Header">
         <div className="RatingWdgt__Summary">
-          <StarRating rating={4} />
-          <div>Based on 256 reviews</div>
+          <StarRating rating={averagRating || 0} />
+          <div>Based on {reviews.length} reviews</div>
         </div>
         <div className="RatingWdgt__ReviewsSummary">
-          <ReviewsOverview rating={5} count={232} percentage="91%" />
-          <ReviewsOverview rating={4} count={100} percentage="5%" />
-          <ReviewsOverview rating={3} count={21} percentage="9%" />
-          <ReviewsOverview rating={2} count={0} percentage="0%" />
-          <ReviewsOverview rating={1} count={0} percentage="0%" />
+          {Array.from(Array(5).keys()).map((item: number) => {
+            const itemIndex = item + 1;
+            const groupListKey = groupedList[itemIndex] || 0;
+            const percentage = caluclatePercentage(
+              groupListKey,
+              reviewsLength
+            ).toFixed();
+            return (
+              <ReviewsOverview
+                rating={itemIndex}
+                count={groupListKey}
+                percentage={`${percentage} %`}
+              />
+            );
+          })}
         </div>
         <div className="RatingWdgt__Action">
           <TextButton isSmall onClick={handleWriteReview}>
@@ -45,13 +73,10 @@ function Reviews() {
         </div>
       </div>
       <div>
-        <ReviewItem />
-        <ReviewItem />
-        <ReviewItem />
-        <ReviewItem />
+        {reviews.map((item: IProductReview) => (
+          <ReviewItem review={item} key={item.rid} />
+        ))}
       </div>
     </div>
   );
-}
-
-export default Reviews;
+};
