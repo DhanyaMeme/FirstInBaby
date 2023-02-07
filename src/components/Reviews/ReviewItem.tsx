@@ -1,4 +1,3 @@
-import React from "react";
 import { IProductReview } from "../../redux/slices/collection/collection.type";
 import { IF } from "../../ui_kits/IF";
 import { isEmpty } from "../../utils/script";

@@ -5,12 +5,15 @@ import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { IProduct } from "../collection/collection.type";
 import { IProductState, IProductVariants } from "./product.type";
 
-export const fetchSingleProductAsync = createAsyncThunk(
+export const fetchSingleProductAsync = createAsyncThunk<IProduct, number>(
   "product/getSingleProduct",
-  async (_arg, { rejectWithValue }) => {
+  async (mcid, { rejectWithValue }) => {
     try {
-      const response = (await fetchData(productService.Products)) as any;
-      return response.data;
+      const response = (await fetchData({
+        ...productService.singleProduct,
+        params: { pId: mcid },
+      })) as IProduct;
+      return response;
     } catch (err) {
       return rejectWithValue(err);
     }

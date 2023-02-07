@@ -34,6 +34,7 @@ export const productsEndpoints = Object.freeze({
   PROUCTS_By_CATEGORY: "/ophelia/products/allproducts",
   ADD_REVIEWS: "/ophelia/add/review",
   DELIVERY_STATUS: "/ophelia/verify/delivery",
+  SINGLE_PRODUCT: "/ophelia/products/product",
 });
 
 export const FavEndpoints = Object.freeze({

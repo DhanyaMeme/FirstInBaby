@@ -25,6 +25,7 @@ import { FormTextArea, FormTextInput } from "../../../ui_kits/Form";
 import { closeModal } from "../../../redux/slices/modal/modal.slice";
 import ModalWrapper from "../../../ui_kits/modal/modal-wrapper.component";
 import { FormElement } from "../../../ui_kits/Form/FormElements/FormElement";
+import { fetchSingleProductAsync } from "../../../redux/slices/product/product.reducer";
 
 export const ReviewModal = () => {
   const productId = usePath();
@@ -88,6 +89,7 @@ export const ReviewModal = () => {
         setFormState
       );
       if (response) {
+        dispatch(fetchSingleProductAsync(+productId));
         dispatch(closeModal());
       }
     }

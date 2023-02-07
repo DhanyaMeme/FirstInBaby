@@ -64,6 +64,10 @@ export const productService = {
     method: "GET",
     url: productsEndpoints.PROUCTS_By_CATEGORY,
   },
+  singleProduct: {
+    method: "GET",
+    url: productsEndpoints.SINGLE_PRODUCT,
+  },
   verifyDelivery: {
     method: "GET",
     url: productsEndpoints.DELIVERY_STATUS,
