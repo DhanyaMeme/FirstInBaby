@@ -8,6 +8,7 @@ import {
   SearchMobileIcon,
 } from "../../assets/icons/Search.icon";
 import { selectCartCount } from "../../redux/slices/cart/cart.selector";
+import { wishlistItems } from "../../redux/slices/wishlist/wishlist.selector";
 import { useAppSelector } from "../../redux/store";
 import { IF } from "../../ui_kits/IF";
 import { isEmpty } from "../../utils/script";
@@ -19,6 +20,7 @@ interface IProps {
 const IconsWrapper: FC<IProps> = (props: IProps) => {
   const { handleClick } = props;
   const cartItemLength = useAppSelector(selectCartCount);
+  const { data: favItems } = useAppSelector(wishlistItems);
 
   return (
     <div className="Header__FlexItem Header__FlexItem--fill">
@@ -27,6 +29,9 @@ const IconsWrapper: FC<IProps> = (props: IProps) => {
         className="Header__Icon Icon-Wrapper--clickable hidden-phone"
       >
         <FavouriteIcon />
+        <IF condition={!isEmpty(favItems)}>
+          <span className="Header__CartDot is-visible"></span>
+        </IF>
       </NavLink>
 
       <NavLink

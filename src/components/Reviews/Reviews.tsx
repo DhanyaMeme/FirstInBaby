@@ -5,16 +5,23 @@ import { TextButton } from "../../ui_kits/Buttons/TextButton/TextButton.componen
 import { ReviewsOverview } from "./ReviewsOverview/ReviewsOverview";
 import { useAppDispatch } from "../../redux/store";
 import { openModal } from "../../redux/slices/modal/modal.slice";
+import { useAuth } from "../../contexts/AuthContext";
+import toastMessage from "../../utils/toastMessage";
 
 function Reviews() {
   const dispatch = useAppDispatch();
+  const { user } = useAuth();
 
   const handleWriteReview = () => {
-    dispatch(
-      openModal({
-        modalType: "ReviewModal",
-      })
-    );
+    if (user) {
+      dispatch(
+        openModal({
+          modalType: "ReviewModal",
+        })
+      );
+    } else {
+      toastMessage("Login", "warning");
+    }
   };
 
   return (

@@ -1,3 +1,5 @@
+import StarRatings from "react-star-ratings";
+import { ImageListType } from "react-images-uploading";
 import { useAuth } from "../../../contexts/AuthContext";
 import useObjectState from "../../../hooks/useObjectState";
 import { initialFormState } from "../../../models/constants";
@@ -11,24 +13,24 @@ import {
   IFormState,
   InputChangeEvent,
   InputFocusEvent,
+  Messages,
 } from "../../../models/types";
-import {
-  Form,
-  FormAlert,
-  FormSubmit,
-  FormTextArea,
-  FormTextInput,
-} from "../../../ui_kits/Form";
 import { IF } from "../../../ui_kits/IF";
-import { isEmpty } from "../../../utils/script";
-import { FormElement } from "../../../ui_kits/Form/FormElements/FormElement";
-import StarRatings from "react-star-ratings";
-
-import { ImageListType } from "react-images-uploading";
-import ModalWrapper from "../../../ui_kits/modal/modal-wrapper.component";
+import usePath from "../../../hooks/usePath";
+import { useAppDispatch } from "../../../redux/store";
+import { FormError } from "../../AuthHandler/FormError";
 import { ImageUploader } from "./ImageUploader/ImageUploader";
+import { productService } from "../../../services/axiosServices";
+import { FormTextArea, FormTextInput } from "../../../ui_kits/Form";
+import { closeModal } from "../../../redux/slices/modal/modal.slice";
+import ModalWrapper from "../../../ui_kits/modal/modal-wrapper.component";
+import { FormElement } from "../../../ui_kits/Form/FormElements/FormElement";
 
 export const ReviewModal = () => {
+  const productId = usePath();
+  const dispatch = useAppDispatch();
+  const { handleFormValidate, handleOnFocusEvent, updateData } = useAuth();
+
   const {
     obj: reviewState,
     get: getReviewState,
@@ -41,7 +43,20 @@ export const ReviewModal = () => {
     setObj: setFormState,
   } = useObjectState(initialFormState as IFormState<IReviewFormState>);
 
-  const { handleFormValidate, handleOnFocusEvent } = useAuth();
+  const message: Messages = {
+    success: "Updated succesfully",
+    error: "Error While updating password, Try again!",
+  };
+
+  const date = new Date();
+  const options = {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  };
+  const currentDate = new Intl.DateTimeFormat("en-US", options as any).format(
+    date
+  );
 
   const handleOnsubmit = async () => {
     const isValid = handleFormValidate(
@@ -51,6 +66,30 @@ export const ReviewModal = () => {
     );
 
     if (isValid) {
+      const bodyFormData = new FormData();
+      bodyFormData.append("file", reviewState.imageUrl);
+
+      const reviewParams = {
+        ...productService.addReviews,
+        params: {
+          name: `${reviewState.name},${currentDate},${reviewState.email}`,
+          reviews: `${reviewState.reviewTitle},desc:${reviewState.reviewDescription}`,
+          rating: reviewState.rating,
+          "mcId.mcId": productId,
+        },
+        data: bodyFormData,
+        headers: { "Content-Type": "multipart/form-data" },
+      };
+
+      const response = await updateData(
+        reviewParams,
+        formState,
+        message,
+        setFormState
+      );
+      if (response) {
+        dispatch(closeModal());
+      }
     }
   };
 
@@ -61,21 +100,8 @@ export const ReviewModal = () => {
       actionName="Add Review"
       handleActionClick={handleOnsubmit}
     >
-      <Form>
-        <IF
-          condition={
-            !isEmpty(formState.helperText) || !isEmpty(formState.errors)
-          }
-        >
-          <FormAlert
-            isError={!formState.submitSuccess}
-            isSuccess={formState.submitSuccess}
-            classname="u-h6"
-          >
-            {formState.helperText ||
-              (formState.errors && Object.values(formState.errors)[0])}
-          </FormAlert>
-        </IF>
+      <div>
+        <FormError formState={formState} />
         {ReviewFormInputs.map(({ validation, ...item }: ReviewFormInput) => {
           return (
             <FormElement key={item.name}>
@@ -90,7 +116,7 @@ export const ReviewModal = () => {
                   }}
                 />
               </IF>
-              <IF condition={item.name === "description"}>
+              <IF condition={item.name === "reviewDescription"}>
                 <FormTextArea
                   label={item.label}
                   placeholder={item.placeholder}
@@ -103,7 +129,7 @@ export const ReviewModal = () => {
                   }}
                 />
               </IF>
-              <IF condition={item.type === "text"}>
+              <IF condition={item.type === "text" || item.type === "email"}>
                 <FormTextInput
                   {...item}
                   value={getReviewState(item.name)}
@@ -126,10 +152,7 @@ export const ReviewModal = () => {
             </FormElement>
           );
         })}
-        <FormSubmit isFull isLoading={formState.isButtonLoading}>
-          Submit
-        </FormSubmit>
-      </Form>
+      </div>
     </ModalWrapper>
   );
 };

@@ -64,13 +64,13 @@ export const productService = {
     method: "GET",
     url: productsEndpoints.PROUCTS_By_CATEGORY,
   },
-  addReviews: {
-    method: "POST",
-    url: productsEndpoints.ADD_REVIEWS,
-  },
   verifyDelivery: {
     method: "GET",
     url: productsEndpoints.DELIVERY_STATUS,
+  },
+  addReviews: {
+    method: "POST",
+    url: productsEndpoints.ADD_REVIEWS,
   },
 };
 

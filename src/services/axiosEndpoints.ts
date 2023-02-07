@@ -32,7 +32,7 @@ export const homeEndpoints = Object.freeze({
 export const productsEndpoints = Object.freeze({
   PRODUCTS: "/ophelia/products/home",
   PROUCTS_By_CATEGORY: "/ophelia/products/allproducts",
-  ADD_REVIEWS: "/render/add/reviews",
+  ADD_REVIEWS: "/ophelia/add/review",
   DELIVERY_STATUS: "/ophelia/verify/delivery",
 });
 
