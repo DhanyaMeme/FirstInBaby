@@ -12,7 +12,8 @@ interface IProps {
 }
 
 export const ImageViewer = (props: IProps) => {
-  const { productImages } = props.product;
+  
+  const { productImages } = props?.product;
 
   const [nav1, setNav1] = useState<any>(null);
   const [nav2, setNav2] = useState<any>(null);

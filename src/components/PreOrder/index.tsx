@@ -3,7 +3,7 @@ import { TextButton } from "../../ui_kits/Buttons/TextButton/TextButton.componen
 export const PreOrder = () => {
   return (
     <TextButton className="hidden-pocket hidden-lap" onClick={() => {}} isSmall>
-      PREORDER
+      BULK ORDER
     </TextButton>
   );
 };

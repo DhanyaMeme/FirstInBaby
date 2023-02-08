@@ -11,30 +11,19 @@ import { selectedProduct } from "../../redux/slices/product/product.selector";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { Accordian } from "../../ui_kits/Accordian/Accordian";
 import { Container } from "../../ui_kits/global/Container.styles";
+import { IF } from "../../ui_kits/IF";
 import { SectionHeader } from "../../ui_kits/Sections/SectionHeader/SectionHeader";
 import { SectionWrapper } from "../../ui_kits/Sections/SectionWrapper/SectionWrapper";
 import { Spinner } from "../../ui_kits/Spinner/Spinner.component";
+import { isEmpty } from "../../utils/script";
 import "./Style.scss";
 
 export const ProductView = () => {
   const productId = usePath();
   const dispatch = useAppDispatch();
 
-  // const { data: productList } = useAppSelector(allProducts);
   const { updateProductVariants } = useProductCRUD();
   const { data: filteredData, loading } = useAppSelector(selectedProduct);
-
-  // const filteredData = useMemo(() => {
-  //   let computedData: IProduct | undefined = {} as IProduct;
-
-  //   if (productList) {
-  //     computedData = findArrayItems(productList, {
-  //       mcId: +productId,
-  //     });
-  //   }
-
-  //   return computedData;
-  // }, [productList, productId]);
 
   useEffect(() => {
     dispatch(fetchSingleProductAsync(+productId));
@@ -59,8 +48,10 @@ export const ProductView = () => {
       <main className="SelectedProduct">
         <SectionWrapper isbordered>
           <div className="SelectedProduct__Container Clearfix">
-            <ImageViewer product={filteredData as IProduct} />
-            <InfoViewer product={filteredData as IProduct} />
+            <IF condition={!isEmpty(filteredData)}>
+              <ImageViewer product={filteredData as IProduct} />
+              <InfoViewer product={filteredData as IProduct} />
+            </IF>
           </div>
         </SectionWrapper>
         <SectionWrapper isbordered>
@@ -70,12 +61,14 @@ export const ProductView = () => {
             <Accordian title="SHIPPING RESTRICTIONS" child={<Description />} />
           </Container>
         </SectionWrapper>
-        <SectionWrapper isbordered>
-          <Container>
-            <SectionHeader heading="Customer Reviews" />
-            <Reviews product={filteredData as IProduct} />
-          </Container>
-        </SectionWrapper>
+        <IF condition={!isEmpty(filteredData)}>
+          <SectionWrapper isbordered>
+            <Container>
+              <SectionHeader heading="Customer Reviews" />
+              <Reviews product={filteredData as IProduct} />
+            </Container>
+          </SectionWrapper>
+        </IF>
       </main>
     </>
   );

@@ -13,6 +13,8 @@ import {
 } from "../../redux/slices/collection/collection.type";
 import { FC } from "react";
 import { caluclatePercentage, groupByValueLength } from "../../utils/generics";
+import { isEmpty } from "../../utils/script";
+import { IF } from "../../ui_kits/IF";
 
 interface IProps {
   product: IProduct;
@@ -49,23 +51,25 @@ export const Reviews: FC<IProps> = (props: IProps) => {
           <StarRating rating={averagRating || 0} />
           <div>Based on {reviews.length} reviews</div>
         </div>
-        <div className="RatingWdgt__ReviewsSummary">
-          {Array.from(Array(5).keys()).map((item: number) => {
-            const itemIndex = item + 1;
-            const groupListKey = groupedList[itemIndex] || 0;
-            const percentage = caluclatePercentage(
-              groupListKey,
-              reviewsLength
-            ).toFixed();
-            return (
-              <ReviewsOverview
-                rating={itemIndex}
-                count={groupListKey}
-                percentage={`${percentage} %`}
-              />
-            );
-          })}
-        </div>
+        <IF condition={!isEmpty(reviews)}>
+          <div className="RatingWdgt__ReviewsSummary">
+            {Array.from(Array(5).keys()).map((item: number) => {
+              const itemIndex = item + 1;
+              const groupListKey = groupedList[itemIndex] || 0;
+              const percentage = caluclatePercentage(
+                groupListKey,
+                reviewsLength
+              ).toFixed();
+              return (
+                <ReviewsOverview
+                  rating={itemIndex}
+                  count={groupListKey}
+                  percentage={`${percentage} %`}
+                />
+              );
+            })}
+          </div>
+        </IF>
         <div className="RatingWdgt__Action">
           <TextButton isSmall onClick={handleWriteReview}>
             WRITE REVIEW

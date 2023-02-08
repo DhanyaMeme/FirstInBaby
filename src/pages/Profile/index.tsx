@@ -5,7 +5,6 @@ import { AccountNav } from "../../components/Profile/AccountNav";
 import { useAppSelector } from "../../redux/store";
 import { ProfileHome } from "../../components/Profile/ProfileHome";
 import { profileMenu } from "../../redux/slices/profile/profile.type";
-import { ProfileBanner } from "../../components/Profile/ProfileBanner";
 import { MyProfile } from "../../components/Profile/MainContent/MyProfile";
 import { selectedProfilePage } from "../../redux/slices/profile/profile.selector";
 import { OrdersTable } from "../../components/Profile/MainContent/MyOrders/OrdersTable/OrdersTable";
@@ -22,7 +21,9 @@ const profileLookup: Record<profileMenu, any> = {
   "My Address": AddressContainer,
   "My Coupons": MyCoupons,
   "My Rewards": MyRewards,
-  "Help" : Help
+  [profileMenu.refer_earn]: MyRewards,
+  [profileMenu.subscribe]: MyRewards,
+  Help: Help,
 };
 
 export const profileOptions = objectKeys(profileLookup);

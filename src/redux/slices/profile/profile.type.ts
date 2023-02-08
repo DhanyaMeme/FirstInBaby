@@ -6,6 +6,8 @@ export enum profileMenu {
   "profile" = "My Profile",
   "orders" = "My Orders",
   "address" = "My Address",
+  "subscribe" = "subscribe",
+  "refer_earn" = "REFER AND EARN",
   "coupons" = "My Coupons",
   "rewards" = "My Rewards",
   "help" = "Help",

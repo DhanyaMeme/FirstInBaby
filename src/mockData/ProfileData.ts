@@ -11,30 +11,20 @@ export interface IProfileData {
 
 export const ProfileInfoNav: IProfileData[] = [
   {
-    title: "Recommendations",
-    url: profileMenu.home,
-    description: "Specially selected items you may also like",
+    title: "Account Settings",
+    url: profileMenu.profile,
+    description: "Manage profile and preferences.",
     img: Recommendations,
   },
   {
-    title: "Saved Items",
-    url: profileMenu.home,
-    description: "All your favorite pieces in one beautiful place.",
+    title: "My Orders",
+    url: profileMenu.orders,
+    description: "Manage and edit your orders.",
     img: SavedItem,
   },
 ];
 
 export const ProfileAccouctNav: IProfileData[] = [
-  {
-    title: "My Orders",
-    description: "Manage and edit your orders.",
-    url: profileMenu.orders,
-  },
-  {
-    title: "Account Settings",
-    description: "Manage profile and preferences.",
-    url: profileMenu.profile,
-  },
   {
     title: "Address Book",
     description: "Manage shipping & billing addresses.",
@@ -43,6 +33,16 @@ export const ProfileAccouctNav: IProfileData[] = [
   {
     title: "Wallet",
     description: "Manage your payment methods.",
+    url: profileMenu.profile,
+  },
+  {
+    title: "My Orders",
+    description: "Manage and edit your orders.",
+    url: profileMenu.orders,
+  },
+  {
+    title: "Account Settings",
+    description: "Manage profile and preferences.",
     url: profileMenu.profile,
   },
 ];
