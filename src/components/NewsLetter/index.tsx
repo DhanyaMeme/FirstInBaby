@@ -21,12 +21,12 @@ import {
   FormTextInput,
 } from "../../ui_kits/Form";
 import { IValidation, validationRules } from "../../utils/Validation";
-import "./Style.scss";
 import { Form__Elemen__Types } from "../../ui_kits/Form/FormElements/FormElement";
 import { subscriptionService } from "../../services/axiosServices";
 import { safeSetTimeout } from "../../utils/generics";
 import { isString } from "../../utils/textHandler";
 import { fetchData } from "../../services/axios";
+import "./Style.scss";
 
 export const Newsletter = () => {
   const [email, setEmail] = useState<string | null>(null);

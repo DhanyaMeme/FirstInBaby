@@ -1,6 +1,5 @@
 .Newsletter {
   text-align: center;
-  padding: 50px 0;
   background: #eaeaea;
 
   .Heading {
@@ -10,6 +9,7 @@
   &__Form {
     max-width: 400px;
     margin: auto;
+    padding: 30px;
 
     // .Form__Input,
     // .Newsletter__Submit {

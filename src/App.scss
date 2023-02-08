@@ -2044,6 +2044,16 @@ h6 {
 
 // Address Block
 
+.Payment_Card {
+  background-color: #fff;
+  box-shadow: 0 0 30px 2px #e0e0e0;
+  position: relative;
+  padding: 30px;
+  @media screen and (max-width: 767px) {
+    padding: 15px;
+  }
+}
+
 .Address_Block {
   background-color: #fff;
   margin-bottom: 30px;

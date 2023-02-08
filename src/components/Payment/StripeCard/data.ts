@@ -2,7 +2,7 @@ export const CARD_OPTIONS = {
   iconStyle: "solid",
   style: {
     base: {
-      iconColor: "#55c57a",
+      iconColor: "#ef5e9a",
       color: "#939393",
       fontWeight: 500,
       padding: "20px",
@@ -13,7 +13,7 @@ export const CARD_OPTIONS = {
         color: "#fce883",
       },
       "::placeholder": {
-        color: "#55c57a",
+        color: "#ef5e9a",
       },
     },
     invalid: {

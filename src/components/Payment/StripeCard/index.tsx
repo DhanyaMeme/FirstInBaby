@@ -113,7 +113,7 @@ export const StripeCard: FC<IProps> = (props: IProps) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} classname="Payment_Card">
       <FormError formState={formState} />
       <FormElement>
         <FormTextInput
