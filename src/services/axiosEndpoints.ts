@@ -21,6 +21,9 @@ export const profileEndpoints = Object.freeze({
   PROFILE: "/ophelia/useraddress",
   UPDATE_PROFILE: "/ophelia/updateuser",
   HELP: `/ophelia/help`,
+  SUBCRIPTION: `/ophelia/user/subcription`,
+  PLANS: `/ophelia/user/plans`,
+  UPDATE_SUBCRIPTION: `updateSubscription`,
 });
 
 export const homeEndpoints = Object.freeze({

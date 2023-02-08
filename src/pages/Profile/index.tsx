@@ -13,6 +13,7 @@ import { MyCoupons } from "../../components/Profile/MainContent/MyCoupons";
 import { MyRewards } from "../../components/Profile/MainContent/MyRewards";
 import { AddressContainer } from "../../components/Address/AddressContainer";
 import { Help } from "../../components/Profile/MainContent/Help";
+import { Subscribe } from "../../components/Profile/MainContent/Subscribe";
 
 const profileLookup: Record<profileMenu, any> = {
   "Profile Home": ProfileHome,
@@ -22,7 +23,7 @@ const profileLookup: Record<profileMenu, any> = {
   "My Coupons": MyCoupons,
   "My Rewards": MyRewards,
   [profileMenu.refer_earn]: MyRewards,
-  [profileMenu.subscribe]: MyRewards,
+  [profileMenu.subscribe]: Subscribe,
   Help: Help,
 };
 

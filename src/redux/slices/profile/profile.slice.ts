@@ -6,6 +6,7 @@ import { IProfileState, profileMenu } from "./profile.type";
 export const initialState: IProfileState = {
   profilePage: profileMenu.home,
   customer: initialAsyncData,
+  plans: initialAsyncData,
 };
 
 export const profileSlice = createSlice({

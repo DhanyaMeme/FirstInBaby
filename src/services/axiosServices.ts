@@ -106,6 +106,18 @@ export const profileService = {
     method: "POST",
     url: profileEndpoints.HELP,
   },
+  subscription: {
+    method: "GET",
+    url: profileEndpoints.SUBCRIPTION,
+  },
+  UpdateSubscription: {
+    method: "POST",
+    url: profileEndpoints.UPDATE_SUBCRIPTION,
+  },
+  plans: {
+    method: "POST",
+    url: profileEndpoints.PLANS,
+  },
 };
 
 export const paymentService = {

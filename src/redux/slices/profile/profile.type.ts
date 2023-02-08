@@ -27,7 +27,16 @@ export interface ICustomer {
   enabled: boolean;
 }
 
+export interface IPlan {
+  planID: number;
+  planName: string;
+  planAmount: number;
+  bonusPercentage: number;
+  imageUrl: string;
+}
+
 export interface IProfileState {
   profilePage: profileMenu;
   customer: AsyncData<ICustomer>;
+  plans: AsyncData<IPlan[]>;
 }

@@ -12,3 +12,8 @@ export const customer = createSelector(
   [profileSelf],
   (profileState) => profileState.customer
 );
+
+export const plans = createSelector(
+  [profileSelf],
+  (profileState) => profileState.plans
+);
