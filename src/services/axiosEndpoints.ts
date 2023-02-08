@@ -47,7 +47,7 @@ export const FavEndpoints = Object.freeze({
 });
 
 export const paymentEndpoints = Object.freeze({
-  STRIPE: "/stripe/pay",
+  STRIPE: "/ophelia/stripe/pay",
   TRANSACTION: "/add/transaction",
   SUBSCRIPTION_PLANS: "/get/all/subcription",
 });
