@@ -7,6 +7,7 @@ export const initialState: IProfileState = {
   profilePage: profileMenu.home,
   customer: initialAsyncData,
   plans: initialAsyncData,
+  orders: initialAsyncData,
 };
 
 export const profileSlice = createSlice({

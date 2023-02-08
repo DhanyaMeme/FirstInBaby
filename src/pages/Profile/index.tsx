@@ -7,24 +7,24 @@ import { ProfileHome } from "../../components/Profile/ProfileHome";
 import { profileMenu } from "../../redux/slices/profile/profile.type";
 import { MyProfile } from "../../components/Profile/MainContent/MyProfile";
 import { selectedProfilePage } from "../../redux/slices/profile/profile.selector";
-import { OrdersTable } from "../../components/Profile/MainContent/MyOrders/OrdersTable/OrdersTable";
-import "./Style.scss";
 import { MyCoupons } from "../../components/Profile/MainContent/MyCoupons";
 import { MyRewards } from "../../components/Profile/MainContent/MyRewards";
 import { AddressContainer } from "../../components/Address/AddressContainer";
 import { Help } from "../../components/Profile/MainContent/Help";
 import { Subscribe } from "../../components/Profile/MainContent/Subscribe";
+import { MyOrders } from "../../components/Profile/MainContent/MyOrders";
+import "./Style.scss";
 
 const profileLookup: Record<profileMenu, any> = {
-  "Profile Home": ProfileHome,
-  "My Profile": MyProfile,
-  "My Orders": OrdersTable,
-  "My Address": AddressContainer,
-  "My Coupons": MyCoupons,
-  "My Rewards": MyRewards,
+  [profileMenu.home]: ProfileHome,
+  [profileMenu.profile]: MyProfile,
+  [profileMenu.orders]: MyOrders,
+  [profileMenu.address]: AddressContainer,
+  [profileMenu.coupons]: MyCoupons,
+  [profileMenu.rewards]: MyRewards,
   [profileMenu.refer_earn]: MyRewards,
   [profileMenu.subscribe]: Subscribe,
-  Help: Help,
+  [profileMenu.help]: Help,
 };
 
 export const profileOptions = objectKeys(profileLookup);

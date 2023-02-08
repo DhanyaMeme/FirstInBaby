@@ -1,7 +1,13 @@
 import { fetchData } from "../../../services/axios";
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { profileService } from "../../../services/axiosServices";
-import { ICustomer, IPlan, IProfileState, profileMenu } from "./profile.type";
+import {
+  ICustomer,
+  IOrder,
+  IPlan,
+  IProfileState,
+  profileMenu,
+} from "./profile.type";
 
 export const fetchCustomerAsync = createAsyncThunk<ICustomer, string>(
   "profile/getCustomer",
@@ -23,6 +29,37 @@ export const fetchPlansAsync = createAsyncThunk<IPlan[]>(
   async (_arg, { rejectWithValue }) => {
     try {
       const response = (await fetchData(profileService.plans)) as IPlan[];
+      return response;
+    } catch (err) {
+      return rejectWithValue(err);
+    }
+  }
+);
+
+export const fetchOrderAsync = createAsyncThunk<IOrder[], string>(
+  "profile/getOrder",
+  async (email, { rejectWithValue }) => {
+    try {
+      const response = (await fetchData({
+        ...profileService.getOrder,
+        params: { cusId: email },
+      })) as IOrder[];
+      return response;
+    } catch (err) {
+      return rejectWithValue(err);
+    }
+  }
+);
+
+export const placeOrderAsync = createAsyncThunk<any, any>(
+  "profile/postOrder",
+  async (data, { rejectWithValue, dispatch }) => {
+    try {
+      const response = (await fetchData({
+        ...profileService.placeOrder,
+        params: data,
+      })) as IOrder[];
+      await dispatch(fetchOrderAsync(data.email));
       return response;
     } catch (err) {
       return rejectWithValue(err);
@@ -66,6 +103,20 @@ export const extraProfileReducer = {
   },
   [fetchPlansAsync.rejected.type]: (state: IProfileState) => {
     state.plans.loading = false;
-    state.plans.error = "Error while fetching customer data";
+    state.plans.error = "Error while fetching plans data";
+  },
+  [fetchOrderAsync.pending.type]: (state: IProfileState) => {
+    state.orders.loading = true;
+  },
+  [fetchOrderAsync.fulfilled.type]: (
+    state: IProfileState,
+    { payload }: PayloadAction<IOrder[]>
+  ) => {
+    state.orders.loading = false;
+    state.orders.data = payload;
+  },
+  [fetchOrderAsync.rejected.type]: (state: IProfileState) => {
+    state.orders.loading = false;
+    state.orders.error = "Error while fetching orders data";
   },
 };

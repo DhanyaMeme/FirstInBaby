@@ -118,6 +118,18 @@ export const profileService = {
     method: "POST",
     url: profileEndpoints.PLANS,
   },
+  getOrder: {
+    method: "GET",
+    url: profileEndpoints.GET_ORDER,
+  },
+  placeOrder: {
+    method: "POST",
+    url: profileEndpoints.PLACE_ORDER,
+  },
+  updateOrder: {
+    method: "POST",
+    url: profileEndpoints.UPDATE_ORDER,
+  },
 };
 
 export const paymentService = {

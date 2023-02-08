@@ -17,3 +17,8 @@ export const plans = createSelector(
   [profileSelf],
   (profileState) => profileState.plans
 );
+
+export const orders = createSelector(
+  [profileSelf],
+  (profileState) => profileState.orders
+);

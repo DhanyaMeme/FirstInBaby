@@ -11,10 +11,9 @@ import {
 } from "../../../ui_kits/Form";
 import { FormError } from "../../AuthHandler/FormError";
 import { fetchData } from "../../../services/axios";
-import { ICustomer } from "../../../redux/slices/profile/profile.type";
 import { CARD_OPTIONS } from "./data";
-import { Form__Elemen__Types } from "../../../ui_kits/Form/FormElements/FormElement";
 import { paymentService } from "../../../services/axiosServices";
+import { useNavigate } from "react-router-dom";
 
 export interface IPaymentProps {
   name: string;
@@ -31,34 +30,14 @@ interface IProps {
 export const StripeCard: FC<IProps> = (props: IProps) => {
   const { name, amount, email, phoneNo, onSuccess } = props.PaymentProps;
 
+  const navigate = useNavigate();
+
   const stripe = useStripe();
   const elements = useElements() as any;
 
   const { obj: formState, setObj: setFormState } = useObjectState(
     initialFormState as IFormState<string>
   );
-
-  // const updateTransaction = async (id: string) => {
-  //   const data = {
-  //     ...selectedPricing,
-  //     customerid: email,
-  //     paymentmode: "card",
-  //     paymentstatus: "success",
-  //     status: "active ",
-  //     tnxid: id,
-  //   };
-
-  //   try {
-  //     await fetchData({
-  //       ...paymentService.updateTransaction,
-  //       params: data,
-  //     });
-
-  //     window.location.reload();
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
@@ -96,8 +75,6 @@ export const StripeCard: FC<IProps> = (props: IProps) => {
         });
       });
 
-    console.log("client_secret", client_secret);
-
     // Confirm the payment on client
 
     if (client_secret) {
@@ -125,7 +102,8 @@ export const StripeCard: FC<IProps> = (props: IProps) => {
           submitSuccess: true,
           isButtonLoading: false,
         });
-        // updateTransaction(paymentResult.paymentIntent.id);
+        onSuccess(paymentResult.paymentIntent.id);
+        navigate("/orderconfirm");
       }
     }
   };
