@@ -9,18 +9,12 @@ import { defaultAddressId } from "../../redux/slices/address/address.selector";
 
 interface IProps {
   addressData: IAddress;
-  // handleRemoveAddress: (id: string) => void;
   toggleDefaultAddress: (id: number) => void;
   handleUpdateNewAddress: (id: number) => void;
 }
 
 export const AddressBlock = (props: IProps) => {
-  const {
-    addressData,
-    toggleDefaultAddress,
-    // handleRemoveAddress,
-    handleUpdateNewAddress,
-  } = props;
+  const { addressData, toggleDefaultAddress, handleUpdateNewAddress } = props;
 
   const { id, name, phone, state, city, street, flatNo, pin, landMark } =
     addressData;
@@ -28,11 +22,10 @@ export const AddressBlock = (props: IProps) => {
   const { removeAddressHandler } = useProductCRUD();
 
   const defaultId = useAppSelector(defaultAddressId);
-  const isDefault = id === defaultId; 
+  const isDefault = id === defaultId;
 
   const handleDeleteAddress = (e: OnclickEvent) => {
     e.preventDefault();
-    // handleRemoveAddress(id);
     removeAddressHandler(id);
   };
 

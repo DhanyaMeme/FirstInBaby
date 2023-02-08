@@ -23,7 +23,7 @@ const Address = () => {
 
   const handleClick = (e: OnclickEvent) => {
     if (defaultId) {
-      navigate("/payment");
+      navigate(`/payment/${defaultId}`);
     } else {
       toastMessage("Select Address", "warning");
     }

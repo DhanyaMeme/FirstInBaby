@@ -21,7 +21,7 @@ const AuthVerifyRoutes = {
       element: <Profile />,
     },
     {
-      path: "payment",
+      path: "payment/:addressId",
       element: <Payment />,
     },
   ],
