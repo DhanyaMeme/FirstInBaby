@@ -1,16 +1,28 @@
 import CartFooter from "../../components/Cart/CartFooter/CartFooter";
 import CartItemList from "../../components/Cart/CartItemList/CartItemList";
-import EmptyCart from "../../components/EmptyCart/EmptyCart";
 import { selectCartItems } from "../../redux/slices/cart/cart.selector";
 import { useAppSelector } from "../../redux/store";
 import { Container } from "../../ui_kits/global/Container.styles";
-import { PageHeader } from "../../ui_kits/global/PageContent.styles";
+import {
+  PageContent,
+  PageHeader,
+} from "../../ui_kits/global/PageContent.styles";
+import EmptyCart from "../../assets/images/EmptyCart.png";
+import { EmptyContainer } from "../../components/EmptyContainer";
 
 const Cart = () => {
   const cartList = useAppSelector(selectCartItems);
 
   if (!cartList.length) {
-    return <EmptyCart />;
+    return (
+      <PageContent>
+        <EmptyContainer
+          url={EmptyCart}
+          head=" Your shopping bag is empty!"
+          subhead="Looks like you haven’t added anything to your bag. Let’s change that."
+        />
+      </PageContent>
+    );
   }
 
   return (

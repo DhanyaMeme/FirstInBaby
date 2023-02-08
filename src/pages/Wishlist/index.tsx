@@ -7,6 +7,9 @@ import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { getFavAsync } from "../../redux/slices/wishlist/wishlist.reducer";
 import { wishlistItems } from "../../redux/slices/wishlist/wishlist.selector";
 import { Spinner } from "../../ui_kits/Spinner/Spinner.component";
+import EmtyWishList from "../../assets/images/EmtyWishList.png";
+import { EmptyContainer } from "../../components/EmptyContainer";
+import { PageContent } from "../../ui_kits/global/PageContent.styles";
 
 export const Wishlist = () => {
   const { user } = useAuth();
@@ -22,6 +25,18 @@ export const Wishlist = () => {
 
   if (loading) {
     return <Spinner />;
+  }
+
+  if (!loading && !products?.length) {
+    return (
+      <PageContent>
+        <EmptyContainer
+          url={EmtyWishList}
+          head="YOUR WISHLIST IS EMPTY"
+          subhead=" You haven't picked any favourites yet!. but it doesn’t have to be"
+        />
+      </PageContent>
+    );
   }
 
   return (

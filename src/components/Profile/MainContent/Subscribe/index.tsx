@@ -25,7 +25,7 @@ export const Subscribe = () => {
   }, [dispatch, plansInfo]);
 
   return (
-    <PageContent isNarrow>
+    <PageContent>
       <Panel title="Subscribe to get more offers">
         <div className="Grid">
           {plansInfo?.map((plan: IPlan) => (
