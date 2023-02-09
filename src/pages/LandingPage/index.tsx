@@ -20,8 +20,6 @@ export const LandingPage = () => {
   const { data: hotDeals } = useAppSelector(hotProducts);
   const { data: featureProductsData } = useAppSelector(featureProducts);
 
-  console.log("featureProductsData", featureProductsData);
-
   return (
     <main className="maincontent">
       <Banner />

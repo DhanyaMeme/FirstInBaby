@@ -8,7 +8,7 @@ import { ICollectionState } from "./collection.type";
 
 export const initialState: ICollectionState = {
   allProducts: initialAsyncData,
-
+  productsByCategory: initialAsyncData,
 };
 
 export const collectionSlice = createSlice({
@@ -17,4 +17,3 @@ export const collectionSlice = createSlice({
   reducers: collectionReducer,
   extraReducers: extracollectionReducer,
 });
-

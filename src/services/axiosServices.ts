@@ -68,7 +68,7 @@ export const productService = {
     method: "GET",
     url: productsEndpoints.ALL_PRODUCTS,
   },
-  productsByCategory: {
+  getProductsByCategory: {
     method: "GET",
     url: productsEndpoints.PROUCTS_By_CATEGORY,
   },

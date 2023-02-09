@@ -65,26 +65,15 @@ export interface IProduct {
   productcolor: string;
   productname: string;
   quantity: string;
-  // ratings: [
-  //   {
-  //     numbers: number;
-  //     rating: number;
-  //     ratingid: number;
-  //   }
-  // ];
-  // reviews: [
-  //   {
-  //     dislike: number;
-  //     like: number;
-  //     name: string;
-  //     rating: number;
-  //     reviews: string;
-  //     rid: number;
-  //     start: number;
-  //     url: string;
-  //   }
-  // ];
-  ratings: any[];
+  ratings:
+    | [
+        {
+          numbers: number;
+          rating: number;
+          ratingid: number;
+        }
+      ]
+    | any[];
   reviews: IProductReview[];
   shopbyproducts: string;
   sizechart: string;
@@ -95,4 +84,5 @@ export interface IProduct {
 
 export interface ICollectionState {
   allProducts: AsyncData<IProduct[]>;
+  productsByCategory: AsyncData<Record<string, IProduct[]>>;
 }

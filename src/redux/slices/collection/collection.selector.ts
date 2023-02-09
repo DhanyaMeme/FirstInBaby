@@ -7,3 +7,8 @@ export const allProducts = createSelector(
   [productSelf],
   (product) => product.allProducts
 );
+
+export const productsByCategory = createSelector(
+  [productSelf],
+  (product) => product.productsByCategory
+);
