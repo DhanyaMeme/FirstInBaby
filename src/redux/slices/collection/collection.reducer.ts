@@ -7,7 +7,7 @@ export const fetchAllProductsAsync = createAsyncThunk(
   "collection/getAllProducts",
   async (_arg, { rejectWithValue }) => {
     try {
-      const response = await fetchData(productService.Products);
+      const response = await fetchData(productService.getAllProducts);
       return response;
     } catch (err) {
       return rejectWithValue(err);

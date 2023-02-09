@@ -7,6 +7,7 @@ export const initialState: IHomeState = {
   collection: initialAsyncData,
   hotProducts: initialAsyncData,
   productCollection: initialAsyncData,
+  featureProducts: initialAsyncData,
 };
 
 export const homeSlice = createSlice({

@@ -17,3 +17,8 @@ export const hotProducts = createSelector(
   navSelf,
   (state) => state && state.hotProducts
 );
+
+export const featureProducts = createSelector(
+  navSelf,
+  (state) => state && state.featureProducts
+);

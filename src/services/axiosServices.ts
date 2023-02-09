@@ -57,12 +57,16 @@ export const homeService = {
     method: "GET",
     url: homeEndpoints.HOT,
   },
+  getFeatureProducts: {
+    method: "GET",
+    url: homeEndpoints.FEATURE,
+  },
 };
 
 export const productService = {
-  Products: {
+  getAllProducts: {
     method: "GET",
-    url: productsEndpoints.PRODUCTS,
+    url: productsEndpoints.ALL_PRODUCTS,
   },
   productsByCategory: {
     method: "GET",

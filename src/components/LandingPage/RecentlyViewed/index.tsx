@@ -60,7 +60,7 @@ export const RecentlyViewed: FC<IProps> = (props: IProps) => {
   };
 
   return (
-    <Collections heading="Recently Viewed">
+    <Collections heading="Feature Products">
       <IF condition={sliderData.length > 0}>
         <div className="ProductList__Slider">
           <Slider {...settings}>

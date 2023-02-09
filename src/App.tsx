@@ -21,6 +21,7 @@ import { fetchCustomerAsync } from "./redux/slices/profile/profile.reducer";
 import { fetchAddressAsync } from "./redux/slices/address/address.reducer";
 import {
   fetchCollectionAsync,
+  fetchFeaturePdtsAsync,
   fetchHotAsync,
 } from "./redux/slices/home/home.reducer";
 
@@ -36,6 +37,8 @@ function App() {
     dispatch(fetchAllProductsAsync());
   }, [dispatch]);
 
+  // Home Screen
+
   useEffect(() => {
     dispatch(fetchCollectionAsync());
   }, [dispatch]);
@@ -43,6 +46,12 @@ function App() {
   useEffect(() => {
     dispatch(fetchHotAsync());
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchFeaturePdtsAsync());
+  }, [dispatch]);
+
+  // Profile
 
   useEffect(() => {
     if (user) {

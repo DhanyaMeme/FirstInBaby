@@ -34,10 +34,11 @@ export const homeEndpoints = Object.freeze({
   HOMESCREEN_PRODUCTS: "/render/homescreen/collection",
   HOMESCREEN: "/render/homescreen",
   HOT: "/ophelia/get/hot",
+  FEATURE: "/ophelia/products/featured",
 });
 
 export const productsEndpoints = Object.freeze({
-  PRODUCTS: "/ophelia/products/home",
+  ALL_PRODUCTS: "/ophelia/products/home",
   PROUCTS_By_CATEGORY: "/ophelia/products/allproducts",
   ADD_REVIEWS: "/ophelia/add/review",
   DELIVERY_STATUS: "/ophelia/verify/delivery",

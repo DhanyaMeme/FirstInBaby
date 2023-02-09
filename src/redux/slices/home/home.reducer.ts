@@ -33,6 +33,19 @@ export const fetchHotAsync = createAsyncThunk<Array<IProduct>>(
   }
 );
 
+export const fetchFeaturePdtsAsync = createAsyncThunk<Array<IProduct>>(
+  "home/getFeature",
+  async (type, { rejectWithValue }) => {
+    try {
+      const response = (await fetchData(
+        homeService.getFeatureProducts
+      )) as IProduct[];
+      return response;
+    } catch (err) {
+      return rejectWithValue(err);
+    }
+  }
+);
 
 export const homeReducer = {};
 
@@ -64,5 +77,19 @@ export const extraHomeReducer = {
   [fetchHotAsync.rejected.type]: (state: IHomeState) => {
     state.hotProducts.loading = false;
     state.hotProducts.error = "Error while fetching collection data";
+  },
+  [fetchFeaturePdtsAsync.pending.type]: (state: IHomeState) => {
+    state.featureProducts.loading = true;
+  },
+  [fetchFeaturePdtsAsync.fulfilled.type]: (
+    state: IHomeState,
+    { payload }: PayloadAction<Array<IProduct>>
+  ) => {
+    state.featureProducts.loading = false;
+    state.featureProducts.data = payload;
+  },
+  [fetchFeaturePdtsAsync.rejected.type]: (state: IHomeState) => {
+    state.featureProducts.loading = false;
+    state.featureProducts.error = "Error while fetching feature data";
   },
 };

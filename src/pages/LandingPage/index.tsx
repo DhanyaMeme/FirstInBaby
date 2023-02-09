@@ -7,12 +7,20 @@ import { InstaFeed } from "../../components/LandingPage/InstaFeeds";
 import { RecentlyViewed } from "../../components/LandingPage/RecentlyViewed";
 import { SaleItem } from "../../components/LandingPage/SaleItem";
 import { collectionsData } from "../../mockData/collectionData";
-import { collection, hotProducts } from "../../redux/slices/home/home.selector";
+import { IProduct } from "../../redux/slices/collection/collection.type";
+import {
+  collection,
+  featureProducts,
+  hotProducts,
+} from "../../redux/slices/home/home.selector";
 import { useAppSelector } from "../../redux/store";
 
 export const LandingPage = () => {
   const collections = useAppSelector(collection);
   const { data: hotDeals } = useAppSelector(hotProducts);
+  const { data: featureProductsData } = useAppSelector(featureProducts);
+
+  console.log("featureProductsData", featureProductsData);
 
   return (
     <main className="maincontent">
@@ -22,7 +30,7 @@ export const LandingPage = () => {
       <CategoriesView collectionsData={collections.data} />
       <ExploreView />
       <SaleItem saleData={hotDeals?.slice(0, 6)} />
-      <RecentlyViewed sliderData={collectionsData} />
+      <RecentlyViewed sliderData={(featureProductsData as IProduct[]) || []} />
       <InstaFeed instaData={collectionsData} />
     </main>
   );
