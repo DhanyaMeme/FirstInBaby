@@ -9,24 +9,26 @@ import { SaleItem } from "../../components/LandingPage/SaleItem";
 import { collectionsData } from "../../mockData/collectionData";
 import { IProduct } from "../../redux/slices/collection/collection.type";
 import {
-  collection,
   featureProducts,
   hotProducts,
+  shopByCollection,
+  shopByProducts,
 } from "../../redux/slices/home/home.selector";
 import { useAppSelector } from "../../redux/store";
 
 export const LandingPage = () => {
-  const collections = useAppSelector(collection);
   const { data: hotDeals } = useAppSelector(hotProducts);
   const { data: featureProductsData } = useAppSelector(featureProducts);
+  const { data: shopByCollectionData } = useAppSelector(shopByCollection);
+  const { data: shopByProductsData } = useAppSelector(shopByProducts);
 
   return (
     <main className="maincontent">
       <Banner />
       <AnnouncementBar />
       <HotDeals />
-      <CategoriesView collectionsData={collections.data} />
-      <ExploreView />
+      <CategoriesView collectionsData={shopByCollectionData} />
+      <ExploreView shopByProductsData={shopByProductsData} />
       <SaleItem saleData={hotDeals?.slice(0, 6)} />
       <RecentlyViewed sliderData={(featureProductsData as IProduct[]) || []} />
       <InstaFeed instaData={collectionsData} />

@@ -3,14 +3,14 @@ import { RootState } from "../../store";
 
 export const navSelf = (state: RootState) => state.home;
 
-export const collection = createSelector(
+export const shopByCollection = createSelector(
   navSelf,
-  (state) => state && state.collection
+  (state) => state && state.shopByCollection
 );
 
-export const productCollection = createSelector(
+export const shopByProducts = createSelector(
   navSelf,
-  (state) => state && state.productCollection
+  (state) => state && state.shopByProducts
 );
 
 export const hotProducts = createSelector(

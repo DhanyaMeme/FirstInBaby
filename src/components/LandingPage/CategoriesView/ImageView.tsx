@@ -15,7 +15,7 @@ export const ImageView: FC<IProps> = (props: IProps) => {
     <div className="CollectionItem__Wrapper">
       <div className="CollectionItem__ImageWrapper">
         <ImageWrapper
-          src={collectionItem.murl}
+          src={collectionItem.url}
           alt={collectionItem.name}
           classes="CollectionItem__Image  Image--contrast Image--zoomOut"
         />

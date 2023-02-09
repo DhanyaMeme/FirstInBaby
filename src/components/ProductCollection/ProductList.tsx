@@ -1,4 +1,4 @@
-import { FC, useMemo, useState } from "react";
+import { FC, useEffect, useMemo, useState } from "react";
 import useScrollPosition from "../../hooks/useScrollPosition";
 import { ProductView } from "../../models/constants";
 import { IProduct } from "../../redux/slices/collection/collection.type";
@@ -19,6 +19,10 @@ export const ProductsList: FC<IProps> = (props: IProps) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalItems, setTotalItems] = useState<number>(0);
   const ITEMS_PER_PAGE = 8;
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [ProductData]);
 
   const filteredData = useMemo(() => {
     let computedData: IProduct[] = ProductData || [];
@@ -54,7 +58,7 @@ export const ProductsList: FC<IProps> = (props: IProps) => {
         currentPage={currentPage}
         totalCount={totalItems}
         pageSize={ITEMS_PER_PAGE}
-        onPageChange={(page: any) => {
+        onPageChange={(page: number) => {
           setCurrentPage(page);
           scrollTop();
         }}

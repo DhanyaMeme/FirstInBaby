@@ -4,10 +4,10 @@ import { extraHomeReducer, homeReducer } from "./home.reducer";
 import { IHomeState } from "./home.type";
 
 export const initialState: IHomeState = {
-  collection: initialAsyncData,
+  shopByCollection: initialAsyncData,
   hotProducts: initialAsyncData,
-  productCollection: initialAsyncData,
   featureProducts: initialAsyncData,
+  shopByProducts: initialAsyncData,
 };
 
 export const homeSlice = createSlice({

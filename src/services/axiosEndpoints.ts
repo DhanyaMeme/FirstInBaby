@@ -30,7 +30,8 @@ export const profileEndpoints = Object.freeze({
 });
 
 export const homeEndpoints = Object.freeze({
-  COLLECTION: "/ophelia/get/collectionhome",
+  SHOP_BY_COLLECTION: "/ophelia/get/collectionhome",
+  SHOP_BY_PRODUCTS: "/ophelia/get/shopbyproducts",
   HOMESCREEN_PRODUCTS: "/render/homescreen/collection",
   HOMESCREEN: "/render/homescreen",
   HOT: "/ophelia/get/hot",

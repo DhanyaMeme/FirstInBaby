@@ -20,9 +20,10 @@ import { useAuth } from "./contexts/AuthContext";
 import { fetchCustomerAsync } from "./redux/slices/profile/profile.reducer";
 import { fetchAddressAsync } from "./redux/slices/address/address.reducer";
 import {
-  fetchCollectionAsync,
+  fetchShopByCollectionAsync,
   fetchFeaturePdtsAsync,
   fetchHotAsync,
+  fetchShopByPdtsAsync,
 } from "./redux/slices/home/home.reducer";
 
 function App() {
@@ -40,7 +41,11 @@ function App() {
   // Home Screen
 
   useEffect(() => {
-    dispatch(fetchCollectionAsync());
+    dispatch(fetchShopByCollectionAsync());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchShopByPdtsAsync());
   }, [dispatch]);
 
   useEffect(() => {

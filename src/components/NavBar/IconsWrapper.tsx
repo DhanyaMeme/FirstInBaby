@@ -7,7 +7,10 @@ import {
   SearchDesktopIcon,
   SearchMobileIcon,
 } from "../../assets/icons/Search.icon";
-import { selectCartCount } from "../../redux/slices/cart/cart.selector";
+import {
+  selectCartCount,
+  selectCartItems,
+} from "../../redux/slices/cart/cart.selector";
 import { wishlistItems } from "../../redux/slices/wishlist/wishlist.selector";
 import { useAppSelector } from "../../redux/store";
 import { IF } from "../../ui_kits/IF";
@@ -19,7 +22,7 @@ interface IProps {
 
 const IconsWrapper: FC<IProps> = (props: IProps) => {
   const { handleClick } = props;
-  const cartItemLength = useAppSelector(selectCartCount);
+  const cartItems = useAppSelector(selectCartItems);
   const { data: favItems } = useAppSelector(wishlistItems);
 
   return (
@@ -59,7 +62,7 @@ const IconsWrapper: FC<IProps> = (props: IProps) => {
         <span className="hidden-phone">
           <CartDesktopIcon />
         </span>
-        <IF condition={!isEmpty(cartItemLength)}>
+        <IF condition={!isEmpty(cartItems)}>
           <span className="Header__CartDot is-visible"></span>
         </IF>
       </NavLink>

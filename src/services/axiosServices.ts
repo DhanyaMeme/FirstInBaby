@@ -41,10 +41,6 @@ export const navService = {
 };
 
 export const homeService = {
-  Collection: {
-    method: "GET",
-    url: homeEndpoints.COLLECTION,
-  },
   getHomeProducts: {
     method: "GET",
     url: homeEndpoints.HOMESCREEN_PRODUCTS,
@@ -60,6 +56,14 @@ export const homeService = {
   getFeatureProducts: {
     method: "GET",
     url: homeEndpoints.FEATURE,
+  },
+  getShopByCollection: {
+    method: "GET",
+    url: homeEndpoints.SHOP_BY_COLLECTION,
+  },
+  getShopByProducts: {
+    method: "GET",
+    url: homeEndpoints.SHOP_BY_PRODUCTS,
   },
 };
 
