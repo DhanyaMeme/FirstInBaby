@@ -20,6 +20,7 @@ export const SaleItem = (props: IProps) => {
               url={pdt.imageurl}
               title={pdt.productname}
               price={pdt.price}
+              mcId={pdt.mcId}
               isVisibleSaleLabel={true}
             />
           </div>

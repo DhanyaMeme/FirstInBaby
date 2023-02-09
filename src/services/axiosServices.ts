@@ -53,6 +53,10 @@ export const homeService = {
     method: "GET",
     url: homeEndpoints.HOMESCREEN,
   },
+  getProductsHot: {
+    method: "GET",
+    url: homeEndpoints.HOT,
+  },
 };
 
 export const productService = {

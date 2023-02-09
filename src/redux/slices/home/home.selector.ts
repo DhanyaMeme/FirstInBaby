@@ -12,3 +12,8 @@ export const productCollection = createSelector(
   navSelf,
   (state) => state && state.productCollection
 );
+
+export const hotProducts = createSelector(
+  navSelf,
+  (state) => state && state.hotProducts
+);

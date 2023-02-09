@@ -19,7 +19,10 @@ import "./App.scss";
 import { useAuth } from "./contexts/AuthContext";
 import { fetchCustomerAsync } from "./redux/slices/profile/profile.reducer";
 import { fetchAddressAsync } from "./redux/slices/address/address.reducer";
-import { fetchCollectionAsync } from "./redux/slices/home/home.reducer";
+import {
+  fetchCollectionAsync,
+  fetchHotAsync,
+} from "./redux/slices/home/home.reducer";
 
 function App() {
   const { user } = useAuth();
@@ -35,6 +38,10 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchCollectionAsync());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchHotAsync());
   }, [dispatch]);
 
   useEffect(() => {

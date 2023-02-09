@@ -2,11 +2,7 @@ import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { fetchData } from "../../../services/axios";
 import { homeService } from "../../../services/axiosServices";
 import { IProduct } from "../collection/collection.type";
-import {
-  ICollection,
-  IHomeState,
-  ProductsEnum,
-} from "./home.type";
+import { ICollection, IHomeState, ProductsEnum } from "./home.type";
 
 export const fetchCollectionAsync = createAsyncThunk<Array<ICollection>>(
   "home/getCollection",
@@ -23,24 +19,20 @@ export const fetchCollectionAsync = createAsyncThunk<Array<ICollection>>(
   }
 );
 
-export const fetchProductCollection = createAsyncThunk<
-  {
-    key: ProductsEnum;
-    value: IProduct[];
-  },
-  ProductsEnum
->("home/getProductCollection", async (type, { rejectWithValue }) => {
-  try {
-    const response = (await fetchData({
-      ...homeService.getHomeProducts,
-      params: { type },
-    })) as any;
-
-    return { key: type, value: response.data };
-  } catch (err) {
-    return rejectWithValue(err);
+export const fetchHotAsync = createAsyncThunk<Array<IProduct>>(
+  "home/getHot",
+  async (type, { rejectWithValue }) => {
+    try {
+      const response = (await fetchData(
+        homeService.getProductsHot
+      )) as IProduct[];
+      return response;
+    } catch (err) {
+      return rejectWithValue(err);
+    }
   }
-});
+);
+
 
 export const homeReducer = {};
 
@@ -59,29 +51,18 @@ export const extraHomeReducer = {
     state.collection.loading = false;
     state.collection.error = "Error while fetching collection data";
   },
-  [fetchProductCollection.pending.type]: (state: IHomeState) => {
-    state.productCollection.loading = true;
+  [fetchHotAsync.pending.type]: (state: IHomeState) => {
+    state.hotProducts.loading = true;
   },
-  [fetchProductCollection.fulfilled.type]: (
+  [fetchHotAsync.fulfilled.type]: (
     state: IHomeState,
-    {
-      payload,
-    }: PayloadAction<{
-      key: ProductsEnum;
-      value: IProduct[];
-    }>
+    { payload }: PayloadAction<Array<IProduct>>
   ) => {
-    const data = state.productCollection.data || {};
-    const groupedProducts = {
-      ...data,
-      [payload.key]: payload.value,
-    };
-    state.productCollection.loading = false;
-    state.productCollection.data = groupedProducts as any;
+    state.hotProducts.loading = false;
+    state.hotProducts.data = payload;
   },
-  [fetchProductCollection.pending.type]: (state: IHomeState) => {
-    state.productCollection.loading = false;
-    state.productCollection.error =
-      "Error while fetching home screen product collection";
+  [fetchHotAsync.rejected.type]: (state: IHomeState) => {
+    state.hotProducts.loading = false;
+    state.hotProducts.error = "Error while fetching collection data";
   },
 };

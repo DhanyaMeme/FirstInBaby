@@ -33,6 +33,7 @@ export const homeEndpoints = Object.freeze({
   COLLECTION: "/ophelia/get/collectionhome",
   HOMESCREEN_PRODUCTS: "/render/homescreen/collection",
   HOMESCREEN: "/render/homescreen",
+  HOT: "/ophelia/get/hot",
 });
 
 export const productsEndpoints = Object.freeze({

@@ -23,4 +23,5 @@ export interface ICollection {
 export interface IHomeState {
   collection: AsyncData<ICollection[]>;
   productCollection: AsyncData<Record<ProductsEnum, Array<IProduct>>>;
+  hotProducts: AsyncData<Array<IProduct>>;
 }

@@ -5,6 +5,7 @@ import { IHomeState } from "./home.type";
 
 export const initialState: IHomeState = {
   collection: initialAsyncData,
+  hotProducts: initialAsyncData,
   productCollection: initialAsyncData,
 };
 
