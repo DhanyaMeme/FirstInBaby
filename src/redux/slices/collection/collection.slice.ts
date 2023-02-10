@@ -9,6 +9,7 @@ import { ICollectionState } from "./collection.type";
 export const initialState: ICollectionState = {
   allProducts: initialAsyncData,
   productsByCategory: initialAsyncData,
+  productsByShopBy: initialAsyncData,
 };
 
 export const collectionSlice = createSlice({

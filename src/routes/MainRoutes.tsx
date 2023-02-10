@@ -4,6 +4,7 @@ import { LandingPage } from "../pages/LandingPage";
 import { ProductCollection } from "../pages/ProductCollection";
 import { ProductView } from "../pages/ProductView";
 import Cart from "../pages/Cart";
+import { ShopBy } from "../pages/ShopBy";
 
 // ==============================|| MAIN ROUTING ||============================== //
 
@@ -27,6 +28,10 @@ const MainRoutes = {
           path: ":id",
         },
       ],
+    },
+    {
+      path: "shopBy/:name/:id",
+      element: <ShopBy />,
     },
     {
       path: "product/:name/:id",

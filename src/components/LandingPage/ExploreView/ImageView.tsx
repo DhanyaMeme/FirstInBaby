@@ -12,20 +12,22 @@ export const ImageView: FC<IProps> = (props: IProps) => {
   const { collectionItem } = props;
 
   return (
-    <div className="CollectionItem__Wrapper">
-      <div className="CollectionItem__ImageWrapper">
-        <ImageWrapper
-          src={collectionItem.url}
-          alt={collectionItem.name}
-          classes="CollectionItem__Image  Image--contrast Image--zoomOut "
-        />
-      </div>
-      {/* <NavLink
+    <NavLink to={`/shopBy/products/${encodeUrl(collectionItem.name)}`}>
+      <div className="CollectionItem__Wrapper">
+        <div className="CollectionItem__ImageWrapper">
+          <ImageWrapper
+            src={collectionItem.url}
+            alt={collectionItem.name}
+            classes="CollectionItem__Image  Image--contrast Image--zoomOut "
+          />
+        </div>
+        {/* <NavLink
         to={`/collections/WOMEN?collection=${encodeUrl(collectionItem.name)}`}
         className="CollectionItem__Content Heading"
       >
         <h3 className="UnderLined__Text">{collectionItem.name}</h3>
       </NavLink> */}
-    </div>
+      </div>
+    </NavLink>
   );
 };

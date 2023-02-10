@@ -13,7 +13,7 @@ export function isString(x: any) {
 }
 
 export const encodeUrl = (name: string) =>
-  name?.replace(/&/g, "and").replace(/\s+/g, "-");
+  name?.replace(/&/g, "and").replace(/\s+/g, "__");
 
 export const decodeUrl = (name: string) =>
-  name?.replace(/and/g, "&").replace(/-/g, " ");
+  name?.replace(/__/g, " ").replace(/and/g, "&");

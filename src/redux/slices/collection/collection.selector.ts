@@ -12,3 +12,8 @@ export const productsByCategory = createSelector(
   [productSelf],
   (product) => product.productsByCategory
 );
+
+export const productsByShopBy = createSelector(
+  [productSelf],
+  (product) => product.productsByShopBy
+);

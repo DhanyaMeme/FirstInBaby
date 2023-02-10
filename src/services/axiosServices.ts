@@ -76,6 +76,10 @@ export const productService = {
     method: "GET",
     url: productsEndpoints.PROUCTS_By_CATEGORY,
   },
+  getProductsByShopby: {
+    method: "GET",
+    url: productsEndpoints.PRODUCTS_BY_SHOPBY,
+  },
   singleProduct: {
     method: "GET",
     url: productsEndpoints.SINGLE_PRODUCT,
