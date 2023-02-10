@@ -69,6 +69,25 @@ export const fetchProductsBySearchAsync = createAsyncThunk<IProduct[], string>(
   }
 );
 
+export const fetchShopbyCollectionAsync = createAsyncThunk<any, string>(
+  "collection/getProductsByShopbyCollection",
+  async (collection, { rejectWithValue }) => {
+    try {
+      const response = (await fetchData({
+        ...productService.getProductsByCollection,
+        params: { collection },
+      })) as IProduct[];
+
+      return {
+        key: collection,
+        value: response,
+      };
+    } catch (err) {
+      return rejectWithValue(err);
+    }
+  }
+);
+
 export const collectionReducer = {};
 
 export const extracollectionReducer = {
@@ -148,5 +167,30 @@ export const extracollectionReducer = {
   [fetchProductsBySearchAsync.rejected.type]: (state: ICollectionState) => {
     state.productsBySearch.loading = false;
     state.productsBySearch.error = "Error while fetching products by search";
+  },
+  [fetchShopbyCollectionAsync.pending.type]: (state: ICollectionState) => {
+    state.productsShopByCollection.loading = true;
+  },
+  [fetchShopbyCollectionAsync.fulfilled.type]: (
+    state: ICollectionState,
+    {
+      payload,
+    }: PayloadAction<{
+      key: string;
+      value: IProduct[];
+    }>
+  ) => {
+    state.productsShopByCollection.loading = false;
+    const data = state.productsShopByCollection.data || {};
+    const groupedProducts = {
+      ...data,
+      [payload.key]: payload.value,
+    };
+    state.productsShopByCollection.data = groupedProducts;
+  },
+  [fetchShopbyCollectionAsync.rejected.type]: (state: ICollectionState) => {
+    state.productsShopByCollection.loading = false;
+    state.productsShopByCollection.error =
+      "Error while fetching products by shopby collection";
   },
 };

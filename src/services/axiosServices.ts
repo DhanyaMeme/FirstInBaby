@@ -80,6 +80,10 @@ export const productService = {
     method: "GET",
     url: productsEndpoints.PRODUCTS_BY_SHOPBY,
   },
+  getProductsByCollection: {
+    method: "GET",
+    url: productsEndpoints.PRODUCTS_BY_SHOPByCOLLECTION,
+  },
   getSearch: {
     method: "GET",
     url: productsEndpoints.SEARCH_PRODUCTS,

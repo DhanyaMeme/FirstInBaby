@@ -78,7 +78,6 @@ export const ProductDeliveryForm = () => {
       setFormState({ ...formState, isButtonLoading: true });
       try {
         const response = await fetchData(deliveryParams);
-        console.log("data", response);
         setFormState({
           ...formState,
           helperText: message.success,
@@ -87,7 +86,6 @@ export const ProductDeliveryForm = () => {
         });
         return response;
       } catch (error: any) {
-        console.log("error", error);
         setFormState({
           ...formState,
           helperText: isString(error?.response?.data)
