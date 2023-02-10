@@ -17,3 +17,8 @@ export const productsByShopBy = createSelector(
   [productSelf],
   (product) => product.productsByShopBy
 );
+
+export const productsBySearch = createSelector(
+  [productSelf],
+  (product) => product.productsBySearch
+);

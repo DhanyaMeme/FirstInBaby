@@ -10,6 +10,7 @@ export const initialState: ICollectionState = {
   allProducts: initialAsyncData,
   productsByCategory: initialAsyncData,
   productsByShopBy: initialAsyncData,
+  productsBySearch: initialAsyncData,
 };
 
 export const collectionSlice = createSlice({

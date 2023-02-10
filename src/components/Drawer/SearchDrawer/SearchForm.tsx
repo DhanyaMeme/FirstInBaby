@@ -7,13 +7,10 @@ import { InputChangeEvent } from "../../../models/types";
 import { setSearchText } from "../../../redux/slices/nav/nav.slice";
 import { IF } from "../../../ui_kits/IF";
 import { isEmpty } from "../../../utils/script";
-import { IProduct } from "../../../redux/slices/collection/collection.type";
-import { allProducts } from "../../../redux/slices/collection/collection.selector";
 
 export const SearchForm = () => {
   const dispatch = useAppDispatch();
   const searchValue = useAppSelector(searchText);
-  const { data } = useAppSelector(allProducts);
 
   return (
     <PageContent spacingTight>
@@ -30,10 +27,7 @@ export const SearchForm = () => {
         </FormElement>
       </Form>
       <IF condition={!isEmpty(searchValue)}>
-        <SearchResults
-          searchValue={searchValue as string}
-          productsData={data as IProduct[]}
-        />
+        <SearchResults searchValue={searchValue as string} />
       </IF>
     </PageContent>
   );

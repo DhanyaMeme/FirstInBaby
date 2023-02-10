@@ -1,39 +1,35 @@
-import { FC, useMemo } from "react";
+import { FC, useEffect } from "react";
 import useDebounce from "../../../hooks/useDebounce";
-import { genericSearch } from "../../../utils/generics";
 import { ProductItem } from "../../ProductItem/ProductItem";
 import { IProduct } from "../../../redux/slices/collection/collection.type";
 import { EmptySearchIcon } from "../../../assets/icons/EmptySearch.icon";
+import { useAppDispatch, useAppSelector } from "../../../redux/store";
+import { fetchProductsBySearchAsync } from "../../../redux/slices/collection/collection.reducer";
+import { productsBySearch } from "../../../redux/slices/collection/collection.selector";
+import { Spinner } from "../../../ui_kits/Spinner/Spinner.component";
 
 interface IProps {
   searchValue: string;
-  productsData: IProduct[];
 }
 
 export const SearchResults: FC<IProps> = (props: IProps) => {
-  const { searchValue = "", productsData = [] } = props;
+  const { searchValue = "" } = props;
 
-  const debouncedSearchTerm = useDebounce<string>(searchValue, 500);
+  const debouncedSearchTerm = useDebounce<string>(searchValue, 1000);
+  const dispatch = useAppDispatch();
+  const { data: filteredData, loading } = useAppSelector(productsBySearch);
 
-  const filteredData = useMemo(() => {
-    let computedData: IProduct[] = productsData || [];
-
+  useEffect(() => {
     if (debouncedSearchTerm) {
-      const searchKeys: Array<keyof IProduct> = [
-        "productname",
-        "maincategory",
-        "mcId",
-      ];
-
-      computedData = computedData?.filter((pdt: IProduct) =>
-        genericSearch(pdt, searchKeys, debouncedSearchTerm)
-      );
+      dispatch(fetchProductsBySearchAsync(debouncedSearchTerm));
     }
+  }, [debouncedSearchTerm, dispatch]);
 
-    return computedData;
-  }, [productsData, debouncedSearchTerm]);
+  if (loading) {
+    return <Spinner />;
+  }
 
-  if (!filteredData.length) {
+  if (!loading && !filteredData?.length) {
     return (
       <div className="Search__NotFound">
         <span className="Search__NotFound--text u-h6 Heading">
