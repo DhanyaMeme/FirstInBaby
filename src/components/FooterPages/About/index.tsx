@@ -28,11 +28,11 @@ export const About = () => {
           these T-shirts are the new trendsetter in the market and are giving
           fashion statements goals.
         </p>
-        <h4>What is Renderer?</h4>
+        <h4>What is FirstInCry?</h4>
         <p>
           Our brand truely believes in the power of illustration and design and
           their ability to communicate. In today's world where everyone is
-          speaking about their opinions on different things, Renderer T-shirts do
+          speaking about their opinions on different things, FirstInCry T-shirts do
           the job for them. SO HERE WE ARE! We mirror the fondness of today’s
           youth and intend to sell unique product line which conforms to latest
           trend standards at unbeatable prices. Our brand is unexceptionally
