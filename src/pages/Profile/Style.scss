@@ -18,17 +18,23 @@
       background-color: #fff;
       box-shadow: 0 0 30px 2px #e0e0e0;
       box-sizing: border-box;
-      padding: 20px;
+      padding: 10px 20px;
       margin-bottom: 30px;
       width: 100%;
     }
   }
 
   .Dashbord__SideNav {
-    .Form__Group {
-      justify-content: space-between;
-      align-items: baseline;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    background-color: #f2efea !important;
+    color: var(--main-color-pink);
+    
+    .Select.Select--primary::after {
+      background: none;
     }
+
   }
 
   .Address_Block {

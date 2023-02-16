@@ -21,7 +21,7 @@ export const LogoutIcon = () => {
         <g
           id="My-Order---detail"
           transform="translate(-152.000000, -450.000000)"
-          stroke="#000000"
+          stroke="#ef5e9a"
           strokeWidth="1.5"
         >
           <g id="log-out" transform="translate(153.000000, 451.000000)">
