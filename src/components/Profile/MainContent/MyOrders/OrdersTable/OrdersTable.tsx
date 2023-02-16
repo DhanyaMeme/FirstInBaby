@@ -1,32 +1,39 @@
+import { FC } from "react";
+import { IOrder } from "../../../../../redux/slices/profile/profile.type";
 import { Table, TableWrapper } from "../../../../../ui_kits/Table/Table.styles";
+import { formatDate } from "../../../../../utils/script";
 
-export const OrdersTable = () => {
+interface IProps {
+  orders: IOrder[];
+}
+
+export const OrdersTable: FC<IProps> = (props: IProps) => {
+  const { orders } = props;
+
   return (
     <TableWrapper>
       <Table className="Heading u-h5" hasNoBorder>
         <thead className="Text--subdued">
           <tr>
-            <th>Order</th>
+            <th>OrderId</th>
             <th>Date</th>
             <th>Total</th>
             <th>Payment</th>
-            <th>Shippment</th>
+            <th>ShopId</th>
           </tr>
         </thead>
-        <tbody className=" u-h6">
-          {Array.from(Array(5).keys()).map((x) => (
-            <tr>
+        <tbody className="u-h5">
+          {orders.map((order: IOrder) => (
+            <tr key={order.id}>
               <td data-th="Order">
                 <span className="Link Link--underline Text--highlight">
-                  #NM2247508748
+                  {order.orderId}
                 </span>
               </td>
-              <td data-th="Date">July 14, 2021</td>
-              <td data-th="Total">Rs. 2,499</td>
-              <td data-th="Payment">Pending</td>
-              <td data-th="Shippment" className="Text--subdued">
-                Cancelled
-              </td>
+              <td data-th="Date">{formatDate(order.date)}</td>
+              <td data-th="Total">{order.price}</td>
+              <td data-th="Payment">{order.paymentStatus}</td>
+              <td data-th="ShopId">{order.shopId}</td>
             </tr>
           ))}
         </tbody>

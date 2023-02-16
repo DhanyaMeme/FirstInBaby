@@ -7,14 +7,16 @@ import { useAppDispatch, useAppSelector } from "../../../../redux/store";
 import { OrderInfo } from "./OrderInfo/OrderInfo";
 import EmptyOrders from "../../../../assets/images/Empty_Order.png";
 import { EmptyContainer } from "../../../EmptyContainer";
+import { OrdersTable } from "./OrdersTable/OrdersTable";
+import { IF } from "../../../../ui_kits/IF";
+import { isEmpty } from "../../../../utils/script";
+import { IOrder } from "../../../../redux/slices/profile/profile.type";
 
 export const MyOrders = () => {
   const { user } = useAuth();
 
   const { data: ordersData } = useAppSelector(orders);
   const dispatch = useAppDispatch();
-
-  console.log(ordersData);
 
   useEffect(() => {
     if (!ordersData && user) dispatch(fetchOrderAsync(user));
@@ -32,8 +34,9 @@ export const MyOrders = () => {
   }
 
   return (
-    <div>
-      <OrderInfo />
-    </div>
+    <IF condition={!isEmpty(ordersData)}>
+      
+      <OrderInfo order={ordersData?.[0] as IOrder} />
+    </IF>
   );
 };

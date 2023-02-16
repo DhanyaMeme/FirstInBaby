@@ -89,7 +89,7 @@ export const Table = styled.table<IProps>`
       }
 
       &:last-child {
-        padding: 15px 0 20px;
+        padding: 0 0 20px;
       }
     }
   }

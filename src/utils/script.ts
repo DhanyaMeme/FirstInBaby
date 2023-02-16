@@ -75,20 +75,11 @@ export function getPathArray() {
   return pathname;
 }
 
-// export function classList(classes: any[]) {
-//   return Object.entries(classes)
-//     .filter((entry) => entry[1])
-//     .map((entry) => entry[0])
-//     .join(" ");
-// }
-
-// export const flat<T> = (array) => {
-//   var result: Array<T> = [];
-//   array.forEach(function (a) {
-//     result.push(a);
-//     if (Array.isArray(a.children)) {
-//       result = result.concat(flat(a.children));
-//     }
-//   });
-//   return result;
-// };
+export const formatDate = (date: string) => {
+  const currentDate = new Date(date);
+  return currentDate.toLocaleDateString("en-us", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+};

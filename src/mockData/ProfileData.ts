@@ -33,16 +33,16 @@ export const ProfileAccouctNav: IProfileData[] = [
   {
     title: "Wallet",
     description: "Manage your payment methods.",
-    url: profileMenu.profile,
+    url: profileMenu.coupons,
   },
   {
     title: "My Orders",
     description: "Manage and edit your orders.",
-    url: profileMenu.orders,
+    url: profileMenu.refer_earn,
   },
   {
     title: "Account Settings",
     description: "Manage profile and preferences.",
-    url: profileMenu.profile,
+    url: profileMenu.help,
   },
 ];

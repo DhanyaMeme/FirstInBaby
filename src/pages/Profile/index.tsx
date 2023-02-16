@@ -18,13 +18,13 @@ import "./Style.scss";
 const profileLookup: Record<profileMenu, any> = {
   [profileMenu.home]: ProfileHome,
   [profileMenu.profile]: MyProfile,
-  [profileMenu.orders]: MyOrders,
   [profileMenu.address]: AddressContainer,
-  [profileMenu.coupons]: MyCoupons,
-  [profileMenu.rewards]: MyRewards,
+  [profileMenu.orders]: MyOrders,
   [profileMenu.refer_earn]: MyRewards,
   [profileMenu.subscribe]: Subscribe,
   [profileMenu.help]: Help,
+  [profileMenu.coupons]: MyCoupons,
+  [profileMenu.rewards]: MyRewards,
 };
 
 export const profileOptions = objectKeys(profileLookup);

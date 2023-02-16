@@ -8,9 +8,9 @@ export enum profileMenu {
   "address" = "My Address",
   "subscribe" = "subscribe",
   "refer_earn" = "REFER AND EARN",
+  "help" = "Help",
   "coupons" = "My Coupons",
   "rewards" = "My Rewards",
-  "help" = "Help",
 }
 
 export interface ICustomer {
