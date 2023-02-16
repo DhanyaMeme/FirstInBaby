@@ -4,8 +4,25 @@ import {
   decrementCartItem,
   incrementCartItem,
 } from "./cart.actions";
-import { PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { ICartItem, ICartState } from "./cart.type";
+import { fetchData } from "../../../services/axios";
+import { cartService } from "../../../services/axiosServices";
+
+export const addCartItemsAsync = createAsyncThunk<any, any>(
+  "cart/addCart",
+  async (cartItems, { rejectWithValue }) => {
+    try {
+      const response = await fetchData({
+        ...cartService.addCart,
+        data: cartItems,
+      });
+      return response;
+    } catch (err) {
+      return rejectWithValue(err);
+    }
+  }
+);
 
 export const cartReducer = {
   addItemToCart: (

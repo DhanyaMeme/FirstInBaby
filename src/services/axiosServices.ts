@@ -1,6 +1,7 @@
 import {
   addressEndpoints,
   authEndpoints,
+  CartEndpoints,
   FavEndpoints,
   homeEndpoints,
   navEndpoints,
@@ -114,6 +115,13 @@ export const favService = {
   deleteFavourites: {
     method: "POST",
     url: FavEndpoints.DELETE_FAV,
+  },
+};
+
+export const cartService = {
+  addCart: {
+    method: "POST",
+    url: CartEndpoints.ADD_CART,
   },
 };
 

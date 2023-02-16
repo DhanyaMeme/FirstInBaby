@@ -55,6 +55,10 @@ export const FavEndpoints = Object.freeze({
   DELETE_FAV: "/ophelia/delete/favorite",
 });
 
+export const CartEndpoints = Object.freeze({
+  ADD_CART: "/ophelia/addcart/nazcas",
+});
+
 export const paymentEndpoints = Object.freeze({
   STRIPE: "/ophelia/stripe/pay",
   TRANSACTION: "/add/transaction",

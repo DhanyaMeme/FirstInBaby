@@ -33,7 +33,7 @@ export default function Minicart() {
 
   return (
     <div className="checkout-cart-summary">
-      <span className="title Heading u-h4">Order Summary</span>
+      <span className="title Heading Text--highlight u-h4">Order Summary</span>
       <div className="items-in-cart">
         <div className="minicart-items">
           <CartItemList />

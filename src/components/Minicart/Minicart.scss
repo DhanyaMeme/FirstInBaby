@@ -25,6 +25,10 @@
       overflow: auto;
       overflow-x: hidden;
 
+      .CartItem{
+        margin: 10px 0;
+      }
+
       .CartItem__Actions {
         display: none;
       }
