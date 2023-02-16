@@ -24,10 +24,10 @@ export const OrderInfo: FC<IProps> = (props: IProps) => {
 
   const OrderSummary = () => {
     return (
-      <div className="OrderSummary Grid u-h5">
+      <div className="OrderSummary Grid">
         {Object.entries(OrderSummaryData).map(([key, value]) => (
           <div className="Grid__Cell 1/2--phone 1/3--tablet-and-up">
-            <div className="OrderSummary__Unit">
+            <div className="OrderSummary__Unit u-h5">
               <div className="OrderSummary__subtitle Heading">{key}</div>
               <div className="Text--subdued">{value}</div>
             </div>
@@ -40,7 +40,7 @@ export const OrderInfo: FC<IProps> = (props: IProps) => {
   const DeliveryInfo = () => {
     return (
       <div className="Address__Summary Heading u-h5">
-        <h3 className="Text--highlight">Delivery Address</h3>
+        <h4 className="Text--highlight">Delivery Address</h4>
         <div className="Address-nameNumber">
           <p>{order.name}</p>
           <div className="Address-verticalDivider"></div>

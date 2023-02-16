@@ -22,7 +22,7 @@ export const OrdersTable: FC<IProps> = (props: IProps) => {
             <th>ShopId</th>
           </tr>
         </thead>
-        <tbody className="u-h5">
+        <tbody className="u-h6">
           {orders.map((order: IOrder) => (
             <tr key={order.id}>
               <td data-th="Order">
