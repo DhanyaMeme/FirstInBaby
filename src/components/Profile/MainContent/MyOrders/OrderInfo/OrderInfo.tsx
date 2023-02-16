@@ -1,10 +1,10 @@
+import { FC } from "react";
 import { OrderCards } from "./OrderCards/OrderCards";
+import { formatDate } from "../../../../../utils/script";
 import { Alert } from "../../../../../ui_kits/Alert/Alert";
+import { IOrder } from "../../../../../redux/slices/profile/profile.type";
 import { PageContent } from "../../../../../ui_kits/global/PageContent.styles";
 import "./OrderInfo.scss";
-import { IOrder } from "../../../../../redux/slices/profile/profile.type";
-import { FC } from "react";
-import { formatDate } from "../../../../../utils/script";
 
 interface IProps {
   order: IOrder;
@@ -56,22 +56,22 @@ export const OrderInfo: FC<IProps> = (props: IProps) => {
 
   const TrackAlert = () => {
     return (
-      <Alert isLarge isSuccess classname="u-h5">
+      <Alert isLarge isSuccess classname="u-h5 Heading">
         <p>
-          Your order has been sent. Track the shipment with number{" "}
+          Your order has been sent. Track the shipment with number
           {order.orderId}
         </p>
-        <p>
-          or by clicking here: &nbsp;
-          <a
-            href="https://shiprocket.co/tracking/1091130292410"
-            className="Link Link--underlineNative"
-            target="/_blank"
-          >
-            TrackOrder
-          </a>
-        </p>
       </Alert>
+      // <p>
+      //   or by clicking here: &nbsp;
+      //   <a
+      //     href="https://shiprocket.co/tracking/1091130292410"
+      //     className="Link Link--underlineNative"
+      //     target="/_blank"
+      //   >
+      //     TrackOrder
+      //   </a>
+      // </p>
     );
   };
 

@@ -5,10 +5,11 @@ import { formatDate } from "../../../../../utils/script";
 
 interface IProps {
   orders: IOrder[];
+  handleOnclick: (id: number) => void;
 }
 
 export const OrdersTable: FC<IProps> = (props: IProps) => {
-  const { orders } = props;
+  const { orders, handleOnclick } = props;
 
   return (
     <TableWrapper>
@@ -22,10 +23,10 @@ export const OrdersTable: FC<IProps> = (props: IProps) => {
             <th>ShopId</th>
           </tr>
         </thead>
-        <tbody className="u-h6">
+        <tbody className="u-h5">
           {orders.map((order: IOrder) => (
             <tr key={order.id}>
-              <td data-th="Order">
+              <td data-th="Order" onClick={() => handleOnclick(order.id)}>
                 <span className="Link Link--underline Text--highlight">
                   {order.orderId}
                 </span>
