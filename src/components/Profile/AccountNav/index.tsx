@@ -1,9 +1,8 @@
 import { FC, Fragment } from "react";
 import { useAppDispatch } from "../../../redux/store";
-import { FormElement, FormSelectInput } from "../../../ui_kits/Form";
+import { FormSelectInput } from "../../../ui_kits/Form";
 import { profileMenu } from "../../../redux/slices/profile/profile.type";
 import { setProfilePage } from "../../../redux/slices/profile/profile.slice";
-import { Form__Elemen__Types } from "../../../ui_kits/Form/FormElements/FormElement";
 import { useAuth } from "../../../contexts/AuthContext";
 import { IconButton } from "../../../ui_kits/Buttons/IconButton/IconButton.component";
 import { LogoutIcon } from "../../../assets/icons/Logout.icon";

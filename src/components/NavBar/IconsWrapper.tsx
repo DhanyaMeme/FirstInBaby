@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { NavLink } from "react-router-dom";
 import AccountIcon from "../../assets/icons/Account.icon";
 import { CartDesktopIcon, CartMobileIcon } from "../../assets/icons/Cart.icon";
@@ -8,7 +8,6 @@ import {
   SearchMobileIcon,
 } from "../../assets/icons/Search.icon";
 import {
-  selectCartCount,
   selectCartItems,
 } from "../../redux/slices/cart/cart.selector";
 import { wishlistItems } from "../../redux/slices/wishlist/wishlist.selector";
