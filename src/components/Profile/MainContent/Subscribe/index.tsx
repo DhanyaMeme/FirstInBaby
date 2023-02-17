@@ -39,7 +39,7 @@ export const Subscribe = () => {
     if (!plansInfo) {
       dispatch(fetchPlansAsync());
     }
-  }, [dispatch, plansInfo]);
+  }, [dispatch]);
 
   const PaymentProps = {
     name: userData?.fname,

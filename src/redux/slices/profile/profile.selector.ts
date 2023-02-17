@@ -22,3 +22,8 @@ export const orders = createSelector(
   [profileSelf],
   (profileState) => profileState.orders
 );
+
+export const subscribedPlan = createSelector(
+  [profileSelf],
+  (profileState) => profileState.subscribedPlan
+);

@@ -76,9 +76,18 @@ export interface IOrder {
   street: string;
 }
 
+export interface ISubscribedPlan {
+  id: number;
+  cusId: string;
+  plan: string;
+  status: string;
+  date: string;
+}
+
 export interface IProfileState {
   profilePage: profileMenu;
   customer: AsyncData<ICustomer>;
   plans: AsyncData<IPlan[]>;
   orders: AsyncData<IOrder[]>;
+  subscribedPlan: AsyncData<ISubscribedPlan>;
 }

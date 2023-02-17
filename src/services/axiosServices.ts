@@ -138,7 +138,7 @@ export const profileService = {
     method: "POST",
     url: profileEndpoints.HELP,
   },
-  subscription: {
+  getSubscription: {
     method: "GET",
     url: profileEndpoints.SUBCRIPTION,
   },

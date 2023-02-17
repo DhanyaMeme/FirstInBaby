@@ -6,6 +6,7 @@ import {
   IOrder,
   IPlan,
   IProfileState,
+  ISubscribedPlan,
   profileMenu,
 } from "./profile.type";
 
@@ -67,6 +68,21 @@ export const fetchPlansAsync = createAsyncThunk<IPlan[]>(
   }
 );
 
+export const fetchSubscribedPlanAsync = createAsyncThunk<
+  ISubscribedPlan,
+  string
+>("profile/getSubscribedPlan", async (email, { rejectWithValue, dispatch }) => {
+  try {
+    const response = (await fetchData({
+      ...profileService.getSubscription,
+      params: { cusId: email },
+    })) as ISubscribedPlan;
+    return response;
+  } catch (err) {
+    return rejectWithValue(err);
+  }
+});
+
 export const updateSubscriptionPlanAsync = createAsyncThunk<any, any>(
   "profile/updateSubscriptionPost",
   async (data, { rejectWithValue, dispatch }) => {
@@ -75,6 +91,7 @@ export const updateSubscriptionPlanAsync = createAsyncThunk<any, any>(
         ...profileService.updateSubscriptionPlan,
         params: data,
       });
+      await dispatch(fetchSubscribedPlanAsync(data.cusId));
       return response;
     } catch (err) {
       return rejectWithValue(err);
@@ -133,5 +150,19 @@ export const extraProfileReducer = {
   [fetchOrderAsync.rejected.type]: (state: IProfileState) => {
     state.orders.loading = false;
     state.orders.error = "Error while fetching orders data";
+  },
+  [fetchSubscribedPlanAsync.pending.type]: (state: IProfileState) => {
+    state.subscribedPlan.loading = true;
+  },
+  [fetchSubscribedPlanAsync.fulfilled.type]: (
+    state: IProfileState,
+    { payload }: PayloadAction<ISubscribedPlan>
+  ) => {
+    state.subscribedPlan.loading = false;
+    state.subscribedPlan.data = payload;
+  },
+  [fetchSubscribedPlanAsync.rejected.type]: (state: IProfileState) => {
+    state.subscribedPlan.loading = false;
+    state.subscribedPlan.error = "Error while fetching subscribed plan data";
   },
 };

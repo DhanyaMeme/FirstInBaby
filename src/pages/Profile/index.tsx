@@ -14,13 +14,14 @@ import { Help } from "../../components/Profile/MainContent/Help";
 import { Subscribe } from "../../components/Profile/MainContent/Subscribe";
 import { MyOrders } from "../../components/Profile/MainContent/MyOrders";
 import "./Style.scss";
+import { ReferAndEarn } from "../../components/Profile/MainContent/ReferAndEarn";
 
 const profileLookup: Record<profileMenu, any> = {
   [profileMenu.home]: ProfileHome,
   [profileMenu.profile]: MyProfile,
   [profileMenu.address]: AddressContainer,
   [profileMenu.orders]: MyOrders,
-  [profileMenu.refer_earn]: MyRewards,
+  [profileMenu.refer_earn]: ReferAndEarn,
   [profileMenu.subscribe]: Subscribe,
   [profileMenu.help]: Help,
   [profileMenu.coupons]: MyCoupons,

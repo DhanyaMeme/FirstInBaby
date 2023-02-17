@@ -31,18 +31,18 @@ export const ProfileAccouctNav: IProfileData[] = [
     url: profileMenu.address,
   },
   {
-    title: "Wallet",
-    description: "Manage your payment methods.",
-    url: profileMenu.coupons,
+    title: "Subscribe",
+    description: "Subscribe to get more offers.",
+    url: profileMenu.subscribe,
   },
   {
-    title: "My Orders",
-    description: "Manage and edit your orders.",
+    title: "Refer and Earn",
+    description: "Refer your friends and get cashback.",
     url: profileMenu.refer_earn,
   },
   {
-    title: "Account Settings",
-    description: "Manage profile and preferences.",
+    title: "Help",
+    description: "Ask your queries.",
     url: profileMenu.help,
   },
 ];

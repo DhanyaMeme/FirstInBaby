@@ -8,6 +8,7 @@ export const initialState: IProfileState = {
   customer: initialAsyncData,
   plans: initialAsyncData,
   orders: initialAsyncData,
+  subscribedPlan: initialAsyncData,
 };
 
 export const profileSlice = createSlice({
