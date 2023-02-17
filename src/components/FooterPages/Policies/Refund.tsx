@@ -7,7 +7,6 @@ import { SectionHeader } from "../../../ui_kits/Sections/SectionHeader/SectionHe
 import { refundData } from "../../../mockData/refundData";
 import { IFAQItem } from "../../../mockData/faqData";
 
-
 export const Refund = () => {
   return (
     <Container>

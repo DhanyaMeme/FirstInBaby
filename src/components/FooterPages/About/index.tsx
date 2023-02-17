@@ -32,8 +32,8 @@ export const About = () => {
         <p>
           Our brand truely believes in the power of illustration and design and
           their ability to communicate. In today's world where everyone is
-          speaking about their opinions on different things, FirstInCry T-shirts do
-          the job for them. SO HERE WE ARE! We mirror the fondness of today’s
+          speaking about their opinions on different things, FirstInCry T-shirts
+          do the job for them. SO HERE WE ARE! We mirror the fondness of today’s
           youth and intend to sell unique product line which conforms to latest
           trend standards at unbeatable prices. Our brand is unexceptionally
           designed to craft beautiful and creative pieces for the folks. We

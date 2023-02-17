@@ -1,6 +1,9 @@
 import React from "react";
 import ImageUploading, { ImageListType } from "react-images-uploading";
-import { BUTTON_TYPE_CLASSES, TextButton } from "../../../../ui_kits/Buttons/TextButton/TextButton.component";
+import {
+  BUTTON_TYPE_CLASSES,
+  TextButton,
+} from "../../../../ui_kits/Buttons/TextButton/TextButton.component";
 import { ButtonGroup } from "../../../../ui_kits/Buttons/TextButton/TextButton.styles";
 import "./Style.scss";
 

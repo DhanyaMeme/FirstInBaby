@@ -1,5 +1,3 @@
-
-
 // project imports
 
 import { About } from "../components/FooterPages/About";

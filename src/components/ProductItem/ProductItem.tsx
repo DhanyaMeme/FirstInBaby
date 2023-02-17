@@ -27,7 +27,6 @@ export const ProductItem = (props: IProps) => {
     isVisibleRemoveFav = false,
   } = props;
 
-
   const { handleToggleToFav } = useProductCRUD();
 
   const dispatch = useAppDispatch();

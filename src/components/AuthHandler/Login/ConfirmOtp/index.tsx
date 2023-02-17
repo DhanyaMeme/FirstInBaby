@@ -27,7 +27,6 @@ import {
 } from "./input";
 
 export const ConfirmOtp = () => {
-
   const {
     obj: loginOTPState,
     get: getLoginOTPState,

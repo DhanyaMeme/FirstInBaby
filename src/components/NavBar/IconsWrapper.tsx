@@ -7,9 +7,7 @@ import {
   SearchDesktopIcon,
   SearchMobileIcon,
 } from "../../assets/icons/Search.icon";
-import {
-  selectCartItems,
-} from "../../redux/slices/cart/cart.selector";
+import { selectCartItems } from "../../redux/slices/cart/cart.selector";
 import { wishlistItems } from "../../redux/slices/wishlist/wishlist.selector";
 import { useAppSelector } from "../../redux/store";
 import { IF } from "../../ui_kits/IF";

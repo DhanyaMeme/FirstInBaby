@@ -37,7 +37,6 @@ function useEventListener<
       targetElement.removeEventListener(eventName, eventListener);
     };
   }, [eventName, element]);
-  
 }
 
 export default useEventListener;

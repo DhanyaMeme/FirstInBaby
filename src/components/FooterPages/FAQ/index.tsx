@@ -3,7 +3,7 @@ import {
   PageHeader,
 } from "../../../ui_kits/global/PageContent.styles";
 import { Container } from "../../../ui_kits/global/Container.styles";
-import { FAQSection } from "./FAQSection"
+import { FAQSection } from "./FAQSection";
 import { SectionHeader } from "../../../ui_kits/Sections/SectionHeader/SectionHeader";
 import { faqData } from "../../../mockData/faqData";
 

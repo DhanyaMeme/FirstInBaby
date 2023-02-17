@@ -78,7 +78,6 @@ export const UpdatePassword = () => {
 
   return (
     <Form onSubmit={handleOnsubmit}>
-     
       <FormError formState={formState} />
       {UpdatePasswordInputs.map(
         ({ validation, ...item }: UpdatePasswordInput) => {

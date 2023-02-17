@@ -13,7 +13,6 @@ interface IProps {
 }
 
 export const AddFavToCartModal = (props: IProps) => {
-  
   const { id: product } = props;
   const dispatch = useAppDispatch();
 

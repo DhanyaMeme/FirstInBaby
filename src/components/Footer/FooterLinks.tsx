@@ -2,7 +2,6 @@ import { FC, useState } from "react";
 import classNames from "classnames";
 import { IFooterLinks } from "../../mockData/footerData";
 
-
 interface IProps {
   links: IFooterLinks;
 }

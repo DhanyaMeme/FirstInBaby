@@ -50,8 +50,6 @@ export const Subscribe = () => {
           ))}
         </div>
       </Panel>
-
-     
     </PageContent>
   );
 };

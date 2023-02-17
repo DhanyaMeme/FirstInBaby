@@ -8,7 +8,7 @@ export const initialState: IAddressState = {
   addressList: initialAsyncData,
   openAddAddress: false,
   selectedAddressId: undefined,
-  defaultAddressId : undefined
+  defaultAddressId: undefined,
 };
 
 export const addressSlice = createSlice({

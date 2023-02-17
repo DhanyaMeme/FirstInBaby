@@ -6,7 +6,6 @@ import { shippingData } from "../../../mockData/shippingData";
 import { Container } from "../../../ui_kits/global/Container.styles";
 import { SectionHeader } from "../../../ui_kits/Sections/SectionHeader/SectionHeader";
 
-
 export const Shipping = () => {
   return (
     <Container>

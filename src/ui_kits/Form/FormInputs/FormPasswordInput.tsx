@@ -3,7 +3,6 @@ import { IFromInputProps } from "./IFormProps";
 import EyeIcon from "../../../assets/icons/Eye.icon";
 import { InputType } from "../../../models/types";
 
-
 export const FormPasswordInput: FC<IFromInputProps> = ({
   label,
   type,

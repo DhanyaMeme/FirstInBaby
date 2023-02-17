@@ -1,6 +1,5 @@
 import { IFAQItem } from "./faqData";
 
-
 export const refundData: IFAQItem[] = [
   {
     qn: "What are the terms of the Return Policy?",
