@@ -24,18 +24,6 @@ export const fetchCustomerAsync = createAsyncThunk<ICustomer, string>(
   }
 );
 
-export const fetchPlansAsync = createAsyncThunk<IPlan[]>(
-  "profile/getPlans",
-  async (_arg, { rejectWithValue }) => {
-    try {
-      const response = (await fetchData(profileService.plans)) as IPlan[];
-      return response;
-    } catch (err) {
-      return rejectWithValue(err);
-    }
-  }
-);
-
 export const fetchOrderAsync = createAsyncThunk<IOrder[], string>(
   "profile/getOrder",
   async (email, { rejectWithValue }) => {
@@ -55,11 +43,38 @@ export const placeOrderAsync = createAsyncThunk<any, any>(
   "profile/postOrder",
   async (data, { rejectWithValue, dispatch }) => {
     try {
-      const response = (await fetchData({
+      const response = await fetchData({
         ...profileService.placeOrder,
         params: data,
-      })) as IOrder[];
+      });
       await dispatch(fetchOrderAsync(data.email));
+      return response;
+    } catch (err) {
+      return rejectWithValue(err);
+    }
+  }
+);
+
+export const fetchPlansAsync = createAsyncThunk<IPlan[]>(
+  "profile/getPlans",
+  async (_arg, { rejectWithValue }) => {
+    try {
+      const response = (await fetchData(profileService.plans)) as IPlan[];
+      return response;
+    } catch (err) {
+      return rejectWithValue(err);
+    }
+  }
+);
+
+export const updateSubscriptionPlanAsync = createAsyncThunk<any, any>(
+  "profile/updateSubscriptionPost",
+  async (data, { rejectWithValue, dispatch }) => {
+    try {
+      const response = await fetchData({
+        ...profileService.updateSubscriptionPlan,
+        params: data,
+      });
       return response;
     } catch (err) {
       return rejectWithValue(err);

@@ -142,13 +142,13 @@ export const profileService = {
     method: "GET",
     url: profileEndpoints.SUBCRIPTION,
   },
-  UpdateSubscription: {
-    method: "POST",
-    url: profileEndpoints.UPDATE_SUBCRIPTION,
-  },
   plans: {
     method: "POST",
     url: profileEndpoints.PLANS,
+  },
+  updateSubscriptionPlan: {
+    method: "POST",
+    url: profileEndpoints.UPDATE_SUBCRIPTION,
   },
   getOrder: {
     method: "GET",
@@ -165,17 +165,9 @@ export const profileService = {
 };
 
 export const paymentService = {
-  getAllSubcription: {
-    method: "GET",
-    url: paymentEndpoints.SUBSCRIPTION_PLANS,
-  },
   stripePay: {
     method: "POST",
     url: paymentEndpoints.STRIPE,
-  },
-  updateTransaction: {
-    method: "POST",
-    url: paymentEndpoints.TRANSACTION,
   },
 };
 

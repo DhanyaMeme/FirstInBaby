@@ -3,16 +3,33 @@ import { useEffect, useState } from "react";
 import { Panel } from "../../../../ui_kits/Panel/Panel";
 import { IPlan } from "../../../../redux/slices/profile/profile.type";
 import { useAppDispatch, useAppSelector } from "../../../../redux/store";
-import { plans } from "../../../../redux/slices/profile/profile.selector";
+import {
+  customer,
+  plans,
+} from "../../../../redux/slices/profile/profile.selector";
 import { PageContent } from "../../../../ui_kits/global/PageContent.styles";
-import { fetchPlansAsync } from "../../../../redux/slices/profile/profile.reducer";
+import {
+  fetchPlansAsync,
+  updateSubscriptionPlanAsync,
+} from "../../../../redux/slices/profile/profile.reducer";
 import "./Style.scss";
+import { IPaymentProps, StripeCard } from "../../../Payment/StripeCard";
 
 export const Subscribe = () => {
   const { data: plansInfo } = useAppSelector(plans);
+  const { data: userData } = useAppSelector(customer);
   const dispatch = useAppDispatch();
 
   const [selectedPlan, setSelectedPlan] = useState<null | IPlan>(null);
+
+  const onPaymentSuccess = async (txnId: any) => {
+    const paymentOptions = {
+      plan: selectedPlan?.planName,
+      cusId: userData?.email,
+      pstatus: "success",
+    };
+    dispatch(updateSubscriptionPlanAsync(paymentOptions));
+  };
 
   const handleOnClick = (plan: IPlan) => {
     setSelectedPlan(plan);
@@ -23,6 +40,14 @@ export const Subscribe = () => {
       dispatch(fetchPlansAsync());
     }
   }, [dispatch, plansInfo]);
+
+  const PaymentProps = {
+    name: userData?.fname,
+    amount: selectedPlan?.planAmount,
+    email: userData?.email,
+    phoneNo: userData?.uPhone,
+    onSuccess: onPaymentSuccess,
+  };
 
   return (
     <PageContent>
@@ -50,6 +75,11 @@ export const Subscribe = () => {
           ))}
         </div>
       </Panel>
+      {selectedPlan && (
+        <Panel title="Activate Your Plan">
+          <StripeCard PaymentProps={PaymentProps as IPaymentProps} />
+        </Panel>
+      )}
     </PageContent>
   );
 };

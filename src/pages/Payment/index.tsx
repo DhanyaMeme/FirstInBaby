@@ -16,10 +16,10 @@ import { findArrayItems } from "../../utils/generics";
 import { isEmpty } from "../../utils/script";
 
 export const Payment = () => {
-  const addressId = usePath();
-  const { data: addresses } = useAppSelector(addressList);
   const { user } = useAuth();
+  const addressId = usePath();
   const dispatch = useAppDispatch();
+  const { data: addresses } = useAppSelector(addressList);
   const cartList = useAppSelector(selectCartItems);
 
   const selectedAddress = useMemo(() => {

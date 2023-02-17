@@ -7,6 +7,7 @@
   border-radius: 0.25rem;
   background-color: var(--main-color-bg4);
   border-color: #f8f9fa;
+  margin-bottom: 20px;
 
   &--isActive {
     border: 2px solid var(--main-color-pink);
@@ -18,5 +19,13 @@
     height: 50%;
     width: 50%;
     margin-bottom: 20px;
+  }
+}
+
+.Panel__Content {
+  .Payment_Card {
+    background-color: transparent;
+    box-shadow: none;
+    padding: 0;
   }
 }

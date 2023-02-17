@@ -6,7 +6,6 @@ import {
   TextButton,
 } from "../../ui_kits/Buttons/TextButton/TextButton.component";
 import { ButtonGroup } from "../../ui_kits/Buttons/TextButton/TextButton.styles";
-
 import "./OrderConfirmation.scss";
 
 function OrderConfirmation() {

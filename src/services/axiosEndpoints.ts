@@ -21,9 +21,9 @@ export const profileEndpoints = Object.freeze({
   PROFILE: "/ophelia/useraddress",
   UPDATE_PROFILE: "/ophelia/updateuser",
   HELP: `/ophelia/help`,
-  SUBCRIPTION: `/ophelia/user/subcription`,
   PLANS: `/ophelia/user/plans`,
-  UPDATE_SUBCRIPTION: `updateSubscription`,
+  SUBCRIPTION: `/ophelia/user/subcription`,
+  UPDATE_SUBCRIPTION: `/ophelia/user/subscription/update`,
   GET_ORDER: `/ophelia/orderhistory`,
   PLACE_ORDER: `/ophelia/placeorder`,
   UPDATE_ORDER: `/ophelia/admin/order/status`,
@@ -61,8 +61,8 @@ export const CartEndpoints = Object.freeze({
 
 export const paymentEndpoints = Object.freeze({
   STRIPE: "/ophelia/stripe/pay",
-  TRANSACTION: "/add/transaction",
   SUBSCRIPTION_PLANS: "/get/all/subcription",
+  UPDATE_SUBSCRIPTION_PLAN: "/ophelia/user/subscription/update",
 });
 
 export const subscripeEndpoints = Object.freeze({
