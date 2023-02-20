@@ -16,7 +16,7 @@ export const refundData: IFAQItem[] = [
   {
     qn: "How do I create a Return Request?",
     ans: [
-      "✨ Log in to your account at FirstInCry.com",
+      "✨ Log in to your account at FirstInBaby.com",
       "✨ Go to the 'My Orders' section",
       "✨ Click on the 'Return' button next to the Order you wish to returns.",
       "✨ We will generate reverse pick up from your address. ",
@@ -29,7 +29,7 @@ export const refundData: IFAQItem[] = [
     ans: [
       "Once you request a return, we will generate a reverse pick-up request from your address.",
       "This Reverse Pickup facility is only available for pin codes supported for Reverse pickup by our courier partners.",
-      "You will need to keep the product(s) packed and ready for pick-up. We will issue FirstInCry Reward Points for your return after it reaches our office and the products are verified and internal quality check is completed.",
+      "You will need to keep the product(s) packed and ready for pick-up. We will issue FirstInBaby Reward Points for your return after it reaches our office and the products are verified and internal quality check is completed.",
       "This process will take at least 10-12 working days from the date of raising the return request.",
     ],
   },
@@ -37,7 +37,7 @@ export const refundData: IFAQItem[] = [
     qn: "What if my Pincode is not supported for Reverse Pickups?",
     ans: [
       "If pickup is not serviceable at your Pincode, You are requested to self-ship the product/products. Also, kindly have a word with our customer care executive before sending the products back to us via self-shipment or speed post. Please pack the items securely to prevent any loss or damage during transit.",
-      "✨ Average shipping charge of Rs 70 will be credited into your FirstInCry account as Reward Points. ",
+      "✨ Average shipping charge of Rs 70 will be credited into your FirstInBaby account as Reward Points. ",
       "✨ You can courier the product(s) to the address mentioned below:",
       "B-15/23,",
       "Jaipur,",
@@ -48,17 +48,17 @@ export const refundData: IFAQItem[] = [
     qn: "How will I get my refund?",
     ans: [
       "✨ Refund of shipping and COD charges is not applicable.",
-      "✨ In the case of COD Order, the refund will be credited to FirstInCry Wallet as reward points within 48 hours of quality check.",
+      "✨ In the case of COD Order, the refund will be credited to FirstInBaby Wallet as reward points within 48 hours of quality check.",
       "✨ In the case of a prepaid order, the refund will be credited to the source payment method within 4 working days of quality check.",
     ],
   },
   {
-    qn: "What are FirstInCry credits?",
+    qn: "What are FirstInBaby credits?",
     ans: [
-      "FirstInCry Credits are store credits that can be utilized to make purchases on our website. You can view your available credits in your wallet here.",
+      "FirstInBaby Credits are store credits that can be utilized to make purchases on our website. You can view your available credits in your wallet here.",
       "1 Credit is the equivalent of Rs. 1.00 while making a purchase and can be utilized during the checkout process.",
-      "FirstInCry Credits are non-transferable. They cannot be transferred to any other FirstInCry account or be converted to Indian currency and transferred to your bank account.",
-      "FirstInCry Credits are solely the equivalent of store credit on www.FirstInCry.com and should not be confused with any sort of banking or financial services.",
+      "FirstInBaby Credits are non-transferable. They cannot be transferred to any other FirstInBaby account or be converted to Indian currency and transferred to your bank account.",
+      "FirstInBaby Credits are solely the equivalent of store credit on www.FirstInBaby.com and should not be confused with any sort of banking or financial services.",
     ],
   },
   {
@@ -68,18 +68,18 @@ export const refundData: IFAQItem[] = [
     ],
   },
   {
-    qn: "What products cannot be returned as per FirstInCry's Return Policy Policy?",
+    qn: "What products cannot be returned as per FirstInBaby's Return Policy Policy?",
     ans: [
       "Phone cases, Coffee Mugs, DTG T-shirts, Posters and notebooks are Print-on-demand products. These are manufactured on-demand and made especially for you once you place an order, and hence, we cannot accept Returns  for these products.",
       "We do not accept Returns  for Boxer Shorts in the interest of hygiene.",
-      "In case of any sort of manufacturing defect, you can mail us at care@FirstInCry.com and we'll help you out.",
+      "In case of any sort of manufacturing defect, you can mail us at care@FirstInBaby.com and we'll help you out.",
     ],
   },
   {
     qn: "Can I cancel my order before it is Shipped out?",
     ans: [
       "You can cancel your order if it has not yet been processed at our office. All orders are usually processed by 11 AM every working day. Orders containing DTG T-shirts, Posters, Mobile Covers, Coffee Mugs, and notebooks can not be cancelled once these products have been manufactured as they are printed on demand.",
-      "Kindly mail us on care@FirstInCry.com for cancellation request.",
+      "Kindly mail us on care@FirstInBaby.com for cancellation request.",
     ],
   },
   {

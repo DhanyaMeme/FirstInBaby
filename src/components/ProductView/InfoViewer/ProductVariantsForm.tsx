@@ -53,7 +53,7 @@ export const ProductVariantsForm: React.FC<IProps> = (props: IProps) => {
 
   const addTocart = (e: OnclickEvent) => {
     e.preventDefault();
-    handleAddTocart();
+    handleAddTocart(product);
   };
 
   const FavIconOnclick = (e: OnclickEvent) => {

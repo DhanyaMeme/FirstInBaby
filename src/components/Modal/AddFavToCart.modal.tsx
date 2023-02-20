@@ -23,7 +23,7 @@ export const AddFavToCartModal = (props: IProps) => {
   };
 
   const addTocart = () => {
-    handleAddTocart();
+    handleAddTocart(product);
     dispatch(closeModal());
   };
 

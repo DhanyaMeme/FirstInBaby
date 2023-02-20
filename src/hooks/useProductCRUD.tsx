@@ -60,8 +60,9 @@ export const useProductCRUD = () => {
     updateProductVariants(product, product.productSize?.[0]?.psize || "");
   };
 
-  const handleAddTocart = () => {
+  const handleAddTocart = (product: IProduct) => {
     dispatch(addItemToCart(selectedProductVariants));
+    updateInitialProductVariants(product);
     toastMessage(
       `${selectedProductVariants.productname} added to cart`,
       "success"
