@@ -21,9 +21,7 @@ export const MenuBody: FC<IProps> = (props: IProps) => {
             <NavLink
               className="Collapsible__Button Heading Link Link--primary u-h6"
               onClick={handleClick}
-              to={`/collections/${item.mainCatName}?sc=${encodeUrl(
-                item.mainCatName
-              )}`}
+              to={`/collections/${encodeUrl(item.mainCatName)}`}
             >
               {item.mainCatName}
             </NavLink>
