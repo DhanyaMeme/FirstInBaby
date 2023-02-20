@@ -18,8 +18,8 @@ export const AddFavToCartModal = (props: IProps) => {
 
   const { updateProductVariants, handleAddTocart } = useProductCRUD();
 
-  const handleSizeInput = (item: IProductSize) => {
-    updateProductVariants(product, item.psize);
+  const handleSizeInput = (item: string) => {
+    updateProductVariants(product, item);
   };
 
   const addTocart = () => {
@@ -38,7 +38,7 @@ export const AddFavToCartModal = (props: IProps) => {
         productSizeArray={(product.productSize as IProductSize[]) || []}
         onChange={handleSizeInput}
         valueKey="psize"
-        initialSelectedItem={product.productSize?.[0] || []}
+        initialSelectedItem={product.productSize?.[0].psize || ""}
       />
     </ModalWrapper>
   );

@@ -33,11 +33,14 @@ export const ProductVariantsForm: React.FC<IProps> = (props: IProps) => {
   const selectedProductVariants =
     useAppSelector(productVariants) || ({} as IProductVariants);
 
-  const handleSizeInput = (item: IProductSize) => {
+  console.log("selectedProductVariants", selectedProductVariants);
+
+  const handleSizeInput = (psize: string) => {
+    console.log("psize", psize);
     dispatch(
       setProductVariants({
         ...selectedProductVariants,
-        size: item.psize,
+        size: psize,
       })
     );
   };
@@ -72,13 +75,14 @@ export const ProductVariantsForm: React.FC<IProps> = (props: IProps) => {
               productSizeArray={(productSize as IProductSize[]) || []}
               onChange={handleSizeInput}
               valueKey="psize"
-              initialSelectedItem={(productSize?.[0] || []) as IProductSize}
+              initialSelectedItem={selectedProductVariants.size}
             />
           </OptionsWrapper>
         </IF>
         <OptionsWrapper name="Quantity">
           <QuantitySelector
             isLarge
+            quantity={selectedProductVariants.quantity}
             handleIncrement={handleQuantityInput}
             handleDecrement={handleQuantityInput}
           />

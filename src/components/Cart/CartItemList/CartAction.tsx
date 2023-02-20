@@ -36,7 +36,7 @@ export const CartAction = (props: IProps) => {
     >
       <div className="CartItem__QuantitySelector">
         <QuantitySelector
-          defaultValue={cartItem.quantity}
+          quantity={cartItem.quantity}
           handleIncrement={handleIncrement}
           handleDecrement={handleDecrement}
         />

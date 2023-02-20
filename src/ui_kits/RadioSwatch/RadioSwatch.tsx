@@ -5,18 +5,16 @@ interface IProps<T, K extends keyof T> {
   name: string;
   productSizeArray: Array<T>;
   valueKey: K;
-  onChange: (selectedInput: T) => void;
-  initialSelectedItem: T;
+  onChange: (selectedInput: T[K]) => void;
+  initialSelectedItem: T[K];
 }
 
 export const RadioSwatch = <T, K extends keyof T>(props: IProps<T, K>) => {
   const { name, onChange, productSizeArray, valueKey, initialSelectedItem } =
     props;
-  const [selectedValue, setSelectedValue] = useState<T>(initialSelectedItem);
 
   const radioHandler = (item: T) => {
-    setSelectedValue(item);
-    onChange(item);
+    onChange(item[valueKey] as T[K]);
   };
 
   return (
@@ -29,7 +27,7 @@ export const RadioSwatch = <T, K extends keyof T>(props: IProps<T, K>) => {
             value={sizeItem[valueKey] as any}
             name={`${name}-option`}
             onChange={() => radioHandler(sizeItem)}
-            checked={selectedValue[valueKey] === sizeItem[valueKey]}
+            checked={initialSelectedItem === sizeItem[valueKey]}
             className="RadioSwatch__Input"
           />
           <label
