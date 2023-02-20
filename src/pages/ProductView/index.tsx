@@ -21,8 +21,7 @@ import "./Style.scss";
 export const ProductView = () => {
   const productId = usePath();
   const dispatch = useAppDispatch();
-
-  const { updateProductVariants } = useProductCRUD();
+  const { updateInitialVariants } = useProductCRUD();
   const { data: filteredData, loading } = useAppSelector(selectedProduct);
 
   useEffect(() => {
@@ -31,10 +30,7 @@ export const ProductView = () => {
 
   useEffect(() => {
     if (filteredData) {
-      updateProductVariants(
-        filteredData,
-        filteredData.productSize?.[0]?.psize || ""
-      );
+      updateInitialVariants(filteredData);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, filteredData]);

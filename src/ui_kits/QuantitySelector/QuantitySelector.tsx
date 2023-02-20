@@ -1,4 +1,4 @@
-import { FC, ReactElement, useState } from "react";
+import { FC, ReactElement, useEffect, useState } from "react";
 import classNames from "classnames";
 import { MinusIcon } from "../../assets/icons/Minus.icon";
 import { PlusIcon } from "../../assets/icons/Plus.icon";
@@ -15,6 +15,10 @@ interface IProps {
 export const QuantitySelector: FC<IProps> = (props: IProps): ReactElement => {
   const { isLarge, defaultValue = 1, handleIncrement, handleDecrement } = props;
   const [quantity, setQuantity] = useState<number>(defaultValue);
+
+  useEffect(() => {
+    setQuantity(defaultValue);
+  }, [defaultValue]);
 
   const handleIncrementOnclick = (e: OnclickEvent) => {
     e.preventDefault();

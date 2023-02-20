@@ -56,8 +56,13 @@ export const useProductCRUD = () => {
     );
   };
 
-  const handleAddTocart = () => {
+  const updateInitialVariants = (product: IProduct) => {
+    updateProductVariants(product, product.productSize?.[0]?.psize || "");
+  };
+
+  const handleAddTocart = (product: IProduct) => {
     dispatch(addItemToCart(selectedProductVariants));
+    updateInitialVariants(product);
     toastMessage(
       `${selectedProductVariants.productname} added to cart`,
       "success"
@@ -98,6 +103,7 @@ export const useProductCRUD = () => {
 
   return {
     user,
+    updateInitialVariants,
     handleToggleToFav,
     updateProductVariants,
     handleAddTocart,

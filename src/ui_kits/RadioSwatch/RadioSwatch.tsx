@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./RadioSwatch.scss";
 
 interface IProps<T, K extends keyof T> {
@@ -13,6 +13,10 @@ export const RadioSwatch = <T, K extends keyof T>(props: IProps<T, K>) => {
   const { name, onChange, productSizeArray, valueKey, initialSelectedItem } =
     props;
   const [selectedValue, setSelectedValue] = useState<T>(initialSelectedItem);
+
+  useEffect(() => {
+    setSelectedValue(initialSelectedItem);
+  }, [initialSelectedItem]);
 
   const radioHandler = (item: T) => {
     setSelectedValue(item);

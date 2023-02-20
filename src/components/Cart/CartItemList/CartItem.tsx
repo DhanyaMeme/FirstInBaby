@@ -1,5 +1,7 @@
+import { NavLink } from "react-router-dom";
 import { ICartItem } from "../../../redux/slices/cart/cart.type";
 import { Price } from "../../../ui_kits/global/Price.styles";
+import { encodeUrl } from "../../../utils/textHandler";
 import { CartAction } from "./CartAction";
 import "./CartItemList.scss";
 
@@ -23,9 +25,11 @@ export const CartItem = (props: IProps) => {
       </div>
       <div className="CartItem__Info">
         <h2 className="CartItem__Title Heading">
-          <a href={`/product/${cartItem.productname}/${cartItem.id}`}>
+          <NavLink
+            to={`/product/${encodeUrl(cartItem.productname)}/${cartItem.mcId}`}
+          >
             {cartItem.productname}
-          </a>
+          </NavLink>
         </h2>
         <div className="CartItem__Meta Heading Text--subdued">
           <p className="CartItem__Variant">{cartItem.size}</p>

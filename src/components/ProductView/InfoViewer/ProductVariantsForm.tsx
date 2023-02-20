@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useMemo } from "react";
 import { useDispatch } from "react-redux";
 import { Form } from "../../../ui_kits/Form";
 import { isEmpty } from "../../../utils/script";
@@ -53,13 +53,19 @@ export const ProductVariantsForm: React.FC<IProps> = (props: IProps) => {
 
   const addTocart = (e: OnclickEvent) => {
     e.preventDefault();
-    handleAddTocart();
+    handleAddTocart(product);
   };
 
   const FavIconOnclick = (e: OnclickEvent) => {
     e.preventDefault();
     handleToggleToFav(product.mcId);
   };
+
+  const initialProductSize = useMemo(() => {
+    return productSize.find(
+      (size: IProductSize) => size.psize === selectedProductVariants.size
+    );
+  }, [selectedProductVariants]);
 
   return (
     <Form classname="ProductForm">
@@ -72,13 +78,14 @@ export const ProductVariantsForm: React.FC<IProps> = (props: IProps) => {
               productSizeArray={(productSize as IProductSize[]) || []}
               onChange={handleSizeInput}
               valueKey="psize"
-              initialSelectedItem={(productSize?.[0] || []) as IProductSize}
+              initialSelectedItem={initialProductSize as IProductSize}
             />
           </OptionsWrapper>
         </IF>
         <OptionsWrapper name="Quantity">
           <QuantitySelector
             isLarge
+            defaultValue={selectedProductVariants.quantity}
             handleIncrement={handleQuantityInput}
             handleDecrement={handleQuantityInput}
           />
