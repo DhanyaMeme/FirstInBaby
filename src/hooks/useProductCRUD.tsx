@@ -59,7 +59,7 @@ export const useProductCRUD = () => {
   const handleAddTocart = () => {
     dispatch(addItemToCart(selectedProductVariants));
     toastMessage(
-      `${selectedProductVariants.productcolor} added to cart`,
+      `${selectedProductVariants.productname} added to cart`,
       "success"
     );
   };
