@@ -22,7 +22,8 @@ export const ProductView = () => {
   const productId = usePath();
   const dispatch = useAppDispatch();
 
-  const { updateProductVariants } = useProductCRUD();
+  const { updateProductVariants, updateInitialProductVariants } =
+    useProductCRUD();
   const { data: filteredData, loading } = useAppSelector(selectedProduct);
 
   useEffect(() => {
@@ -31,10 +32,7 @@ export const ProductView = () => {
 
   useEffect(() => {
     if (filteredData) {
-      updateProductVariants(
-        filteredData,
-        filteredData.productSize?.[0]?.psize || ""
-      );
+      updateInitialProductVariants(filteredData);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, filteredData]);

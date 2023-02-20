@@ -56,6 +56,10 @@ export const useProductCRUD = () => {
     );
   };
 
+  const updateInitialProductVariants = (product: IProduct) => {
+    updateProductVariants(product, product.productSize?.[0]?.psize || "");
+  };
+
   const handleAddTocart = () => {
     dispatch(addItemToCart(selectedProductVariants));
     toastMessage(
@@ -103,5 +107,6 @@ export const useProductCRUD = () => {
     handleAddTocart,
     addAddressHandler,
     removeAddressHandler,
+    updateInitialProductVariants,
   };
 };
