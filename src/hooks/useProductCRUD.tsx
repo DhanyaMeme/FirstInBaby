@@ -102,7 +102,6 @@ export const useProductCRUD = () => {
 
   return {
     user,
-    updateInitialVariants,
     handleToggleToFav,
     updateProductVariants,
     handleAddTocart,
