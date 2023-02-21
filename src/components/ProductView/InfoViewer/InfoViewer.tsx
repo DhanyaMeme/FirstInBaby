@@ -7,7 +7,6 @@ import { openModal } from "../../../redux/slices/modal/modal.slice";
 import { Container } from "../../../ui_kits/global/Container.styles";
 import { IProduct } from "../../../redux/slices/collection/collection.type";
 import "./InfoViewer.scss";
-import { Flashsale } from "../../FlashSale";
 
 interface IProps {
   product: IProduct;

@@ -32,7 +32,7 @@ export const ProductItem = (props: IProps) => {
 
   const isValidDate = isFutureDate(product.date);
 
-  const { handleToggleToFav } = useProductCRUD();
+  const { handleToggleToFav, updateInitialProductVariants } = useProductCRUD();
 
   const dispatch = useAppDispatch();
 
@@ -42,6 +42,7 @@ export const ProductItem = (props: IProps) => {
   };
 
   const handleProductAddToCart = () => {
+    updateInitialProductVariants(product);
     dispatch(
       openModal({
         modalType: "AddFavToCartModal",

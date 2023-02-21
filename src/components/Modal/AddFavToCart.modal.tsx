@@ -1,4 +1,4 @@
-import { useAppDispatch } from "../../redux/store";
+import { useAppDispatch, useAppSelector } from "../../redux/store";
 import {
   IProduct,
   IProductSize,
@@ -7,6 +7,8 @@ import { useProductCRUD } from "../../hooks/useProductCRUD";
 import { closeModal } from "../../redux/slices/modal/modal.slice";
 import { RadioSwatch } from "../../ui_kits/RadioSwatch/RadioSwatch";
 import ModalWrapper from "../../ui_kits/modal/modal-wrapper.component";
+import { productVariants } from "../../redux/slices/product/product.selector";
+import { IProductVariants } from "../../redux/slices/product/product.type";
 
 interface IProps {
   id: IProduct;
@@ -18,8 +20,11 @@ export const AddFavToCartModal = (props: IProps) => {
 
   const { updateProductVariants, handleAddTocart } = useProductCRUD();
 
-  const handleSizeInput = (item: string) => {
-    updateProductVariants(product, item);
+  const selectedProductVariants =
+    useAppSelector(productVariants) || ({} as IProductVariants);
+
+  const handleSizeInput = (psize: string) => {
+    updateProductVariants(product, psize);
   };
 
   const addTocart = () => {
@@ -38,7 +43,7 @@ export const AddFavToCartModal = (props: IProps) => {
         productSizeArray={(product.productSize as IProductSize[]) || []}
         onChange={handleSizeInput}
         valueKey="psize"
-        initialSelectedItem={product.productSize?.[0].psize || ""}
+        initialSelectedItem={selectedProductVariants.size}
       />
     </ModalWrapper>
   );
