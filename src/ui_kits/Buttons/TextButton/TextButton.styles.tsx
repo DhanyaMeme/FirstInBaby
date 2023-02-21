@@ -74,6 +74,12 @@ const Button = styled.button<IButtonStyleProps>`
     align-items: center;
   }
 
+  svg {
+    height: 15px;
+    width: 15px;
+    margin-right: 10px;
+  }
+
   @media (-moz-touch-enabled: 0), (hover: hover) {
     &:not([disabled])::before {
       transition: transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);

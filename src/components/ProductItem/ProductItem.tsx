@@ -9,6 +9,9 @@ import { useAppDispatch } from "../../redux/store";
 import { openModal } from "../../redux/slices/modal/modal.slice";
 import { useProductCRUD } from "../../hooks/useProductCRUD";
 import { OnclickEvent } from "../../models/types";
+import { Flashsale } from "../FlashSale";
+import { Timer } from "../Timer/Timer";
+import { isFutureDate } from "../../utils/script";
 
 interface IProps {
   product: IProduct;
@@ -26,6 +29,8 @@ export const ProductItem = (props: IProps) => {
     isVisibleAddCart = false,
     isVisibleRemoveFav = false,
   } = props;
+
+  const isValidDate = isFutureDate(product.date);
 
   const { handleToggleToFav } = useProductCRUD();
 
@@ -94,6 +99,7 @@ export const ProductItem = (props: IProps) => {
         </IF>
 
         <ProductInfo product={product} />
+        {!isValidDate && product.date && <Timer endDate={product.date} />}
       </div>
     </div>
   );

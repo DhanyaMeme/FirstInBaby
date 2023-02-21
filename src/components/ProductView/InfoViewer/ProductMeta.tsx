@@ -3,7 +3,8 @@ import { IProduct } from "../../../redux/slices/collection/collection.type";
 import { Price } from "../../../ui_kits/global/Price.styles";
 import { IF } from "../../../ui_kits/IF";
 import { getOfferPrice } from "../../../utils/generics";
-import { isEmpty } from "../../../utils/script";
+import { isEmpty, isFutureDate } from "../../../utils/script";
+import { Flashsale } from "../../FlashSale";
 
 import { Specification } from "./Specification";
 
@@ -12,8 +13,11 @@ interface IProps {
 }
 
 export const ProductMeta: React.FC<IProps> = (props: IProps) => {
-  const { productname, price, offer, descpription, productSpecs } =
+  const { productname, price, offer, descpription, productSpecs, date } =
     props.product;
+
+  const isValidDate = isFutureDate(date);
+
   return (
     <div className="ProductMeta Heading">
       <h2>{productname}</h2>
@@ -25,6 +29,7 @@ export const ProductMeta: React.FC<IProps> = (props: IProps) => {
           </Price>
         </IF>
       </div>
+      {!isValidDate && date && <Flashsale endDate={date} />}
       <div className="Product__Description">{descpription}</div>
       <IF condition={!isEmpty(productSpecs)}>
         <div className="Product__Description">

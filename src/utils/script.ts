@@ -91,3 +91,14 @@ export function formatPreOrderDate() {
   var year = date.getFullYear();
   return [year, month, day].join("-");
 }
+
+export const isFutureDate = function (date: any) {
+  const endDate = new Date(date);
+  const today = new Date();
+
+  if (endDate.setHours(0, 0, 0, 0) <= today.setHours(0, 0, 0, 0)) {
+    return true;
+  }
+
+  return false;
+};

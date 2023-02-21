@@ -7,6 +7,7 @@ import { openModal } from "../../../redux/slices/modal/modal.slice";
 import { Container } from "../../../ui_kits/global/Container.styles";
 import { IProduct } from "../../../redux/slices/collection/collection.type";
 import "./InfoViewer.scss";
+import { Flashsale } from "../../FlashSale";
 
 interface IProps {
   product: IProduct;
@@ -32,6 +33,7 @@ export const InfoViewer = (props: IProps) => {
     <div className="ProductInfo u-h5">
       <Container className="ProductInfo__Container">
         <ProductMeta product={product} />
+
         <ProductVariantsForm product={product}>
           <div
             className="ProductForm__LabelLink "

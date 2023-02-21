@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { FlashSaleIcon } from "../../assets/icons/FlashSale.icon";
 import { TextButton } from "../../ui_kits/Buttons/TextButton/TextButton.component";
 
 export const PreOrder = () => {
@@ -10,11 +11,14 @@ export const PreOrder = () => {
 
   return (
     <TextButton
-      className="hidden-pocket hidden-lap"
+      className="Presale_Btn hidden-pocket hidden-lap"
       onClick={handleOnclick}
       isSmall
     >
-      BULK ORDER
+      <>
+        <FlashSaleIcon />
+        PRE SALE
+      </>
     </TextButton>
   );
 };
