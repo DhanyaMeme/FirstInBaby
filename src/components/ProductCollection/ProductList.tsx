@@ -1,9 +1,7 @@
-import { FC, useEffect, useMemo, useState } from "react";
-import useScrollPosition from "../../hooks/useScrollPosition";
+import { FC } from "react";
 import { ProductView } from "../../models/constants";
 import { IProduct } from "../../redux/slices/collection/collection.type";
 import LazyLoad from "../../ui_kits/LazyComponent";
-import Pagination from "../../ui_kits/Pagination/Pagination";
 import { ProductItem } from "../ProductItem/ProductItem";
 
 interface IProps {
@@ -12,7 +10,7 @@ interface IProps {
 
 export const ProductsList: FC<IProps> = (props: IProps) => {
   const { ProductData } = props;
-  const selectedView = ProductView["4:4"];
+  const selectedView = ProductView["1:1"];
 
   return (
     <div className="CollectionInner__Products">
