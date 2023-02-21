@@ -1,6 +1,7 @@
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { fetchData } from "../../../services/axios";
 import { productService } from "../../../services/axiosServices";
+import { formatPreOrderDate } from "../../../utils/script";
 import { ICollectionState, IProduct } from "./collection.type";
 
 export const fetchAllProductsAsync = createAsyncThunk(
@@ -8,6 +9,22 @@ export const fetchAllProductsAsync = createAsyncThunk(
   async (_arg, { rejectWithValue }) => {
     try {
       const response = await fetchData(productService.getAllProducts);
+      return response;
+    } catch (err) {
+      return rejectWithValue(err);
+    }
+  }
+);
+
+export const fetchPreorderProductsAsync = createAsyncThunk<IProduct[]>(
+  "collection/getPreOrderProducts",
+  async (_arg, { rejectWithValue }) => {
+    try {
+      const currentDate = formatPreOrderDate();
+      const response = (await fetchData({
+        ...productService.getPreOrderProducts,
+        params: { curDate: currentDate },
+      })) as IProduct[];
       return response;
     } catch (err) {
       return rejectWithValue(err);
@@ -105,6 +122,22 @@ export const extracollectionReducer = {
     state.allProducts.loading = false;
     state.allProducts.error = "Error while fetching all products";
   },
+
+  [fetchPreorderProductsAsync.pending.type]: (state: ICollectionState) => {
+    state.preorderProducts.loading = true;
+  },
+  [fetchPreorderProductsAsync.fulfilled.type]: (
+    state: ICollectionState,
+    { payload }: PayloadAction<Array<IProduct>>
+  ) => {
+    state.preorderProducts.loading = false;
+    state.preorderProducts.data = payload;
+  },
+  [fetchPreorderProductsAsync.rejected.type]: (state: ICollectionState) => {
+    state.preorderProducts.loading = false;
+    state.preorderProducts.error = "Error while fetching preorder products";
+  },
+
   [fetchProductsByCategoryAsync.pending.type]: (state: ICollectionState) => {
     state.productsByCategory.loading = true;
   },

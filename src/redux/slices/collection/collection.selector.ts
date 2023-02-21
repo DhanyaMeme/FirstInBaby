@@ -8,6 +8,11 @@ export const allProducts = createSelector(
   (product) => product.allProducts
 );
 
+export const preorderProducts = createSelector(
+  [productSelf],
+  (product) => product.preorderProducts
+);
+
 export const productsByCategory = createSelector(
   [productSelf],
   (product) => product.productsByCategory

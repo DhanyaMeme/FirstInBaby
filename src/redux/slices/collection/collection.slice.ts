@@ -8,6 +8,7 @@ import { ICollectionState } from "./collection.type";
 
 export const initialState: ICollectionState = {
   allProducts: initialAsyncData,
+  preorderProducts: initialAsyncData,
   productsByCategory: initialAsyncData,
   productsByShopBy: initialAsyncData,
   productsBySearch: initialAsyncData,

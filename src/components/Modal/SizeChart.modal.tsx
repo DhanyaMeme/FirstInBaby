@@ -1,19 +1,20 @@
+import { IProduct } from "../../redux/slices/collection/collection.type";
 import ModalWrapper from "../../ui_kits/modal/modal-wrapper.component";
 
-export const SizeChartModal = () => {
+interface IProps {
+  id: IProduct;
+}
+
+export const SizeChartModal = (props: IProps) => {
+  const { id: product } = props;
+
   return (
     <ModalWrapper size="small" image={true} basic={true}>
       <div className="hidden-phone">
-        <img
-          src="https://cdn.shopify.com/s/files/1/2428/5565/files/desktop-size-chart.png"
-          alt="SizeChart"
-        />
+        <img src={product.sizechart} alt="SizeChart" />
       </div>
       <div className="hidden-tablet-and-up">
-        <img
-          src="https://cdn.shopify.com/s/files/1/2428/5565/files/mobile-size-chart.png"
-          alt="SizeChart"
-        />
+        <img src={product.sizechart} alt="SizeChart" />
       </div>
     </ModalWrapper>
   );

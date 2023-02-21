@@ -5,6 +5,7 @@ import { ProductCollection } from "../pages/ProductCollection";
 import { ProductView } from "../pages/ProductView";
 import Cart from "../pages/Cart";
 import { ShopBy } from "../pages/ShopBy";
+import { Preorder } from "../pages/Preorder";
 
 // ==============================|| MAIN ROUTING ||============================== //
 
@@ -28,6 +29,10 @@ const MainRoutes = {
           path: ":id",
         },
       ],
+    },
+    {
+      path: "preorder",
+      element: <Preorder />,
     },
     {
       path: "shopBy/:name/:id",

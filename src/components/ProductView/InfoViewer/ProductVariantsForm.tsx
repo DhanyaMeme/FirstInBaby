@@ -33,10 +33,7 @@ export const ProductVariantsForm: React.FC<IProps> = (props: IProps) => {
   const selectedProductVariants =
     useAppSelector(productVariants) || ({} as IProductVariants);
 
-  console.log("selectedProductVariants", selectedProductVariants);
-
   const handleSizeInput = (psize: string) => {
-    console.log("psize", psize);
     dispatch(
       setProductVariants({
         ...selectedProductVariants,

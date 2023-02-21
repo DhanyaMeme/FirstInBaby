@@ -84,6 +84,7 @@ export interface IProduct {
 
 export interface ICollectionState {
   allProducts: AsyncData<IProduct[]>;
+  preorderProducts: AsyncData<IProduct[]>;
   productsByShopBy: AsyncData<Record<string, IProduct[]>>;
   productsShopByCollection: AsyncData<Record<string, IProduct[]>>;
   productsByCategory: AsyncData<Record<string, IProduct[]>>;

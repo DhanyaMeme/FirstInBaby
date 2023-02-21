@@ -47,6 +47,7 @@ export const productsEndpoints = Object.freeze({
   SINGLE_PRODUCT: "/ophelia/products/product",
   ADD_REVIEWS: "/ophelia/add/review",
   DELIVERY_STATUS: "/ophelia/verify/delivery",
+  PREORDER: `/ophelia/preorder`,
 });
 
 export const FavEndpoints = Object.freeze({

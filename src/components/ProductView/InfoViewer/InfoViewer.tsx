@@ -21,6 +21,9 @@ export const InfoViewer = (props: IProps) => {
     dispatch(
       openModal({
         modalType: "SizeChartModal",
+        modalProps: {
+          id: product,
+        },
       })
     );
   };

@@ -50,7 +50,7 @@ export const useProductCRUD = () => {
     dispatch(
       setProductVariants({
         ...variants,
-        quantity: 1,
+        quantity: product.minqty,
         size: size,
       })
     );
