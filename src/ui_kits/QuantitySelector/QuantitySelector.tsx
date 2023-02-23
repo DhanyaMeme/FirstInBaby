@@ -1,4 +1,4 @@
-import { FC, ReactElement, useState } from "react";
+import { FC, ReactElement } from "react";
 import classNames from "classnames";
 import { MinusIcon } from "../../assets/icons/Minus.icon";
 import { PlusIcon } from "../../assets/icons/Plus.icon";

@@ -1,5 +1,4 @@
-import React from "react";
-import QRCode, { QRCodeSVG } from "qrcode.react";
+import { QRCodeSVG } from "qrcode.react";
 
 interface IProps {
   planInfo: Record<string, string>;

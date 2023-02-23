@@ -1,7 +1,8 @@
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { fetchData } from "../../../services/axios";
-import { addressService } from "../../../services/axiosServices";
 import toastMessage from "../../../utils/toastMessage";
+import { fetchCustomerAsync } from "../profile/profile.reducer";
+import { addressService } from "../../../services/axiosServices";
 import { IAddress, IAddressData, IAddressState } from "./address.type";
 
 export const fetchAddressAsync = createAsyncThunk<IAddressData, string>(
@@ -28,7 +29,7 @@ export const addAddressAsync = createAsyncThunk<any, any>(
         params: data.address,
       });
       toastMessage("Added Address", "success");
-      dispatch(fetchAddressAsync(data.user));
+      dispatch(fetchCustomerAsync(data.user));
       return response;
     } catch (err) {
       toastMessage("Something went wrong, Try again", "error");
@@ -46,7 +47,7 @@ export const updateAddressAsync = createAsyncThunk<any, any>(
         params: data.address,
       });
       toastMessage("Updated Address", "success");
-      dispatch(fetchAddressAsync(data.user));
+      dispatch(fetchCustomerAsync(data.user));
       return response;
     } catch (err) {
       toastMessage("Something went wrong, Try again", "error");
@@ -64,7 +65,7 @@ export const deleteAddressAsync = createAsyncThunk<any, any>(
         params: data.id,
       });
       toastMessage("Deleted Address", "success");
-      dispatch(fetchAddressAsync(data.user));
+      dispatch(fetchCustomerAsync(data.user));
       return response;
     } catch (err) {
       toastMessage("Something went wrong, Try again", "error");

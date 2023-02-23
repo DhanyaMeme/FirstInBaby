@@ -25,7 +25,7 @@ export const Subscribe = () => {
   const onPaymentSuccess = async (txnId: any) => {
     const paymentOptions = {
       plan: selectedPlan?.planName,
-      cusId: userData?.email,
+      email: userData?.email,
       pstatus: "success",
     };
     dispatch(updateSubscriptionPlanAsync(paymentOptions));

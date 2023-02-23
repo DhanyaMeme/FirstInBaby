@@ -22,8 +22,7 @@ export const ProductView = () => {
   const productId = usePath();
   const dispatch = useAppDispatch();
 
-  const { updateProductVariants, updateInitialProductVariants } =
-    useProductCRUD();
+  const { updateInitialProductVariants } = useProductCRUD();
   const { data: filteredData, loading } = useAppSelector(selectedProduct);
 
   useEffect(() => {

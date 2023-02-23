@@ -8,9 +8,9 @@ export const authEndpoints = Object.freeze({
 
 export const addressEndpoints = Object.freeze({
   GET_ADDRESS: "/ophelia/address",
-  ADD_ADDRESS: "/ophelia/address",
+  ADD_ADDRESS: "/fib/v1/customer/add/address",
   DELETE_ADDRESS: "/ophelia/address/id",
-  UPDATE_ADDRESS: "/ophelia/user/address/update",
+  UPDATE_ADDRESS: "/fib/v1/customer/address/update",
 });
 
 export const navEndpoints = Object.freeze({
@@ -18,12 +18,12 @@ export const navEndpoints = Object.freeze({
 });
 
 export const profileEndpoints = Object.freeze({
-  PROFILE: "/ophelia/useraddress",
-  UPDATE_PROFILE: "/ophelia/updateuser",
+  GET_PROFILE: "/fib/v1/customer/address",
+  UPDATE_PROFILE: "/fib/v1/customer/update/profile",
   HELP: `/ophelia/help`,
-  PLANS: `/ophelia/user/plans`,
+  PLANS: `/fib/v1/get/referralplan`,
   SUBCRIPTION: `/ophelia/user/subcription`,
-  UPDATE_SUBCRIPTION: `/ophelia/user/subscription/update`,
+  UPDATE_SUBCRIPTION: `/fib/v1/customer/update/subscription`,
   GET_ORDER: `/ophelia/orderhistory`,
   PLACE_ORDER: `/ophelia/placeorder`,
   UPDATE_ORDER: `/ophelia/admin/order/status`,

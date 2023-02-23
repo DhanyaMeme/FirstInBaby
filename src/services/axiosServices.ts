@@ -132,23 +132,23 @@ export const cartService = {
 export const profileService = {
   getCustomerbyIdEmail: {
     method: "GET",
-    url: profileEndpoints.PROFILE,
+    url: profileEndpoints.GET_PROFILE,
   },
   updateCustomer: {
-    method: "POST",
+    method: "PATCH",
     url: profileEndpoints.UPDATE_PROFILE,
   },
   help: {
     method: "POST",
     url: profileEndpoints.HELP,
   },
+  plans: {
+    method: "GET",
+    url: profileEndpoints.PLANS,
+  },
   getSubscription: {
     method: "GET",
     url: profileEndpoints.SUBCRIPTION,
-  },
-  plans: {
-    method: "POST",
-    url: profileEndpoints.PLANS,
   },
   updateSubscriptionPlan: {
     method: "POST",

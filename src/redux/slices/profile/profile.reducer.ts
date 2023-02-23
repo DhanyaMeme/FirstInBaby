@@ -16,7 +16,7 @@ export const fetchCustomerAsync = createAsyncThunk<ICustomer, string>(
     try {
       const response = (await fetchData({
         ...profileService.getCustomerbyIdEmail,
-        params: { phone: email },
+        params: { email },
       })) as ICustomer;
       return response;
     } catch (err) {
@@ -71,7 +71,7 @@ export const fetchPlansAsync = createAsyncThunk<IPlan[]>(
 export const fetchSubscribedPlanAsync = createAsyncThunk<
   ISubscribedPlan,
   string
->("profile/getSubscribedPlan", async (email, { rejectWithValue, dispatch }) => {
+>("profile/getSubscribedPlan", async (email, { rejectWithValue }) => {
   try {
     const response = (await fetchData({
       ...profileService.getSubscription,

@@ -9,10 +9,9 @@ import { useAppDispatch } from "../../redux/store";
 import { openModal } from "../../redux/slices/modal/modal.slice";
 import { useProductCRUD } from "../../hooks/useProductCRUD";
 import { OnclickEvent } from "../../models/types";
-import { Flashsale } from "../FlashSale";
 import { Timer } from "../Timer/Timer";
 import { isFutureDate } from "../../utils/script";
-import { matchPath, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 interface IProps {
   product: IProduct;
