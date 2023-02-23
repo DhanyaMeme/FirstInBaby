@@ -1,5 +1,4 @@
 import { Navigate } from "react-router-dom";
-import AuthGuard from "../layout/AuthGuard";
 import GuestGuard from "../layout/GuestGuard";
 import AuthLogin from "../pages/AuthHandler/AuthLogin";
 import AuthRegister from "../pages/AuthHandler/AuthRegister";
@@ -8,11 +7,7 @@ import AuthRegister from "../pages/AuthHandler/AuthRegister";
 
 const AuthRoutes = {
   path: "auth",
-  element: (
-    <GuestGuard>
-      <AuthGuard />
-    </GuestGuard>
-  ),
+  element: <GuestGuard />,
   children: [
     {
       path: "",

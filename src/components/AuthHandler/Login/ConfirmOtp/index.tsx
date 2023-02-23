@@ -105,7 +105,7 @@ export const ConfirmOtp = () => {
       })}
       <ResendOTP formState={formState} setFormState={setFormState} />
       <FormSubmit isFull isLoading={formState.isButtonLoading}>
-        Submit
+        SUBMIT
       </FormSubmit>
     </Form>
   );

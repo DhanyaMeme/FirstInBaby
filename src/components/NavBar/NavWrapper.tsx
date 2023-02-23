@@ -15,6 +15,8 @@ const NavWrapper: FC<IProps> = (props: IProps) => {
   const { handleClick } = props;
   const categoriesData = useAppSelector(categories);
 
+  console.log("categoriesData", categoriesData);
+
   return (
     <div className="Header__FlexItem Header__FlexItem--fill">
       <button

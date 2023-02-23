@@ -29,7 +29,7 @@ export const authService = {
     url: authEndpoints.CONFIRM__OTP,
   },
   ResetPassword: {
-    method: "PUT",
+    method: "POST",
     url: authEndpoints.RESET_PASSWORD,
   },
 };

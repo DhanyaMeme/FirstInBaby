@@ -1,9 +1,9 @@
 export const authEndpoints = Object.freeze({
-  REGISTER: "/ophelia/registration",
-  LOGIN: "/ophelia/userlogin",
-  FORGOT_PASSWORD: "/ophelia/forgotpassword",
-  CONFIRM__OTP: "/ophelia/confirmation",
-  RESET_PASSWORD: "/ophelia/updatepassword",
+  REGISTER: "/fib/v1/customer/registration",
+  LOGIN: "/fib/v1/customer/login",
+  FORGOT_PASSWORD: "/fib/v1/customer/resetpassword/generateotp",
+  CONFIRM__OTP: "/fib/v1/customer/confirmation",
+  RESET_PASSWORD: "/fib/v1/customer/update/password",
 });
 
 export const addressEndpoints = Object.freeze({
@@ -14,7 +14,7 @@ export const addressEndpoints = Object.freeze({
 });
 
 export const navEndpoints = Object.freeze({
-  MAIN__CATEGORY: "/ophelia/mainproducts",
+  MAIN__CATEGORY: "/fib/v1/menu",
 });
 
 export const profileEndpoints = Object.freeze({
@@ -40,7 +40,7 @@ export const homeEndpoints = Object.freeze({
 
 export const productsEndpoints = Object.freeze({
   ALL_PRODUCTS: "/ophelia/products/home",
-  PROUCTS_By_CATEGORY: "/ophelia/products/allproducts",
+  PROUCTS_By_CATEGORY: "/fib/v1/menu/products",
   PRODUCTS_BY_SHOPBY: "/ophelia/shopbyproducts",
   SEARCH_PRODUCTS: "/ophelia/product/serach",
   PRODUCTS_BY_SHOPByCOLLECTION: "/ophelia/get/products/collection",

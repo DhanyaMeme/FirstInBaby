@@ -108,7 +108,7 @@ const RegisterOTP = () => {
       )}
       <ResendOTP formState={formState} setFormState={setFormState} />
       <FormSubmit isFull isLoading={formState.isButtonLoading}>
-        Register
+        SUBMIT
       </FormSubmit>
     </Form>
   );

@@ -12,6 +12,7 @@ import { OnclickEvent } from "../../models/types";
 import { Flashsale } from "../FlashSale";
 import { Timer } from "../Timer/Timer";
 import { isFutureDate } from "../../utils/script";
+import { matchPath, useLocation } from "react-router-dom";
 
 interface IProps {
   product: IProduct;
@@ -30,11 +31,12 @@ export const ProductItem = (props: IProps) => {
     isVisibleRemoveFav = false,
   } = props;
 
-  const isValidDate = isFutureDate(product.date);
-
-  const { handleToggleToFav, updateInitialProductVariants } = useProductCRUD();
-
   const dispatch = useAppDispatch();
+  const isValidDate = isFutureDate(product.date);
+  const { handleToggleToFav, updateInitialProductVariants } = useProductCRUD();
+  const { pathname } = useLocation();
+
+  const isSelected = pathname === "/preorder";
 
   const favToggle = (e: OnclickEvent) => {
     e.preventDefault();
@@ -100,7 +102,9 @@ export const ProductItem = (props: IProps) => {
         </IF>
 
         <ProductInfo product={product} />
-        {!isValidDate && product.date && <Timer endDate={product.date} />}
+        {isSelected && !isValidDate && product.date && (
+          <Timer endDate={product.date} />
+        )}
       </div>
     </div>
   );

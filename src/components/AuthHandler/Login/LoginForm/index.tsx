@@ -109,7 +109,7 @@ export const LoginForm = () => {
         Lost your password?
       </div>
       <FormSubmit isFull isLoading={formState.isButtonLoading}>
-        Login
+        LOGIN
       </FormSubmit>
       <FormHint isCenter>
         <span className="Text--subdued">Don't have an account ? </span>

@@ -1,4 +1,3 @@
-import React from "react";
 import RegisterForm from "../../components/AuthHandler/Register/RegisterForm";
 import RegisterOTP from "../../components/AuthHandler/Register/RegisterOtp";
 import { RegisterPage, useAuth } from "../../contexts/AuthContext";
