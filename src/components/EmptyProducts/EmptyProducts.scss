@@ -4,8 +4,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin: 50px auto;
-  min-height: 300px;
+  min-height: 500px;
   background-color: transparent;
 }
 
@@ -24,14 +23,4 @@
 .productsNotFoundCard-button {
   margin: 20px 0 0;
   border-radius: 2px;
-}
-
-@media screen and (max-width: 1024px) {
-  .productsNotFoundCard-wrapper {
-    margin-top: 100px;
-  }
-  .productsNotFoundCard-image {
-    width: 150px;
-    height: auto;
-  }
 }

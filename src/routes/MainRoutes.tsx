@@ -35,7 +35,7 @@ const MainRoutes = {
       element: <Preorder />,
     },
     {
-      path: "shopBy/:name/:id",
+      path: "collection/:name/:id",
       element: <ShopBy />,
     },
     {

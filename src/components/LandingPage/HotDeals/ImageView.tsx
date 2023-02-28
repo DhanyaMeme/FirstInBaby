@@ -21,7 +21,7 @@ export const ImageView: FC<IProps> = (props: IProps) => {
         />
       </div>
       <NavLink
-        to={`/collections?discount=${encodeUrl(item.name)}`}
+        to={`/collection/hotdeals/${encodeUrl(item.name)}`}
         className="CollectionItem__Content CollectionItem__Content--center Heading"
       >
         <h4 className="UnderLined__Text">{item.name}</h4>

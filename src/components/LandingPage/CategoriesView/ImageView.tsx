@@ -12,7 +12,9 @@ export const ImageView: FC<IProps> = (props: IProps) => {
   const { collectionItem } = props;
 
   return (
-    <NavLink to={`/shopBy/collection/${encodeUrl(collectionItem.name)}`}>
+    <NavLink
+      to={`/collection/collectionhome/${encodeUrl(collectionItem.name)}`}
+    >
       <div className="CollectionItem__Wrapper">
         <div className="CollectionItem__ImageWrapper">
           <ImageWrapper
