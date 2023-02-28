@@ -15,7 +15,7 @@ export const EmptySearchIcon = () => {
         stroke="#111111"
         strokeWidth="1.6"
         strokeLinecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       ></path>
     </svg>
   );

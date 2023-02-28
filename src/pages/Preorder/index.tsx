@@ -11,7 +11,9 @@ import { ProductsList } from "../../components/ProductCollection/ProductList";
 import Pagination from "../../ui_kits/Pagination/Pagination";
 
 export const Preorder = () => {
+
   const { data: products, loading } = useAppSelector(preorderProducts);
+  
   const dispatch = useAppDispatch();
   const { scrollTop } = useScrollPosition();
 

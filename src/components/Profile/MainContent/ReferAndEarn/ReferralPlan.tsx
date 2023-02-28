@@ -13,7 +13,7 @@ export const ReferralPlan = (props: IProps) => {
       <QRCodeSVG value={userReferral} />,
       {Object.entries(planInfo).map(([key, value]) => (
         <div className="RefferalElement__Unit Text--subdued" key={key}>
-          <span>{key}</span>
+          <span>{key.toUpperCase()}</span>
           <span>{value}</span>
         </div>
       ))}

@@ -11,10 +11,13 @@ import { IAddress } from "../../redux/slices/address/address.type";
 import { TextButton } from "../../ui_kits/Buttons/TextButton/TextButton.component";
 import { openModal } from "../../redux/slices/modal/modal.slice";
 import { Spinner } from "../../ui_kits/Spinner/Spinner.component";
+import { customer } from "../../redux/slices/profile/profile.selector";
 
 export const AddressContainer = () => {
   const dispatch = useAppDispatch();
-  const { data: addresses, loading } = useAppSelector(addressList);
+  // const { data: addresses, loading } = useAppSelector(addressList);
+
+  const { data, loading } = useAppSelector(customer);
 
   const toggleAddressForm = () => {
     dispatch(
@@ -57,7 +60,7 @@ export const AddressContainer = () => {
         </TextButton>
       </div>
       <div className="Grid">
-        {addresses?.address.map((address: IAddress) => (
+        {data?.addressTemp.map((address: IAddress) => (
           <div
             className="Grid__Cell 1/1--phone 1/2--tablet-and-up 1/2--desk"
             key={address.id}

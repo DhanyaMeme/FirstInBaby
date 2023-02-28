@@ -25,7 +25,7 @@ export const FormError = <T,>(props: IProps<T>) => {
         <FormAlert
           isError={!formState.submitSuccess}
           isSuccess={formState.submitSuccess}
-          classname="u-h6 Heading"
+          classname="u-h5 Heading"
         >
           {formState.helperText ||
             (formState.errors && getErrorText(formState.errors))}

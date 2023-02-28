@@ -3,22 +3,8 @@ import { fetchData } from "../../../services/axios";
 import toastMessage from "../../../utils/toastMessage";
 import { fetchCustomerAsync } from "../profile/profile.reducer";
 import { addressService } from "../../../services/axiosServices";
-import { IAddress, IAddressData, IAddressState } from "./address.type";
-
-export const fetchAddressAsync = createAsyncThunk<IAddressData, string>(
-  "address/getAddress",
-  async (email, { rejectWithValue }) => {
-    try {
-      const response = (await fetchData({
-        ...addressService.getAddress,
-        params: { phone: email },
-      })) as IAddressData;
-      return response;
-    } catch (err) {
-      return rejectWithValue(err);
-    }
-  }
-);
+import { IAddress, IAddressState } from "./address.type";
+import { closeModal } from "../modal/modal.slice";
 
 export const addAddressAsync = createAsyncThunk<any, any>(
   "address/addAddress",
@@ -29,7 +15,8 @@ export const addAddressAsync = createAsyncThunk<any, any>(
         params: data.address,
       });
       toastMessage("Added Address", "success");
-      dispatch(fetchCustomerAsync(data.user));
+      await dispatch(fetchCustomerAsync(data.user));
+      dispatch(closeModal());
       return response;
     } catch (err) {
       toastMessage("Something went wrong, Try again", "error");
@@ -47,7 +34,8 @@ export const updateAddressAsync = createAsyncThunk<any, any>(
         params: data.address,
       });
       toastMessage("Updated Address", "success");
-      dispatch(fetchCustomerAsync(data.user));
+      await dispatch(fetchCustomerAsync(data.user));
+      dispatch(closeModal());
       return response;
     } catch (err) {
       toastMessage("Something went wrong, Try again", "error");
@@ -62,10 +50,10 @@ export const deleteAddressAsync = createAsyncThunk<any, any>(
     try {
       const response = await fetchData({
         ...addressService.deleteAddress,
-        params: data.id,
+        url: addressService.deleteAddress.url + data.id,
       });
       toastMessage("Deleted Address", "success");
-      dispatch(fetchCustomerAsync(data.user));
+      await dispatch(fetchCustomerAsync(data.user));
       return response;
     } catch (err) {
       toastMessage("Something went wrong, Try again", "error");
@@ -74,22 +62,7 @@ export const deleteAddressAsync = createAsyncThunk<any, any>(
   }
 );
 
-export const extraAddressDataReducer = {
-  [fetchAddressAsync.pending.type]: (state: IAddressState) => {
-    state.addressList.loading = true;
-  },
-  [fetchAddressAsync.fulfilled.type]: (
-    state: IAddressState,
-    { payload }: PayloadAction<IAddressData>
-  ) => {
-    state.addressList.loading = false;
-    state.addressList.data = payload;
-  },
-  [fetchAddressAsync.rejected.type]: (state: IAddressState) => {
-    state.addressList.loading = false;
-    state.addressList.error = "Error while fetching collections";
-  },
-};
+export const extraAddressDataReducer = {};
 
 export const addressReducer = {
   addNewAddress: (

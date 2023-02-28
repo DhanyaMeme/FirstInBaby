@@ -1,11 +1,11 @@
 import { FC } from "react";
 import { NavLink } from "react-router-dom";
-import { IShopByProduct } from "../../../redux/slices/home/home.type";
+import { ICollection } from "../../../redux/slices/home/home.type";
 import { ImageWrapper } from "../../../ui_kits/ImageWrapper/ImageWrapper";
 import { encodeUrl } from "../../../utils/textHandler";
 
 interface IProps {
-  collectionItem: IShopByProduct;
+  collectionItem: ICollection;
 }
 
 export const ImageView: FC<IProps> = (props: IProps) => {

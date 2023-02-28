@@ -13,6 +13,11 @@ export const shopByProducts = createSelector(
   (state) => state && state.shopByProducts
 );
 
+export const hotDealsCollection = createSelector(
+  navSelf,
+  (state) => state && state.hotDealsCollection
+);
+
 export const hotProducts = createSelector(
   navSelf,
   (state) => state && state.hotProducts

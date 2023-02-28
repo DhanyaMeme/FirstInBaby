@@ -78,7 +78,11 @@ export const useProductCRUD = () => {
     if (selectedAddressId) {
       dispatch(
         updateAddressAsync({
-          address: { ...addressState, addId: selectedAddressId },
+          address: {
+            ...addressState,
+            id: selectedAddressId,
+            // userid: userData.data?.userid,
+          },
           user,
         })
       );
@@ -95,7 +99,7 @@ export const useProductCRUD = () => {
   const removeAddressHandler = (addressId: number) => {
     dispatch(
       deleteAddressAsync({
-        id: { id: addressId },
+        id: addressId,
         user,
       })
     );

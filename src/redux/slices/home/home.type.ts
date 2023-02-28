@@ -8,15 +8,10 @@ export interface ICollection {
   murl: string;
 }
 
-export interface IShopByProduct {
-  id: number;
-  name: string;
-  url: string;
-}
-
 export interface IHomeState {
   shopByCollection: AsyncData<ICollection[]>;
-  shopByProducts: AsyncData<Array<IShopByProduct>>;
+  hotDealsCollection: AsyncData<ICollection[]>;
+  shopByProducts: AsyncData<ICollection[]>;
   hotProducts: AsyncData<Array<IProduct>>;
   featureProducts: AsyncData<Array<IProduct>>;
 }

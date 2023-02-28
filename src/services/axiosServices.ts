@@ -42,13 +42,21 @@ export const navService = {
 };
 
 export const homeService = {
-  getHomeProducts: {
+  getShopByCollection: {
+    method: "GET",
+    url: homeEndpoints.SHOP_BY_COLLECTION,
+  },
+  getShopByProducts: {
+    method: "GET",
+    url: homeEndpoints.SHOP_BY_PRODUCTS,
+  },
+  getHotDealsCollection: {
+    method: "GET",
+    url: homeEndpoints.HOT_DEALS_COLLECTION,
+  },
+  getALLProducts: {
     method: "GET",
     url: homeEndpoints.HOMESCREEN_PRODUCTS,
-  },
-  HomeScreen: {
-    method: "GET",
-    url: homeEndpoints.HOMESCREEN,
   },
   getProductsHot: {
     method: "GET",
@@ -57,14 +65,6 @@ export const homeService = {
   getFeatureProducts: {
     method: "GET",
     url: homeEndpoints.FEATURE,
-  },
-  getShopByCollection: {
-    method: "GET",
-    url: homeEndpoints.SHOP_BY_COLLECTION,
-  },
-  getShopByProducts: {
-    method: "GET",
-    url: homeEndpoints.SHOP_BY_PRODUCTS,
   },
 };
 
@@ -135,7 +135,7 @@ export const profileService = {
     url: profileEndpoints.GET_PROFILE,
   },
   updateCustomer: {
-    method: "PATCH",
+    method: "POST",
     url: profileEndpoints.UPDATE_PROFILE,
   },
   help: {

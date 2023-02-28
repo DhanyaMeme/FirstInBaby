@@ -5,9 +5,10 @@ import { IHomeState } from "./home.type";
 
 export const initialState: IHomeState = {
   shopByCollection: initialAsyncData,
+  hotDealsCollection: initialAsyncData,
+  shopByProducts: initialAsyncData,
   hotProducts: initialAsyncData,
   featureProducts: initialAsyncData,
-  shopByProducts: initialAsyncData,
 };
 
 export const homeSlice = createSlice({

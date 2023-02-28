@@ -11,6 +11,7 @@ import { collectionsData } from "../../mockData/collectionData";
 import { IProduct } from "../../redux/slices/collection/collection.type";
 import {
   featureProducts,
+  hotDealsCollection,
   hotProducts,
   shopByCollection,
   shopByProducts,
@@ -22,12 +23,13 @@ export const LandingPage = () => {
   const { data: featureProductsData } = useAppSelector(featureProducts);
   const { data: shopByCollectionData } = useAppSelector(shopByCollection);
   const { data: shopByProductsData } = useAppSelector(shopByProducts);
+  const { data: hotDealsData } = useAppSelector(hotDealsCollection);
 
   return (
     <main className="maincontent">
       <Banner />
       <AnnouncementBar />
-      <HotDeals />
+      <HotDeals hotDealsData={hotDealsData} />
       <CategoriesView collectionsData={shopByCollectionData} />
       <ExploreView shopByProductsData={shopByProductsData} />
       <SaleItem saleData={hotDeals?.slice(0, 6)} />

@@ -1,20 +1,30 @@
+import { ICollection } from "../../../redux/slices/home/home.type";
+import { IF } from "../../../ui_kits/IF";
 import LazyLoad from "../../../ui_kits/LazyComponent";
+import { isEmpty } from "../../../utils/script";
 import { Collections } from "../__common__/Collections/Collections";
-import { hotDealsData, IHotDeal } from "./data";
 import { ImageView } from "./ImageView";
 
-export const HotDeals = () => {
+interface IProps {
+  hotDealsData: ICollection[] | null;
+}
+
+export const HotDeals = (props: IProps) => {
+  const { hotDealsData } = props;
+
   return (
-    <Collections heading="Hot Deals" isNarrow>
-      {hotDealsData.map((item: IHotDeal) => (
-        <LazyLoad
-          tag="div"
-          key={item.title}
-          className="Grid__Cell 1/2--phone 1/4--tablet-and-up"
-        >
-          <ImageView item={item} key={item.title} />
-        </LazyLoad>
-      ))}
+    <Collections heading="Hot Deals">
+      <IF condition={!isEmpty(hotDealsData)}>
+        {hotDealsData?.map((item: ICollection) => (
+          <LazyLoad
+            tag="div"
+            key={item.name}
+            className="Grid__Cell 1/2--phone 1/4--tablet-and-up"
+          >
+            <ImageView item={item} />
+          </LazyLoad>
+        ))}
+      </IF>
     </Collections>
   );
 };

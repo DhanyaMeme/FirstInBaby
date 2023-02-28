@@ -20,10 +20,13 @@ export interface ICustomer {
   lname: string;
   iUmg: string;
   email: string;
+  expiry: string;
   userReferral: string;
   affiliateCode: string;
   password: string;
-  address: IAddress[];
+  plan: string;
+  status: boolean;
+  addressTemp: IAddress[];
   enabled: boolean;
 }
 

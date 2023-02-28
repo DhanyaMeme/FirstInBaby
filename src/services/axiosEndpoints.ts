@@ -6,15 +6,19 @@ export const authEndpoints = Object.freeze({
   RESET_PASSWORD: "/fib/v1/customer/update/password",
 });
 
-export const addressEndpoints = Object.freeze({
-  GET_ADDRESS: "/ophelia/address",
-  ADD_ADDRESS: "/fib/v1/customer/add/address",
-  DELETE_ADDRESS: "/ophelia/address/id",
-  UPDATE_ADDRESS: "/fib/v1/customer/address/update",
+export const subscripeEndpoints = Object.freeze({
+  NEWSLETTER: "/fib/newsletter",
 });
 
 export const navEndpoints = Object.freeze({
   MAIN__CATEGORY: "/fib/v1/menu",
+});
+
+export const addressEndpoints = Object.freeze({
+  GET_ADDRESS: "/ophelia/address",
+  ADD_ADDRESS: "/fib/v1/customer/add/address",
+  DELETE_ADDRESS: "/fib/v1/customer/delete/address/",
+  UPDATE_ADDRESS: "/fib/v1/customer/address/update",
 });
 
 export const profileEndpoints = Object.freeze({
@@ -30,10 +34,10 @@ export const profileEndpoints = Object.freeze({
 });
 
 export const homeEndpoints = Object.freeze({
-  SHOP_BY_COLLECTION: "/ophelia/get/collectionhome",
-  SHOP_BY_PRODUCTS: "/ophelia/get/shopbyproducts",
+  SHOP_BY_COLLECTION: "/fib/v1/collection/get/collectionhome/0/9",
+  SHOP_BY_PRODUCTS: "/fib/v1/collection/get/shopbyproducts/0/16",
+  HOT_DEALS_COLLECTION: "/fib/v1/collection/get/hotdeals/0/4",
   HOMESCREEN_PRODUCTS: "/render/homescreen/collection",
-  HOMESCREEN: "/render/homescreen",
   HOT: "/ophelia/get/hot",
   FEATURE: "/ophelia/products/featured",
 });
@@ -64,8 +68,4 @@ export const paymentEndpoints = Object.freeze({
   STRIPE: "/ophelia/stripe/pay",
   SUBSCRIPTION_PLANS: "/get/all/subcription",
   UPDATE_SUBSCRIPTION_PLAN: "/ophelia/user/subscription/update",
-});
-
-export const subscripeEndpoints = Object.freeze({
-  NEWSLETTER: "/ophelia/newsletter",
 });

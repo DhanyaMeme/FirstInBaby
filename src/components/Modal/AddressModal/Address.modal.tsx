@@ -25,14 +25,15 @@ import {
 } from "../../../redux/slices/address/address.selector";
 import { FormError } from "../../AuthHandler/FormError";
 import { useProductCRUD } from "../../../hooks/useProductCRUD";
+import { customer } from "../../../redux/slices/profile/profile.selector";
 
 export const AddressModal = () => {
   const { handleOnFocusEvent, handleFormValidate } = useAuth();
   const { addAddressHandler } = useProductCRUD();
 
-  const { data } = useAppSelector(addressList);
+  const { data } = useAppSelector(customer);
   const addressId = useAppSelector(selectedAddressId);
-  const addresses = data?.address;
+  const addresses = data?.addressTemp;
 
   const initialValues = useMemo(() => {
     let computedData = initialIAddressValues;
@@ -69,6 +70,7 @@ export const AddressModal = () => {
   }, [addressId, addresses]);
 
   const handleOnsubmit = async () => {
+    
     const isValid = handleFormValidate(
       [...AddressFormInputs, ...AddressFormGroupInputs],
       addressState,

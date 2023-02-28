@@ -27,6 +27,7 @@ import { safeSetTimeout } from "../../utils/generics";
 import { isString } from "../../utils/textHandler";
 import { fetchData } from "../../services/axios";
 import "./Style.scss";
+import { FormError } from "../AuthHandler/FormError";
 
 export const Newsletter = () => {
   const [email, setEmail] = useState<string | null>(null);
@@ -94,7 +95,6 @@ export const Newsletter = () => {
           submitSuccess: true,
           isButtonLoading: false,
         });
-        return response;
       } catch (error: any) {
         console.log("error", error);
         setFormState({
@@ -105,10 +105,13 @@ export const Newsletter = () => {
           submitSuccess: false,
           isButtonLoading: false,
         });
-        return null;
       }
+      safeSetTimeout(
+        setFormState,
+        1000,
+        initialFormState as IFormState<string>
+      );
     }
-    safeSetTimeout(setFormState, 1000, initialFormState as IFormState<string>);
   };
 
   return (
@@ -117,19 +120,7 @@ export const Newsletter = () => {
         <FormElement elementType={Form__Elemen__Types.FormHeader}>
           <h2 className="Heading">Sign Up for Newsletter</h2>
         </FormElement>
-        <IF
-          condition={
-            !isEmpty(formState.helperText) || !isEmpty(formState.errors)
-          }
-        >
-          <FormAlert
-            isError={!formState.submitSuccess}
-            isSuccess={formState.submitSuccess}
-            classname="u-h6"
-          >
-            {formState.helperText || formState.errors}
-          </FormAlert>
-        </IF>
+        <FormError formState={formState} />
         <FormTextInput
           type="email"
           name="email"

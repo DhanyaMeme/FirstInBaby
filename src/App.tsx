@@ -18,12 +18,12 @@ import "semantic-ui-css/semantic.min.css";
 import "./App.scss";
 import { useAuth } from "./contexts/AuthContext";
 import { fetchCustomerAsync } from "./redux/slices/profile/profile.reducer";
-import { fetchAddressAsync } from "./redux/slices/address/address.reducer";
 import {
   fetchShopByCollectionAsync,
   fetchFeaturePdtsAsync,
   fetchHotAsync,
   fetchShopByPdtsAsync,
+  fetchHotDealsCollectionAsync,
 } from "./redux/slices/home/home.reducer";
 
 function App() {
@@ -49,6 +49,10 @@ function App() {
   }, [dispatch]);
 
   useEffect(() => {
+    dispatch(fetchHotDealsCollectionAsync());
+  }, [dispatch]);
+
+  useEffect(() => {
     dispatch(fetchHotAsync());
   }, [dispatch]);
 
@@ -61,12 +65,6 @@ function App() {
   useEffect(() => {
     if (user) {
       dispatch(fetchCustomerAsync(user));
-    }
-  }, [dispatch, user]);
-
-  useEffect(() => {
-    if (user) {
-      dispatch(fetchAddressAsync(user));
     }
   }, [dispatch, user]);
 
