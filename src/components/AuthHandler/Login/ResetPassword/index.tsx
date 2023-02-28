@@ -111,7 +111,7 @@ const ResetPassword = () => {
       )}
 
       <FormSubmit isFull isLoading={formState.isButtonLoading}>
-        UPDATE 
+        UPDATE
       </FormSubmit>
     </Form>
   );

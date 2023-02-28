@@ -20,7 +20,6 @@ import { IAddress } from "../../../redux/slices/address/address.type";
 import { useEffect, useMemo } from "react";
 import ModalWrapper from "../../../ui_kits/modal/modal-wrapper.component";
 import {
-  addressList,
   selectedAddressId,
 } from "../../../redux/slices/address/address.selector";
 import { FormError } from "../../AuthHandler/FormError";
@@ -70,7 +69,6 @@ export const AddressModal = () => {
   }, [addressId, addresses]);
 
   const handleOnsubmit = async () => {
-    
     const isValid = handleFormValidate(
       [...AddressFormInputs, ...AddressFormGroupInputs],
       addressState,

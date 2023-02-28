@@ -1,20 +1,15 @@
-import { useEffect } from "react";
 import { Panel } from "../../../../ui_kits/Panel/Panel";
 import { PageContent } from "../../../../ui_kits/global/PageContent.styles";
-import { useAppDispatch, useAppSelector } from "../../../../redux/store";
+import { useAppSelector } from "../../../../redux/store";
 import {
   customer,
-  subscribedPlan,
 } from "../../../../redux/slices/profile/profile.selector";
-import { fetchSubscribedPlanAsync } from "../../../../redux/slices/profile/profile.reducer";
-import { useAuth } from "../../../../contexts/AuthContext";
 import { formatDate } from "../../../../utils/script";
 import { ReferralPlan } from "./ReferralPlan";
 import { ReferralLogo } from "./ReferralLogo";
 import "./Style.scss";
 
 export const ReferAndEarn = () => {
-  
   const { data: userData } = useAppSelector(customer);
 
   const PlanDetails = {

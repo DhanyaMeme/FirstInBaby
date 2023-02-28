@@ -11,7 +11,7 @@ interface IProps<T, K extends keyof T> {
 export const RadioSwatch = <T, K extends keyof T>(props: IProps<T, K>) => {
   const { name, onChange, productSizeArray, valueKey, initialSelectedItem } =
     props;
-    
+
   const radioHandler = (item: T) => {
     onChange(item[valueKey] as T[K]);
   };
