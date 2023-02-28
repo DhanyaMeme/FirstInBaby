@@ -1,4 +1,4 @@
-import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, current, PayloadAction } from "@reduxjs/toolkit";
 import { fetchData } from "../../../services/axios";
 import { productService } from "../../../services/axiosServices";
 import { formatPreOrderDate } from "../../../utils/script";
@@ -32,17 +32,17 @@ export const fetchPreorderProductsAsync = createAsyncThunk<IProduct[]>(
   }
 );
 
-export const fetchProductsByCategoryAsync = createAsyncThunk<any, string>(
+export const fetchProductsByCategoryAsync = createAsyncThunk<any, any>(
   "collection/getProductsByCategory",
-  async (mt, { rejectWithValue }) => {
+  async (data, { rejectWithValue }) => {
     try {
       const response = (await fetchData({
         ...productService.getProductsByCategory,
-        params: { mt },
+        params: data,
       })) as IProduct[];
 
       return {
-        key: mt,
+        key: data.mt,
         value: response,
       };
     } catch (err) {

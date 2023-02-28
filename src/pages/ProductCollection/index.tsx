@@ -16,20 +16,20 @@ export const ProductCollection = () => {
   const dispatch = useAppDispatch();
 
   const { data: products, loading } = useAppSelector(productsByCategory);
-  const selectedProduct = products || {};
 
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [totalItems, setTotalItems] = useState<number>(0);
-  const ITEMS_PER_PAGE = 40;
-
-  const { scrollTop } = useScrollPosition();
+  const [totalItems, setTotalItems] = useState<number>(14);
+  const ITEMS_PER_PAGE = 5;
 
   useEffect(() => {
-    if (!Object.hasOwn(selectedProduct, mainCategory)) {
-      dispatch(fetchProductsByCategoryAsync(decodeUrl(mainCategory)));
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, mainCategory]);
+    dispatch(
+      fetchProductsByCategoryAsync({
+        mt: decodeUrl(mainCategory),
+        offset: currentPage - 1,
+        pagesize: ITEMS_PER_PAGE,
+      })
+    );
+  }, [dispatch, mainCategory, currentPage]);
 
   useEffect(() => {
     setCurrentPage(1);
@@ -38,18 +38,9 @@ export const ProductCollection = () => {
   const filteredData = useMemo(() => {
     let computedData: IProduct[] = products?.[mainCategory] || [];
 
-    setTotalItems(computedData.length);
-
-    return computedData.slice(
-      (currentPage - 1) * ITEMS_PER_PAGE,
-      (currentPage - 1) * ITEMS_PER_PAGE + ITEMS_PER_PAGE
-    );
+    // setTotalItems(computedData.length);
+    return computedData;
   }, [mainCategory, products, currentPage]);
-
-  const handleOnPageChange = (page: number) => {
-    setCurrentPage(page);
-    scrollTop();
-  };
 
   if (loading) {
     return <Spinner />;
@@ -69,7 +60,7 @@ export const ProductCollection = () => {
         currentPage={currentPage}
         totalCount={totalItems}
         pageSize={ITEMS_PER_PAGE}
-        onPageChange={handleOnPageChange}
+        onPageChange={(page: number) => setCurrentPage(page)}
       />
     </div>
   );

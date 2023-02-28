@@ -1,6 +1,7 @@
 import classnames from "classnames";
 import "./Pagination.scss";
 import { DOTS, usePagination } from "../../hooks/usePagination";
+import useScrollPosition from "../../hooks/useScrollPosition";
 
 const Pagination = (props: any) => {
   const {
@@ -19,14 +20,18 @@ const Pagination = (props: any) => {
     pageSize,
   }) as any;
 
+  const { scrollTop } = useScrollPosition();
+
   if (currentPage === 0 || paginationRange.length < 2) {
     return null;
   }
   const onNext = () => {
+    scrollTop();
     onPageChange(currentPage + 1);
   };
 
   const onPrevious = () => {
+    scrollTop();
     onPageChange(currentPage - 1);
   };
 
