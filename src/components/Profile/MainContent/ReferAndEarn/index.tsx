@@ -1,9 +1,7 @@
 import { Panel } from "../../../../ui_kits/Panel/Panel";
 import { PageContent } from "../../../../ui_kits/global/PageContent.styles";
 import { useAppSelector } from "../../../../redux/store";
-import {
-  customer,
-} from "../../../../redux/slices/profile/profile.selector";
+import { customer } from "../../../../redux/slices/profile/profile.selector";
 import { formatDate } from "../../../../utils/script";
 import { ReferralPlan } from "./ReferralPlan";
 import { ReferralLogo } from "./ReferralLogo";

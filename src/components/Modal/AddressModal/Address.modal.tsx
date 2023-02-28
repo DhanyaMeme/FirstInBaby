@@ -19,9 +19,7 @@ import { useAppSelector } from "../../../redux/store";
 import { IAddress } from "../../../redux/slices/address/address.type";
 import { useEffect, useMemo } from "react";
 import ModalWrapper from "../../../ui_kits/modal/modal-wrapper.component";
-import {
-  selectedAddressId,
-} from "../../../redux/slices/address/address.selector";
+import { selectedAddressId } from "../../../redux/slices/address/address.selector";
 import { FormError } from "../../AuthHandler/FormError";
 import { useProductCRUD } from "../../../hooks/useProductCRUD";
 import { customer } from "../../../redux/slices/profile/profile.selector";

@@ -1,24 +1,22 @@
 import { useEffect, useMemo, useState } from "react";
+import { decodeUrl } from "../../utils/textHandler";
+import Pagination from "../../ui_kits/Pagination/Pagination";
+import { Spinner } from "../../ui_kits/Spinner/Spinner.component";
+import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { EmptyProducts } from "../../components/EmptyProducts/EmptyProducts";
 import { ProductsList } from "../../components/ProductCollection/ProductList";
 import usePath from "../../hooks/usePath";
-import useScrollPosition from "../../hooks/useScrollPosition";
 import { fetchProductsByCategoryAsync } from "../../redux/slices/collection/collection.reducer";
 import { productsByCategory } from "../../redux/slices/collection/collection.selector";
 import { IProduct } from "../../redux/slices/collection/collection.type";
-import { useAppDispatch, useAppSelector } from "../../redux/store";
-import Pagination from "../../ui_kits/Pagination/Pagination";
-import { Spinner } from "../../ui_kits/Spinner/Spinner.component";
-import { decodeUrl } from "../../utils/textHandler";
 
 export const ProductCollection = () => {
   const mainCategory = usePath();
   const dispatch = useAppDispatch();
 
-  const { data: products, loading } = useAppSelector(productsByCategory);
-
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalItems, setTotalItems] = useState<number>(14);
+  const { data: products, loading } = useAppSelector(productsByCategory);
   const ITEMS_PER_PAGE = 5;
 
   useEffect(() => {
@@ -37,7 +35,6 @@ export const ProductCollection = () => {
 
   const filteredData = useMemo(() => {
     let computedData: IProduct[] = products?.[mainCategory] || [];
-
     // setTotalItems(computedData.length);
     return computedData;
   }, [mainCategory, products, currentPage]);
