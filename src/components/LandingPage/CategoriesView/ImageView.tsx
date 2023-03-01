@@ -2,7 +2,6 @@ import { FC } from "react";
 import { NavLink } from "react-router-dom";
 import { ICollection } from "../../../redux/slices/home/home.type";
 import { ImageWrapper } from "../../../ui_kits/ImageWrapper/ImageWrapper";
-import { encodeUrl } from "../../../utils/textHandler";
 
 interface IProps {
   collectionItem: ICollection;
@@ -13,7 +12,8 @@ export const ImageView: FC<IProps> = (props: IProps) => {
 
   return (
     <NavLink
-      to={`/collection/collectionhome/${encodeUrl(collectionItem.name)}`}
+      to={`/collection`}
+      state={{ collectionName: "collectionhome", name: collectionItem.name }}
     >
       <div className="CollectionItem__Wrapper">
         <div className="CollectionItem__ImageWrapper">

@@ -19,7 +19,7 @@ export const HotDeals = (props: IProps) => {
           <LazyLoad
             tag="div"
             key={item.name}
-            className="Grid__Cell 1/2--phone 1/4--tablet-and-up"
+            className="Grid__Cell 1/1--phone 1/2--tablet-and-up 1/4--lap-and-up"
           >
             <ImageView item={item} />
           </LazyLoad>

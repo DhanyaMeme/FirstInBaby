@@ -1,4 +1,4 @@
-import { createAsyncThunk, current, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { fetchData } from "../../../services/axios";
 import { productService } from "../../../services/axiosServices";
 import { formatPreOrderDate } from "../../../utils/script";

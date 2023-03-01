@@ -2,7 +2,6 @@ import { FC } from "react";
 import { NavLink } from "react-router-dom";
 import { ICollection } from "../../../redux/slices/home/home.type";
 import { ImageWrapper } from "../../../ui_kits/ImageWrapper/ImageWrapper";
-import { encodeUrl } from "../../../utils/textHandler";
 
 interface IProps {
   item: ICollection;
@@ -21,7 +20,8 @@ export const ImageView: FC<IProps> = (props: IProps) => {
         />
       </div>
       <NavLink
-        to={`/collection/hotdeals/${encodeUrl(item.name)}`}
+        to={`/collection`}
+        state={{ collectionName: "hotdeals", name: item.name }}
         className="CollectionItem__Content CollectionItem__Content--center Heading"
       >
         <h4 className="UnderLined__Text">{item.name}</h4>
