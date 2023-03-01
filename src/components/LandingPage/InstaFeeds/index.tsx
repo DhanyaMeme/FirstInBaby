@@ -25,7 +25,7 @@ export const InstaFeed = (props: IProps) => {
         <div className="Instafeed__Container Grid">
           <IF condition={!isEmpty(instaData)}>
             {SlicedInstaData.map((item: IProduct) => (
-              <InstaFeedItem key={item.id} instaFeedItem={item} />
+              <InstaFeedItem key={item.mcId} instaFeedItem={item} />
             ))}
           </IF>
         </div>

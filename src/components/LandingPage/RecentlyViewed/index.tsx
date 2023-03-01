@@ -65,7 +65,7 @@ export const RecentlyViewed: FC<IProps> = (props: IProps) => {
         <div className="ProductList__Slider">
           <Slider {...settings}>
             {sliderData.map((pdt: IProduct) => (
-              <div className="Grid__Cell" key={pdt.id}>
+              <div className="Grid__Cell" key={pdt.mcId}>
                 <ProductItem product={pdt} isVisibleFav={false} />
               </div>
             ))}

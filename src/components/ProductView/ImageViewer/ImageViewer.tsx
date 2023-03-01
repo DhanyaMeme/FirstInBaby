@@ -12,7 +12,7 @@ interface IProps {
 }
 
 export const ImageViewer = (props: IProps) => {
-  const { productImages } = props?.product;
+  const { idto: productImages } = props?.product;
 
   const [nav1, setNav1] = useState<any>(null);
   const [nav2, setNav2] = useState<any>(null);
@@ -67,7 +67,7 @@ export const ImageViewer = (props: IProps) => {
         ref={(slider) => setSlider1(slider)}
       >
         {productImages?.map((slide: IProductImage) => (
-          <div className="ProductImage__Grid" key={slide.id}>
+          <div className="ProductImage__Grid" key={slide.imId}>
             <ImageSkeleton slide={slide} />
           </div>
         ))}
@@ -79,7 +79,7 @@ export const ImageViewer = (props: IProps) => {
         ref={(slider) => setSlider2(slider)}
       >
         {productImages?.map((slide: IProductImage) => (
-          <div className="ProductImage__Grid" key={slide.id}>
+          <div className="ProductImage__Grid" key={slide.imId}>
             <ImageSkeleton slide={slide} />
           </div>
         ))}

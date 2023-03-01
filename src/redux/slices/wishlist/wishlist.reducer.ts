@@ -18,7 +18,7 @@ export const addFavAsync = createAsyncThunk<
       params: data,
     })) as IProduct[];
     toastMessage("Updated Wishlist", "success");
-    dispatch(getFavAsync({ phone: data.phone }));
+    dispatch(getFavAsync(data.phone));
     return response;
   } catch (err) {
     toastMessage("Something went wrong, Try again", "error");
@@ -26,14 +26,14 @@ export const addFavAsync = createAsyncThunk<
   }
 });
 
-export const getFavAsync = createAsyncThunk<any, any>(
+export const getFavAsync = createAsyncThunk<IProduct[], string>(
   "fav/getFav",
-  async (data, { rejectWithValue }) => {
+  async (email, { rejectWithValue }) => {
     try {
-      const response = await fetchData({
+      const response = (await fetchData({
         ...favService.getFavourites,
-        params: { ...data },
-      });
+        params: { email },
+      })) as IProduct[];
       return response;
     } catch (err) {
       return rejectWithValue(err);

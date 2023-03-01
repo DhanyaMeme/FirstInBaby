@@ -25,6 +25,8 @@ export const ProductView = () => {
   const { updateInitialProductVariants } = useProductCRUD();
   const { data: filteredData, loading } = useAppSelector(selectedProduct);
 
+  console.log("filteredData", filteredData);
+
   useEffect(() => {
     dispatch(fetchSingleProductAsync(+productId));
   }, [dispatch, productId]);
@@ -58,6 +60,7 @@ export const ProductView = () => {
             <Accordian title="SHIPPING RESTRICTIONS" child={<Description />} />
           </Container>
         </SectionWrapper>
+
         <IF condition={!isEmpty(filteredData)}>
           <SectionWrapper isbordered>
             <Container>

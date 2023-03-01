@@ -27,7 +27,7 @@ interface IProps {
 
 export const ProductVariantsForm: React.FC<IProps> = (props: IProps) => {
   const { product, children } = props;
-  const { productSize } = product;
+  const { sizedto: productSize } = product;
   const { handleToggleToFav, handleAddTocart } = useProductCRUD();
   const dispatch = useDispatch();
   const selectedProductVariants =

@@ -15,7 +15,7 @@ export const SaleItem = (props: IProps) => {
     <Collections heading="Sale item of the Week!!">
       <IF condition={!isEmpty(saleData)}>
         {saleData.map((pdt: IProduct) => (
-          <div className="Grid__Cell  1/3--tablet-and-up" key={pdt.id}>
+          <div className="Grid__Cell  1/3--tablet-and-up" key={pdt.mcId}>
             <FeatureProduct
               url={pdt.imageurl}
               title={pdt.productname}

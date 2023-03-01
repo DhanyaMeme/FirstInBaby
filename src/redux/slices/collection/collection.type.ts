@@ -1,14 +1,11 @@
 import { AsyncData } from "../../../models/types";
 
 export interface IProductImage {
-  id: number;
   imId: number;
   imageUrl: string;
-  mcId: number;
 }
 
 export interface IProductSize {
-  id: number;
   sid: number;
   psize: string;
   price: number;
@@ -17,14 +14,6 @@ export interface IProductSize {
   length: number;
   width: number;
   height: number;
-  mcId: number;
-}
-
-export interface IProductSpecification {
-  id: number;
-  spid: number;
-  specification: string;
-  mcId: number;
 }
 
 export interface IProductReview {
@@ -39,47 +28,57 @@ export interface IProductReview {
 }
 
 export interface IProduct {
-  id: number;
-  brand: string;
-  childcategory: string;
+  brand: string | null;
+  childcategory: string | null;
   date: string;
-  deliveryTime: string;
+  deliveryTime: string | null;
   descpription: string;
   descpription1: string;
-  fabric: string;
-  group: string;
-  gsthsn: string;
+  facebook: any;
+  group: string | null;
+  idto: IProductImage[];
   imageurl: string;
+  instagram: any;
+  keyword: any;
+  linkedin: any;
   maincategory: string;
   mcId: number;
-  metatags: any[];
   minqty: number;
   offer: number;
   phone: string;
-  pntw: string;
+  pintrest: any;
   price: number;
-  productImages: IProductImage[];
-  productSize: IProductSize[];
-  productSpecs: IProductSpecification[];
   productcode: string;
   productcolor: string;
   productname: string;
-  quantity: string;
-  ratings:
-    | [
-        {
-          numbers: number;
-          rating: number;
-          ratingid: number;
-        }
-      ]
-    | any[];
-  reviews: IProductReview[];
-  shopbyproducts: string;
+  relative: any;
   sizechart: string;
   subcategory: string;
-  subcategory1: string;
+  subcategory1: string | null;
+  specification: string;
   tax: number;
+  twitter: any;
+  sizedto: IProductSize[];
+
+  reviews?: IProductReview[];
+
+  // fabric: string;
+  // gsthsn: string;
+  // metatags: any[];
+  // pntw: string;
+  // productSpecs: IProductSpecification[];
+  // quantity: string;
+  // ratings:
+  //   | [
+  //       {
+  //         numbers: number;
+  //         rating: number;
+  //         ratingid: number;
+  //       }
+  //     ]
+  //   | any[];
+  // reviews: IProductReview[];
+  // shopbyproducts: string;
 }
 
 export interface ICollectionState {

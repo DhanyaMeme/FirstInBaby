@@ -40,7 +40,7 @@ export const AddFavToCartModal = (props: IProps) => {
     >
       <RadioSwatch
         name="productSize"
-        productSizeArray={(product.productSize as IProductSize[]) || []}
+        productSizeArray={(product.sizedto as IProductSize[]) || []}
         onChange={handleSizeInput}
         valueKey="psize"
         initialSelectedItem={selectedProductVariants.size}

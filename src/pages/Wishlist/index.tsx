@@ -19,7 +19,7 @@ export const Wishlist = () => {
 
   useEffect(() => {
     if (user !== null) {
-      dispatch(getFavAsync({ phone: user }));
+      dispatch(getFavAsync(user));
     }
   }, [dispatch, user]);
 
@@ -50,7 +50,7 @@ export const Wishlist = () => {
           {products?.map((product: IProduct) => (
             <LazyLoad
               tag="div"
-              key={product.id}
+              key={product.mcId}
               className="Grid__Cell 1/2--phone 1/3--tablet-and-up 1/4--desk"
             >
               <ProductItem

@@ -39,7 +39,6 @@ export const useProductCRUD = () => {
 
   const updateProductVariants = (product: IProduct, size: string) => {
     const variants = pick(product, [
-      "id",
       "mcId",
       "productname",
       "price",
@@ -57,7 +56,7 @@ export const useProductCRUD = () => {
   };
 
   const updateInitialProductVariants = (product: IProduct) => {
-    updateProductVariants(product, product.productSize?.[0]?.psize || "");
+    updateProductVariants(product, product.sizedto?.[0]?.psize || "");
   };
 
   const handleAddTocart = (product: IProduct) => {

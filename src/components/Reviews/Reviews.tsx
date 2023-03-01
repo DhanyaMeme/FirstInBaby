@@ -27,9 +27,12 @@ export const Reviews: FC<IProps> = (props: IProps) => {
   const dispatch = useAppDispatch();
 
   const reviewsLength = reviews?.length || 0;
-  const averagRating =
-    reviews?.reduce((acc, review: IProductReview) => acc + review.rating, 0) /
-    reviewsLength;
+  // const averagRating =
+  //   reviews?.reduce((acc, review: IProductReview) => acc + review.rating, 0) /
+  //   reviewsLength;
+
+  const averagRating = 5;
+
   const groupedList = groupByValueLength(reviews || [], "rating");
 
   const handleWriteReview = () => {
@@ -49,7 +52,7 @@ export const Reviews: FC<IProps> = (props: IProps) => {
       <div className="RatingWdgt__Header">
         <div className="RatingWdgt__Summary">
           <StarRating rating={averagRating || 0} />
-          <div>Based on {reviews.length} reviews</div>
+          <div>Based on {reviews?.length} reviews</div>
         </div>
         <IF condition={!isEmpty(reviews)}>
           <div className="RatingWdgt__ReviewsSummary">
@@ -77,7 +80,7 @@ export const Reviews: FC<IProps> = (props: IProps) => {
         </div>
       </div>
       <div>
-        {reviews.map((item: IProductReview) => (
+        {reviews?.map((item: IProductReview) => (
           <ReviewItem review={item} key={item.rid} />
         ))}
       </div>

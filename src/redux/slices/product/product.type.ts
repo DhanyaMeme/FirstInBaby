@@ -2,7 +2,7 @@ import { AsyncData } from "../../../models/types";
 import { IProduct } from "../collection/collection.type";
 
 export interface IProductVariants {
-  id: number;
+  id?: number;
   mcId: number;
   productname: string;
   price: number;

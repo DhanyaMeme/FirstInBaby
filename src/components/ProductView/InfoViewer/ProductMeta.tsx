@@ -13,7 +13,7 @@ interface IProps {
 }
 
 export const ProductMeta: React.FC<IProps> = (props: IProps) => {
-  const { productname, price, offer, descpription, productSpecs, date } =
+  const { productname, price, offer, descpription, specification, date } =
     props.product;
 
   const isValidDate = isFutureDate(date);
@@ -31,9 +31,9 @@ export const ProductMeta: React.FC<IProps> = (props: IProps) => {
       </div>
       {!isValidDate && date && <Flashsale endDate={date} />}
       <div className="Product__Description">{descpription}</div>
-      <IF condition={!isEmpty(productSpecs)}>
+      <IF condition={!isEmpty(specification)}>
         <div className="Product__Description">
-          <Specification productSpecification={productSpecs} />
+          <Specification productSpecification={specification} />
         </div>
       </IF>
     </div>
