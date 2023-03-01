@@ -5,8 +5,6 @@ import { ShopByProducts } from "../../components/ShopBy/ShopByProducts";
 export const ShopBy = () => {
   let { name } = useParams();
 
-  
-
   return (
     <>{name === "collection" ? <ShopByCollection /> : <ShopByProducts />}</>
   );
