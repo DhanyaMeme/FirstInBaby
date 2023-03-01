@@ -40,7 +40,7 @@ export const MyOrders = () => {
     if (!ordersData && user) dispatch(fetchOrderAsync(user));
   }, [dispatch, ordersData, user]);
 
-  if (ordersData?.length === 0) {
+  if (!ordersData) {
     return (
       <EmptyContainer
         url={EmptyOrders}

@@ -14,7 +14,9 @@ export const EmptyContainer = (props: IProps) => {
         alt="orders-not-found"
         className="EmptyContainer__Image"
       />
-      <h3 className="EmptyContainer__Header Heading">{props.head}</h3>
+      <h2 className="EmptyContainer__Header Heading Text--highlight">
+        {props.head}
+      </h2>
       <div className="EmptyContainer__Subhead">{props.subhead}</div>
     </div>
   );

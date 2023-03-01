@@ -11,7 +11,7 @@ export const fetchSingleProductAsync = createAsyncThunk<IProduct, number>(
     try {
       const response = (await fetchData({
         ...productService.singleProduct,
-        params: { pId: mcid },
+        params: { productid: mcid },
       })) as IProduct;
       return response;
     } catch (err) {

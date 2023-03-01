@@ -9,7 +9,7 @@ export const addFavAsync = createAsyncThunk<
   IProduct[],
   {
     phone: string;
-    pId: number;
+    mcid: number;
   }
 >("fav/addToFav", async (data, { rejectWithValue, dispatch }) => {
   try {

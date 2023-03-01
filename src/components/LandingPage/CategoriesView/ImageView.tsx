@@ -14,6 +14,7 @@ export const ImageView: FC<IProps> = (props: IProps) => {
   return (
     <NavLink
       to={`/collection/collectionhome/${encodeUrl(collectionItem.name)}`}
+      
     >
       <div className="CollectionItem__Wrapper">
         <div className="CollectionItem__ImageWrapper">

@@ -3,15 +3,11 @@
   flex-direction: column;
   align-items: center;
   background-color: #fff;
-  padding-bottom: 20px;
+  padding: 20px;
 
-  &__Image {
-    width: 180px;
-    height: 165px;
-  }
 
   &__Header {
-    margin: 25px 87px 11px;
+    margin: 20px auto;
     color: #282c3f;
   }
 

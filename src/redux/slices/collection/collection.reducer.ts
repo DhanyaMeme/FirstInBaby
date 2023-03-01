@@ -163,6 +163,7 @@ export const extracollectionReducer = {
     state.productsByCategory.error =
       "Error while fetching products by category";
   },
+  
   [fetchProductsByShopbyAsync.pending.type]: (state: ICollectionState) => {
     state.productsByShopBy.loading = true;
   },

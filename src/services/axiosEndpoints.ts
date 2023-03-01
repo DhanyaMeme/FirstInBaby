@@ -48,15 +48,15 @@ export const productsEndpoints = Object.freeze({
   PRODUCTS_BY_SHOPBY: "/ophelia/shopbyproducts",
   SEARCH_PRODUCTS: "/ophelia/product/serach",
   PRODUCTS_BY_SHOPByCOLLECTION: "/ophelia/get/products/collection",
-  SINGLE_PRODUCT: "/ophelia/products/product",
+  SINGLE_PRODUCT: "/fib/v1/menu/product",
   ADD_REVIEWS: "/ophelia/add/review",
   DELIVERY_STATUS: "/ophelia/verify/delivery",
   PREORDER: `/ophelia/preorder`,
 });
 
 export const FavEndpoints = Object.freeze({
-  ADD_FAV: "/ophelia/favorites",
-  GET_FAV: "/ophelia/favorites",
+  ADD_FAV: "/fib/v1/menu/add/favorite",
+  GET_FAV: "/fib/v1/menu/get/favorites",
   DELETE_FAV: "/ophelia/delete/favorite",
 });
 

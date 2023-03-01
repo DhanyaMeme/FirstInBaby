@@ -29,7 +29,7 @@ export const useProductCRUD = () => {
     if (user) {
       const item = {
         phone: user as string,
-        pId: mcId,
+        mcid: mcId,
       };
       dispatch(addFavAsync(item) as any);
     } else {
