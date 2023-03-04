@@ -9,6 +9,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import toastMessage from "../../utils/toastMessage";
 import {
   IProduct,
+  IProductData,
   IProductReview,
 } from "../../redux/slices/collection/collection.type";
 import { FC } from "react";
@@ -17,7 +18,7 @@ import { isEmpty } from "../../utils/script";
 import { IF } from "../../ui_kits/IF";
 
 interface IProps {
-  product: IProduct;
+  product: IProductData;
 }
 
 export const Reviews: FC<IProps> = (props: IProps) => {

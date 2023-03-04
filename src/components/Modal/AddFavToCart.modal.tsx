@@ -1,6 +1,7 @@
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import {
   IProduct,
+  IProductData,
   IProductSize,
 } from "../../redux/slices/collection/collection.type";
 import { useProductCRUD } from "../../hooks/useProductCRUD";
@@ -11,7 +12,7 @@ import { productVariants } from "../../redux/slices/product/product.selector";
 import { IProductVariants } from "../../redux/slices/product/product.type";
 
 interface IProps {
-  id: IProduct;
+  id: IProductData;
 }
 
 export const AddFavToCartModal = (props: IProps) => {

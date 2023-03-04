@@ -1,7 +1,7 @@
 import { FC, useEffect } from "react";
 import useDebounce from "../../../hooks/useDebounce";
 import { ProductItem } from "../../ProductItem/ProductItem";
-import { IProduct } from "../../../redux/slices/collection/collection.type";
+import { IProduct, IProductData } from "../../../redux/slices/collection/collection.type";
 import { EmptySearchIcon } from "../../../assets/icons/EmptySearch.icon";
 import { useAppDispatch, useAppSelector } from "../../../redux/store";
 import { fetchProductsBySearchAsync } from "../../../redux/slices/collection/collection.reducer";
@@ -17,7 +17,9 @@ export const SearchResults: FC<IProps> = (props: IProps) => {
 
   const debouncedSearchTerm = useDebounce<string>(searchValue, 1000);
   const dispatch = useAppDispatch();
-  const { data: filteredData, loading } = useAppSelector(productsBySearch);
+  const { data, loading } = useAppSelector(productsBySearch);
+
+  const filteredData = data?.productdto || [];
 
   useEffect(() => {
     if (debouncedSearchTerm) {
@@ -49,7 +51,7 @@ export const SearchResults: FC<IProps> = (props: IProps) => {
       </div>
       <div className="Search__Results--Content">
         {filteredData &&
-          filteredData.map((product: IProduct) => (
+          filteredData.map((product: IProductData) => (
             <ProductItem key={product.mcId} product={product} />
           ))}
       </div>

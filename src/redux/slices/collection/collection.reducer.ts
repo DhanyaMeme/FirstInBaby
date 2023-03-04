@@ -113,7 +113,7 @@ export const extracollectionReducer = {
   },
   [fetchAllProductsAsync.fulfilled.type]: (
     state: ICollectionState,
-    { payload }: PayloadAction<Array<IProduct>>
+    { payload }: PayloadAction<IProduct>
   ) => {
     state.allProducts.loading = false;
     state.allProducts.data = payload;
@@ -128,7 +128,7 @@ export const extracollectionReducer = {
   },
   [fetchPreorderProductsAsync.fulfilled.type]: (
     state: ICollectionState,
-    { payload }: PayloadAction<Array<IProduct>>
+    { payload }: PayloadAction<IProduct>
   ) => {
     state.preorderProducts.loading = false;
     state.preorderProducts.data = payload;
@@ -137,7 +137,6 @@ export const extracollectionReducer = {
     state.preorderProducts.loading = false;
     state.preorderProducts.error = "Error while fetching preorder products";
   },
-
   [fetchProductsByCategoryAsync.pending.type]: (state: ICollectionState) => {
     state.productsByCategory.loading = true;
   },
@@ -147,7 +146,7 @@ export const extracollectionReducer = {
       payload,
     }: PayloadAction<{
       key: string;
-      value: IProduct[];
+      value: IProduct;
     }>
   ) => {
     state.productsByCategory.loading = false;
@@ -163,7 +162,6 @@ export const extracollectionReducer = {
     state.productsByCategory.error =
       "Error while fetching products by category";
   },
-
   [fetchProductsByShopbyAsync.pending.type]: (state: ICollectionState) => {
     state.productsByShopBy.loading = true;
   },
@@ -173,7 +171,7 @@ export const extracollectionReducer = {
       payload,
     }: PayloadAction<{
       key: string;
-      value: IProduct[];
+      value: IProduct;
     }>
   ) => {
     state.productsByShopBy.loading = false;
@@ -193,7 +191,7 @@ export const extracollectionReducer = {
   },
   [fetchProductsBySearchAsync.fulfilled.type]: (
     state: ICollectionState,
-    { payload }: PayloadAction<Array<IProduct>>
+    { payload }: PayloadAction<IProduct>
   ) => {
     state.productsBySearch.loading = false;
     state.productsBySearch.data = payload;
@@ -211,7 +209,7 @@ export const extracollectionReducer = {
       payload,
     }: PayloadAction<{
       key: string;
-      value: IProduct[];
+      value: IProduct;
     }>
   ) => {
     state.productsShopByCollection.loading = false;

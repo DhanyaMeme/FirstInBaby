@@ -8,6 +8,7 @@ import { useProductCRUD } from "../../../hooks/useProductCRUD";
 import FavouriteIcon from "../../../assets/icons/Fav.icon";
 import {
   IProduct,
+  IProductData,
   IProductSize,
 } from "../../../redux/slices/collection/collection.type";
 import { RadioSwatch } from "../../../ui_kits/RadioSwatch/RadioSwatch";
@@ -21,7 +22,7 @@ import { setProductVariants } from "../../../redux/slices/product/product.slice"
 import { IProductVariants } from "../../../redux/slices/product/product.type";
 
 interface IProps {
-  product: IProduct;
+  product: IProductData;
   children: ReactNode;
 }
 

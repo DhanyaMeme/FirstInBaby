@@ -8,7 +8,10 @@ import { RecentlyViewed } from "../../components/LandingPage/RecentlyViewed";
 import { SaleItem } from "../../components/LandingPage/SaleItem";
 import { ShopFeatures } from "../../components/LandingPage/ShopFeatures";
 import { collectionsData } from "../../mockData/collectionData";
-import { IProduct } from "../../redux/slices/collection/collection.type";
+import {
+  IProduct,
+  IProductData,
+} from "../../redux/slices/collection/collection.type";
 import {
   featureProducts,
   hotDealsCollection,
@@ -32,8 +35,10 @@ export const LandingPage = () => {
       <HotDeals hotDealsData={hotDealsData} />
       <CategoriesView collectionsData={shopByCollectionData} />
       <ExploreView shopByProductsData={shopByProductsData} />
-      <SaleItem saleData={hotDeals?.slice(0, 6)} />
-      <RecentlyViewed sliderData={(featureProductsData as IProduct[]) || []} />
+      <SaleItem saleData={hotDeals?.productdto?.slice(0, 6)} />
+      <RecentlyViewed
+        sliderData={(featureProductsData?.productdto as IProductData[]) || []}
+      />
       <ShopFeatures />
       <InstaFeed instaData={collectionsData} />
     </main>

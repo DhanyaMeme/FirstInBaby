@@ -1,4 +1,7 @@
-import { IProduct } from "../../../redux/slices/collection/collection.type";
+import {
+  IProduct,
+  IProductData,
+} from "../../../redux/slices/collection/collection.type";
 import { IF } from "../../../ui_kits/IF";
 import { SectionHeader } from "../../../ui_kits/Sections/SectionHeader/SectionHeader";
 import { SectionWrapper } from "../../../ui_kits/Sections/SectionWrapper/SectionWrapper";
@@ -7,13 +10,13 @@ import { InstaFeedItem } from "./InstaFeedItem";
 import "./Style.scss";
 
 interface IProps {
-  instaData: IProduct[] | undefined;
+  instaData: IProduct | undefined;
 }
 
 export const InstaFeed = (props: IProps) => {
-  const { instaData = [] } = props;
+  const { instaData } = props;
 
-  const SlicedInstaData = instaData.slice(0, 8);
+  const SlicedInstaData = instaData?.productdto?.slice(0, 8) || [];
 
   return (
     <section className="Instafeed">
@@ -24,7 +27,7 @@ export const InstaFeed = (props: IProps) => {
         />
         <div className="Instafeed__Container Grid">
           <IF condition={!isEmpty(instaData)}>
-            {SlicedInstaData.map((item: IProduct) => (
+            {SlicedInstaData.map((item: IProductData) => (
               <InstaFeedItem key={item.mcId} instaFeedItem={item} />
             ))}
           </IF>

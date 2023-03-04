@@ -1,8 +1,8 @@
 import { AsyncData } from "../../../models/types";
-import { IProduct } from "../collection/collection.type";
+import { IProduct, IProductData } from "../collection/collection.type";
 
 export interface IWishlistState {
   isFavAddCartOpen: boolean;
-  wishlistItems: AsyncData<Array<IProduct>>;
-  wishlistItem: IProduct | undefined;
+  wishlistItems: AsyncData<Array<IProductData>>;
+  wishlistItem: IProductData | undefined;
 }

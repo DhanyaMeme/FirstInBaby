@@ -34,9 +34,9 @@ export const ProductCollection = () => {
   }, [mainCategory]);
 
   const filteredData = useMemo(() => {
-    let computedData: IProduct[] = products?.[mainCategory] || [];
+    let computedData: IProduct = products?.[mainCategory] || ({} as IProduct);
     // setTotalItems(computedData.length);
-    return computedData;
+    return computedData.productdto;
   }, [mainCategory, products, currentPage]);
 
   if (loading) {

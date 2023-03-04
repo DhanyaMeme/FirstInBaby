@@ -3,7 +3,10 @@ import { useAppDispatch, useAppSelector } from "../redux/store";
 import toastMessage from "../utils/toastMessage";
 import { addFavAsync } from "../redux/slices/wishlist/wishlist.reducer";
 import { pick } from "../utils/generics";
-import { IProduct } from "../redux/slices/collection/collection.type";
+import {
+  IProduct,
+  IProductData,
+} from "../redux/slices/collection/collection.type";
 import { setProductVariants } from "../redux/slices/product/product.slice";
 import { addItemToCart } from "../redux/slices/cart/cart.slice";
 import { productVariants } from "../redux/slices/product/product.selector";
@@ -37,7 +40,7 @@ export const useProductCRUD = () => {
     }
   };
 
-  const updateProductVariants = (product: IProduct, size: string) => {
+  const updateProductVariants = (product: IProductData, size: string) => {
     const variants = pick(product, [
       "mcId",
       "productname",
@@ -55,11 +58,11 @@ export const useProductCRUD = () => {
     );
   };
 
-  const updateInitialProductVariants = (product: IProduct) => {
+  const updateInitialProductVariants = (product: IProductData) => {
     updateProductVariants(product, product.sizedto?.[0]?.psize || "");
   };
 
-  const handleAddTocart = (product: IProduct) => {
+  const handleAddTocart = (product: IProductData) => {
     dispatch(addItemToCart(selectedProductVariants));
     updateInitialProductVariants(product);
     toastMessage(

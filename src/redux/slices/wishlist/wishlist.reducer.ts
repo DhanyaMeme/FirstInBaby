@@ -1,6 +1,6 @@
 import { IWishlistState } from "./wishlist.type";
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { IProduct } from "../collection/collection.type";
+import { IProduct, IProductData } from "../collection/collection.type";
 import { fetchData } from "../../../services/axios";
 import { favService } from "../../../services/axiosServices";
 import toastMessage from "../../../utils/toastMessage";
@@ -47,7 +47,7 @@ export const extraWishlistReducer = {
   },
   [getFavAsync.fulfilled.type]: (
     state: IWishlistState,
-    { payload }: PayloadAction<Array<IProduct>>
+    { payload }: PayloadAction<Array<IProductData>>
   ) => {
     state.wishlistItems.loading = false;
     state.wishlistItems.data = payload;
@@ -67,7 +67,7 @@ export const wishlistReducer = {
   },
   setWishlistItem: (
     state: IWishlistState,
-    { payload }: PayloadAction<IProduct | undefined>
+    { payload }: PayloadAction<IProductData | undefined>
   ) => {
     state.wishlistItem = payload;
   },

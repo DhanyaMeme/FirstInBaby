@@ -2,7 +2,7 @@ import { fetchData } from "../../../services/axios";
 import { initialAsyncData } from "../../../models/constants";
 import { productService } from "../../../services/axiosServices";
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { IProduct } from "../collection/collection.type";
+import { IProduct, IProductData } from "../collection/collection.type";
 import { IProductState, IProductVariants } from "./product.type";
 
 export const fetchSingleProductAsync = createAsyncThunk<IProduct, number>(
@@ -29,7 +29,7 @@ export const productReducer = {
   },
   setSelectedProduct: (
     state: IProductState,
-    { payload }: PayloadAction<IProduct>
+    { payload }: PayloadAction<IProductData>
   ): void => {
     state.selectedProduct = {
       ...initialAsyncData,
@@ -56,7 +56,7 @@ export const extraProductReducer = {
   },
   [fetchSingleProductAsync.fulfilled.type]: (
     state: IProductState,
-    { payload }: PayloadAction<IProduct>
+    { payload }: PayloadAction<IProductData>
   ) => {
     state.selectedProduct.loading = false;
     state.selectedProduct.data = payload;

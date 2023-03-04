@@ -12,6 +12,6 @@ export interface IHomeState {
   shopByCollection: AsyncData<ICollection[]>;
   hotDealsCollection: AsyncData<ICollection[]>;
   shopByProducts: AsyncData<ICollection[]>;
-  hotProducts: AsyncData<Array<IProduct>>;
-  featureProducts: AsyncData<Array<IProduct>>;
+  hotProducts: AsyncData<IProduct>;
+  featureProducts: AsyncData<IProduct>;
 }

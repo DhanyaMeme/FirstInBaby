@@ -32,11 +32,11 @@ export const Preorder = () => {
   };
 
   const filteredData = useMemo(() => {
-    let computedData: IProduct[] = products || [];
+    let computedData: IProduct = products || ({} as IProduct);
 
-    setTotalItems(computedData.length);
+    setTotalItems(computedData.pagenumber);
 
-    return computedData.slice(
+    return computedData.productdto.slice(
       (currentPage - 1) * ITEMS_PER_PAGE,
       (currentPage - 1) * ITEMS_PER_PAGE + ITEMS_PER_PAGE
     );

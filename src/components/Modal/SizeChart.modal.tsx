@@ -1,8 +1,11 @@
-import { IProduct } from "../../redux/slices/collection/collection.type";
+import {
+  IProduct,
+  IProductData,
+} from "../../redux/slices/collection/collection.type";
 import ModalWrapper from "../../ui_kits/modal/modal-wrapper.component";
 
 interface IProps {
-  id: IProduct;
+  id: IProductData;
 }
 
 export const SizeChartModal = (props: IProps) => {

@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import Slider from "react-slick";
 import {
   IProduct,
+  IProductData,
   IProductImage,
 } from "../../../redux/slices/collection/collection.type";
 import { ImageSkeleton } from "./ImageSkeleton";
 import "./ImageViewer.scss";
 
 interface IProps {
-  product: IProduct;
+  product: IProductData;
 }
 
 export const ImageViewer = (props: IProps) => {

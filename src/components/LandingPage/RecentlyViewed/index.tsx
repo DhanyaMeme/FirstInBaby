@@ -3,13 +3,16 @@ import Slider from "react-slick";
 import { IF } from "../../../ui_kits/IF";
 import { ProductItem } from "../../ProductItem/ProductItem";
 import { Collections } from "../__common__/Collections/Collections";
-import { IProduct } from "../../../redux/slices/collection/collection.type";
+import {
+  IProduct,
+  IProductData,
+} from "../../../redux/slices/collection/collection.type";
 import { ArrowNextIcon, ArrowPrevIcon } from "../../../assets/icons/Arrow.icon";
 import { IconButton } from "../../../ui_kits/Buttons/IconButton/IconButton.component";
 import "./Style.scss";
 
 interface IProps {
-  sliderData: IProduct[];
+  sliderData: IProductData[];
 }
 
 export const RecentlyViewed: FC<IProps> = (props: IProps) => {
@@ -64,7 +67,7 @@ export const RecentlyViewed: FC<IProps> = (props: IProps) => {
       <IF condition={sliderData.length > 0}>
         <div className="ProductList__Slider">
           <Slider {...settings}>
-            {sliderData.map((pdt: IProduct) => (
+            {sliderData.map((pdt: IProductData) => (
               <div className="Grid__Cell" key={pdt.mcId}>
                 <ProductItem product={pdt} isVisibleFav={false} />
               </div>

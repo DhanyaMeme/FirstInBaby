@@ -1,11 +1,11 @@
 import { FC } from "react";
 import { ProductView } from "../../models/constants";
-import { IProduct } from "../../redux/slices/collection/collection.type";
+import { IProduct, IProductData } from "../../redux/slices/collection/collection.type";
 import LazyLoad from "../../ui_kits/LazyComponent";
 import { ProductItem } from "../ProductItem/ProductItem";
 
 interface IProps {
-  ProductData: IProduct[] | null;
+  ProductData: IProductData[] | null;
 }
 
 export const ProductsList: FC<IProps> = (props: IProps) => {
@@ -20,7 +20,7 @@ export const ProductsList: FC<IProps> = (props: IProps) => {
         data-desktop-count={selectedView["data-desktop-count"]}
       >
         {ProductData &&
-          ProductData.map((product: IProduct) => (
+          ProductData.map((product: IProductData) => (
             <LazyLoad
               tag="div"
               key={product.mcId}

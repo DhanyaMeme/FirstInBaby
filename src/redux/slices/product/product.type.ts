@@ -1,5 +1,5 @@
 import { AsyncData } from "../../../models/types";
-import { IProduct } from "../collection/collection.type";
+import { IProduct, IProductData } from "../collection/collection.type";
 
 export interface IProductVariants {
   id?: number;
@@ -14,7 +14,7 @@ export interface IProductVariants {
 
 export interface IProductState {
   isVisibleSizechart: boolean;
-  selectedProduct: AsyncData<IProduct>;
+  selectedProduct: AsyncData<IProductData>;
   productVariants: IProductVariants | undefined;
   isReviewEnabled: boolean;
 }

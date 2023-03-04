@@ -1,5 +1,8 @@
 import { ProductInfo } from "./ProductInfo";
-import { IProduct } from "../../redux/slices/collection/collection.type";
+import {
+  IProduct,
+  IProductData,
+} from "../../redux/slices/collection/collection.type";
 import { AddFavIcon } from "../../assets/icons/AddFav.icon";
 import { IF } from "../../ui_kits/IF";
 import { ImageWrapper } from "../../ui_kits/ImageWrapper/ImageWrapper";
@@ -14,7 +17,7 @@ import { isFutureDate } from "../../utils/script";
 import { useLocation } from "react-router-dom";
 
 interface IProps {
-  product: IProduct;
+  product: IProductData;
   label?: string;
   isVisibleFav?: boolean;
   isVisibleAddCart?: boolean;

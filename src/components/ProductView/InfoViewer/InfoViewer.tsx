@@ -5,11 +5,11 @@ import { ProductVariantsForm } from "./ProductVariantsForm";
 import Sizechart from "../../../assets/images/sizechart.png";
 import { openModal } from "../../../redux/slices/modal/modal.slice";
 import { Container } from "../../../ui_kits/global/Container.styles";
-import { IProduct } from "../../../redux/slices/collection/collection.type";
+import { IProduct, IProductData } from "../../../redux/slices/collection/collection.type";
 import "./InfoViewer.scss";
 
 interface IProps {
-  product: IProduct;
+  product: IProductData;
 }
 
 export const InfoViewer = (props: IProps) => {
@@ -32,7 +32,6 @@ export const InfoViewer = (props: IProps) => {
     <div className="ProductInfo u-h5">
       <Container className="ProductInfo__Container">
         <ProductMeta product={product} />
-
         <ProductVariantsForm product={product}>
           <div
             className="ProductForm__LabelLink "

@@ -1,5 +1,8 @@
 import React from "react";
-import { IProduct } from "../../../redux/slices/collection/collection.type";
+import {
+  IProduct,
+  IProductData,
+} from "../../../redux/slices/collection/collection.type";
 import { Price } from "../../../ui_kits/global/Price.styles";
 import { IF } from "../../../ui_kits/IF";
 import { getOfferPrice } from "../../../utils/generics";
@@ -9,7 +12,7 @@ import { Flashsale } from "../../FlashSale";
 import { Specification } from "./Specification";
 
 interface IProps {
-  product: IProduct;
+  product: IProductData;
 }
 
 export const ProductMeta: React.FC<IProps> = (props: IProps) => {

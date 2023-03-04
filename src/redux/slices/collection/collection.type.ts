@@ -27,7 +27,7 @@ export interface IProductReview {
   url: string;
 }
 
-export interface IProduct {
+export interface IProductData {
   brand: string | null;
   childcategory: string | null;
   date: string;
@@ -59,8 +59,12 @@ export interface IProduct {
   tax: number;
   twitter: any;
   sizedto: IProductSize[];
-
   reviews?: IProductReview[];
+}
+
+export interface IProduct {
+  pagenumber: number;
+  productdto: IProductData[];
 
   // fabric: string;
   // gsthsn: string;
@@ -82,10 +86,10 @@ export interface IProduct {
 }
 
 export interface ICollectionState {
-  allProducts: AsyncData<IProduct[]>;
-  preorderProducts: AsyncData<IProduct[]>;
-  productsByShopBy: AsyncData<Record<string, IProduct[]>>;
-  productsShopByCollection: AsyncData<Record<string, IProduct[]>>;
-  productsByCategory: AsyncData<Record<string, IProduct[]>>;
-  productsBySearch: AsyncData<IProduct[]>;
+  allProducts: AsyncData<IProduct>;
+  productsByCategory: AsyncData<Record<string, IProduct>>;
+  preorderProducts: AsyncData<IProduct>;
+  productsByShopBy: AsyncData<Record<string, IProduct>>;
+  productsShopByCollection: AsyncData<Record<string, IProduct>>;
+  productsBySearch: AsyncData<IProduct>;
 }

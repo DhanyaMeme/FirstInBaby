@@ -123,7 +123,7 @@ export const extraHomeReducer = {
   },
   [fetchHotAsync.fulfilled.type]: (
     state: IHomeState,
-    { payload }: PayloadAction<Array<IProduct>>
+    { payload }: PayloadAction<IProduct>
   ) => {
     state.hotProducts.loading = false;
     state.hotProducts.data = payload;
@@ -137,7 +137,7 @@ export const extraHomeReducer = {
   },
   [fetchFeaturePdtsAsync.fulfilled.type]: (
     state: IHomeState,
-    { payload }: PayloadAction<Array<IProduct>>
+    { payload }: PayloadAction<IProduct>
   ) => {
     state.featureProducts.loading = false;
     state.featureProducts.data = payload;

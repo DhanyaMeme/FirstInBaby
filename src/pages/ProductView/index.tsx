@@ -5,7 +5,7 @@ import { InfoViewer } from "../../components/ProductView/InfoViewer/InfoViewer";
 import { Reviews } from "../../components/Reviews/Reviews";
 import usePath from "../../hooks/usePath";
 import { useProductCRUD } from "../../hooks/useProductCRUD";
-import { IProduct } from "../../redux/slices/collection/collection.type";
+import { IProduct, IProductData } from "../../redux/slices/collection/collection.type";
 import { fetchSingleProductAsync } from "../../redux/slices/product/product.reducer";
 import { selectedProduct } from "../../redux/slices/product/product.selector";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
@@ -48,8 +48,8 @@ export const ProductView = () => {
         <SectionWrapper isbordered>
           <div className="SelectedProduct__Container Clearfix">
             <IF condition={!isEmpty(filteredData)}>
-              <ImageViewer product={filteredData as IProduct} />
-              <InfoViewer product={filteredData as IProduct} />
+              <ImageViewer product={filteredData as IProductData} />
+              <InfoViewer product={filteredData as IProductData} />
             </IF>
           </div>
         </SectionWrapper>
@@ -65,7 +65,7 @@ export const ProductView = () => {
           <SectionWrapper isbordered>
             <Container>
               <SectionHeader heading="Customer Reviews" />
-              <Reviews product={filteredData as IProduct} />
+              <Reviews product={filteredData as IProductData} />
             </Container>
           </SectionWrapper>
         </IF>

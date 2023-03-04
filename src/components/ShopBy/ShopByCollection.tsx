@@ -23,8 +23,10 @@ export const ShopByCollection = () => {
   }, [mainCategory]);
 
   const filteredData = useMemo(() => {
-    let computedData: IProduct[] = products?.[decodeUrl(mainCategory)] || [];
-    return computedData;
+    let computedData: IProduct = products?.[
+      decodeUrl(mainCategory)
+    ] as IProduct;
+    return computedData.productdto || [];
   }, [mainCategory, products]);
 
   if (loading) {
