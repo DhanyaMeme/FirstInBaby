@@ -18,7 +18,7 @@ export const Wishlist = () => {
   const { data: products, loading } = useAppSelector(wishlistItems);
 
   useEffect(() => {
-    if (user !== null) {
+    if (user !== null && !products) {
       dispatch(getFavAsync(user));
     }
   }, [dispatch, user]);
