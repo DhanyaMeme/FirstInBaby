@@ -35,8 +35,8 @@ export const ProductCollection = () => {
 
   const filteredData = useMemo(() => {
     let computedData: IProduct = products?.[mainCategory] || ({} as IProduct);
-    // setTotalItems(computedData.length);
-    return computedData.productdto;
+    setTotalItems(computedData.pagenumber * ITEMS_PER_PAGE);
+    return computedData.productdto || [];
   }, [mainCategory, products, currentPage]);
 
   if (loading) {
