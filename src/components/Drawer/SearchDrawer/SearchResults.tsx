@@ -1,7 +1,7 @@
 import { FC, useEffect } from "react";
 import useDebounce from "../../../hooks/useDebounce";
 import { ProductItem } from "../../ProductItem/ProductItem";
-import { IProduct, IProductData } from "../../../redux/slices/collection/collection.type";
+import { IProductData } from "../../../redux/slices/collection/collection.type";
 import { EmptySearchIcon } from "../../../assets/icons/EmptySearch.icon";
 import { useAppDispatch, useAppSelector } from "../../../redux/store";
 import { fetchProductsBySearchAsync } from "../../../redux/slices/collection/collection.reducer";

@@ -1,8 +1,5 @@
 import { ProductInfo } from "./ProductInfo";
-import {
-  IProduct,
-  IProductData,
-} from "../../redux/slices/collection/collection.type";
+import { IProductData } from "../../redux/slices/collection/collection.type";
 import { AddFavIcon } from "../../assets/icons/AddFav.icon";
 import { IF } from "../../ui_kits/IF";
 import { ImageWrapper } from "../../ui_kits/ImageWrapper/ImageWrapper";

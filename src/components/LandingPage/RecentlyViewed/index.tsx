@@ -3,10 +3,7 @@ import Slider from "react-slick";
 import { IF } from "../../../ui_kits/IF";
 import { ProductItem } from "../../ProductItem/ProductItem";
 import { Collections } from "../__common__/Collections/Collections";
-import {
-  IProduct,
-  IProductData,
-} from "../../../redux/slices/collection/collection.type";
+import { IProductData } from "../../../redux/slices/collection/collection.type";
 import { ArrowNextIcon, ArrowPrevIcon } from "../../../assets/icons/Arrow.icon";
 import { IconButton } from "../../../ui_kits/Buttons/IconButton/IconButton.component";
 import "./Style.scss";

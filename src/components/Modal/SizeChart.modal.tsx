@@ -1,7 +1,4 @@
-import {
-  IProduct,
-  IProductData,
-} from "../../redux/slices/collection/collection.type";
+import { IProductData } from "../../redux/slices/collection/collection.type";
 import ModalWrapper from "../../ui_kits/modal/modal-wrapper.component";
 
 interface IProps {

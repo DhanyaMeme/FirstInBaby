@@ -3,10 +3,7 @@ import { useAppDispatch, useAppSelector } from "../redux/store";
 import toastMessage from "../utils/toastMessage";
 import { addFavAsync } from "../redux/slices/wishlist/wishlist.reducer";
 import { pick } from "../utils/generics";
-import {
-  IProduct,
-  IProductData,
-} from "../redux/slices/collection/collection.type";
+import { IProductData } from "../redux/slices/collection/collection.type";
 import { setProductVariants } from "../redux/slices/product/product.slice";
 import { addItemToCart } from "../redux/slices/cart/cart.slice";
 import { productVariants } from "../redux/slices/product/product.selector";

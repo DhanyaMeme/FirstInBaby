@@ -5,7 +5,7 @@ import { InfoViewer } from "../../components/ProductView/InfoViewer/InfoViewer";
 import { Reviews } from "../../components/Reviews/Reviews";
 import usePath from "../../hooks/usePath";
 import { useProductCRUD } from "../../hooks/useProductCRUD";
-import { IProduct, IProductData } from "../../redux/slices/collection/collection.type";
+import { IProductData } from "../../redux/slices/collection/collection.type";
 import { fetchSingleProductAsync } from "../../redux/slices/product/product.reducer";
 import { selectedProduct } from "../../redux/slices/product/product.selector";
 import { useAppDispatch, useAppSelector } from "../../redux/store";

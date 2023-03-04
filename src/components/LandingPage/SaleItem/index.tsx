@@ -1,7 +1,4 @@
-import {
-  IProduct,
-  IProductData,
-} from "../../../redux/slices/collection/collection.type";
+import { IProductData } from "../../../redux/slices/collection/collection.type";
 import { IF } from "../../../ui_kits/IF";
 import { isEmpty } from "../../../utils/script";
 import { Collections } from "../__common__/Collections/Collections";

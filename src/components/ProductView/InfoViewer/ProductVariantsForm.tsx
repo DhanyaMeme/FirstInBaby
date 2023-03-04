@@ -7,7 +7,6 @@ import { OnclickEvent } from "../../../models/types";
 import { useProductCRUD } from "../../../hooks/useProductCRUD";
 import FavouriteIcon from "../../../assets/icons/Fav.icon";
 import {
-  IProduct,
   IProductData,
   IProductSize,
 } from "../../../redux/slices/collection/collection.type";

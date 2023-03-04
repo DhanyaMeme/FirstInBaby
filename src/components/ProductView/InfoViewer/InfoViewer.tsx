@@ -5,7 +5,7 @@ import { ProductVariantsForm } from "./ProductVariantsForm";
 import Sizechart from "../../../assets/images/sizechart.png";
 import { openModal } from "../../../redux/slices/modal/modal.slice";
 import { Container } from "../../../ui_kits/global/Container.styles";
-import { IProduct, IProductData } from "../../../redux/slices/collection/collection.type";
+import { IProductData } from "../../../redux/slices/collection/collection.type";
 import "./InfoViewer.scss";
 
 interface IProps {

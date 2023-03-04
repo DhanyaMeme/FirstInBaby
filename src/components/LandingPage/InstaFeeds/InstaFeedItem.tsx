@@ -1,9 +1,6 @@
 import { FC } from "react";
 import LikeIcon from "../../../assets/icons/Like.icon";
-import {
-  IProduct,
-  IProductData,
-} from "../../../redux/slices/collection/collection.type";
+import { IProductData } from "../../../redux/slices/collection/collection.type";
 
 interface IProps {
   instaFeedItem: IProductData;

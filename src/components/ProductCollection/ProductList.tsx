@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { ProductView } from "../../models/constants";
-import { IProduct, IProductData } from "../../redux/slices/collection/collection.type";
+import { IProductData } from "../../redux/slices/collection/collection.type";
 import LazyLoad from "../../ui_kits/LazyComponent";
 import { ProductItem } from "../ProductItem/ProductItem";
 

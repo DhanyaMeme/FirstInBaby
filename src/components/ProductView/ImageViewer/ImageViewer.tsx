@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import Slider from "react-slick";
 import {
-  IProduct,
   IProductData,
   IProductImage,
 } from "../../../redux/slices/collection/collection.type";

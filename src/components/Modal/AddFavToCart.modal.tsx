@@ -1,6 +1,5 @@
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import {
-  IProduct,
   IProductData,
   IProductSize,
 } from "../../redux/slices/collection/collection.type";

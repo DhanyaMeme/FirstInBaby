@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import LazyLoad from "../../ui_kits/LazyComponent";
 import { useAuth } from "../../contexts/AuthContext";
 import { ProductItem } from "../../components/ProductItem/ProductItem";
-import { IProduct, IProductData } from "../../redux/slices/collection/collection.type";
+import { IProductData } from "../../redux/slices/collection/collection.type";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { getFavAsync } from "../../redux/slices/wishlist/wishlist.reducer";
 import { wishlistItems } from "../../redux/slices/wishlist/wishlist.selector";

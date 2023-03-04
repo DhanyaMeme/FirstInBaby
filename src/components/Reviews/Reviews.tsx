@@ -8,7 +8,6 @@ import { openModal } from "../../redux/slices/modal/modal.slice";
 import { useAuth } from "../../contexts/AuthContext";
 import toastMessage from "../../utils/toastMessage";
 import {
-  IProduct,
   IProductData,
   IProductReview,
 } from "../../redux/slices/collection/collection.type";

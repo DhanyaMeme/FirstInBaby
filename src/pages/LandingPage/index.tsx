@@ -8,10 +8,7 @@ import { RecentlyViewed } from "../../components/LandingPage/RecentlyViewed";
 import { SaleItem } from "../../components/LandingPage/SaleItem";
 import { ShopFeatures } from "../../components/LandingPage/ShopFeatures";
 import { collectionsData } from "../../mockData/collectionData";
-import {
-  IProduct,
-  IProductData,
-} from "../../redux/slices/collection/collection.type";
+import { IProductData } from "../../redux/slices/collection/collection.type";
 import {
   featureProducts,
   hotDealsCollection,

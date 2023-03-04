@@ -1,8 +1,5 @@
 import React from "react";
-import {
-  IProduct,
-  IProductData,
-} from "../../../redux/slices/collection/collection.type";
+import { IProductData } from "../../../redux/slices/collection/collection.type";
 import { Price } from "../../../ui_kits/global/Price.styles";
 import { IF } from "../../../ui_kits/IF";
 import { getOfferPrice } from "../../../utils/generics";
