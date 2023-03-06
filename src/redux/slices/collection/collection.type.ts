@@ -89,7 +89,7 @@ export interface ICollectionState {
   allProducts: AsyncData<IProduct>;
   productsByCategory: AsyncData<Record<string, IProduct>>;
   preorderProducts: AsyncData<IProduct>;
+  productsBySearch: AsyncData<IProduct>;
   productsByShopBy: AsyncData<Record<string, IProduct>>;
   productsShopByCollection: AsyncData<Record<string, IProduct>>;
-  productsBySearch: AsyncData<IProduct>;
 }

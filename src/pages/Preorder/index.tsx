@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { isEmpty } from "../../utils/script";
+import { formatPreOrderDate, isEmpty } from "../../utils/script";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { fetchPreorderProductsAsync } from "../../redux/slices/collection/collection.reducer";
 import { preorderProducts } from "../../redux/slices/collection/collection.selector";
@@ -11,42 +11,34 @@ import { ProductsList } from "../../components/ProductCollection/ProductList";
 import Pagination from "../../ui_kits/Pagination/Pagination";
 
 export const Preorder = () => {
-  const { data: products, loading } = useAppSelector(preorderProducts);
-
+  
   const dispatch = useAppDispatch();
-  const { scrollTop } = useScrollPosition();
-
-  useEffect(() => {
-    if (isEmpty(products)) {
-      dispatch(fetchPreorderProductsAsync());
-    }
-  }, [dispatch]);
-
+  const { data: products, loading } = useAppSelector(preorderProducts);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalItems, setTotalItems] = useState<number>(0);
   const ITEMS_PER_PAGE = 40;
 
-  const handleOnPageChange = (page: number) => {
-    setCurrentPage(page);
-    scrollTop();
-  };
+  useEffect(() => {
+    dispatch(
+      fetchPreorderProductsAsync({
+        offset: currentPage - 1,
+        pagesize: ITEMS_PER_PAGE,
+        date: formatPreOrderDate(),
+      })
+    );
+  }, [dispatch, currentPage]);
 
   const filteredData = useMemo(() => {
     let computedData: IProduct = products || ({} as IProduct);
-
-    setTotalItems(computedData.pagenumber);
-
-    return computedData.productdto.slice(
-      (currentPage - 1) * ITEMS_PER_PAGE,
-      (currentPage - 1) * ITEMS_PER_PAGE + ITEMS_PER_PAGE
-    );
+    setTotalItems(computedData.pagenumber * ITEMS_PER_PAGE);
+    return computedData.productdto || [];
   }, [products, currentPage]);
 
   if (loading) {
     return <Spinner />;
   }
 
-  if (!loading && !products) {
+  if (!loading && filteredData.length === 0) {
     return <EmptyProducts />;
   }
 
@@ -60,7 +52,7 @@ export const Preorder = () => {
         currentPage={currentPage}
         totalCount={totalItems}
         pageSize={ITEMS_PER_PAGE}
-        onPageChange={handleOnPageChange}
+        onPageChange={(page: number) => setCurrentPage(page)}
       />
     </div>
   );

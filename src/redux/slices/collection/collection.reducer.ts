@@ -16,15 +16,14 @@ export const fetchAllProductsAsync = createAsyncThunk(
   }
 );
 
-export const fetchPreorderProductsAsync = createAsyncThunk<IProduct[]>(
+export const fetchPreorderProductsAsync = createAsyncThunk<IProduct, any>(
   "collection/getPreOrderProducts",
-  async (_arg, { rejectWithValue }) => {
+  async (data, { rejectWithValue }) => {
     try {
-      const currentDate = formatPreOrderDate();
       const response = (await fetchData({
         ...productService.getPreOrderProducts,
-        params: { curDate: currentDate },
-      })) as IProduct[];
+        params: data,
+      })) as IProduct;
       return response;
     } catch (err) {
       return rejectWithValue(err);
