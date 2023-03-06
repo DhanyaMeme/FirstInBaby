@@ -1,17 +1,15 @@
 import { useEffect, useMemo, useState } from "react";
-import { formatPreOrderDate, isEmpty } from "../../utils/script";
+import { formatPreOrderDate } from "../../utils/script";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { fetchPreorderProductsAsync } from "../../redux/slices/collection/collection.reducer";
 import { preorderProducts } from "../../redux/slices/collection/collection.selector";
 import { Spinner } from "../../ui_kits/Spinner/Spinner.component";
 import { EmptyProducts } from "../../components/EmptyProducts/EmptyProducts";
 import { IProduct } from "../../redux/slices/collection/collection.type";
-import useScrollPosition from "../../hooks/useScrollPosition";
 import { ProductsList } from "../../components/ProductCollection/ProductList";
 import Pagination from "../../ui_kits/Pagination/Pagination";
 
 export const Preorder = () => {
-  
   const dispatch = useAppDispatch();
   const { data: products, loading } = useAppSelector(preorderProducts);
   const [currentPage, setCurrentPage] = useState<number>(1);

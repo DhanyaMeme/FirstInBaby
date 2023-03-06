@@ -23,7 +23,13 @@ export const SearchResults: FC<IProps> = (props: IProps) => {
 
   useEffect(() => {
     if (debouncedSearchTerm) {
-      dispatch(fetchProductsBySearchAsync(debouncedSearchTerm));
+      dispatch(
+        fetchProductsBySearchAsync({
+          input: debouncedSearchTerm,
+          offset: 0,
+          pagesize: 50,
+        })
+      );
     }
   }, [debouncedSearchTerm, dispatch]);
 

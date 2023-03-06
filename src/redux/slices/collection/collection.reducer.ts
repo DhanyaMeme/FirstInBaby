@@ -69,14 +69,14 @@ export const fetchProductsByShopbyAsync = createAsyncThunk<any, string>(
   }
 );
 
-export const fetchProductsBySearchAsync = createAsyncThunk<IProduct[], string>(
+export const fetchProductsBySearchAsync = createAsyncThunk<IProduct, any>(
   "collection/getProductsBySearch",
-  async (productname, { rejectWithValue }) => {
+  async (data, { rejectWithValue }) => {
     try {
       const response = (await fetchData({
-        ...productService.getProductsByShopby,
-        params: { productname },
-      })) as IProduct[];
+        ...productService.getSearch,
+        params: data,
+      })) as IProduct;
 
       return response;
     } catch (err) {
