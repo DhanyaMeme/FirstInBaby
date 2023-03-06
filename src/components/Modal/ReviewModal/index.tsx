@@ -68,7 +68,7 @@ export const ReviewModal = () => {
 
     if (isValid) {
       const bodyFormData = new FormData();
-      bodyFormData.append("file", reviewState.imageUrl);
+      bodyFormData.append("file", reviewState.file);
 
       const reviewParams = {
         ...productService.addReviews,
@@ -76,7 +76,7 @@ export const ReviewModal = () => {
           name: `${reviewState.name},${currentDate},${reviewState.email}`,
           reviews: `${reviewState.reviewTitle},desc:${reviewState.reviewDescription}`,
           rating: reviewState.rating,
-          "mcId.mcId": productId,
+          mcid: productId,
         },
         data: bodyFormData,
         headers: { "Content-Type": "multipart/form-data" },
@@ -144,7 +144,7 @@ export const ReviewModal = () => {
                 />
               </IF>
 
-              <IF condition={item.name === "imageUrl"}>
+              <IF condition={item.name === "file"}>
                 <ImageUploader
                   updateImageChange={(imageList: ImageListType) => {
                     updateReviewState(item.name, imageList[0].file);

@@ -7,7 +7,7 @@ export type IReviewFormState = {
   reviewTitle: string;
   reviewDescription: string;
   rating: string;
-  imageUrl: any;
+  file: any;
 };
 
 export type ReviewFormInput = InputBaseProps<IReviewFormState>;
@@ -18,7 +18,7 @@ export const initialReviewFormState: IReviewFormState = {
   reviewTitle: "",
   reviewDescription: "",
   rating: "",
-  imageUrl: "",
+  file: "",
 };
 
 export const ReviewFormInputs: ReviewFormInput[] = [
@@ -59,7 +59,7 @@ export const ReviewFormInputs: ReviewFormInput[] = [
     validation: [{ rule: validationRules.required }],
   },
   {
-    name: "imageUrl",
+    name: "file",
     label: "Image",
     type: InputType.file,
     validation: [{ rule: validationRules.required }],

@@ -6,6 +6,7 @@ import {
   addressList,
   defaultAddressId,
 } from "../../redux/slices/address/address.selector";
+import { customer } from "../../redux/slices/profile/profile.selector";
 import { useAppSelector } from "../../redux/store";
 import {
   BUTTON_TYPE_CLASSES,
@@ -17,7 +18,7 @@ import toastMessage from "../../utils/toastMessage";
 import "./Style.scss";
 
 const Address = () => {
-  const { data: addresses } = useAppSelector(addressList);
+  const { data } = useAppSelector(customer);
   const defaultId = useAppSelector(defaultAddressId);
   const navigate = useNavigate();
 
@@ -33,7 +34,7 @@ const Address = () => {
     <div className="PageLayout">
       <div className="PageLayout--Primary">
         <AddressContainer />
-        <IF condition={!isEmpty(addresses)}>
+        <IF condition={!isEmpty(data?.addressTemp)}>
           <div className="Payment_Section">
             <TextButton
               buttonType={BUTTON_TYPE_CLASSES.inverted}

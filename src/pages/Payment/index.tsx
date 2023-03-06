@@ -10,6 +10,7 @@ import { addCartItemsAsync } from "../../redux/slices/cart/cart.reducer";
 import { selectCartItems } from "../../redux/slices/cart/cart.selector";
 import { ICartItem } from "../../redux/slices/cart/cart.type";
 import { placeOrderAsync } from "../../redux/slices/profile/profile.reducer";
+import { customer } from "../../redux/slices/profile/profile.selector";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { IF } from "../../ui_kits/IF";
 import { findArrayItems } from "../../utils/generics";
@@ -19,20 +20,20 @@ export const Payment = () => {
   const { user } = useAuth();
   const addressId = usePath();
   const dispatch = useAppDispatch();
-  const { data: addresses } = useAppSelector(addressList);
   const cartList = useAppSelector(selectCartItems);
+  const { data } = useAppSelector(customer);
 
   const selectedAddress = useMemo(() => {
     let computedData: IAddress | undefined = {} as IAddress;
 
-    if (addresses) {
-      computedData = findArrayItems(addresses.address, {
+    if (data?.addressTemp) {
+      computedData = findArrayItems(data.addressTemp, {
         id: +addressId,
       });
     }
 
     return computedData;
-  }, [addresses, addressId]);
+  }, [data, addressId]);
 
   const addCartItems = async () => {
     const items = cartList?.map((item: ICartItem) => {

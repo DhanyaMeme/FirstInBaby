@@ -25,8 +25,6 @@ export const ProductView = () => {
   const { updateInitialProductVariants } = useProductCRUD();
   const { data: filteredData, loading } = useAppSelector(selectedProduct);
 
-  console.log("filteredData", filteredData);
-
   useEffect(() => {
     dispatch(fetchSingleProductAsync(+productId));
   }, [dispatch, productId]);

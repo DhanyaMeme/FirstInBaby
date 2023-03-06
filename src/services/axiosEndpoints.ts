@@ -49,7 +49,8 @@ export const productsEndpoints = Object.freeze({
   SEARCH_PRODUCTS: "/ophelia/product/serach",
   PRODUCTS_BY_SHOPByCOLLECTION: "/ophelia/get/products/collection",
   SINGLE_PRODUCT: "/fib/v1/menu/product",
-  ADD_REVIEWS: "/ophelia/add/review",
+  ADD_REVIEWS: "/fib/v1/menu/product/add/review",
+  GET_REVIEWS: "/fib/v1/menu/product/get/review",
   DELIVERY_STATUS: "/ophelia/verify/delivery",
   PREORDER: `/ophelia/preorder`,
 });
