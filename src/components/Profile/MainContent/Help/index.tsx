@@ -8,6 +8,8 @@ import {
   InputFocusEvent,
   Messages,
 } from "../../../../models/types";
+import { customer } from "../../../../redux/slices/profile/profile.selector";
+import { useAppSelector } from "../../../../redux/store";
 import { profileService } from "../../../../services/axiosServices";
 import {
   Form,
@@ -18,7 +20,7 @@ import {
 import { PageContent } from "../../../../ui_kits/global/PageContent.styles";
 import { Panel } from "../../../../ui_kits/Panel/Panel";
 import { safeSetTimeout } from "../../../../utils/generics";
-import { generateRandomId } from "../../../../utils/script";
+import { formatPreOrderDate } from "../../../../utils/script";
 import { FormError } from "../../../AuthHandler/FormError";
 import {
   HelpInput,
@@ -28,7 +30,7 @@ import {
 } from "./input";
 
 export const Help = () => {
-  const { user } = useAuth();
+  const { data: user } = useAppSelector(customer);
 
   const {
     obj: registerState,
@@ -54,8 +56,9 @@ export const Help = () => {
     ...profileService.help,
     params: {
       message: registerState.message,
-      email: user,
-      id: `#${generateRandomId(3)}`,
+      email: user?.email,
+      name: user?.fname,
+      date: formatPreOrderDate(),
     },
   };
 

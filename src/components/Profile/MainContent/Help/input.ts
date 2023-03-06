@@ -12,10 +12,11 @@ export const initialHelpInputState: IHelpState = {
 };
 
 export const HelpInputs: HelpInput[] = [
+  
   {
     name: "message",
     label: "Message",
-    type: InputType.password,
+    type: InputType.textarea,
     validation: [{ rule: validationRules.required }],
   },
 ];

@@ -65,7 +65,6 @@ export const Reviews = () => {
                 groupListKey,
                 reviewsLength
               ).toFixed();
-              console.log(percentage);
               return (
                 <ReviewsOverview
                   rating={itemIndex}

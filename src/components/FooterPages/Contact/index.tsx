@@ -3,16 +3,8 @@ import {
   PageHeader,
 } from "../../../ui_kits/global/PageContent.styles";
 import { Container } from "../../../ui_kits/global/Container.styles";
-
-import { TextButton } from "../../../ui_kits/Buttons/TextButton/TextButton.component";
-import {
-  Form,
-  FormElement,
-  FormTextArea,
-  FormTextInput,
-} from "../../../ui_kits/Form";
-import { Form__Elemen__Types } from "../../../ui_kits/Form/FormElements/FormElement";
 import { SectionHeader } from "../../../ui_kits/Sections/SectionHeader/SectionHeader";
+import { ContactForm } from "./ContactForm";
 
 export const Contact = () => {
   return (
@@ -54,20 +46,7 @@ export const Contact = () => {
           </ul>
           <p>Or write down your opinions in the following form.</p>
           <p>We will answer your&nbsp;questions within 24 hours.</p>
-          <Form classname="Form">
-            <FormElement elementType={Form__Elemen__Types.FormGroup}>
-              <FormElement>
-                <FormTextInput label="Name" placeholder="Name" />
-              </FormElement>
-              <FormElement>
-                <FormTextInput label="Email" placeholder="Email" />
-              </FormElement>
-            </FormElement>
-            <FormElement>
-              <FormTextArea label="Your message" placeholder="Your message" />
-            </FormElement>
-            <TextButton isFull>SEND MESSAGE</TextButton>
-          </Form>
+          <ContactForm />
         </div>
       </PageContent>
     </Container>

@@ -24,7 +24,7 @@ export const addressEndpoints = Object.freeze({
 export const profileEndpoints = Object.freeze({
   GET_PROFILE: "/fib/v1/customer/address",
   UPDATE_PROFILE: "/fib/v1/customer/update/profile",
-  HELP: `/ophelia/help`,
+  HELP: `/fib/v1/customer/contactus/add`,
   PLANS: `/fib/v1/get/referralplan`,
   SUBCRIPTION: `/ophelia/user/subcription`,
   UPDATE_SUBCRIPTION: `/fib/v1/customer/update/subscription`,
@@ -52,7 +52,7 @@ export const productsEndpoints = Object.freeze({
   ADD_REVIEWS: "/fib/v1/menu/product/add/review",
   GET_REVIEWS: "/fib/v1/menu/product/get/review",
   DELIVERY_STATUS: "/ophelia/verify/delivery",
-  PREORDER: `/ophelia/preorder`,
+  PREORDER: "/fib/v1/menu/products/presale",
 });
 
 export const FavEndpoints = Object.freeze({
