@@ -41,33 +41,30 @@ export const ProductView = () => {
   }
 
   return (
-    <>
-      <main className="SelectedProduct">
+    <main className="SelectedProduct">
+      <SectionWrapper isbordered>
+        <div className="SelectedProduct__Container Clearfix">
+          <IF condition={!isEmpty(filteredData)}>
+            <ImageViewer product={filteredData as IProductData} />
+            <InfoViewer product={filteredData as IProductData} />
+          </IF>
+        </div>
+      </SectionWrapper>
+      <SectionWrapper isbordered>
+        <Container isNarrow>
+          <Accordian title="DETAILS" child={<Description />} />
+          <Accordian title="DETAILS OF THE VENDOR" child={<Description />} />
+          <Accordian title="SHIPPING RESTRICTIONS" child={<Description />} />
+        </Container>
+      </SectionWrapper>
+      <IF condition={!isEmpty(filteredData)}>
         <SectionWrapper isbordered>
-          <div className="SelectedProduct__Container Clearfix">
-            <IF condition={!isEmpty(filteredData)}>
-              <ImageViewer product={filteredData as IProductData} />
-              <InfoViewer product={filteredData as IProductData} />
-            </IF>
-          </div>
-        </SectionWrapper>
-        <SectionWrapper isbordered>
-          <Container isNarrow>
-            <Accordian title="DETAILS" child={<Description />} />
-            <Accordian title="DETAILS OF THE VENDOR" child={<Description />} />
-            <Accordian title="SHIPPING RESTRICTIONS" child={<Description />} />
+          <Container>
+            <SectionHeader heading="Customer Reviews" />
+            <Reviews />
           </Container>
         </SectionWrapper>
-
-        <IF condition={!isEmpty(filteredData)}>
-          <SectionWrapper isbordered>
-            <Container>
-              <SectionHeader heading="Customer Reviews" />
-              <Reviews product={filteredData as IProductData} />
-            </Container>
-          </SectionWrapper>
-        </IF>
-      </main>
-    </>
+      </IF>
+    </main>
   );
 };

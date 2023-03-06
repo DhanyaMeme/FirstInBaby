@@ -101,6 +101,10 @@ export const productService = {
     method: "GET",
     url: productsEndpoints.DELIVERY_STATUS,
   },
+  getReviews: {
+    method: "GET",
+    url: productsEndpoints.GET_REVIEWS,
+  },
   addReviews: {
     method: "POST",
     url: productsEndpoints.ADD_REVIEWS,

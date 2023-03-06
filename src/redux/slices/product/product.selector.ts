@@ -18,6 +18,11 @@ export const productVariants = createSelector(
   (productState) => productState.productVariants
 );
 
+export const reviewsData = createSelector(
+  [productSelf],
+  (productState) => productState.reviews
+);
+
 export const isReviewEnabled = createSelector(
   [productSelf],
   (productState) => productState.isReviewEnabled

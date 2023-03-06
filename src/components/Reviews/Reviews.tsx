@@ -1,39 +1,41 @@
-import "./Review.scss";
+import { useEffect, FC } from "react";
+import { IF } from "../../ui_kits/IF";
+import usePath from "../../hooks/usePath";
 import { StarRating } from "./StarRating";
 import { ReviewItem } from "./ReviewItem";
-import { TextButton } from "../../ui_kits/Buttons/TextButton/TextButton.component";
-import { ReviewsOverview } from "./ReviewsOverview/ReviewsOverview";
-import { useAppDispatch } from "../../redux/store";
-import { openModal } from "../../redux/slices/modal/modal.slice";
-import { useAuth } from "../../contexts/AuthContext";
-import toastMessage from "../../utils/toastMessage";
-import {
-  IProductData,
-  IProductReview,
-} from "../../redux/slices/collection/collection.type";
-import { FC } from "react";
-import { caluclatePercentage, groupByValueLength } from "../../utils/generics";
 import { isEmpty } from "../../utils/script";
-import { IF } from "../../ui_kits/IF";
+import toastMessage from "../../utils/toastMessage";
+import { useAuth } from "../../contexts/AuthContext";
+import { openModal } from "../../redux/slices/modal/modal.slice";
+import { useAppDispatch, useAppSelector } from "../../redux/store";
+import { ReviewsOverview } from "./ReviewsOverview/ReviewsOverview";
+import { reviewsData } from "../../redux/slices/product/product.selector";
+import { IReview } from "../../redux/slices/product/product.type";
+import { caluclatePercentage, groupByValueLength } from "../../utils/generics";
+import { fetchReviewsAsync } from "../../redux/slices/product/product.reducer";
+import { TextButton } from "../../ui_kits/Buttons/TextButton/TextButton.component";
+import "./Review.scss";
 
-interface IProps {
-  product: IProductData;
-}
-
-export const Reviews: FC<IProps> = (props: IProps) => {
-  const { reviews } = props.product;
-
+export const Reviews = () => {
   const { user } = useAuth();
+  const productId = usePath();
   const dispatch = useAppDispatch();
+  const { data = [], loading } = useAppSelector(reviewsData);
 
-  const reviewsLength = reviews?.length || 0;
-  // const averagRating =
-  //   reviews?.reduce((acc, review: IProductReview) => acc + review.rating, 0) /
-  //   reviewsLength;
+  useEffect(() => {
+    dispatch(fetchReviewsAsync(+productId));
+  }, [dispatch, productId]);
 
-  const averagRating = 5;
+  const reviewsLength = data?.length || 0;
 
-  const groupedList = groupByValueLength(reviews || [], "rating");
+  const averagRating =
+    (data &&
+      data.reduce((acc, review: IReview) => acc + review.rating, 0) /
+        reviewsLength) ||
+    0;
+
+  // const averagRating = 5;
+  const groupedList = groupByValueLength(data || [], "rating");
 
   const handleWriteReview = () => {
     if (user) {
@@ -52,9 +54,9 @@ export const Reviews: FC<IProps> = (props: IProps) => {
       <div className="RatingWdgt__Header">
         <div className="RatingWdgt__Summary">
           <StarRating rating={averagRating || 0} />
-          <div>Based on {reviews?.length} reviews</div>
+          <div>Based on {data?.length} reviews</div>
         </div>
-        <IF condition={!isEmpty(reviews)}>
+        <IF condition={!isEmpty(data)}>
           <div className="RatingWdgt__ReviewsSummary">
             {Array.from(Array(5).keys()).map((item: number) => {
               const itemIndex = item + 1;
@@ -63,11 +65,12 @@ export const Reviews: FC<IProps> = (props: IProps) => {
                 groupListKey,
                 reviewsLength
               ).toFixed();
+              console.log(percentage);
               return (
                 <ReviewsOverview
                   rating={itemIndex}
                   count={groupListKey}
-                  percentage={`${percentage} %`}
+                  percentage={`${percentage}%`}
                 />
               );
             })}
@@ -80,7 +83,7 @@ export const Reviews: FC<IProps> = (props: IProps) => {
         </div>
       </div>
       <div>
-        {reviews?.map((item: IProductReview) => (
+        {data?.map((item: IReview) => (
           <ReviewItem review={item} key={item.rid} />
         ))}
       </div>

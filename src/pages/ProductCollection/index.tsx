@@ -1,14 +1,14 @@
 import { useEffect, useMemo, useState } from "react";
+import usePath from "../../hooks/usePath";
 import { decodeUrl } from "../../utils/textHandler";
 import Pagination from "../../ui_kits/Pagination/Pagination";
 import { Spinner } from "../../ui_kits/Spinner/Spinner.component";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
+import { IProduct } from "../../redux/slices/collection/collection.type";
 import { EmptyProducts } from "../../components/EmptyProducts/EmptyProducts";
 import { ProductsList } from "../../components/ProductCollection/ProductList";
-import usePath from "../../hooks/usePath";
-import { fetchProductsByCategoryAsync } from "../../redux/slices/collection/collection.reducer";
 import { productsByCategory } from "../../redux/slices/collection/collection.selector";
-import { IProduct } from "../../redux/slices/collection/collection.type";
+import { fetchProductsByCategoryAsync } from "../../redux/slices/collection/collection.reducer";
 
 export const ProductCollection = () => {
   const mainCategory = usePath();

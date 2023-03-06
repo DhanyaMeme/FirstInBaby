@@ -3,7 +3,7 @@ import { initialAsyncData } from "../../../models/constants";
 import { productService } from "../../../services/axiosServices";
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { IProduct, IProductData } from "../collection/collection.type";
-import { IProductState, IProductVariants } from "./product.type";
+import { IProductState, IProductVariants, IReview } from "./product.type";
 
 export const fetchSingleProductAsync = createAsyncThunk<IProduct, number>(
   "product/getSingleProduct",
@@ -13,6 +13,21 @@ export const fetchSingleProductAsync = createAsyncThunk<IProduct, number>(
         ...productService.singleProduct,
         params: { productid: mcid },
       })) as IProduct;
+      return response;
+    } catch (err) {
+      return rejectWithValue(err);
+    }
+  }
+);
+
+export const fetchReviewsAsync = createAsyncThunk<IReview[], number>(
+  "product/getReviews",
+  async (mcid, { rejectWithValue }) => {
+    try {
+      const response = (await fetchData({
+        ...productService.getReviews,
+        url: `${productService.getReviews.url}/${mcid}/0/100`,
+      })) as IReview[];
       return response;
     } catch (err) {
       return rejectWithValue(err);
@@ -64,5 +79,19 @@ export const extraProductReducer = {
   [fetchSingleProductAsync.rejected.type]: (state: IProductState) => {
     state.selectedProduct.loading = false;
     state.selectedProduct.error = "Error while fetching collections";
+  },
+  [fetchReviewsAsync.pending.type]: (state: IProductState) => {
+    state.reviews.loading = true;
+  },
+  [fetchReviewsAsync.fulfilled.type]: (
+    state: IProductState,
+    { payload }: PayloadAction<IReview[]>
+  ) => {
+    state.reviews.loading = false;
+    state.reviews.data = payload;
+  },
+  [fetchReviewsAsync.rejected.type]: (state: IProductState) => {
+    state.reviews.loading = false;
+    state.reviews.error = "Error while fetching collections";
   },
 };

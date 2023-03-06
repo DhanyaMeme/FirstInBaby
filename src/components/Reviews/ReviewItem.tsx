@@ -1,10 +1,10 @@
-import { IProductReview } from "../../redux/slices/collection/collection.type";
 import { IF } from "../../ui_kits/IF";
-import { isEmpty } from "../../utils/script";
 import { StarRating } from "./StarRating";
+import { isEmpty } from "../../utils/script";
+import { IReview } from "../../redux/slices/product/product.type";
 
 interface IProps {
-  review: IProductReview;
+  review: IReview;
 }
 
 export const ReviewItem = (props: IProps) => {

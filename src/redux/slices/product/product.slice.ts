@@ -8,6 +8,7 @@ export const initialState: IProductState = {
   selectedProduct: initialAsyncData,
   productVariants: undefined,
   isReviewEnabled: false,
+  reviews: initialAsyncData,
 };
 
 export const productSlice = createSlice({
