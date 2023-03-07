@@ -14,4 +14,5 @@ export interface IHomeState {
   shopByProducts: AsyncData<ICollection[]>;
   hotProducts: AsyncData<IProduct>;
   featureProducts: AsyncData<IProduct>;
+  instaProducts: AsyncData<IProduct>;
 }

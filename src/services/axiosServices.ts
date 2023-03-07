@@ -66,6 +66,10 @@ export const homeService = {
     method: "GET",
     url: homeEndpoints.FEATURE,
   },
+  getInstaFeedProducts: {
+    method: "GET",
+    url: homeEndpoints.HOT,
+  },
 };
 
 export const productService = {

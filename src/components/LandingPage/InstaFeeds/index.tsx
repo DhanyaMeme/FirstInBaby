@@ -10,13 +10,13 @@ import { InstaFeedItem } from "./InstaFeedItem";
 import "./Style.scss";
 
 interface IProps {
-  instaData: IProduct | undefined;
+  instaData: IProductData[] | undefined;
 }
 
 export const InstaFeed = (props: IProps) => {
-  const { instaData } = props;
+  const { instaData = [] } = props;
 
-  const SlicedInstaData = instaData?.productdto?.slice(0, 8) || [];
+  const SlicedInstaData = instaData.slice(0, 8) || [];
 
   return (
     <section className="Instafeed">

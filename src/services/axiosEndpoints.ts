@@ -38,8 +38,9 @@ export const homeEndpoints = Object.freeze({
   SHOP_BY_PRODUCTS: "/fib/v1/collection/get/shopbyproducts/0/16",
   HOT_DEALS_COLLECTION: "/fib/v1/collection/get/hotdeals/0/4",
   HOMESCREEN_PRODUCTS: "/render/homescreen/collection",
-  HOT: "/ophelia/get/hot",
-  FEATURE: "/ophelia/products/featured",
+  HOT: "/fib/v1/menu/products/collections",
+  FEATURE: "/fib/v1/menu/products/collections",
+  INSTAFEEDS: "/fib/v1/menu/products/collections",
 });
 
 export const productsEndpoints = Object.freeze({
@@ -66,7 +67,7 @@ export const CartEndpoints = Object.freeze({
 });
 
 export const paymentEndpoints = Object.freeze({
-  STRIPE: "/ophelia/stripe/pay",
+  STRIPE: "/fib/v1/customer/pay",
   SUBSCRIPTION_PLANS: "/get/all/subcription",
   UPDATE_SUBSCRIPTION_PLAN: "/ophelia/user/subscription/update",
 });

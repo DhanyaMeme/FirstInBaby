@@ -9,7 +9,7 @@ import { IconButton } from "../../../ui_kits/Buttons/IconButton/IconButton.compo
 import "./Style.scss";
 
 interface IProps {
-  sliderData: IProductData[];
+  sliderData: IProductData[] | undefined;
 }
 
 export const RecentlyViewed: FC<IProps> = (props: IProps) => {

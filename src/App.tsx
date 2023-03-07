@@ -7,7 +7,6 @@ import NavigationScroll from "./ui_kits/NavigationScroll";
 import { ScrollTop } from "./ui_kits/ScrollTop/ScrollTop";
 import ModalManager from "./ui_kits/modal/modal-manager.component";
 import { fetchCategoriesAsync } from "./redux/slices/nav/nav.reducer";
-import { fetchAllProductsAsync } from "./redux/slices/collection/collection.reducer";
 
 // style + assets
 import "./assets/scss/style.scss";
@@ -24,6 +23,7 @@ import {
   fetchHotAsync,
   fetchShopByPdtsAsync,
   fetchHotDealsCollectionAsync,
+  fetchInstaPdtsAsync,
 } from "./redux/slices/home/home.reducer";
 
 function App() {
@@ -34,9 +34,9 @@ function App() {
     dispatch(fetchCategoriesAsync());
   }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(fetchAllProductsAsync());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchAllProductsAsync());
+  // }, [dispatch]);
 
   // Home Screen
 
@@ -58,6 +58,10 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchFeaturePdtsAsync());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchInstaPdtsAsync());
   }, [dispatch]);
 
   // Profile

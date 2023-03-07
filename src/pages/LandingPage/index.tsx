@@ -11,19 +11,23 @@ import { collectionsData } from "../../mockData/collectionData";
 import { IProductData } from "../../redux/slices/collection/collection.type";
 import {
   featureProducts,
+  hotDealProducts,
   hotDealsCollection,
-  hotProducts,
+  instaProducts,
   shopByCollection,
   shopByProducts,
 } from "../../redux/slices/home/home.selector";
 import { useAppSelector } from "../../redux/store";
 
 export const LandingPage = () => {
-  const { data: hotDeals } = useAppSelector(hotProducts);
-  const { data: featureProductsData } = useAppSelector(featureProducts);
+  
   const { data: shopByCollectionData } = useAppSelector(shopByCollection);
-  const { data: shopByProductsData } = useAppSelector(shopByProducts);
   const { data: hotDealsData } = useAppSelector(hotDealsCollection);
+  const { data: shopByProductsData } = useAppSelector(shopByProducts);
+
+  const { data: featureProductsData } = useAppSelector(featureProducts);
+  const { data: hotDeals } = useAppSelector(hotDealProducts);
+  const { data: instaData } = useAppSelector(instaProducts);
 
   return (
     <main className="maincontent">
@@ -32,12 +36,10 @@ export const LandingPage = () => {
       <HotDeals hotDealsData={hotDealsData} />
       <CategoriesView collectionsData={shopByCollectionData} />
       <ExploreView shopByProductsData={shopByProductsData} />
-      <SaleItem saleData={hotDeals?.productdto?.slice(0, 6)} />
-      <RecentlyViewed
-        sliderData={(featureProductsData?.productdto as IProductData[]) || []}
-      />
+      <SaleItem saleData={hotDeals?.productdto} />
+      <RecentlyViewed sliderData={featureProductsData?.productdto} />
       <ShopFeatures />
-      <InstaFeed instaData={collectionsData} />
+      <InstaFeed instaData={instaData?.productdto} />
     </main>
   );
 };

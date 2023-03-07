@@ -75,6 +75,8 @@ export const StripeCard: FC<IProps> = (props: IProps) => {
         });
       });
 
+    console.log("client_secret", client_secret);
+
     // Confirm the payment on client
 
     if (client_secret) {

@@ -9,6 +9,7 @@ export const initialState: IHomeState = {
   shopByProducts: initialAsyncData,
   hotProducts: initialAsyncData,
   featureProducts: initialAsyncData,
+  instaProducts: initialAsyncData,
 };
 
 export const homeSlice = createSlice({

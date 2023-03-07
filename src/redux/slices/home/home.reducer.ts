@@ -45,13 +45,18 @@ export const fetchShopByPdtsAsync = createAsyncThunk<Array<ICollection>>(
   }
 );
 
-export const fetchHotAsync = createAsyncThunk<Array<IProduct>>(
+export const fetchHotAsync = createAsyncThunk<IProduct>(
   "home/getHot",
   async (_arg, { rejectWithValue }) => {
     try {
-      const response = (await fetchData(
-        homeService.getProductsHot
-      )) as IProduct[];
+      const response = (await fetchData({
+        ...homeService.getProductsHot,
+        params: {
+          collection: "hotdeals",
+          offset: 0,
+          pagesize: 6,
+        },
+      })) as IProduct;
       return response;
     } catch (err) {
       return rejectWithValue(err);
@@ -59,13 +64,37 @@ export const fetchHotAsync = createAsyncThunk<Array<IProduct>>(
   }
 );
 
-export const fetchFeaturePdtsAsync = createAsyncThunk<Array<IProduct>>(
+export const fetchFeaturePdtsAsync = createAsyncThunk<IProduct>(
   "home/getFeature",
   async (_arg, { rejectWithValue }) => {
     try {
-      const response = (await fetchData(
-        homeService.getFeatureProducts
-      )) as IProduct[];
+      const response = (await fetchData({
+        ...homeService.getFeatureProducts,
+        params: {
+          collection: "featured",
+          offset: 0,
+          pagesize: 10,
+        },
+      })) as IProduct;
+      return response;
+    } catch (err) {
+      return rejectWithValue(err);
+    }
+  }
+);
+
+export const fetchInstaPdtsAsync = createAsyncThunk<IProduct>(
+  "home/getInsta",
+  async (_arg, { rejectWithValue }) => {
+    try {
+      const response = (await fetchData({
+        ...homeService.getInstaFeedProducts,
+        params: {
+          collection: "instafeed",
+          offset: 0,
+          pagesize: 8,
+        },
+      })) as IProduct;
       return response;
     } catch (err) {
       return rejectWithValue(err);
@@ -145,5 +174,19 @@ export const extraHomeReducer = {
   [fetchFeaturePdtsAsync.rejected.type]: (state: IHomeState) => {
     state.featureProducts.loading = false;
     state.featureProducts.error = "Error while fetching feature products";
+  },
+  [fetchInstaPdtsAsync.pending.type]: (state: IHomeState) => {
+    state.instaProducts.loading = true;
+  },
+  [fetchInstaPdtsAsync.fulfilled.type]: (
+    state: IHomeState,
+    { payload }: PayloadAction<IProduct>
+  ) => {
+    state.instaProducts.loading = false;
+    state.instaProducts.data = payload;
+  },
+  [fetchInstaPdtsAsync.rejected.type]: (state: IHomeState) => {
+    state.instaProducts.loading = false;
+    state.instaProducts.error = "Error while fetching insta products";
   },
 };
