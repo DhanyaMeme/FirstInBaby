@@ -10,8 +10,8 @@ import { productsShopByCollection } from "../../redux/slices/collection/collecti
 import { IProduct } from "../../redux/slices/collection/collection.type";
 
 export const ShopBy = () => {
-  let {
-    state: { collectionName, name },
+  const {
+    state: { collection, collectionCode, collectionName },
   } = useLocation();
   const dispatch = useAppDispatch();
   const { data: products, loading } = useAppSelector(productsShopByCollection);
@@ -23,18 +23,19 @@ export const ShopBy = () => {
   useEffect(() => {
     dispatch(
       fetchShopbyCollectionAsync({
-        input: collectionName,
+        collection: collectionCode,
         offset: currentPage - 1,
         pagesize: ITEMS_PER_PAGE,
       })
     );
-  }, [dispatch, currentPage, collectionName]);
+  }, [dispatch, currentPage, collectionCode]);
 
   const filteredData = useMemo(() => {
-    let computedData: IProduct = products?.[collectionName] || ({} as IProduct);
+    const computedData: IProduct =
+      products?.[collectionCode] || ({} as IProduct);
     setTotalItems(computedData.pagenumber * ITEMS_PER_PAGE);
     return computedData.productdto || [];
-  }, [collectionName, products, currentPage]);
+  }, [collectionCode, products, currentPage]);
 
   if (loading) {
     return <Spinner />;

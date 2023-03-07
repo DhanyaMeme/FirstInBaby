@@ -6,6 +6,7 @@ export interface ICollection {
   id: number;
   url: string;
   murl: string;
+  code: string;
 }
 
 export interface IHomeState {

@@ -13,7 +13,11 @@ export const ImageView: FC<IProps> = (props: IProps) => {
   return (
     <NavLink
       to={`/collection`}
-      state={{ collectionName: "collectionhome", name: collectionItem.name }}
+      state={{
+        collection: "collectionhome",
+        collectionName: collectionItem.name,
+        collectionCode: collectionItem.code,
+      }}
     >
       <div className="CollectionItem__Wrapper">
         <div className="CollectionItem__ImageWrapper">
