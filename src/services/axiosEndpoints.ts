@@ -48,7 +48,7 @@ export const productsEndpoints = Object.freeze({
   PROUCTS_By_CATEGORY: "/fib/v1/menu/products",
   PRODUCTS_BY_SHOPBY: "/ophelia/shopbyproducts",
   SEARCH_PRODUCTS: "/fib/v1/menu/products/search",
-  PRODUCTS_BY_SHOPByCOLLECTION: "/ophelia/get/products/collection",
+  PRODUCTS_BY_SHOPByCOLLECTION: "/fib/v1/menu/products/collections",
   SINGLE_PRODUCT: "/fib/v1/menu/product",
   ADD_REVIEWS: "/fib/v1/menu/product/add/review",
   GET_REVIEWS: "/fib/v1/menu/product/get/review",

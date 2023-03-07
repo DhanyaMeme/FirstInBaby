@@ -49,25 +49,6 @@ export const fetchProductsByCategoryAsync = createAsyncThunk<any, any>(
   }
 );
 
-export const fetchProductsByShopbyAsync = createAsyncThunk<any, string>(
-  "collection/getProductsByShopby",
-  async (product, { rejectWithValue }) => {
-    try {
-      const response = (await fetchData({
-        ...productService.getProductsByShopby,
-        params: { product },
-      })) as IProduct[];
-
-      return {
-        key: product,
-        value: response,
-      };
-    } catch (err) {
-      return rejectWithValue(err);
-    }
-  }
-);
-
 export const fetchProductsBySearchAsync = createAsyncThunk<IProduct, any>(
   "collection/getProductsBySearch",
   async (data, { rejectWithValue }) => {
@@ -84,17 +65,17 @@ export const fetchProductsBySearchAsync = createAsyncThunk<IProduct, any>(
   }
 );
 
-export const fetchShopbyCollectionAsync = createAsyncThunk<any, string>(
+export const fetchShopbyCollectionAsync = createAsyncThunk<any, any>(
   "collection/getProductsByShopbyCollection",
-  async (collection, { rejectWithValue }) => {
+  async (data, { rejectWithValue }) => {
     try {
       const response = (await fetchData({
         ...productService.getProductsByCollection,
-        params: { collection },
-      })) as IProduct[];
+        params: data,
+      })) as IProduct;
 
       return {
-        key: collection,
+        key: data.collection,
         value: response,
       };
     } catch (err) {
@@ -159,30 +140,6 @@ export const extracollectionReducer = {
     state.productsByCategory.loading = false;
     state.productsByCategory.error =
       "Error while fetching products by category";
-  },
-  [fetchProductsByShopbyAsync.pending.type]: (state: ICollectionState) => {
-    state.productsByShopBy.loading = true;
-  },
-  [fetchProductsByShopbyAsync.fulfilled.type]: (
-    state: ICollectionState,
-    {
-      payload,
-    }: PayloadAction<{
-      key: string;
-      value: IProduct;
-    }>
-  ) => {
-    state.productsByShopBy.loading = false;
-    const data = state.productsByShopBy.data || {};
-    const groupedProducts = {
-      ...data,
-      [payload.key]: payload.value,
-    };
-    state.productsByShopBy.data = groupedProducts;
-  },
-  [fetchProductsByShopbyAsync.rejected.type]: (state: ICollectionState) => {
-    state.productsByShopBy.loading = false;
-    state.productsByShopBy.error = "Error while fetching products by shopby";
   },
   [fetchProductsBySearchAsync.pending.type]: (state: ICollectionState) => {
     state.productsBySearch.loading = true;

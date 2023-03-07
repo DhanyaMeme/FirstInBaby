@@ -18,7 +18,7 @@ export const SearchCollection = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalItems, setTotalItems] = useState<number>(0);
   const { data: products, loading } = useAppSelector(productsBySearch);
-  const ITEMS_PER_PAGE = 2;
+  const ITEMS_PER_PAGE = 10;
 
   useEffect(() => {
     dispatch(
