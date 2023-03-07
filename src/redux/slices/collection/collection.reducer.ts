@@ -1,7 +1,6 @@
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { fetchData } from "../../../services/axios";
 import { productService } from "../../../services/axiosServices";
-import { formatPreOrderDate } from "../../../utils/script";
 import { ICollectionState, IProduct } from "./collection.type";
 
 export const fetchAllProductsAsync = createAsyncThunk(

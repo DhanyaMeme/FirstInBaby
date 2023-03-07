@@ -1,11 +1,8 @@
-import { useEffect, useMemo } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { fetchShopbyCollectionAsync } from "../../redux/slices/collection/collection.reducer";
 import { productsShopByCollection } from "../../redux/slices/collection/collection.selector";
-import {
-  IProduct,
-  IProductData,
-} from "../../redux/slices/collection/collection.type";
+import { IProductData } from "../../redux/slices/collection/collection.type";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { Spinner } from "../../ui_kits/Spinner/Spinner.component";
 import { decodeUrl } from "../../utils/textHandler";
@@ -13,7 +10,6 @@ import { EmptyProducts } from "../EmptyProducts/EmptyProducts";
 import { ProductsList } from "../ProductCollection/ProductList";
 
 export const ShopByCollection = () => {
-  
   const dispatch = useAppDispatch();
   let { id: mainCategory = "" } = useParams();
   const { data: products, loading } = useAppSelector(productsShopByCollection);

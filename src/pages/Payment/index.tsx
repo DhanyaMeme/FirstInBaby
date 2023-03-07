@@ -4,7 +4,6 @@ import { SelectedAddress } from "../../components/Payment/SelectedAddress";
 import { StripeCard } from "../../components/Payment/StripeCard";
 import { useAuth } from "../../contexts/AuthContext";
 import usePath from "../../hooks/usePath";
-import { addressList } from "../../redux/slices/address/address.selector";
 import { IAddress } from "../../redux/slices/address/address.type";
 import { addCartItemsAsync } from "../../redux/slices/cart/cart.reducer";
 import { selectCartItems } from "../../redux/slices/cart/cart.selector";

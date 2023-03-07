@@ -2,10 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { AddressContainer } from "../../components/Address/AddressContainer";
 import Minicart from "../../components/Minicart/Minicart";
 import { OnclickEvent } from "../../models/types";
-import {
-  addressList,
-  defaultAddressId,
-} from "../../redux/slices/address/address.selector";
+import { defaultAddressId } from "../../redux/slices/address/address.selector";
 import { customer } from "../../redux/slices/profile/profile.selector";
 import { useAppSelector } from "../../redux/store";
 import {

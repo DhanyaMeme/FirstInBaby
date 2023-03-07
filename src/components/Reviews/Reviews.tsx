@@ -1,4 +1,4 @@
-import { useEffect, FC } from "react";
+import { useEffect } from "react";
 import { IF } from "../../ui_kits/IF";
 import usePath from "../../hooks/usePath";
 import { StarRating } from "./StarRating";
@@ -20,7 +20,7 @@ export const Reviews = () => {
   const { user } = useAuth();
   const productId = usePath();
   const dispatch = useAppDispatch();
-  const { data = [], loading } = useAppSelector(reviewsData);
+  const { data = [] } = useAppSelector(reviewsData);
 
   useEffect(() => {
     dispatch(fetchReviewsAsync(+productId));

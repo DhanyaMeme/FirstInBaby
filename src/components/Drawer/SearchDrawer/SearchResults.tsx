@@ -18,7 +18,6 @@ export const SearchResults: FC<IProps> = (props: IProps) => {
   const debouncedSearchTerm = useDebounce<string>(searchValue, 1000);
   const dispatch = useAppDispatch();
   const { data, loading } = useAppSelector(productsBySearch);
-
   const filteredData = data?.productdto || [];
 
   useEffect(() => {
