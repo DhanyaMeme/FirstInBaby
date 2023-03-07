@@ -6,6 +6,7 @@ import { ProductView } from "../pages/ProductView";
 import Cart from "../pages/Cart";
 import { ShopBy } from "../pages/ShopBy";
 import { Preorder } from "../pages/Preorder";
+import { SearchCollection } from "../pages/SearchCollection";
 
 // ==============================|| MAIN ROUTING ||============================== //
 
@@ -33,6 +34,10 @@ const MainRoutes = {
     {
       path: "preorder",
       element: <Preorder />,
+    },
+    {
+      path: "search",
+      element: <SearchCollection />,
     },
     {
       path: "collection",

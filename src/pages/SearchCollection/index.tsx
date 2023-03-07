@@ -1,43 +1,40 @@
-import { useEffect, useMemo, useState } from "react";
-import usePath from "../../hooks/usePath";
-import { decodeUrl } from "../../utils/textHandler";
-import Pagination from "../../ui_kits/Pagination/Pagination";
-import { Spinner } from "../../ui_kits/Spinner/Spinner.component";
-import { useAppDispatch, useAppSelector } from "../../redux/store";
-import { IProduct } from "../../redux/slices/collection/collection.type";
+import React, { useMemo, useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { EmptyProducts } from "../../components/EmptyProducts/EmptyProducts";
 import { ProductsList } from "../../components/ProductCollection/ProductList";
-import { productsByCategory } from "../../redux/slices/collection/collection.selector";
-import { fetchProductsByCategoryAsync } from "../../redux/slices/collection/collection.reducer";
+import { fetchProductsBySearchAsync } from "../../redux/slices/collection/collection.reducer";
+import { productsBySearch } from "../../redux/slices/collection/collection.selector";
+import { IProduct } from "../../redux/slices/collection/collection.type";
+import { useAppDispatch, useAppSelector } from "../../redux/store";
+import Pagination from "../../ui_kits/Pagination/Pagination";
+import { Spinner } from "../../ui_kits/Spinner/Spinner.component";
 
-export const ProductCollection = () => {
-  const mainCategory = usePath();
+export const SearchCollection = () => {
   const dispatch = useAppDispatch();
+  const {
+    state: { name },
+  } = useLocation();
 
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalItems, setTotalItems] = useState<number>(0);
-  const { data: products, loading } = useAppSelector(productsByCategory);
-  const ITEMS_PER_PAGE = 5;
+  const { data: products, loading } = useAppSelector(productsBySearch);
+  const ITEMS_PER_PAGE = 2;
 
   useEffect(() => {
     dispatch(
-      fetchProductsByCategoryAsync({
-        mt: decodeUrl(mainCategory),
+      fetchProductsBySearchAsync({
+        input: name,
         offset: currentPage - 1,
         pagesize: ITEMS_PER_PAGE,
       })
     );
-  }, [dispatch, mainCategory, currentPage]);
-
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [mainCategory]);
+  }, [dispatch, currentPage, name]);
 
   const filteredData = useMemo(() => {
-    let computedData: IProduct = products?.[mainCategory] || ({} as IProduct);
+    let computedData: IProduct = products || ({} as IProduct);
     setTotalItems(computedData.pagenumber * ITEMS_PER_PAGE);
     return computedData.productdto || [];
-  }, [mainCategory, products, currentPage]);
+  }, [products, currentPage]);
 
   if (loading) {
     return <Spinner />;

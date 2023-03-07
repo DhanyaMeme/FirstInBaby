@@ -7,6 +7,8 @@ import { useAppDispatch, useAppSelector } from "../../../redux/store";
 import { fetchProductsBySearchAsync } from "../../../redux/slices/collection/collection.reducer";
 import { productsBySearch } from "../../../redux/slices/collection/collection.selector";
 import { Spinner } from "../../../ui_kits/Spinner/Spinner.component";
+import { NavLink, useNavigate } from "react-router-dom";
+import { setSearchDrawHidden } from "../../../redux/slices/nav/nav.slice";
 
 interface IProps {
   searchValue: string;
@@ -18,7 +20,8 @@ export const SearchResults: FC<IProps> = (props: IProps) => {
   const debouncedSearchTerm = useDebounce<string>(searchValue, 1000);
   const dispatch = useAppDispatch();
   const { data, loading } = useAppSelector(productsBySearch);
-  const filteredData = data?.productdto || [];
+  const filteredData = data?.productdto.slice(0, 3) || [];
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (debouncedSearchTerm) {
@@ -31,6 +34,11 @@ export const SearchResults: FC<IProps> = (props: IProps) => {
       );
     }
   }, [debouncedSearchTerm, dispatch]);
+
+  const handleSearchOnclick = () => {
+    navigate("/search");
+    dispatch(setSearchDrawHidden(true));
+  };
 
   if (loading) {
     return <Spinner />;
@@ -53,6 +61,12 @@ export const SearchResults: FC<IProps> = (props: IProps) => {
     <div className="Search__Results">
       <div className="Search__Results--Title Heading u-h5">
         <span className="Text--subdued ">{filteredData?.length} results</span>
+        <span
+          className="Text--subdued Link Link--primary"
+          onClick={handleSearchOnclick}
+        >
+          View All
+        </span>
       </div>
       <div className="Search__Results--Content">
         {filteredData &&
