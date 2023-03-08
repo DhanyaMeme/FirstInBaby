@@ -54,6 +54,18 @@ export const homeService = {
     method: "GET",
     url: homeEndpoints.HOT_DEALS_COLLECTION,
   },
+  getHotSaleCollection: {
+    method: "GET",
+    url: homeEndpoints.HOT_SALE_COLLECTION,
+  },
+  getFeaturedCollection: {
+    method: "GET",
+    url: homeEndpoints.FEATURED_COLLECTION,
+  },
+  getInstaFeedCollection: {
+    method: "GET",
+    url: homeEndpoints.INSTAFEEDS_COLLECTION,
+  },
   getALLProducts: {
     method: "GET",
     url: homeEndpoints.HOMESCREEN_PRODUCTS,

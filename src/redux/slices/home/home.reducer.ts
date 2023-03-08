@@ -45,14 +45,51 @@ export const fetchShopByPdtsAsync = createAsyncThunk<Array<ICollection>>(
   }
 );
 
-export const fetchHotAsync = createAsyncThunk<IProduct>(
-  "home/getHot",
+// FeaturePrroduct
+
+export const fetchFeaturePdtsAsync = createAsyncThunk<IProduct, string>(
+  "home/getFeature",
+  async (code, { rejectWithValue }) => {
+    try {
+      const response = (await fetchData({
+        ...homeService.getFeatureProducts,
+        params: {
+          collection: code,
+          offset: 0,
+          pagesize: 10,
+        },
+      })) as IProduct;
+      return response;
+    } catch (err) {
+      return rejectWithValue(err);
+    }
+  }
+);
+
+export const fetchFeaturedCollectionAsync = createAsyncThunk<
+  Array<ICollection>
+>("home/getFeaturedCollection", async (_arg, { rejectWithValue, dispatch }) => {
+  try {
+    const response = (await fetchData(
+      homeService.getFeaturedCollection
+    )) as ICollection[];
+    await dispatch(fetchFeaturePdtsAsync(response[0].code));
+    return response;
+  } catch (err) {
+    return rejectWithValue(err);
+  }
+});
+
+// hotsale
+
+export const fetchHotSaleProductsAsync = createAsyncThunk<IProduct>(
+  "home/getHotSale",
   async (_arg, { rejectWithValue }) => {
     try {
       const response = (await fetchData({
         ...homeService.getProductsHot,
         params: {
-          collection: "hotdeals",
+          collection: "hotsale",
           offset: 0,
           pagesize: 6,
         },
@@ -64,24 +101,22 @@ export const fetchHotAsync = createAsyncThunk<IProduct>(
   }
 );
 
-export const fetchFeaturePdtsAsync = createAsyncThunk<IProduct>(
-  "home/getFeature",
-  async (_arg, { rejectWithValue }) => {
+export const fetchHotSaleCollectionAsync = createAsyncThunk<Array<ICollection>>(
+  "home/getFeaturedCollection",
+  async (_arg, { rejectWithValue, dispatch }) => {
     try {
-      const response = (await fetchData({
-        ...homeService.getFeatureProducts,
-        params: {
-          collection: "featured",
-          offset: 0,
-          pagesize: 10,
-        },
-      })) as IProduct;
+      const response = (await fetchData(
+        homeService.getFeaturedCollection
+      )) as ICollection[];
+      await dispatch(fetchFeaturePdtsAsync(response[0].code));
       return response;
     } catch (err) {
       return rejectWithValue(err);
     }
   }
 );
+
+
 
 export const fetchInstaPdtsAsync = createAsyncThunk<IProduct>(
   "home/getInsta",
@@ -147,17 +182,17 @@ export const extraHomeReducer = {
     state.shopByProducts.loading = false;
     state.shopByProducts.error = "Error while fetching shopby products data";
   },
-  [fetchHotAsync.pending.type]: (state: IHomeState) => {
+  [fetchHotSaleProductsAsync.pending.type]: (state: IHomeState) => {
     state.hotProducts.loading = true;
   },
-  [fetchHotAsync.fulfilled.type]: (
+  [fetchHotSaleProductsAsync.fulfilled.type]: (
     state: IHomeState,
     { payload }: PayloadAction<IProduct>
   ) => {
     state.hotProducts.loading = false;
     state.hotProducts.data = payload;
   },
-  [fetchHotAsync.rejected.type]: (state: IHomeState) => {
+  [fetchHotSaleProductsAsync.rejected.type]: (state: IHomeState) => {
     state.hotProducts.loading = false;
     state.hotProducts.error = "Error while fetching hot sale products";
   },

@@ -21,7 +21,11 @@ export const ImageView: FC<IProps> = (props: IProps) => {
       </div>
       <NavLink
         to={`/collection`}
-        state={{ collectionName: "hotdeals", name: item.name }}
+        state={{
+          collection: "hotdeals",
+          collectionName: item.name,
+          collectionCode: item.code,
+        }}
         className="CollectionItem__Content CollectionItem__Content--center Heading"
       >
         <h4 className="UnderLined__Text">{item.name}</h4>
