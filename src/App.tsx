@@ -19,12 +19,11 @@ import { useAuth } from "./contexts/AuthContext";
 import { fetchCustomerAsync } from "./redux/slices/profile/profile.reducer";
 import {
   fetchShopByCollectionAsync,
-  fetchFeaturePdtsAsync,
   fetchShopByPdtsAsync,
   fetchHotDealsCollectionAsync,
-  fetchInstaPdtsAsync,
   fetchFeaturedCollectionAsync,
-  fetchHotSaleProductsAsync,
+  fetchHotSaleCollectionAsync,
+  fetchInstaCollectionAsync,
 } from "./redux/slices/home/home.reducer";
 
 function App() {
@@ -58,11 +57,11 @@ function App() {
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(fetchHotSaleProductsAsync());
+    dispatch(fetchHotSaleCollectionAsync());
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(fetchInstaPdtsAsync());
+    dispatch(fetchInstaCollectionAsync());
   }, [dispatch]);
 
   // Profile

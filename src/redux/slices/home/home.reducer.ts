@@ -82,14 +82,14 @@ export const fetchFeaturedCollectionAsync = createAsyncThunk<
 
 // hotsale
 
-export const fetchHotSaleProductsAsync = createAsyncThunk<IProduct>(
+export const fetchHotSaleProductsAsync = createAsyncThunk<IProduct, string>(
   "home/getHotSale",
-  async (_arg, { rejectWithValue }) => {
+  async (code, { rejectWithValue }) => {
     try {
       const response = (await fetchData({
         ...homeService.getProductsHot,
         params: {
-          collection: "hotsale",
+          collection: code,
           offset: 0,
           pagesize: 6,
         },
@@ -102,13 +102,13 @@ export const fetchHotSaleProductsAsync = createAsyncThunk<IProduct>(
 );
 
 export const fetchHotSaleCollectionAsync = createAsyncThunk<Array<ICollection>>(
-  "home/getFeaturedCollection",
+  "home/getHotSaleCollection",
   async (_arg, { rejectWithValue, dispatch }) => {
     try {
       const response = (await fetchData(
-        homeService.getFeaturedCollection
+        homeService.getHotSaleCollection
       )) as ICollection[];
-      await dispatch(fetchFeaturePdtsAsync(response[0].code));
+      await dispatch(fetchHotSaleProductsAsync(response[0].code));
       return response;
     } catch (err) {
       return rejectWithValue(err);
@@ -116,20 +116,35 @@ export const fetchHotSaleCollectionAsync = createAsyncThunk<Array<ICollection>>(
   }
 );
 
+// InstaFeeds
 
-
-export const fetchInstaPdtsAsync = createAsyncThunk<IProduct>(
+export const fetchInstaProductsAsync = createAsyncThunk<IProduct, string>(
   "home/getInsta",
-  async (_arg, { rejectWithValue }) => {
+  async (code, { rejectWithValue }) => {
     try {
       const response = (await fetchData({
         ...homeService.getInstaFeedProducts,
         params: {
-          collection: "instafeed",
+          collection: code,
           offset: 0,
           pagesize: 8,
         },
       })) as IProduct;
+      return response;
+    } catch (err) {
+      return rejectWithValue(err);
+    }
+  }
+);
+
+export const fetchInstaCollectionAsync = createAsyncThunk<Array<ICollection>>(
+  "home/getInstaCollection",
+  async (_arg, { rejectWithValue, dispatch }) => {
+    try {
+      const response = (await fetchData(
+        homeService.getInstaFeedCollection
+      )) as ICollection[];
+      await dispatch(fetchInstaProductsAsync(response[0].code));
       return response;
     } catch (err) {
       return rejectWithValue(err);
@@ -210,17 +225,17 @@ export const extraHomeReducer = {
     state.featureProducts.loading = false;
     state.featureProducts.error = "Error while fetching feature products";
   },
-  [fetchInstaPdtsAsync.pending.type]: (state: IHomeState) => {
+  [fetchInstaProductsAsync.pending.type]: (state: IHomeState) => {
     state.instaProducts.loading = true;
   },
-  [fetchInstaPdtsAsync.fulfilled.type]: (
+  [fetchInstaProductsAsync.fulfilled.type]: (
     state: IHomeState,
     { payload }: PayloadAction<IProduct>
   ) => {
     state.instaProducts.loading = false;
     state.instaProducts.data = payload;
   },
-  [fetchInstaPdtsAsync.rejected.type]: (state: IHomeState) => {
+  [fetchInstaProductsAsync.rejected.type]: (state: IHomeState) => {
     state.instaProducts.loading = false;
     state.instaProducts.error = "Error while fetching insta products";
   },
