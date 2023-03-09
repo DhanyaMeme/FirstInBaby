@@ -29,7 +29,7 @@ export const profileEndpoints = Object.freeze({
   SUBCRIPTION: `/ophelia/user/subcription`,
   UPDATE_SUBCRIPTION: `/fib/v1/customer/update/subscription`,
   GET_ORDER: `/ophelia/orderhistory`,
-  PLACE_ORDER: `/ophelia/placeorder`,
+  PLACE_ORDER: `/fib/v1/customer/order`,
   UPDATE_ORDER: `/ophelia/admin/order/status`,
 });
 
@@ -66,7 +66,7 @@ export const FavEndpoints = Object.freeze({
 });
 
 export const CartEndpoints = Object.freeze({
-  ADD_CART: "/ophelia/addcart/nazcas",
+  ADD_CART: "/fib/v1/customer/add/cart",
 });
 
 export const paymentEndpoints = Object.freeze({

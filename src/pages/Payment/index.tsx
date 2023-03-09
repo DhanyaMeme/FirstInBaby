@@ -35,24 +35,25 @@ export const Payment = () => {
   }, [data, addressId]);
 
   const addCartItems = async () => {
-    const items = cartList?.map((item: ICartItem) => {
-      return {
+    cartList?.map((item: ICartItem) => {
+      const filteredItems = {
         pId: item.mcId,
         custId: user,
         price: item.price,
         qty: item.quantity,
         size: item.size,
       };
+      dispatch(addCartItemsAsync(filteredItems));
     });
-    dispatch(addCartItemsAsync(items));
   };
 
   const onPaymentSuccess = async (txnId: any) => {
     const OrderItems = {
       cusId: user as string,
-      addId: parseInt(addressId),
+      idx: parseInt(addressId),
       pstatus: "success",
       tnxid: txnId,
+      type: "place",
     };
     await addCartItems();
     dispatch(placeOrderAsync(OrderItems));
@@ -60,6 +61,7 @@ export const Payment = () => {
 
   const PaymentProps = {
     name: selectedAddress?.name,
+
     amount: 100,
     email: selectedAddress?.email,
     phoneNo: selectedAddress?.phone,

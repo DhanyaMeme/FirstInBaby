@@ -65,24 +65,6 @@ export interface IProductData {
 export interface IProduct {
   pagenumber: number;
   productdto: IProductData[];
-
-  // fabric: string;
-  // gsthsn: string;
-  // metatags: any[];
-  // pntw: string;
-  // productSpecs: IProductSpecification[];
-  // quantity: string;
-  // ratings:
-  //   | [
-  //       {
-  //         numbers: number;
-  //         rating: number;
-  //         ratingid: number;
-  //       }
-  //     ]
-  //   | any[];
-  // reviews: IProductReview[];
-  // shopbyproducts: string;
 }
 
 export interface ICollectionState {
