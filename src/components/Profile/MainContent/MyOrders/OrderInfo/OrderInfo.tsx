@@ -14,11 +14,11 @@ export const OrderInfo: FC<IProps> = (props: IProps) => {
   const { order } = props;
 
   const OrderSummaryData = {
-    "Order ID": order.id,
+    "Order ID": order.orderid,
     "Ordered On": formatDate(order.date),
     "Order Code": order.ordercode,
-    "Order Status": order.orderStatus.status,
-    "Total Items": order.items.length || 0,
+    "Order Status": order.status,
+    "Total Items": order.idto.length || 0,
     "Payment Status": order.paymentStatus,
   };
 
@@ -37,29 +37,29 @@ export const OrderInfo: FC<IProps> = (props: IProps) => {
     );
   };
 
-  const DeliveryInfo = () => {
-    return (
-      <div className="Address__Summary Heading u-h5">
-        <h4 className="Text--highlight">Delivery Address</h4>
-        <div className="Address-nameNumber">
-          <p>{order.name}</p>
-          <div className="Address-verticalDivider"></div>
-          <p className="mobile">T : {order.phone}</p>
-        </div>
-        <div className="Rte Text--subdued">
-          <p>{`${order.flatNo} - ${order.street}, ${order.city}, ${order.pin}`}</p>
-          <p>Landmark : {order.landMark}</p>
-        </div>
-      </div>
-    );
-  };
+  // const DeliveryInfo = () => {
+  //   return (
+  //     <div className="Address__Summary Heading u-h5">
+  //       <h4 className="Text--highlight">Delivery Address</h4>
+  //       <div className="Address-nameNumber">
+  //         <p>{order.name}</p>
+  //         <div className="Address-verticalDivider"></div>
+  //         <p className="mobile">T : {order.phone}</p>
+  //       </div>
+  //       <div className="Rte Text--subdued">
+  //         <p>{`${order.flatNo} - ${order.street}, ${order.city}, ${order.pin}`}</p>
+  //         <p>Landmark : {order.landMark}</p>
+  //       </div>
+  //     </div>
+  //   );
+  // };
 
   const TrackAlert = () => {
     return (
       <Alert isLarge isSuccess classname="u-h5 Heading">
         <p>
           Your order has been sent. Track the shipment with number
-          {order.orderId}
+          {order.orderid}
         </p>
       </Alert>
       // <p>
@@ -79,8 +79,7 @@ export const OrderInfo: FC<IProps> = (props: IProps) => {
     <PageContent spacingTight>
       <TrackAlert />
       <OrderSummary />
-      <DeliveryInfo />
-      <OrderCards orderItems={order.items} />
+      <OrderCards orderItems={order.idto} />
     </PageContent>
   );
 };

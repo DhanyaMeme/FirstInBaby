@@ -25,13 +25,13 @@ export const fetchCustomerAsync = createAsyncThunk<ICustomer, string>(
   }
 );
 
-export const fetchOrderAsync = createAsyncThunk<IOrder[], string>(
+export const fetchOrderAsync = createAsyncThunk<IOrder[], any>(
   "profile/getOrder",
-  async (email, { rejectWithValue }) => {
+  async (data, { rejectWithValue }) => {
     try {
       const response = (await fetchData({
         ...profileService.getOrder,
-        params: { cusId: email },
+        url: `${profileService.getOrder.url}/${data.email}/${data.offset}/${data.pagesize}`,
       })) as IOrder[];
       return response;
     } catch (err) {

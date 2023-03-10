@@ -54,29 +54,34 @@ export interface IOrderItem {
 }
 
 export interface IOrder {
-  id: number;
-  orderId: number;
-  paymentStatus: string;
-  ordercode: any;
-  userId: string;
-  addId: number;
-  shopId: string;
-  items: IOrderItem[];
-  price: number;
   date: string;
-  name: string;
-  phone: string;
-  flatNo: string;
-  landMark: string;
-  city: string;
-  pin: string;
-  orderStatus: {
-    id: number;
-    status: string;
-    sPhone: string;
-    orders: number;
-  };
-  street: string;
+  ordercode: any;
+  idto: IOrderItem[];
+  orderid: number;
+  paymentStatus: string;
+  price: number;
+  status: string;
+  tnxid: string;
+  userId: string;
+
+  // id: number;
+  // userId: string;
+  // addId: number;
+  // shopId: string;
+  // items: IOrderItem[];
+  // name: string;
+  // phone: string;
+  // flatNo: string;
+  // landMark: string;
+  // city: string;
+  // pin: string;
+  // orderStatus: {
+  //   id: number;
+  //   status: string;
+  //   sPhone: string;
+  //   orders: number;
+  // };
+  // street: string;
 }
 
 export interface ISubscribedPlan {

@@ -28,7 +28,7 @@ export const profileEndpoints = Object.freeze({
   PLANS: `/fib/v1/get/referralplan`,
   SUBCRIPTION: `/ophelia/user/subcription`,
   UPDATE_SUBCRIPTION: `/fib/v1/customer/update/subscription`,
-  GET_ORDER: `/ophelia/orderhistory`,
+  GET_ORDER: `/fib/v1/orders/customer`,
   PLACE_ORDER: `/fib/v1/customer/order`,
   UPDATE_ORDER: `/ophelia/admin/order/status`,
 });

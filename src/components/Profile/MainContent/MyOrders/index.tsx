@@ -16,10 +16,13 @@ import { findArrayItems } from "../../../../utils/generics";
 export const MyOrders = () => {
   const { user } = useAuth();
 
-  const { data: ordersData } = useAppSelector(orders);
+  const { data: ordersData, loading } = useAppSelector(orders);
   const dispatch = useAppDispatch();
 
   const [orderId, setOrderId] = useState<number | null>(null);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [totalItems, setTotalItems] = useState<number>(0);
+  const ITEMS_PER_PAGE = 10;
 
   const handleShowOrderHandler = (id: number) => {
     setOrderId(id);
@@ -30,14 +33,15 @@ export const MyOrders = () => {
 
     if (ordersData && orderId) {
       computedOrder = findArrayItems(ordersData, {
-        orderId: orderId,
+        orderid: orderId,
       }) as IOrder;
     }
     return computedOrder;
   }, [orderId, ordersData]);
 
   useEffect(() => {
-    if (!ordersData && user) dispatch(fetchOrderAsync(user));
+    if (!ordersData && user)
+      dispatch(fetchOrderAsync({ email: user, offset: 0, pagesize: 10 }));
   }, [dispatch, ordersData, user]);
 
   if (!ordersData) {

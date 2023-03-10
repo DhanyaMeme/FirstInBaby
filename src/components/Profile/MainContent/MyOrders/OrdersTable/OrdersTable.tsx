@@ -20,21 +20,21 @@ export const OrdersTable: FC<IProps> = (props: IProps) => {
             <th>Date</th>
             <th>Total</th>
             <th>Payment</th>
-            <th>ShopId</th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody className="u-h5">
           {orders.map((order: IOrder) => (
-            <tr key={order.id}>
-              <td data-th="Order" onClick={() => handleOnclick(order.id)}>
+            <tr key={order.orderid}>
+              <td data-th="Order" onClick={() => handleOnclick(order.orderid)}>
                 <span className="Link Link--underline Text--highlight">
-                  {order.orderId}
+                  {order.orderid}
                 </span>
               </td>
               <td data-th="Date">{formatDate(order.date)}</td>
               <td data-th="Total">{order.price}</td>
               <td data-th="Payment">{order.paymentStatus}</td>
-              <td data-th="ShopId">{order.shopId}</td>
+              <td data-th="Status">{order.status}</td>
             </tr>
           ))}
         </tbody>
