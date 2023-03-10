@@ -24,7 +24,7 @@ export const MenuDrawer: FC<IProps> = (props: IProps) => {
         handleClose={handleClick}
         classes="SidebarMenu"
         spacingTight={true}
-        footer={<MenuFooter />}
+        footer={<MenuFooter handleClick={handleClick} />}
       />
     </>
   );
