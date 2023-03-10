@@ -12,6 +12,7 @@ import { IF } from "../../../../ui_kits/IF";
 import { isEmpty } from "../../../../utils/script";
 import { IOrder } from "../../../../redux/slices/profile/profile.type";
 import { findArrayItems } from "../../../../utils/generics";
+import { Spinner } from "../../../../ui_kits/Spinner/Spinner.component";
 
 export const MyOrders = () => {
   const { user } = useAuth();
@@ -36,6 +37,7 @@ export const MyOrders = () => {
         orderid: orderId,
       }) as IOrder;
     }
+
     return computedOrder;
   }, [orderId, ordersData]);
 
@@ -44,7 +46,11 @@ export const MyOrders = () => {
       dispatch(fetchOrderAsync({ email: user, offset: 0, pagesize: 10 }));
   }, [dispatch, ordersData, user]);
 
-  if (!ordersData) {
+  if (loading) {
+    return <Spinner />;
+  }
+
+  if (!loading && !ordersData) {
     return (
       <EmptyContainer
         url={EmptyOrders}

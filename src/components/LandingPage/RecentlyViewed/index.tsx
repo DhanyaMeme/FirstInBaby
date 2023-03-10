@@ -7,13 +7,16 @@ import { IProductData } from "../../../redux/slices/collection/collection.type";
 import { ArrowNextIcon, ArrowPrevIcon } from "../../../assets/icons/Arrow.icon";
 import { IconButton } from "../../../ui_kits/Buttons/IconButton/IconButton.component";
 import "./Style.scss";
+import { collectionsData } from "../../../mockData/collectionData";
 
 interface IProps {
   sliderData: IProductData[] | undefined;
 }
 
 export const RecentlyViewed: FC<IProps> = (props: IProps) => {
-  const { sliderData = [] } = props;
+  let { sliderData = [] } = props;
+
+  sliderData = collectionsData.productdto;
 
   const settings = {
     speed: 500,

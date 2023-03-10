@@ -1,3 +1,4 @@
+import { collectionsData } from "../../../mockData/collectionData";
 import { IProductData } from "../../../redux/slices/collection/collection.type";
 import { IF } from "../../../ui_kits/IF";
 import { isEmpty } from "../../../utils/script";
@@ -9,7 +10,9 @@ interface IProps {
 }
 
 export const SaleItem = (props: IProps) => {
-  const { saleData = [] } = props;
+  let { saleData = [] } = props;
+
+  saleData = collectionsData.productdto;
 
   return (
     <Collections heading="Sale item of the Week!!">

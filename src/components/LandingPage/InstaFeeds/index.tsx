@@ -1,3 +1,4 @@
+import { collectionsData } from "../../../mockData/collectionData";
 import {
   IProduct,
   IProductData,
@@ -14,9 +15,11 @@ interface IProps {
 }
 
 export const InstaFeed = (props: IProps) => {
-  const { instaData = [] } = props;
+  let { instaData = [] } = props;
 
-  const SlicedInstaData = instaData.slice(0, 8) || [];
+  // const SlicedInstaData = instaData.slice(0, 8) || [];
+
+  instaData = collectionsData.productdto;
 
   return (
     <section className="Instafeed">
@@ -27,7 +30,7 @@ export const InstaFeed = (props: IProps) => {
         />
         <div className="Instafeed__Container Grid">
           <IF condition={!isEmpty(instaData)}>
-            {SlicedInstaData.map((item: IProductData) => (
+            {instaData.map((item: IProductData) => (
               <InstaFeedItem key={item.mcId} instaFeedItem={item} />
             ))}
           </IF>

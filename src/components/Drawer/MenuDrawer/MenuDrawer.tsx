@@ -3,6 +3,7 @@ import { MenuBody } from "./MenuBody";
 import { DrawerView } from "../../../ui_kits/Drawer/Drawer.compenent";
 import "./MenuDrawer.scss";
 import { PageOverlay } from "../../../ui_kits/PageOverlay/PageOverlay";
+import { MenuFooter } from "./MenuFooter";
 
 interface IProps {
   handleClick: () => void;
@@ -23,6 +24,7 @@ export const MenuDrawer: FC<IProps> = (props: IProps) => {
         handleClose={handleClick}
         classes="SidebarMenu"
         spacingTight={true}
+        footer={<MenuFooter />}
       />
     </>
   );
