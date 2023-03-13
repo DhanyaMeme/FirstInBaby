@@ -7,8 +7,6 @@ import { InstaFeed } from "../../components/LandingPage/InstaFeeds";
 import { RecentlyViewed } from "../../components/LandingPage/RecentlyViewed";
 import { SaleItem } from "../../components/LandingPage/SaleItem";
 import { ShopFeatures } from "../../components/LandingPage/ShopFeatures";
-import { collectionsData } from "../../mockData/collectionData";
-import { IProductData } from "../../redux/slices/collection/collection.type";
 import {
   featureProducts,
   hotDealProducts,
@@ -20,7 +18,6 @@ import {
 import { useAppSelector } from "../../redux/store";
 
 export const LandingPage = () => {
-  
   const { data: shopByCollectionData } = useAppSelector(shopByCollection);
   const { data: hotDealsData } = useAppSelector(hotDealsCollection);
   const { data: shopByProductsData } = useAppSelector(shopByProducts);

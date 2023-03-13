@@ -12,7 +12,6 @@ export const initialHelpInputState: IHelpState = {
 };
 
 export const HelpInputs: HelpInput[] = [
-  
   {
     name: "message",
     label: "Message",

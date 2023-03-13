@@ -3,17 +3,13 @@ import { useAuth } from "../../../../contexts/AuthContext";
 import { fetchOrderAsync } from "../../../../redux/slices/profile/profile.reducer";
 import { orders } from "../../../../redux/slices/profile/profile.selector";
 import { useAppDispatch, useAppSelector } from "../../../../redux/store";
-
 import { OrderInfo } from "./OrderInfo/OrderInfo";
 import EmptyOrders from "../../../../assets/images/Empty_Order.png";
 import { EmptyContainer } from "../../../EmptyContainer";
 import { OrdersTable } from "./OrdersTable/OrdersTable";
 import { IF } from "../../../../ui_kits/IF";
 import { isEmpty } from "../../../../utils/script";
-import {
-  IOrder,
-  IOrderCollection,
-} from "../../../../redux/slices/profile/profile.type";
+import { IOrderCollection } from "../../../../redux/slices/profile/profile.type";
 import { findArrayItems } from "../../../../utils/generics";
 import { Spinner } from "../../../../ui_kits/Spinner/Spinner.component";
 import Pagination from "../../../../ui_kits/Pagination/Pagination";

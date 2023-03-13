@@ -1,8 +1,5 @@
 import { collectionsData } from "../../../mockData/collectionData";
-import {
-  IProduct,
-  IProductData,
-} from "../../../redux/slices/collection/collection.type";
+import { IProductData } from "../../../redux/slices/collection/collection.type";
 import { IF } from "../../../ui_kits/IF";
 import { SectionHeader } from "../../../ui_kits/Sections/SectionHeader/SectionHeader";
 import { SectionWrapper } from "../../../ui_kits/Sections/SectionWrapper/SectionWrapper";

@@ -2,7 +2,7 @@ import { FC } from "react";
 import { OrderCards } from "./OrderCards/OrderCards";
 import { formatDate } from "../../../../../utils/script";
 import { Alert } from "../../../../../ui_kits/Alert/Alert";
-import { IOrder, IOrderCollection } from "../../../../../redux/slices/profile/profile.type";
+import { IOrderCollection } from "../../../../../redux/slices/profile/profile.type";
 import { PageContent } from "../../../../../ui_kits/global/PageContent.styles";
 import "./OrderInfo.scss";
 

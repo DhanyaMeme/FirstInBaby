@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { IOrder, IOrderCollection } from "../../../../../redux/slices/profile/profile.type";
+import { IOrderCollection } from "../../../../../redux/slices/profile/profile.type";
 import { Table, TableWrapper } from "../../../../../ui_kits/Table/Table.styles";
 import { formatDate } from "../../../../../utils/script";
 
