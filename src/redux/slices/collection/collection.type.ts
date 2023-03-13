@@ -1,4 +1,4 @@
-import { AsyncData } from "../../../models/types";
+import { AsyncData, ISortCollection } from "../../../models/types";
 
 export interface IProductImage {
   imId: number;
@@ -76,6 +76,9 @@ export enum LayoutType {
 export interface ICollectionState {
   allProducts: AsyncData<IProduct>;
   layoutType: LayoutType;
+  isSortEnabled: boolean;
+  isFilterEnabled: boolean;
+  selectedSorter: ISortCollection | undefined;
   productsByCategory: AsyncData<Record<string, IProduct>>;
   preorderProducts: AsyncData<IProduct>;
   productsBySearch: AsyncData<IProduct>;

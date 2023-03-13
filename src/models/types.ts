@@ -1,4 +1,8 @@
 import { ReactNode } from "react";
+import {
+  IProduct,
+  IProductData,
+} from "../redux/slices/collection/collection.type";
 import { IValidation } from "../utils/Validation";
 
 export type InputChangeEvent = React.ChangeEvent<
@@ -87,3 +91,11 @@ export interface IPriceOverview {
   subTitle?: string;
   price: string;
 }
+
+export interface ISortData<T> {
+  key: string;
+  field: keyof T;
+  isDescending: boolean;
+}
+
+export type ISortCollection = ISortData<IProductData>;

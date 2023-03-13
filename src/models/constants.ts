@@ -1,3 +1,6 @@
+import { IProductData } from "../redux/slices/collection/collection.type";
+import { ISortData } from "./types";
+
 export const ProductView = {
   "4:4": {
     "data-desktop-count": 4,
@@ -37,3 +40,46 @@ export const STRIPE_KEY =
 
 export const CLIENT_TEST_SECRET =
   "sk_test_51LjdsLSCHGCHmfiJG7cnjAvMoXNNu5d2jhdcVvV28Vjep73pRCzMr1blWn5c6MQdHa2spmaK0iyDOsk89U6msdyS00Ols3AsP0";
+
+export const SortList: ISortData<IProductData>[] = [
+  {
+    key: "Featured",
+    field: "offer",
+    isDescending: false,
+  },
+  // {
+  //   key: "Best selling",
+  //   field: "",
+  //   isDescending: false,
+  // },
+  {
+    key: "Date, new to old",
+    field: "date",
+    isDescending: false,
+  },
+  {
+    key: "Date, old to new",
+    field: "date",
+    isDescending: true,
+  },
+  {
+    key: "Price, high to low",
+    field: "price",
+    isDescending: true,
+  },
+  {
+    key: "Price, low to high",
+    field: "price",
+    isDescending: false,
+  },
+  {
+    key: "Alphabetically, A-Z",
+    field: "productname",
+    isDescending: false,
+  },
+  {
+    key: "Alphabetically, Z-A",
+    field: "productname",
+    isDescending: true,
+  },
+];

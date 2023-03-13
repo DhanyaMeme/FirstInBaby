@@ -14,6 +14,9 @@ export const initialState: ICollectionState = {
   productsBySearch: initialAsyncData,
   productsShopByCollection: initialAsyncData,
   layoutType: LayoutType.Multi,
+  isSortEnabled: false,
+  isFilterEnabled: false,
+  selectedSorter: undefined,
 };
 
 export const collectionSlice = createSlice({
@@ -23,4 +26,9 @@ export const collectionSlice = createSlice({
   extraReducers: extracollectionReducer,
 });
 
-export const { setLayoutType } = collectionSlice.actions;
+export const {
+  setLayoutType,
+  setSorterVisibility,
+  setFilterVisibility,
+  setSelectedSorter,
+} = collectionSlice.actions;

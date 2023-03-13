@@ -37,3 +37,18 @@ export const layoutType = createSelector(
   [productSelf],
   (product) => product.layoutType
 );
+
+export const isSortEnabled = createSelector(
+  [productSelf],
+  (product) => product.isSortEnabled
+);
+
+export const isFilterEnabled = createSelector(
+  [productSelf],
+  (product) => product.isFilterEnabled
+);
+
+export const selectedSorter = createSelector(
+  [productSelf],
+  (product) => product.selectedSorter
+);

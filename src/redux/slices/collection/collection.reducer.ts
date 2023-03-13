@@ -1,4 +1,5 @@
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { ISortCollection } from "../../../models/types";
 import { fetchData } from "../../../services/axios";
 import { productService } from "../../../services/axiosServices";
 import { ICollectionState, IProduct, LayoutType } from "./collection.type";
@@ -83,15 +84,6 @@ export const fetchShopbyCollectionAsync = createAsyncThunk<any, any>(
     }
   }
 );
-
-export const collectionReducer = {
-  setLayoutType: (
-    state: ICollectionState,
-    { payload }: PayloadAction<LayoutType>
-  ): void => {
-    state.layoutType = payload;
-  },
-};
 
 export const extracollectionReducer = {
   [fetchAllProductsAsync.pending.type]: (state: ICollectionState) => {
@@ -186,5 +178,32 @@ export const extracollectionReducer = {
     state.productsShopByCollection.loading = false;
     state.productsShopByCollection.error =
       "Error while fetching products by shopby collection";
+  },
+};
+
+export const collectionReducer = {
+  setLayoutType: (
+    state: ICollectionState,
+    { payload }: PayloadAction<LayoutType>
+  ): void => {
+    state.layoutType = payload;
+  },
+  setSorterVisibility: (
+    state: ICollectionState,
+    { payload }: PayloadAction<boolean>
+  ): void => {
+    state.isSortEnabled = payload;
+  },
+  setFilterVisibility: (
+    state: ICollectionState,
+    { payload }: PayloadAction<boolean>
+  ): void => {
+    state.isFilterEnabled = payload;
+  },
+  setSelectedSorter: (
+    state: ICollectionState,
+    { payload }: PayloadAction<ISortCollection | undefined>
+  ): void => {
+    state.selectedSorter = payload;
   },
 };

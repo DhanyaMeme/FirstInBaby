@@ -6,27 +6,43 @@ import { Spinner } from "../../ui_kits/Spinner/Spinner.component";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import {
   IProduct,
+  IProductData,
   LayoutType,
 } from "../../redux/slices/collection/collection.type";
 import { EmptyProducts } from "../../components/EmptyProducts/EmptyProducts";
 import { ProductsList } from "../../components/ProductCollection/ProductList";
 import {
+  isFilterEnabled,
+  isSortEnabled,
   layoutType,
   productsByCategory,
+  selectedSorter,
 } from "../../redux/slices/collection/collection.selector";
 import { fetchProductsByCategoryAsync } from "../../redux/slices/collection/collection.reducer";
 import { CollectionToolbar } from "../../components/ProductCollection/CollectionToolbar/CollectionToolbar";
 import useElementSize from "../../hooks/useElementSize";
-import { setLayoutType } from "../../redux/slices/collection/collection.slice";
+import {
+  setLayoutType,
+  setSelectedSorter,
+  setSorterVisibility,
+} from "../../redux/slices/collection/collection.slice";
+import { SortDrawer } from "../../components/Drawer/SortDrawer";
+import { ISortCollection } from "../../models/types";
+import { genericSort } from "../../utils/generics";
 
 export const ProductCollection = () => {
   const mainCategory = usePath();
   const dispatch = useAppDispatch();
 
+  const layout = useAppSelector(layoutType);
+  const sorter = useAppSelector(selectedSorter);
+  const isVisibleSorter = useAppSelector(isSortEnabled);
+  const isVisibleFilter = useAppSelector(isFilterEnabled);
+  const { data: products, loading } = useAppSelector(productsByCategory);
+
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalItems, setTotalItems] = useState<number>(0);
-  const { data: products, loading } = useAppSelector(productsByCategory);
-  const layout = useAppSelector(layoutType);
+
   const ITEMS_PER_PAGE = 5;
 
   const [toolbarRef, { height: toolbarHeight, top: toolbarTop }] =
@@ -41,7 +57,13 @@ export const ProductCollection = () => {
   };
 
   const handleToggleSort = () => {
-    // dispatch(setSorterVisibility(!isVisibleSorter));
+    dispatch(setSorterVisibility(!isVisibleSorter));
+  };
+
+  const toggleSortClick = (item: ISortCollection) => {
+    const value = item.key === sorter?.key ? undefined : item;
+    dispatch(setSelectedSorter(value));
+    handleToggleSort();
   };
 
   useEffect(() => {
@@ -59,10 +81,30 @@ export const ProductCollection = () => {
   }, [mainCategory]);
 
   const filteredData = useMemo(() => {
-    let computedData: IProduct = products?.[mainCategory] || ({} as IProduct);
-    setTotalItems(computedData.pagenumber * ITEMS_PER_PAGE);
-    return computedData.productdto || [];
-  }, [mainCategory, products, currentPage]);
+    const selectedProducts: IProduct =
+      products?.[mainCategory] || ({} as IProduct);
+
+    let computedData: IProductData[] = selectedProducts.productdto || [];
+
+    setTotalItems(selectedProducts.pagenumber * ITEMS_PER_PAGE);
+
+    if (sorter) {
+      computedData = [...computedData].sort(
+        (PdtA: IProductData, pdtB: IProductData) =>
+          genericSort(PdtA, pdtB, {
+            property: sorter.field,
+            isDescending: sorter.isDescending,
+          })
+      );
+    }
+
+    console.log({
+      computedData,
+      sorter,
+    });
+
+    return computedData;
+  }, [mainCategory, products, currentPage, sorter]);
 
   if (loading) {
     return <Spinner />;
@@ -80,6 +122,12 @@ export const ProductCollection = () => {
         toggleSort={handleToggleSort}
         toggleLayout={handleToggleLayout}
         toggleFilter={handleToggleFilter}
+      />
+      <SortDrawer
+        selectedSorter={sorter}
+        visibleSort={isVisibleSorter}
+        handleToggleSort={handleToggleSort}
+        toggleSortClick={toggleSortClick}
       />
       <div className="CollectionInner">
         <ProductsList ProductData={filteredData} layoutType={layout} />

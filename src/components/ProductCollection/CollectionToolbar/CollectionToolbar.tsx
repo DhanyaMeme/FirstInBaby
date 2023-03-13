@@ -19,7 +19,6 @@ interface IProps {
 
 export const CollectionToolbar = forwardRef<HTMLDivElement, IProps>(
   (props, ref) => {
-    
     const { toggleLayout, layoutType, toggleSort, toggleFilter } = props;
 
     const DesktopView = (
