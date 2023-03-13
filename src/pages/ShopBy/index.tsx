@@ -11,7 +11,7 @@ import { IProduct } from "../../redux/slices/collection/collection.type";
 
 export const ShopBy = () => {
   const {
-    state: { collection, collectionCode, collectionName },
+    state: { collectionCode },
   } = useLocation();
   const dispatch = useAppDispatch();
   const { data: products, loading } = useAppSelector(productsShopByCollection);
