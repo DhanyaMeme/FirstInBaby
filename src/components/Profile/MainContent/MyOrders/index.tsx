@@ -10,9 +10,13 @@ import { EmptyContainer } from "../../../EmptyContainer";
 import { OrdersTable } from "./OrdersTable/OrdersTable";
 import { IF } from "../../../../ui_kits/IF";
 import { isEmpty } from "../../../../utils/script";
-import { IOrder } from "../../../../redux/slices/profile/profile.type";
+import {
+  IOrder,
+  IOrderCollection,
+} from "../../../../redux/slices/profile/profile.type";
 import { findArrayItems } from "../../../../utils/generics";
 import { Spinner } from "../../../../ui_kits/Spinner/Spinner.component";
+import Pagination from "../../../../ui_kits/Pagination/Pagination";
 
 export const MyOrders = () => {
   const { user } = useAuth();
@@ -23,28 +27,38 @@ export const MyOrders = () => {
   const [orderId, setOrderId] = useState<number | null>(null);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalItems, setTotalItems] = useState<number>(0);
-  const ITEMS_PER_PAGE = 10;
+  const ITEMS_PER_PAGE = 50;
 
   const handleShowOrderHandler = (id: number) => {
     setOrderId(id);
   };
 
   const selectedOrder = useMemo(() => {
-    let computedOrder = {} as IOrder;
+    let computedOrder = {} as IOrderCollection;
+
+    if (ordersData) {
+      setTotalItems(ordersData.pagenumber * ITEMS_PER_PAGE);
+    }
 
     if (ordersData && orderId) {
-      computedOrder = findArrayItems(ordersData, {
+      computedOrder = findArrayItems(ordersData.orderdto, {
         orderid: orderId,
-      }) as IOrder;
+      }) as IOrderCollection;
     }
 
     return computedOrder;
   }, [orderId, ordersData]);
 
   useEffect(() => {
-    if (!ordersData && user)
-      dispatch(fetchOrderAsync({ email: user, offset: 0, pagesize: 10 }));
-  }, [dispatch, ordersData, user]);
+    if (user)
+      dispatch(
+        fetchOrderAsync({
+          email: user,
+          offset: currentPage - 1,
+          pagesize: ITEMS_PER_PAGE,
+        })
+      );
+  }, [dispatch, currentPage, user]);
 
   if (loading) {
     return <Spinner />;
@@ -65,8 +79,15 @@ export const MyOrders = () => {
     <IF condition={!isEmpty(ordersData)}>
       <IF condition={isEmpty(orderId)}>
         <OrdersTable
-          orders={ordersData as IOrder[]}
+          orders={ordersData?.orderdto as IOrderCollection[]}
           handleOnclick={handleShowOrderHandler}
+        />
+        <Pagination
+          className="pagination-bar"
+          currentPage={currentPage}
+          totalCount={totalItems}
+          pageSize={ITEMS_PER_PAGE}
+          onPageChange={(page: number) => setCurrentPage(page)}
         />
       </IF>
       <IF condition={!isEmpty(orderId)}>

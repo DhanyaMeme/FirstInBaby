@@ -25,14 +25,14 @@ export const fetchCustomerAsync = createAsyncThunk<ICustomer, string>(
   }
 );
 
-export const fetchOrderAsync = createAsyncThunk<IOrder[], any>(
+export const fetchOrderAsync = createAsyncThunk<IOrder, any>(
   "profile/getOrder",
   async (data, { rejectWithValue }) => {
     try {
       const response = (await fetchData({
         ...profileService.getOrder,
         url: `${profileService.getOrder.url}/${data.email}/${data.offset}/${data.pagesize}`,
-      })) as IOrder[];
+      })) as IOrder;
       return response;
     } catch (err) {
       return rejectWithValue(err);
@@ -142,7 +142,7 @@ export const extraProfileReducer = {
   },
   [fetchOrderAsync.fulfilled.type]: (
     state: IProfileState,
-    { payload }: PayloadAction<IOrder[]>
+    { payload }: PayloadAction<IOrder>
   ) => {
     state.orders.loading = false;
     state.orders.data = payload;

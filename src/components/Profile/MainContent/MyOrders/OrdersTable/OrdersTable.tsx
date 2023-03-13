@@ -1,10 +1,10 @@
 import { FC } from "react";
-import { IOrder } from "../../../../../redux/slices/profile/profile.type";
+import { IOrder, IOrderCollection } from "../../../../../redux/slices/profile/profile.type";
 import { Table, TableWrapper } from "../../../../../ui_kits/Table/Table.styles";
 import { formatDate } from "../../../../../utils/script";
 
 interface IProps {
-  orders: IOrder[];
+  orders: IOrderCollection[];
   handleOnclick: (id: number) => void;
 }
 
@@ -24,7 +24,7 @@ export const OrdersTable: FC<IProps> = (props: IProps) => {
           </tr>
         </thead>
         <tbody className="u-h5">
-          {orders.map((order: IOrder) => (
+          {orders.map((order: IOrderCollection) => (
             <tr key={order.orderid}>
               <td data-th="Order" onClick={() => handleOnclick(order.orderid)}>
                 <span className="Link Link--underline Text--highlight">

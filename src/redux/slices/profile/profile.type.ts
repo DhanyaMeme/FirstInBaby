@@ -53,7 +53,7 @@ export interface IOrderItem {
   orderId: number;
 }
 
-export interface IOrder {
+export interface IOrderCollection {
   date: string;
   ordercode: any;
   idto: IOrderItem[];
@@ -63,25 +63,11 @@ export interface IOrder {
   status: string;
   tnxid: string;
   userId: string;
+}
 
-  // id: number;
-  // userId: string;
-  // addId: number;
-  // shopId: string;
-  // items: IOrderItem[];
-  // name: string;
-  // phone: string;
-  // flatNo: string;
-  // landMark: string;
-  // city: string;
-  // pin: string;
-  // orderStatus: {
-  //   id: number;
-  //   status: string;
-  //   sPhone: string;
-  //   orders: number;
-  // };
-  // street: string;
+export interface IOrder {
+  pagenumber: number;
+  orderdto: IOrderCollection[];
 }
 
 export interface ISubscribedPlan {
@@ -96,6 +82,6 @@ export interface IProfileState {
   profilePage: profileMenu;
   customer: AsyncData<ICustomer>;
   plans: AsyncData<IPlan[]>;
-  orders: AsyncData<IOrder[]>;
+  orders: AsyncData<IOrder>;
   subscribedPlan: AsyncData<ISubscribedPlan>;
 }

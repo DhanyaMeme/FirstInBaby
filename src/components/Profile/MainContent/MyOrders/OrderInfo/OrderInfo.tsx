@@ -2,12 +2,12 @@ import { FC } from "react";
 import { OrderCards } from "./OrderCards/OrderCards";
 import { formatDate } from "../../../../../utils/script";
 import { Alert } from "../../../../../ui_kits/Alert/Alert";
-import { IOrder } from "../../../../../redux/slices/profile/profile.type";
+import { IOrder, IOrderCollection } from "../../../../../redux/slices/profile/profile.type";
 import { PageContent } from "../../../../../ui_kits/global/PageContent.styles";
 import "./OrderInfo.scss";
 
 interface IProps {
-  order: IOrder;
+  order: IOrderCollection;
 }
 
 export const OrderInfo: FC<IProps> = (props: IProps) => {
