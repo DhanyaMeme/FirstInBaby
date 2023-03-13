@@ -14,8 +14,8 @@ export const initialState: ICollectionState = {
   productsBySearch: initialAsyncData,
   productsShopByCollection: initialAsyncData,
   layoutType: LayoutType.Multi,
-  isSortEnabled: false,
-  isFilterEnabled: false,
+  isSortEnabled: true,
+  isFilterEnabled: true,
   selectedSorter: undefined,
 };
 
