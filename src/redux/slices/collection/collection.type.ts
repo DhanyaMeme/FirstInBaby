@@ -67,8 +67,15 @@ export interface IProduct {
   productdto: IProductData[];
 }
 
+export enum LayoutType {
+  Single = "1:1",
+  Dual = "2:2",
+  Multi = "4:4",
+}
+
 export interface ICollectionState {
   allProducts: AsyncData<IProduct>;
+  layoutType: LayoutType;
   productsByCategory: AsyncData<Record<string, IProduct>>;
   preorderProducts: AsyncData<IProduct>;
   productsBySearch: AsyncData<IProduct>;

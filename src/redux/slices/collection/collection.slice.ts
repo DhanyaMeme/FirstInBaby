@@ -4,7 +4,7 @@ import {
   collectionReducer,
   extracollectionReducer,
 } from "./collection.reducer";
-import { ICollectionState } from "./collection.type";
+import { ICollectionState, LayoutType } from "./collection.type";
 
 export const initialState: ICollectionState = {
   allProducts: initialAsyncData,
@@ -13,6 +13,7 @@ export const initialState: ICollectionState = {
   productsByShopBy: initialAsyncData,
   productsBySearch: initialAsyncData,
   productsShopByCollection: initialAsyncData,
+  layoutType: LayoutType.Multi,
 };
 
 export const collectionSlice = createSlice({
@@ -21,3 +22,5 @@ export const collectionSlice = createSlice({
   reducers: collectionReducer,
   extraReducers: extracollectionReducer,
 });
+
+export const { setLayoutType } = collectionSlice.actions;

@@ -1,7 +1,7 @@
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { fetchData } from "../../../services/axios";
 import { productService } from "../../../services/axiosServices";
-import { ICollectionState, IProduct } from "./collection.type";
+import { ICollectionState, IProduct, LayoutType } from "./collection.type";
 
 export const fetchAllProductsAsync = createAsyncThunk(
   "collection/getAllProducts",
@@ -84,7 +84,14 @@ export const fetchShopbyCollectionAsync = createAsyncThunk<any, any>(
   }
 );
 
-export const collectionReducer = {};
+export const collectionReducer = {
+  setLayoutType: (
+    state: ICollectionState,
+    { payload }: PayloadAction<LayoutType>
+  ): void => {
+    state.layoutType = payload;
+  },
+};
 
 export const extracollectionReducer = {
   [fetchAllProductsAsync.pending.type]: (state: ICollectionState) => {

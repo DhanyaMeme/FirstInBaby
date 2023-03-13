@@ -32,3 +32,8 @@ export const productsBySearch = createSelector(
   [productSelf],
   (product) => product.productsBySearch
 );
+
+export const layoutType = createSelector(
+  [productSelf],
+  (product) => product.layoutType
+);

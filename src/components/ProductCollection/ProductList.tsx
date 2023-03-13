@@ -1,16 +1,22 @@
 import { FC } from "react";
 import { ProductView } from "../../models/constants";
-import { IProductData } from "../../redux/slices/collection/collection.type";
+import {
+  IProductData,
+  LayoutType,
+} from "../../redux/slices/collection/collection.type";
 import LazyLoad from "../../ui_kits/LazyComponent";
 import { ProductItem } from "../ProductItem/ProductItem";
 
 interface IProps {
   ProductData: IProductData[] | null;
+  layoutType?: LayoutType;
 }
 
 export const ProductsList: FC<IProps> = (props: IProps) => {
-  const { ProductData } = props;
-  const selectedView = ProductView["1:1"];
+  const { layoutType, ProductData } = props;
+  const selectedView = layoutType
+    ? ProductView[layoutType]
+    : ProductView["1:1"];
 
   return (
     <div className="CollectionInner__Products">
