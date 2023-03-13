@@ -83,9 +83,7 @@ export const ProductCollection = () => {
   const filteredData = useMemo(() => {
     const selectedProducts: IProduct =
       products?.[mainCategory] || ({} as IProduct);
-
     let computedData: IProductData[] = selectedProducts.productdto || [];
-
     setTotalItems(selectedProducts.pagenumber * ITEMS_PER_PAGE);
 
     if (sorter) {
@@ -97,12 +95,6 @@ export const ProductCollection = () => {
           })
       );
     }
-
-    console.log({
-      computedData,
-      sorter,
-    });
-
     return computedData;
   }, [mainCategory, products, currentPage, sorter]);
 
