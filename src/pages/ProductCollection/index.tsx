@@ -26,13 +26,15 @@ import {
 import { CollectionToolbar } from "../../components/ProductCollection/CollectionToolbar/CollectionToolbar";
 import useElementSize from "../../hooks/useElementSize";
 import {
+  setFilterVisibility,
   setLayoutType,
   setSelectedSorter,
   setSorterVisibility,
 } from "../../redux/slices/collection/collection.slice";
 import { SortDrawer } from "../../components/Drawer/SortDrawer";
-import { ISortCollection } from "../../models/types";
+import { ISortCollection, OnclickEvent } from "../../models/types";
 import { genericSort } from "../../utils/generics";
+import { FilterDrawer } from "../../components/Drawer/FilterDrawer";
 
 export const ProductCollection = () => {
   const mainCategory = usePath();
@@ -60,7 +62,7 @@ export const ProductCollection = () => {
   };
 
   const handleToggleFilter = () => {
-    // dispatch(setFilterVisibility(!isVisibleFilter));
+    dispatch(setFilterVisibility(!isVisibleFilter));
   };
 
   const handleToggleSort = () => {
@@ -71,6 +73,12 @@ export const ProductCollection = () => {
     const value = item.key === sorter?.key ? undefined : item;
     dispatch(setSelectedSorter(value));
     handleToggleSort();
+  };
+
+  const resetFilters = (e: OnclickEvent) => {
+    e.preventDefault();
+    // dispatch(setSelectedSorter(undefined));
+    // dispatch(setSelectedFilters(undefined));
   };
 
   useEffect(() => {
@@ -133,6 +141,11 @@ export const ProductCollection = () => {
         visibleSort={isVisibleSorter}
         handleToggleSort={handleToggleSort}
         toggleSortClick={toggleSortClick}
+      />
+      <FilterDrawer
+        visibility={isVisibleFilter}
+        toggleFilter={handleToggleFilter}
+        resetFilters={resetFilters}
       />
       <div className="CollectionInner">
         <ProductsList ProductData={filteredData} layoutType={layout} />
