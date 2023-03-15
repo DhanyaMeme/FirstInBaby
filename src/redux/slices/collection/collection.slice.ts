@@ -10,7 +10,7 @@ export const initialState: ICollectionState = {
   allProducts: initialAsyncData,
   preorderProducts: initialAsyncData,
   productsByCategory: initialAsyncData,
-  productsByShopBy: initialAsyncData,
+  filtersByCategory: initialAsyncData,
   productsBySearch: initialAsyncData,
   productsShopByCollection: initialAsyncData,
   layoutType: LayoutType.Multi,

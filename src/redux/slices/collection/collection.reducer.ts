@@ -2,7 +2,12 @@ import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { ISortCollection } from "../../../models/types";
 import { fetchData } from "../../../services/axios";
 import { productService } from "../../../services/axiosServices";
-import { ICollectionState, IProduct, LayoutType } from "./collection.type";
+import {
+  ICollectionState,
+  IFilter,
+  IProduct,
+  LayoutType,
+} from "./collection.type";
 
 export const fetchAllProductsAsync = createAsyncThunk(
   "collection/getAllProducts",
@@ -42,6 +47,25 @@ export const fetchProductsByCategoryAsync = createAsyncThunk<any, any>(
 
       return {
         key: data.mt,
+        value: response,
+      };
+    } catch (err) {
+      return rejectWithValue(err);
+    }
+  }
+);
+
+export const fetchFiltersByCategoryAsync = createAsyncThunk<any, string>(
+  "collection/getFiltersByCategory",
+  async (mt, { rejectWithValue }) => {
+    try {
+      const response = (await fetchData({
+        ...productService.getFiltersByCategory,
+        params: { mt },
+      })) as IFilter;
+
+      return {
+        key: mt,
         value: response,
       };
     } catch (err) {
@@ -139,6 +163,30 @@ export const extracollectionReducer = {
     state.productsByCategory.loading = false;
     state.productsByCategory.error =
       "Error while fetching products by category";
+  },
+  [fetchFiltersByCategoryAsync.pending.type]: (state: ICollectionState) => {
+    state.filtersByCategory.loading = true;
+  },
+  [fetchFiltersByCategoryAsync.fulfilled.type]: (
+    state: ICollectionState,
+    {
+      payload,
+    }: PayloadAction<{
+      key: string;
+      value: IFilter;
+    }>
+  ) => {
+    state.filtersByCategory.loading = false;
+    const data = state.filtersByCategory.data || {};
+    const groupedProducts = {
+      ...data,
+      [payload.key]: payload.value,
+    };
+    state.filtersByCategory.data = groupedProducts;
+  },
+  [fetchFiltersByCategoryAsync.rejected.type]: (state: ICollectionState) => {
+    state.filtersByCategory.loading = false;
+    state.filtersByCategory.error = "Error while fetching filters by category";
   },
   [fetchProductsBySearchAsync.pending.type]: (state: ICollectionState) => {
     state.productsBySearch.loading = true;

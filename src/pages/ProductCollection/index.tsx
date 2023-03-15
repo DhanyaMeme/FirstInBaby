@@ -12,13 +12,17 @@ import {
 import { EmptyProducts } from "../../components/EmptyProducts/EmptyProducts";
 import { ProductsList } from "../../components/ProductCollection/ProductList";
 import {
+  filtersByCategory,
   isFilterEnabled,
   isSortEnabled,
   layoutType,
   productsByCategory,
   selectedSorter,
 } from "../../redux/slices/collection/collection.selector";
-import { fetchProductsByCategoryAsync } from "../../redux/slices/collection/collection.reducer";
+import {
+  fetchFiltersByCategoryAsync,
+  fetchProductsByCategoryAsync,
+} from "../../redux/slices/collection/collection.reducer";
 import { CollectionToolbar } from "../../components/ProductCollection/CollectionToolbar/CollectionToolbar";
 import useElementSize from "../../hooks/useElementSize";
 import {
@@ -39,6 +43,9 @@ export const ProductCollection = () => {
   const isVisibleSorter = useAppSelector(isSortEnabled);
   const isVisibleFilter = useAppSelector(isFilterEnabled);
   const { data: products, loading } = useAppSelector(productsByCategory);
+  const { data: filters } = useAppSelector(filtersByCategory);
+
+  console.log("filters", filters);
 
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalItems, setTotalItems] = useState<number>(0);
@@ -75,6 +82,12 @@ export const ProductCollection = () => {
       })
     );
   }, [dispatch, mainCategory, currentPage]);
+
+  useEffect(() => {
+    if (!filters?.hasOwnProperty(decodeUrl(mainCategory))) {
+      dispatch(fetchFiltersByCategoryAsync(decodeUrl(mainCategory)));
+    }
+  }, [mainCategory]);
 
   useEffect(() => {
     setCurrentPage(1);

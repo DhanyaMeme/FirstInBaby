@@ -93,9 +93,9 @@ export const productService = {
     method: "GET",
     url: productsEndpoints.PROUCTS_By_CATEGORY,
   },
-  getProductsByShopby: {
+  getFiltersByCategory: {
     method: "GET",
-    url: productsEndpoints.PRODUCTS_BY_SHOPBY,
+    url: productsEndpoints.FILTERS_By_CATEGORY,
   },
   getProductsByCollection: {
     method: "GET",

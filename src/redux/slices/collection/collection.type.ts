@@ -67,6 +67,26 @@ export interface IProduct {
   productdto: IProductData[];
 }
 
+export interface IFilterColor {
+  fid: number;
+  color: string;
+  category: string;
+  colorcode: string;
+  type: string;
+}
+
+export interface IFilterSize {
+  fid: number;
+  sizes: string;
+  category: string;
+  type: string;
+}
+
+export interface IFilter {
+  fc: IFilterColor[];
+  fs: IFilterSize[];
+}
+
 export enum LayoutType {
   Single = "1:1",
   Dual = "2:2",
@@ -80,8 +100,8 @@ export interface ICollectionState {
   isFilterEnabled: boolean;
   selectedSorter: ISortCollection | undefined;
   productsByCategory: AsyncData<Record<string, IProduct>>;
+  filtersByCategory: AsyncData<Record<string, IFilter>>;
   preorderProducts: AsyncData<IProduct>;
   productsBySearch: AsyncData<IProduct>;
-  productsByShopBy: AsyncData<Record<string, IProduct>>;
   productsShopByCollection: AsyncData<Record<string, IProduct>>;
 }

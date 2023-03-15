@@ -18,9 +18,9 @@ export const productsByCategory = createSelector(
   (product) => product.productsByCategory
 );
 
-export const productsByShopBy = createSelector(
+export const filtersByCategory = createSelector(
   [productSelf],
-  (product) => product.productsByShopBy
+  (product) => product.filtersByCategory
 );
 
 export const productsShopByCollection = createSelector(
