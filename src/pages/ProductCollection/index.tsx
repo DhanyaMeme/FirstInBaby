@@ -28,6 +28,7 @@ import useElementSize from "../../hooks/useElementSize";
 import {
   setFilterVisibility,
   setLayoutType,
+  setSelectedFilter,
   setSelectedSorter,
   setSorterVisibility,
 } from "../../redux/slices/collection/collection.slice";
@@ -47,14 +48,11 @@ export const ProductCollection = () => {
   const { data: products, loading } = useAppSelector(productsByCategory);
   const { data: filters } = useAppSelector(filtersByCategory);
 
-
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalItems, setTotalItems] = useState<number>(0);
-
   const ITEMS_PER_PAGE = 5;
 
-  const [toolbarRef, { height: toolbarHeight, top: toolbarTop }] =
-    useElementSize();
+  const [toolbarRef] = useElementSize();
 
   const handleToggleLayout = (type: LayoutType) => {
     dispatch(setLayoutType(type));
@@ -76,11 +74,11 @@ export const ProductCollection = () => {
 
   const resetFilters = (e: OnclickEvent) => {
     e.preventDefault();
-    // dispatch(setSelectedSorter(undefined));
-    // dispatch(setSelectedFilters(undefined));
+    dispatch(setSelectedSorter(undefined));
+    dispatch(setSelectedFilter(undefined));
   };
 
-  useEffect(() => {
+   useEffect(() => {
     dispatch(
       fetchProductsByCategoryAsync({
         mt: decodeUrl(mainCategory),

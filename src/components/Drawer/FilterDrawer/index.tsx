@@ -1,5 +1,9 @@
 import { OnclickEvent } from "../../../models/types";
-import { TextButton } from "../../../ui_kits/Buttons/TextButton/TextButton.component";
+import {
+  BUTTON_TYPE_CLASSES,
+  TextButton,
+} from "../../../ui_kits/Buttons/TextButton/TextButton.component";
+import { ButtonGroup } from "../../../ui_kits/Buttons/TextButton/TextButton.styles";
 import { DrawerView } from "../../../ui_kits/Drawer/Drawer.compenent";
 import { PageOverlay } from "../../../ui_kits/PageOverlay/PageOverlay";
 import { FiltersCollection } from "./FiltersCollection";
@@ -24,9 +28,15 @@ export const FilterDrawer = (props: IProps) => {
         isHidden={visibility}
         handleClose={toggleFilter}
         footer={
-          <TextButton isFull onClick={resetFilters}>
-            RESET
-          </TextButton>
+          <ButtonGroup>
+            <TextButton
+              buttonType={BUTTON_TYPE_CLASSES.inverted}
+              onClick={resetFilters}
+            >
+              RESET
+            </TextButton>
+            <TextButton onClick={resetFilters} isExpand>APPLY</TextButton>
+          </ButtonGroup>
         }
       />
     </>

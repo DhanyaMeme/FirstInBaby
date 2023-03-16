@@ -29,8 +29,6 @@ export const FilterItem = (props: IProps) => {
   const selectedFilterValues = useAppSelector(selectedFilters) as any;
   const selectedFilterFields = selectedFilterValues?.[field];
 
-  console.log(selectedFilterValues);
-
   const toggleFilterData = (selectedItem: FilterData) => {
     const initialData = selectedFilterValues || ({} as ISelectedFilter);
     let filters;
