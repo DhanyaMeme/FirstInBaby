@@ -47,7 +47,6 @@ export const ProductCollection = () => {
   const { data: products, loading } = useAppSelector(productsByCategory);
   const { data: filters } = useAppSelector(filtersByCategory);
 
-  console.log("filters", filters);
 
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalItems, setTotalItems] = useState<number>(0);

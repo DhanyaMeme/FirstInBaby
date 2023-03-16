@@ -6,6 +6,7 @@ import {
   ICollectionState,
   IFilter,
   IProduct,
+  ISelectedFilter,
   LayoutType,
 } from "./collection.type";
 
@@ -253,5 +254,11 @@ export const collectionReducer = {
     { payload }: PayloadAction<ISortCollection | undefined>
   ): void => {
     state.selectedSorter = payload;
+  },
+  setSelectedFilter: (
+    state: ICollectionState,
+    { payload }: PayloadAction<ISelectedFilter | undefined>
+  ): void => {
+    state.selectedFilters = payload;
   },
 };

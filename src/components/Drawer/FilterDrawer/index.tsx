@@ -2,6 +2,8 @@ import { OnclickEvent } from "../../../models/types";
 import { TextButton } from "../../../ui_kits/Buttons/TextButton/TextButton.component";
 import { DrawerView } from "../../../ui_kits/Drawer/Drawer.compenent";
 import { PageOverlay } from "../../../ui_kits/PageOverlay/PageOverlay";
+import { FiltersCollection } from "./FiltersCollection";
+import "./Style.scss";
 
 interface IProps {
   visibility: boolean;
@@ -16,7 +18,7 @@ export const FilterDrawer = (props: IProps) => {
     <>
       <PageOverlay isVisible={!visibility} />
       <DrawerView
-        body={<div></div>}
+        body={<FiltersCollection />}
         position="right"
         title="FILTERS"
         isHidden={visibility}

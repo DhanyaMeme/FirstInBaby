@@ -52,3 +52,8 @@ export const selectedSorter = createSelector(
   [productSelf],
   (product) => product.selectedSorter
 );
+
+export const selectedFilters = createSelector(
+  [productSelf],
+  (product) => product.selectedFilters
+);

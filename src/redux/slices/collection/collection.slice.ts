@@ -17,6 +17,7 @@ export const initialState: ICollectionState = {
   isSortEnabled: true,
   isFilterEnabled: true,
   selectedSorter: undefined,
+  selectedFilters: undefined,
 };
 
 export const collectionSlice = createSlice({
@@ -31,4 +32,5 @@ export const {
   setSorterVisibility,
   setFilterVisibility,
   setSelectedSorter,
+  setSelectedFilter,
 } = collectionSlice.actions;

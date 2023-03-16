@@ -93,12 +93,24 @@ export enum LayoutType {
   Multi = "4:4",
 }
 
+export interface ISelectedFilter {
+  color: string[];
+  sizes: string[];
+  price: string;
+  discount: string;
+  // minprice: number;
+  // maxprice: number;
+  // minoffer: number;
+  // maxoffer: number;
+}
+
 export interface ICollectionState {
   allProducts: AsyncData<IProduct>;
   layoutType: LayoutType;
   isSortEnabled: boolean;
   isFilterEnabled: boolean;
   selectedSorter: ISortCollection | undefined;
+  selectedFilters: ISelectedFilter | undefined;
   productsByCategory: AsyncData<Record<string, IProduct>>;
   filtersByCategory: AsyncData<Record<string, IFilter>>;
   preorderProducts: AsyncData<IProduct>;
